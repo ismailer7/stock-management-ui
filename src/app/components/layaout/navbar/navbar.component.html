@@ -1,0 +1,41 @@
+<nav class="navbar bg-base-100">
+    <div class="flex-1">
+        <a href="#" class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Stock-Managemnt</a>
+    </div>
+    <div class="flex-none">
+        <ul class="menu menu-horizontal px-1">
+            <li>
+                <details>
+                    <summary >
+                        <img width="32" height="32"
+                             src="https://raw.githubusercontent.com/ismailer7/rimberry-api/develop/frontend/src/assets/images/flags/us.jpg"/>
+                    </summary>
+                    <ul class="bg-base-100 rounded-t-none p-1">
+                        <li><a><img width="32" height="32"
+                                    src="https://raw.githubusercontent.com/ismailer7/rimberry-api/develop/frontend/src/assets/images/flags/french.jpg"/></a>
+                        </li>
+                        <li><a><img width="32" height="32"
+                                    src="https://raw.githubusercontent.com/ismailer7/rimberry-api/develop/frontend/src/assets/images/flags/italy.jpg"/></a>
+                        </li>
+                    </ul>
+                </details>
+
+            </li>
+            <li>
+                <details>
+                    <summary class="menu-dropdown-toggle menu-dropdown-show">
+                        User
+                    </summary>
+                    <ul class="bg-base-100 rounded-t-none p-1 menu-dropdown menu-dropdown-show">
+                        <li>
+                            <a routerLink="/account" routerLinkActive="active">Account</a>
+                        </li>
+                        <li>
+                            <a routerLink="/logout" routerLinkActive="active">Logout</a>
+                        </li>
+                    </ul>
+                </details>
+            </li>
+        </ul>
+    </div>
+</nav>
