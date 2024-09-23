@@ -2,12 +2,14 @@ import {Component, inject, OnInit} from '@angular/core';
 import {Product} from "../../models/product.model";
 import {ProductService} from "../../services/product.service";
 import {PaginationComponent} from "../commun/pagination/pagination.component";
+import { AddproductComponent } from './addproduct/addproduct.component';
 
 @Component({
   selector: 'app-product',
   standalone: true,
   imports: [
-    PaginationComponent
+    PaginationComponent,
+    AddproductComponent
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
@@ -28,5 +30,7 @@ export class ProductComponent implements OnInit{
   onPageChange(event: number){
     console.log(event)
   }
+
+  
 
 }
