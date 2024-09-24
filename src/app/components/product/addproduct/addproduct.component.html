@@ -1,32 +1,50 @@
 <dialog id="my_modal_1" class="modal">
     <div class="modal-box">
-      <form class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
+      <form class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md" [formGroup]="productForm" (ngSubmit)="onSubmit()">
         <h2 class="text-2xl font-bold mb-6">Add Product:</h2>
 
         <div class="mb-4">
             <label class="input input-bordered flex items-center gap-2">
                 Name
-                <input type="text" class="grow" placeholder="Samsung S24" />
+                <input type="text" class="grow" placeholder="Samsung S24" id="productName" formControlName="productName" />
               </label>
         </div>
         <div class="mb-4">
+          <label class="input input-bordered flex items-center gap-2">
+              Code
+              <input type="text" class="grow" placeholder="WM-001" id="productCode" formControlName="productCode"  />
+            </label>
+      </div>
+        <div class="mb-4">
+          <label class="input input-bordered flex items-center gap-2">
+              Description
+              <input type="text" class="grow" placeholder="128rom/6ram color black" id="description" formControlName="description"  />
+            </label>
+      </div>
+        <div class="mb-4">
             <label class="input input-bordered flex items-center gap-2">
                 Quantity
-                <input type="text" class="grow" placeholder="100" />
+                <input type="text" class="grow" placeholder="100" id="quantity" formControlName="quantity"  />
               </label>
         </div>
         <div class="mb-4">
             <label class="input input-bordered flex items-center gap-2">
                 Buying Price
-                <input type="text" class="grow" placeholder="4000" />
+                <input type="text" class="grow" placeholder="4000" id="unitBuyPrice" formControlName="unitBuyPrice"  />
               </label>
         </div>
         <div class="mb-4">
             <label class="input input-bordered flex items-center gap-2">
                 Selling Price
-                <input type="text" class="grow" placeholder="4500" />
+                <input type="text" class="grow" placeholder="4500" id="unitSellPrice" formControlName="unitSellPrice"  />
               </label>
-        </div>  
+        </div> 
+        <div class="mb-4">
+          <label class="input input-bordered flex items-center gap-2">
+              Buying Date
+              <input type="text" class="grow" placeholder="2024-12-06" id="buyDate" formControlName="buyDate"  />
+            </label>
+      </div>  
         <div class="mb-4">
             <select class="select select-bordered w-full max-w-xs">
                 <option disabled selected>Category</option>

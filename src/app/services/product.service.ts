@@ -8,8 +8,10 @@ import {MOCK_PRODUCTS} from "../data/mock-products";
 })
 export class ProductService {
 
+  products: Product[] = MOCK_PRODUCTS;
+
   getAllProducts(): Observable<Product[]> {
-    return of(MOCK_PRODUCTS);
+    return of(this.products);
   }
 
   // Method to get a product by its ID
@@ -17,5 +19,9 @@ export class ProductService {
     const product = MOCK_PRODUCTS.find(item => item.id === id);
     return of(product);
   }
+
+addProduct(product : Product){
+  this.products.push(product);
+}
 
 }
