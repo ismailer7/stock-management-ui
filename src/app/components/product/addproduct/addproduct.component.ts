@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output, } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output, } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -11,6 +12,12 @@ import { Component, EventEmitter, Input, Output, } from '@angular/core';
 })
 export class AddproductComponent  {
 
+  toastr = inject(ToastrService);
 
+
+  addProduct(): void {
+    console.log("added");
+    this.toastr.success('Hello world!', 'Toastr fun!');
+  }
 
 }
