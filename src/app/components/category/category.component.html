@@ -1,1 +1,70 @@
-<p>category works!</p>
+<div class="overflow-x-auto me-3">
+    <div class="flex  p-4 bg-gray-100 rounded-md shadow">
+        <!-- Search Input -->
+        <input
+          type="text"
+          placeholder="Search..."
+          class="flex-grow  p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-lightblue-500"
+        />
+        <!-- Buttons -->
+        <button class="btn  btn-active  ml-4 px-4 py-2" onclick="my_modal_1.showModal()">Add Product</button>
+        <button class="btn  btn-active ml-4 px-4 py-2">Export</button>
+      </div>
+    <table class="table table-zebra">
+        <!-- head -->
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>BPricePUnit</th>
+            <th>SPricePUnit</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+            @for (product of products; track product.id) {
+                <tr>
+                    <th>{{ product.id }}</th>
+                    <td>{{ product.productName }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>{{ product.unitBuyPrice }}</td>
+                    <td>{{ product.unitSellPrice }}</td>
+                    <td>{{ product.category?.name }}</td>
+                    
+                    <td >
+                        <div class="flex space-x-2">
+                           <button class="btn btn-primary btn-sm">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                               <path d="M17.414 2.586a2 2 0 010 2.828L8.707 14.12a1 1 0 01-.293.207l-3 1a1 1 0 01-1.263-1.263l1-3a1 1 0 01.207-.293l8.707-8.707a2 2 0 012.828 0zM5 13.414l8.707-8.707a1 1 0 00-1.414-1.414L3.586 12l-.707 2.121L5 13.414z"/>
+                             </svg>
+                            </button>
+                            <button class="btn btn-error btn-sm"> <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-6 w-6"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="white">
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M6 18L18 6M6 6l12 12" />
+                              </svg>
+                            </button>
+                          </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <app-pagination
+            [totalItems]="products.length"
+            [itemsPerPage]="5"
+            [currentPage]="1"
+            (pageChange)="onPageChange($event)"
+    ></app-pagination>
+   
+    
+</div>
