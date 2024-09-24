@@ -1,0 +1,33 @@
+<div class="overflow-x-auto me-3">
+    <table class="table table-zebra">
+        <!-- head -->
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>quantity</th>
+            <th>BPricePUnit</th>
+            <th>SPricePUnit</th>
+            <th>Category</th>
+        </tr>
+        </thead>
+        <tbody>
+            @for (product of products; track product.id) {
+                <tr>
+                    <th>{{ product.id }}</th>
+                    <td>{{ product.productName }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>{{ product.unitBuyPrice }}</td>
+                    <td>{{ product.unitSellPrice }}</td>
+                    <td>{{ product.category?.name }}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <app-pagination
+            [totalItems]="products.length"
+            [itemsPerPage]="5"
+            [currentPage]="1"
+            (pageChange)="onPageChange($event)"
+    ></app-pagination>
+</div>

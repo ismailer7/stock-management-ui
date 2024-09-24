@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ProductComponent } from './product/product.component';
-import { AccountComponent } from './account/account.component';
-import { SaleComponent } from './sale/sale.component';
-import { CategoryComponent } from './category/category.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ProductComponent } from './components/product/product.component';
+import { AccountComponent } from './components/account/account.component';
+import { SaleComponent } from './components/sale/sale.component';
+import { CategoryComponent } from './components/category/category.component';
 
 export const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent, data: { name: 'Dashboard'} },
