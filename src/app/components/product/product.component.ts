@@ -31,7 +31,7 @@ export class ProductComponent implements OnInit{
   }
 
   onPageChange(event: number){
-    this.toastr.error('Hello world!', 'Toastr fun!');
+    this.toastr.success('Hello world!', 'Toastr fun!');
     console.log(event)
   }
 
