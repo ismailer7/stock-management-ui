@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {Product} from "../models/product.model";
 import {Observable, of} from "rxjs";
 import {MOCK_PRODUCTS} from "../data/mock-products";
+import { Category } from '../models/category.model';
+import { MOCK_CATEGORIES } from '../data/mock-categories';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,7 @@ import {MOCK_PRODUCTS} from "../data/mock-products";
 export class ProductService {
 
   products: Product[] = MOCK_PRODUCTS;
+  categories: Category[] = MOCK_CATEGORIES;
 
   getAllProducts(): Observable<Product[]> {
     return of(this.products);
@@ -23,5 +26,10 @@ export class ProductService {
 addProduct(product : Product){
   this.products.push(product);
 }
+
+allCategories(): Observable<Category[]> {
+  return of(this.categories);
+}
+
 
 }

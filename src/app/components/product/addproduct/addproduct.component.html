@@ -47,10 +47,9 @@
       </div>  
         <div class="mb-4">
             <select class="select select-bordered w-full max-w-xs">
-                <option disabled selected>Category</option>
-                <option>Phones</option>
-                <option>Chargers</option>
-                <option>Laptops</option>
+                @for (category of categories; track category.id) {
+                  <option>{{ category.name }}</option>
+                }
               </select>
         </div>
         

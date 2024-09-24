@@ -4,6 +4,7 @@ import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../models/product.model';
 import { ToastrService } from 'ngx-toastr';
 import { ProductComponent } from '../product.component';
+import { Category } from '../../../models/category.model';
 
 
 
@@ -20,7 +21,17 @@ export class AddproductComponent  {
   productForm: FormGroup;
   toastr = inject(ToastrService);
 
+  categories: Category[] = []
+
+
+
   constructor(private fb: FormBuilder, private productComponent: ProductComponent) {
+    this.productsService.allCategories().subscribe( {
+      next: (resp) => {
+        this.categories = [...resp]
+      }
+    } )
+    
     this.productForm = this.fb.group({
       productName: ['', Validators.required], 
       productCode: ['', Validators.required],
