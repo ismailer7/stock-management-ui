@@ -2,6 +2,8 @@ import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormGroup , FormBuilder, Validators} from '@angular/forms';
 import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../models/product.model';
+import { ToastrService } from 'ngx-toastr';
+
 
 
 @Component({
@@ -39,6 +41,12 @@ onSubmit() {
 }
 
 
+  toastr = inject(ToastrService);
 
+
+  addProduct(): void {
+    console.log("added");
+    this.toastr.success('Hello world!', 'Toastr fun!');
+  }
 
 }

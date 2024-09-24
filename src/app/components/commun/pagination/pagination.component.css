@@ -1,22 +1,6 @@
-.pagination {
-    display: flex;
-    list-style: none;
-    padding: 0;
-}
 
-.page-item {
-    cursor: pointer;
-    margin: 0 2px;
-}
-
-.page-item.disabled .page-link {
-    cursor: not-allowed;
-    pointer-events: none;
-    opacity: 0.5;
-}
-
-.page-item.active .page-link {
-    font-weight: bold;
-    background-color: #007bff;
-    color: white;
+.pag {
+    position: absolute;
+    left: 50%;
+    padding: 10px;
 }
