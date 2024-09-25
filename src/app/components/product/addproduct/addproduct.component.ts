@@ -40,7 +40,7 @@ export class AddproductComponent  {
       unitBuyPrice: [, [Validators.required, Validators.min(1)]],
       unitSellPrice: [, [Validators.required, Validators.min(1)]],
       buyDate:[''],
-      category:['']
+      category: [null, Validators.required]
     });
 }
 
@@ -49,7 +49,7 @@ addProduct() {
   console.log('Product added:', newProduct);
   this.productsService.addProduct(newProduct); 
   console.log("added");
-  this.toastr.success('Hello world!', 'Toastr fun!');
+  this.toastr.success('Product added!', 'Notification!');
   this.productComponent.ngOnInit();
 }
 
