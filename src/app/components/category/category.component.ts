@@ -1,28 +1,34 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Product } from '../../models/product.model';
-import { ProductService } from '../../services/product.service';
 import { PaginationComponent } from '../commun/pagination/pagination.component';
+import { ToastrService } from 'ngx-toastr';
+import { Category } from '../../models/category.model';
+import { CategoryService } from '../../services/category.service';
+import { AddCategoryComponent } from './add-category/add-category.component';
 
 @Component({
   selector: 'app-category',
   standalone: true,
-  imports: [PaginationComponent],
+  imports: [PaginationComponent,
+           AddCategoryComponent
+  ],
   templateUrl: './category.component.html',
   styleUrl: './category.component.css'
 })
 export class CategoryComponent implements OnInit{
-  products: Product[] = []
-  productsService = inject(ProductService);
+  categories: Category[] = []
+  categoryService = inject(CategoryService);
+  toastr = inject(ToastrService);
 
   ngOnInit(): void {
-    this.productsService.getAllProducts().subscribe( {
+    this.categoryService.getAllCategories().subscribe( {
       next: (resp) => {
-        this.products = [...resp]
+        this.categories = [...resp]
       }
     } )
   }
 
   onPageChange(event: number){
+    this.toastr.success('Hello world!', 'Toastr fun!');
     console.log(event)
   }
 }
