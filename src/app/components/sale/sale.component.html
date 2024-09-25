@@ -3,7 +3,7 @@
       <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
         <li class="inline-flex items-center">
           <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
-            Products/
+            Sales
           </a>
         </li>
       </ol>
@@ -16,7 +16,7 @@
             class="flex-grow  p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-lightblue-500"
           />
           <!-- Buttons -->
-          <button class="btn  btn-active  ml-4 px-4 py-2" onclick="my_modal_1.showModal()">Add Product</button>
+          <button class="btn  btn-active  ml-4 px-4 py-2" onclick="my_modal_3.showModal()">Add Sale</button>
           <button class="btn  btn-active ml-4 px-4 py-2">Export</button>
         </div>
       <table class="table table-zebra">
@@ -24,23 +24,23 @@
           <thead>
           <tr>
               <th>Id</th>
-              <th>Name</th>
+              <th>Description</th>
+              <th>Product</th>
+              <th>Unit Price</th>
               <th>Quantity</th>
-              <th>BPricePUnit</th>
-              <th>SPricePUnit</th>
-              <th>Category</th>
+              <th>Total Price</th>
               <th>Actions</th>
           </tr>
           </thead>
           <tbody>
-              @for (product of products; track product.id) {
+              @for (sale of sales; track sale.id; let  i = $index) {
                   <tr>
-                      <th>{{ product.id }}</th>
-                      <td>{{ product.productName }}</td>
-                      <td>{{ product.quantity }}</td>
-                      <td>{{ product.unitBuyPrice }}</td>
-                      <td>{{ product.unitSellPrice }}</td>
-                      <td><span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">{{ product.category?.name }}</span></td>
+                      <th>{{ i+1 }}</th>
+                      <td>{{ sale.description }}</td>
+                      <td>{{ sale.product?.productName }}</td>
+                      <td>{{ sale.product?.unitSellPrice}}</td>
+                      <td>{{ sale.saleQuantity }}</td>
+                      <td>{{ totalPrice(sale.product?.unitSellPrice, sale.saleQuantity, sale.discount)}}</td>
                       <td >
                           <div class="flex space-x-2">
                             <a href="#" class="bg-blue-100 hover:bg-blue-200 text-blue-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400 inline-flex items-center justify-center">Edit</a>
@@ -51,14 +51,7 @@
               }
           </tbody>
       </table>
-      <app-pagination
-              [totalItems]="products.length"
-              [itemsPerPage]="5"
-              [currentPage]="1"
-              (pageChange)="onPageChange($event)"
-      ></app-pagination>
-     
-      <app-addproduct></app-addproduct>
+   
       
   </div>
   

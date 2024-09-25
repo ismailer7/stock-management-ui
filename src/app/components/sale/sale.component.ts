@@ -1,29 +1,31 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Product } from '../../models/product.model';
-import { ProductService } from '../../services/product.service';
-import { PaginationComponent } from '../commun/pagination/pagination.component';
-import { AddproductComponent } from '../product/addproduct/addproduct.component';
+import { Sale } from '../../models/sale.model';
+import { SalesService } from '../../services/sales.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-sale',
   standalone: true,
-  imports: [PaginationComponent, AddproductComponent],
+  imports: [],
   templateUrl: './sale.component.html',
   styleUrl: './sale.component.css'
 })
 export class SaleComponent implements OnInit {
-  products: Product[] = []
-  productsService = inject(ProductService);
+
+  sales:Sale [] = [];
+  salesService = inject(SalesService);
+  toastr = inject(ToastrService);
 
   ngOnInit(): void {
-    this.productsService.getAllProducts().subscribe( {
-      next: (resp) => {
-        this.products = [...resp]
-      }
-    } )
+      this.salesService.getAllSales().subscribe({
+        next: (resp) => { this.sales = [...resp] }
+      })
   }
 
-  onPageChange(event: number){
-    console.log(event)
+
+  totalPrice(price:number | undefined,quantity:number | undefined,discount:number | undefined):any{
+      return ( price ?? 0) * (quantity ?? 0) - (discount ?? 0)
   }
+
 }

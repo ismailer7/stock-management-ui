@@ -1,13 +1,13 @@
 import { Sale } from "../models/sale.model";
 
 
-export const MOCK_PRODUCTS: Sale[] = [
+export const MOCK_SALES: Sale[] = [
 {
     id: 1,
     description: "sale-1",
     saleDate: "2024-09-25",
     saleQuantity: 100,
-    discount: 200,
+    discount: 100,
     product: {
         id: 1,
         productName: "Wireless Mouse",
@@ -15,7 +15,7 @@ export const MOCK_PRODUCTS: Sale[] = [
         description: "A high-precision wireless mouse with ergonomic design.",
         quantity: 50,
         unitBuyPrice: 10.99,
-        unitSellPrice: 15.99,
+        unitSellPrice: 200,
         buyDate: "2023-05-10",
      category: {
             id: 1,
@@ -27,8 +27,8 @@ export const MOCK_PRODUCTS: Sale[] = [
     id: 2,
     description: "sale-2",
     saleDate: "2024-09-25",
-    saleQuantity: 30,
-    discount: 500,
+    saleQuantity: 300,
+    discount: 50,
     product: {
         id: 1,
         productName: "Wireless Mouse",
@@ -56,8 +56,8 @@ export const MOCK_PRODUCTS: Sale[] = [
         productCode: "WM-001",
         description: "A high-precision wireless mouse with ergonomic design.",
         quantity: 50,
-        unitBuyPrice: 10.99,
-        unitSellPrice: 15.99,
+        unitBuyPrice: 100,
+        unitSellPrice: 150,
         buyDate: "2023-05-10",
      category: {
             id: 1,
@@ -69,8 +69,8 @@ export const MOCK_PRODUCTS: Sale[] = [
     id: 4,
     description: "sale-4",
     saleDate: "2024-09-25",
-    saleQuantity: 10,
-    discount: 300,
+    saleQuantity: 100,
+    discount: 30,
     product: {
         id: 1,
         productName: "Wireless Mouse",
@@ -90,7 +90,7 @@ export const MOCK_PRODUCTS: Sale[] = [
     id: 5,
     description: "sale-5",
     saleDate: "2024-09-25",
-    saleQuantity: 60,
+    saleQuantity: 600,
     discount: 600,
     product: {
         id: 1,
@@ -98,8 +98,8 @@ export const MOCK_PRODUCTS: Sale[] = [
         productCode: "WM-001",
         description: "A high-precision wireless mouse with ergonomic design.",
         quantity: 50,
-        unitBuyPrice: 10.99,
-        unitSellPrice: 15.99,
+        unitBuyPrice: 70.99,
+        unitSellPrice: 80.99,
         buyDate: "2023-05-10",
      category: {
             id: 1,
