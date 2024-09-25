@@ -1,0 +1,110 @@
+import { Sale } from "../models/sale.model";
+
+
+export const MOCK_PRODUCTS: Sale[] = [
+{
+    id: 1,
+    description: "sale-1",
+    saleDate: "2024-09-25",
+    saleQuantity: 100,
+    discount: 200,
+    product: {
+        id: 1,
+        productName: "Wireless Mouse",
+        productCode: "WM-001",
+        description: "A high-precision wireless mouse with ergonomic design.",
+        quantity: 50,
+        unitBuyPrice: 10.99,
+        unitSellPrice: 15.99,
+        buyDate: "2023-05-10",
+     category: {
+            id: 1,
+            name: "Electronics",
+               },
+             },
+},
+{
+    id: 2,
+    description: "sale-2",
+    saleDate: "2024-09-25",
+    saleQuantity: 30,
+    discount: 500,
+    product: {
+        id: 1,
+        productName: "Wireless Mouse",
+        productCode: "WM-001",
+        description: "A high-precision wireless mouse with ergonomic design.",
+        quantity: 50,
+        unitBuyPrice: 10.99,
+        unitSellPrice: 15.99,
+        buyDate: "2023-05-10",
+     category: {
+            id: 1,
+            name: "Electronics",
+               },
+             },
+},
+{
+    id: 3,
+    description: "sale-3",
+    saleDate: "2024-09-25",
+    saleQuantity: 60,
+    discount: 400,
+    product: {
+        id: 1,
+        productName: "Wireless Mouse",
+        productCode: "WM-001",
+        description: "A high-precision wireless mouse with ergonomic design.",
+        quantity: 50,
+        unitBuyPrice: 10.99,
+        unitSellPrice: 15.99,
+        buyDate: "2023-05-10",
+     category: {
+            id: 1,
+            name: "Electronics",
+               },
+             },
+},
+{
+    id: 4,
+    description: "sale-4",
+    saleDate: "2024-09-25",
+    saleQuantity: 10,
+    discount: 300,
+    product: {
+        id: 1,
+        productName: "Wireless Mouse",
+        productCode: "WM-001",
+        description: "A high-precision wireless mouse with ergonomic design.",
+        quantity: 50,
+        unitBuyPrice: 10.99,
+        unitSellPrice: 15.99,
+        buyDate: "2023-05-10",
+     category: {
+            id: 1,
+            name: "Electronics",
+               },
+             },
+},
+{
+    id: 5,
+    description: "sale-5",
+    saleDate: "2024-09-25",
+    saleQuantity: 60,
+    discount: 600,
+    product: {
+        id: 1,
+        productName: "Wireless Mouse",
+        productCode: "WM-001",
+        description: "A high-precision wireless mouse with ergonomic design.",
+        quantity: 50,
+        unitBuyPrice: 10.99,
+        unitSellPrice: 15.99,
+        buyDate: "2023-05-10",
+     category: {
+            id: 1,
+            name: "Electronics",
+               },
+             },
+}
+];

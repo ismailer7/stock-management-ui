@@ -8,3 +8,4 @@ export interface Sale {
     discount: number;
     product?: Product;  // Reference to Product
 }
+
