@@ -10,7 +10,7 @@ export const MOCK_CATEGORIES: Category[] = [
         name: "Accessories",
     },
     {
-        id: 4,
+        id: 3,
         name: "Fourniture"
     },
     {

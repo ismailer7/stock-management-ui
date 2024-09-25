@@ -35,16 +35,22 @@ export class AddproductComponent  {
     this.productForm = this.fb.group({
       productName: ['', Validators.required], 
       productCode: ['', Validators.required],
-      description:[''],
+      description: [''],
       quantity: [, [Validators.required, Validators.min(1)]], 
       unitBuyPrice: [, [Validators.required, Validators.min(1)]],
       unitSellPrice: [, [Validators.required, Validators.min(1)]],
-      buyDate:[''],
+      buyDate: [null],
       category: [null, Validators.required]
     });
 }
 
-addProduct() {
+submit() {
+
+  if (this.productForm.invalid) {
+    console.log('Validation');
+    this.productForm.markAllAsTouched();
+    return;
+  }
   const newProduct:Product = this.productForm.value;
   console.log('Product added:', newProduct);
   this.productsService.addProduct(newProduct); 
