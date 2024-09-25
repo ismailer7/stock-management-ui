@@ -7,11 +7,16 @@ export const MOCK_CATEGORIES: Category[] = [
     },
     {
         id: 2,
-        name: "Others",
+        name: "Accessories",
     },
     {
         id: 4,
         name: "Fourniture"
     },
+    {
+        id: 4,
+        name: "Kitchenware"
+    }
+
     
 ];
