@@ -1,7 +1,7 @@
 <dialog id="my_modal_1" class="modal">
     <div class="modal-box">
       <form class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md " [formGroup]="productForm" (ngSubmit)="submit()" >
-        @if(productForm.get('productName')?.invalid && productForm.get('productName')?.touched){
+        @if(productForm.invalid && submitted){
         <div role="alert" class="alert alert-warning mb-3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -72,8 +72,8 @@
                 }
               </select>
         </div>
-        
         <button type="submit" class="close px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-gray-800" >Add</button>
+        
         <div class="modal-action">
           <form method="dialog">
             <div class="btn-group">

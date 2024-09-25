@@ -22,7 +22,7 @@ export class AddproductComponent  {
   toastr = inject(ToastrService);
 
   categories: Category[] = []
-
+  submitted = false;
 
 
   constructor(private fb: FormBuilder, private productComponent: ProductComponent) {
@@ -46,9 +46,9 @@ export class AddproductComponent  {
 
 submit() {
 
+  this.submitted = true;
   if (this.productForm.invalid) {
     console.log('Validation');
-    this.productForm.markAllAsTouched();
     return;
   }
   const newProduct:Product = this.productForm.value;
