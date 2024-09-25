@@ -1,1 +1,64 @@
-<p>sale works!</p>
+<div class="overflow-x-auto me-3">
+    <nav class="flex" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+        <li class="inline-flex items-center">
+          <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+            Products/
+          </a>
+        </li>
+      </ol>
+      </nav><br>
+      <div class="flex  p-4 bg-gray-100 rounded-md shadow">
+          <!-- Search Input -->
+          <input
+            type="text"
+            placeholder="Search..."
+            class="flex-grow  p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-lightblue-500"
+          />
+          <!-- Buttons -->
+          <button class="btn  btn-active  ml-4 px-4 py-2" onclick="my_modal_1.showModal()">Add Product</button>
+          <button class="btn  btn-active ml-4 px-4 py-2">Export</button>
+        </div>
+      <table class="table table-zebra">
+          <!-- head -->
+          <thead>
+          <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>BPricePUnit</th>
+              <th>SPricePUnit</th>
+              <th>Category</th>
+              <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+              @for (product of products; track product.id) {
+                  <tr>
+                      <th>{{ product.id }}</th>
+                      <td>{{ product.productName }}</td>
+                      <td>{{ product.quantity }}</td>
+                      <td>{{ product.unitBuyPrice }}</td>
+                      <td>{{ product.unitSellPrice }}</td>
+                      <td><span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">{{ product.category?.name }}</span></td>
+                      <td >
+                          <div class="flex space-x-2">
+                            <a href="#" class="bg-blue-100 hover:bg-blue-200 text-blue-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400 inline-flex items-center justify-center">Edit</a>
+                            <a href="#" class="bg-red-100 hover:bg-red-200 text-red-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-red-700 dark:text-red-400 border border-red-400 inline-flex items-center justify-center">Delete</a>
+                            </div>
+                      </td>
+                  </tr>
+              }
+          </tbody>
+      </table>
+      <app-pagination
+              [totalItems]="products.length"
+              [itemsPerPage]="5"
+              [currentPage]="1"
+              (pageChange)="onPageChange($event)"
+      ></app-pagination>
+     
+      <app-addproduct></app-addproduct>
+      
+  </div>
+  
