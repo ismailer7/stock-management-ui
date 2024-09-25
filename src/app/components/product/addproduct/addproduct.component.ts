@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output, } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output, } from '@angular/core';
+
 
 
 
@@ -10,6 +11,10 @@ import { Component, EventEmitter, Input, Output, } from '@angular/core';
   styleUrl: './addproduct.component.css'
 })
 export class AddproductComponent  {
+
+  submitForm(){
+
+  }
 
 
 

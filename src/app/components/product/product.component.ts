@@ -27,6 +27,7 @@ export class ProductComponent implements OnInit{
     } )
   }
 
+  
   onPageChange(event: number){
     console.log(event)
   }

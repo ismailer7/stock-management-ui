@@ -18,4 +18,8 @@ export class ProductService {
     return of(product);
   }
 
+  addProduct(product: Product){
+   
+  }
+
 }
