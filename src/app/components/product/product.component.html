@@ -16,7 +16,7 @@
           class="flex-grow  p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-lightblue-500"
         />
         <!-- Buttons -->
-        <button class="btn  btn-active  ml-4 px-4 py-2" onclick="my_modal_1.showModal()">Add Product</button>
+        <button class="btn  bg-accent  ml-4 px-4 py-2" onclick="my_modal_1.showModal()"><i class="fa fa-solid fa-plus text-xl text-gray-600"></i></button>
         <button class="btn  btn-active ml-4 px-4 py-2">Export</button>
       </div>
     <table class="table table-zebra">
@@ -43,8 +43,10 @@
                     <td><span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">{{ product.category?.name }}</span></td>
                     <td >
                         <div class="flex space-x-2">
-                          <a href="#" class="bg-blue-100 hover:bg-blue-200 text-blue-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400 inline-flex items-center justify-center">Edit</a>
-                          <a href="#" class="bg-red-100 hover:bg-red-200 text-red-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-red-700 dark:text-red-400 border border-red-400 inline-flex items-center justify-center">Delete</a>
+                            <button class="btn btn-sm px-2 bg-blue-400"><i class="fa fa-edit text-xl text-gray-600"></i></button>
+<!--                          <a href="#" class="bg-blue-100 hover:bg-blue-200 text-blue-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400 inline-flex items-center justify-center">Edit</a>-->
+                            <button class="btn btn-sm px-3 bg-red-400"><i class="fa fa-solid fa-trash text-xl text-gray-600"></i></button>
+                            <!--                          <a href="#" class="bg-red-100 hover:bg-red-200 text-red-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-red-700 dark:text-red-400 border border-red-400 inline-flex items-center justify-center">Delete</a>-->
                           </div>
                     </td>
                 </tr>

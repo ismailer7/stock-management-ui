@@ -5,13 +5,14 @@ import { Product } from '../../../models/product.model';
 import { ToastrService } from 'ngx-toastr';
 import { ProductComponent } from '../product.component';
 import { Category } from '../../../models/category.model';
+import {formatDate} from "@angular/common";
 
 
 
 @Component({
   selector: 'app-addproduct',
   standalone: true,
-  imports: [ReactiveFormsModule, ProductComponent],
+  imports: [ReactiveFormsModule],
   templateUrl: './addproduct.component.html',
   styleUrl: './addproduct.component.css'
 })
@@ -31,16 +32,16 @@ export class AddproductComponent  {
         this.categories = [...resp]
       }
     } )
-    
+
     this.productForm = this.fb.group({
-      productName: ['', Validators.required], 
+      productName: ['', Validators.required],
       productCode: ['', Validators.required],
       description: [''],
-      quantity: [, [Validators.required, Validators.min(1)]], 
+      quantity: [, [Validators.required, Validators.min(1)]],
       unitBuyPrice: [, [Validators.required, Validators.min(1)]],
       unitSellPrice: [, [Validators.required, Validators.min(1)]],
-      buyDate: [null],
-      category: [null, Validators.required]
+      buyDate: [formatDate(new Date(), 'yyyy-MM-dd', 'en')],
+      category: [, Validators.required]
     });
 }
 
@@ -48,15 +49,22 @@ submit() {
 
   this.submitted = true;
   if (this.productForm.invalid) {
-    console.log('Validation');
     return;
   }
-  const newProduct:Product = this.productForm.value;
-  console.log('Product added:', newProduct);
-  this.productsService.addProduct(newProduct); 
-  console.log("added");
+  const newProduct = this.productForm.value;
+  this.productsService.addProduct(newProduct);
   this.toastr.success('Product added!', 'Notification!');
-  this.productComponent.ngOnInit();
+  this.reset();
+}
+
+reset(){
+  (document.getElementById('btn-close-modal') as HTMLFormElement)?.click();
+  this.productForm.reset()
+  this.productForm.patchValue({
+    buyDate: formatDate(new Date(), 'yyyy-MM-dd', 'en')
+  });
+  this.submitted = false
+
 }
 
 }

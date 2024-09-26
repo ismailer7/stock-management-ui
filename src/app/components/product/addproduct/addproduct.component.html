@@ -1,88 +1,93 @@
 <dialog id="my_modal_1" class="modal">
-    <div class="modal-box">
-      <form class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md " [formGroup]="productForm" (ngSubmit)="submit()" >
-        @if(productForm.invalid && submitted){
-        <div role="alert" class="alert alert-warning mb-3">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6 shrink-0 stroke-current"
-            fill="none"
-            viewBox="0 0 24 24">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-          </svg>
-          <span>Warning: required inputs should not be empty!</span>
+    <div class="modal-box w-11/12 max-w-5xl">
+      <form class="max-w mx-auto bg-white py-4 px-8 " [formGroup]="productForm" (ngSubmit)="submit()" >
+        @if((productForm.invalid &&  submitted)){
+            <div role="alert" class="alert alert-warning mb-3">
+                <i class="fa fa-solid fa-bell"></i>
+          <span> Warning: required inputs should not be empty!</span>
         </div>
       }
         <h2 class="text-2xl font-bold mb-6">Add Product:</h2>
-        <div class="mb-4">
-            <label class="input input-bordered flex items-center gap-2">
-                Name
-                <input type="text" class="grow" placeholder="Samsung S24" id="productName" formControlName="productName"  />
-              </label>
-        </div>
-        <div class="mb-4">
-          <label class="input input-bordered flex items-center gap-2">
-              Code
-              <input type="text" class="grow" placeholder="WM-001" id="productCode" formControlName="productCode"  />
-            </label>
-      </div>
-        <div class="mb-4">
-          <label class="input input-bordered flex items-center gap-2">
-              Description
-              <input type="text" class="grow" placeholder="128rom/6ram color black" id="description" formControlName="description"   />
-            </label>
-      </div>
-        <div class="mb-4">
-            <label class="input input-bordered flex items-center gap-2">
-                Quantity
-                <input type="text" class="grow" placeholder="100" id="quantity" formControlName="quantity"  />
-              </label>
-        </div>
-        <div class="mb-4">
-            <label class="input input-bordered flex items-center gap-2">
-                Buying Price
-                <input type="text" class="grow" placeholder="4000" id="unitBuyPrice" formControlName="unitBuyPrice"  />
-              </label>
-        </div>
-        <div class="mb-4">
-            <label class="input input-bordered flex items-center gap-2">
-                Selling Price
-                <input type="text" class="grow" placeholder="4500" id="unitSellPrice" formControlName="unitSellPrice"  />
-              </label>
-        </div>   
-        <div class="mb-4">
-          <div class="relative max-w-sm">
-            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-              <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-              </svg> 
-            </div>
-            <input   type="date" id="buyDate" formControlName="buyDate" class="bg-gray-50 focus:outline-none  border border-gray-300 text-gray-900 text-sm rounded-lg   w-full ps-10 p-2.5   placeholder=2024-12-02">
+          <div class="row">
+              <div class="gap-4 columns-2">
+                  <div class="mb-4">
+                      <label class="input input-bordered flex items-center gap-2">
+                          <div>Name<span class="text-sm ms-1 text-red-500">*</span></div>
+                          <input type="text" class="grow" placeholder="Samsung S24" id="productName" formControlName="productName"  />
+                      </label>
+                  </div>
+                  <div class="mb-4">
+                      <label class="input input-bordered flex items-center gap-2">
+                          <div>Code <span class="text-sm ms-1 text-red-500">*</span></div>
+                          <input type="text" class="grow" placeholder="WM-001" id="productCode" formControlName="productCode"  />
+                      </label>
+                  </div>
+              </div>
           </div>
-          
-      </div>
-        <div class="mb-4">
-            <select class="select select-bordered w-full max-w-xs" id="category" formControlName="category">
-                @for (category of categories; track category.id) {
-                  <option [ngValue]="category">{{ category.name }}</option>
-                }
-              </select>
-        </div>
-        <button type="submit" class="close px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-gray-800" >Add</button>
-        
-        <div class="modal-action">
-          <form method="dialog">
-            <div class="btn-group">
-              
-              <button class="close px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Close</button>
-            </div>
-            
-          </form>
-        </div>
-    </form>
+          <div class="row">
+              <div class="gap-4 columns-2">
+                  <div class="mb-4">
+                      <label class="input input-bordered flex items-center gap-2">
+                          Description
+                          <input type="text" class="grow" placeholder="128rom/6ram color black" id="description" formControlName="description"   />
+                      </label>
+                  </div>
+                  <div class="mb-4">
+                      <label class="input input-bordered flex items-center gap-2">
+                          <div>Quantity<span class="text-sm ms-1 text-red-500">*</span></div>
+                          <input type="text" class="grow" placeholder="100" id="quantity" formControlName="quantity"  />
+                      </label>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="gap-4 columns-2">
+                <div class="mb-4">
+                    <label class="input input-bordered flex items-center gap-2">
+                        <div>Buying Price<span class="text-sm ms-1 text-red-500">*</span></div>
+                        <input type="text" class="grow" placeholder="4000" id="unitBuyPrice" formControlName="unitBuyPrice"  />
+                      </label>
+                </div>
+                <div class="mb-4">
+                    <label class="input input-bordered flex items-center gap-2">
+                        <div>Selling Price<span class="text-sm ms-1 text-red-500">*</span></div>
+                        <input type="text" class="grow" placeholder="4500" id="unitSellPrice" formControlName="unitSellPrice"  />
+                      </label>
+                </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="gap-4 columns-2">
+                  <div class="mb-4">
+                      <div class="relative max-w">
+                          <label class="input input-bordered flex items-center gap-2">
+                              <i class=" fa fa-regular fa-calendar"></i>
+                              <input type="date" id="buyDate" formControlName="buyDate"
+                                     class="bg-gray-50 focus:outline-none  text-gray-900    w-full  p-2.5   placeholder=2024-12-02">
+                          </label>
+                      </div>
+                  </div>
+                  <div class="mb-4">
+                      <label class="input input-bordered flex items-center gap-2">
+                          <div>Category<span class="text-sm ms-1 text-red-500">*</span></div>
+                          <select class="select select-sm select-bordered w-full max-w" id="category" formControlName="category">
+                              <option [ngValue]="null">Select</option>
+                              @for (category of categories; track category.id) {
+                                  <option [ngValue]="category">{{ category.name }}</option>
+                              }
+                          </select>
+                      </label>
+
+                  </div>
+              </div>
+          </div>
+          <div class="modal-action">
+                  <button type="submit" class="btn btn-primary px-8">Add</button>
+                  <form method="dialog">
+                      <button id="btn-close-modal" class="btn px-8">Close</button>
+                  </form>
+          </div>
+      </form>
     </div>
+
   </dialog>
