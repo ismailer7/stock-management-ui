@@ -17,4 +17,9 @@ export class CategoryService {
   addCategory(category : Category){
     this.categories.push(category);
   }
+
+  deleteCategory(index: any): Observable<Category[]>{
+    this.categories.splice(index, 1);
+    return of(this.categories);
+  }
 }
