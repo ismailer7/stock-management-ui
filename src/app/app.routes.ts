@@ -6,7 +6,7 @@ import { SaleComponent } from './components/sale/sale.component';
 import { CategoryComponent } from './components/category/category.component';
 import { LoginComponent } from './components/login/login.component';
 import { LayaoutComponent } from './components/layaout/layaout.component';
-import { LoginLayoutComponent } from './data/login-layout/login-layout.component';
+import { LoginLayoutComponent } from './components/login-layout/login-layout.component';
 
 export const routes: Routes = [
     {
