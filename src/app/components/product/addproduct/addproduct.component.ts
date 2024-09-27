@@ -5,14 +5,14 @@ import { Product } from '../../../models/product.model';
 import { ToastrService } from 'ngx-toastr';
 import { ProductComponent } from '../product.component';
 import { Category } from '../../../models/category.model';
-import {formatDate} from "@angular/common";
+import {CommonModule, formatDate} from "@angular/common";
 
 
 
 @Component({
   selector: 'app-addproduct',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,CommonModule],
   templateUrl: './addproduct.component.html',
   styleUrl: './addproduct.component.css'
 })
@@ -24,6 +24,7 @@ export class AddproductComponent  {
 
   categories: Category[] = []
   submitted = false;
+  flag:string = '';
 
 
   constructor(private fb: FormBuilder, private productComponent: ProductComponent) {
@@ -54,6 +55,11 @@ submit() {
   const newProduct = this.productForm.value;
   this.productsService.addProduct(newProduct);
   this.toastr.success('Product added!', 'Notification!');
+  this.reset();
+}
+
+close(){
+
   this.reset();
 }
 

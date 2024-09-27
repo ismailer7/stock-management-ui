@@ -11,13 +11,13 @@
           <div class="row">
               <div class="gap-4 columns-2">
                   <div class="mb-4">
-                      <label class="input input-bordered flex items-center gap-2">
+                      <label class="input input-bordered  flex items-center gap-2" [ngClass]="{changedBackground: productForm.get('productName')?.invalid &&  productForm.get('productName')?.touched}" >
                           <div>Name<span class="text-sm ms-1 text-red-500">*</span></div>
-                          <input type="text" class="grow" placeholder="Samsung S24" id="productName" formControlName="productName"  />
+                          <input type="text" class="grow"  placeholder="Samsung S24" id="productName" formControlName="productName"   />
                       </label>
                   </div>
                   <div class="mb-4">
-                      <label class="input input-bordered flex items-center gap-2">
+                      <label class="input input-bordered flex items-center gap-2" [ngClass]="{changedBackground: productForm.get('productCode')?.invalid &&  productForm.get('productCode')?.touched}">
                           <div>Code <span class="text-sm ms-1 text-red-500">*</span></div>
                           <input type="text" class="grow" placeholder="WM-001" id="productCode" formControlName="productCode"  />
                       </label>
@@ -33,8 +33,8 @@
                       </label>
                   </div>
                   <div class="mb-4">
-                      <label class="input input-bordered flex items-center gap-2">
-                          <div>Quantity<span class="text-sm ms-1 text-red-500">*</span></div>
+                      <label class="input input-bordered flex items-center gap-2" [ngClass]="{changedBackground: productForm.get('quantity')?.invalid &&  productForm.get('quantity')?.touched}">
+                          <div>Quantity<span class="text-sm ms-1 text-red-500" >*</span></div>
                           <input type="text" class="grow" placeholder="100" id="quantity" formControlName="quantity"  />
                       </label>
                   </div>
@@ -43,13 +43,13 @@
           <div class="row">
               <div class="gap-4 columns-2">
                 <div class="mb-4">
-                    <label class="input input-bordered flex items-center gap-2">
+                    <label class="input input-bordered flex items-center gap-2" [ngClass]="{changedBackground: productForm.get('unitBuyPrice')?.invalid &&  productForm.get('unitBuyPrice')?.touched}">
                         <div>Buying Price<span class="text-sm ms-1 text-red-500">*</span></div>
                         <input type="text" class="grow" placeholder="4000" id="unitBuyPrice" formControlName="unitBuyPrice"  />
                       </label>
                 </div>
                 <div class="mb-4">
-                    <label class="input input-bordered flex items-center gap-2">
+                    <label class="input input-bordered flex items-center gap-2" [ngClass]="{changedBackground: productForm.get('unitSellPrice')?.invalid &&  productForm.get('unitSellPrice')?.touched}">
                         <div>Selling Price<span class="text-sm ms-1 text-red-500">*</span></div>
                         <input type="text" class="grow" placeholder="4500" id="unitSellPrice" formControlName="unitSellPrice"  />
                       </label>
@@ -68,7 +68,7 @@
                       </div>
                   </div>
                   <div class="mb-4">
-                      <label class="input input-bordered flex items-center gap-2">
+                      <label class="input input-bordered flex items-center gap-2" [ngClass]="{changedBackground: productForm.get('category')?.invalid &&  productForm.get('category')?.touched}">
                           <div>Category<span class="text-sm ms-1 text-red-500">*</span></div>
                           <select class="select select-sm select-bordered w-full max-w" id="category" formControlName="category">
                               <option [ngValue]="null">Select</option>
@@ -84,7 +84,7 @@
           <div class="modal-action">
                   <button type="submit" class="btn btn-primary px-8">Add</button>
                   <form method="dialog">
-                      <button id="btn-close-modal" class="btn px-8">Close</button>
+                      <button id="btn-close-modal" class="btn px-8" (click)="close()">Close</button>
                   </form>
           </div>
       </form>
