@@ -1,0 +1,19 @@
+{
+  "welcome": {
+    "GRANTING": "Hola !"
+  },
+
+    "app": {
+      "DASHBOARD": "Dashboard",
+      "PRODUCT": "productos",
+      "SALES": "ventas",
+      "CATEGORIES": "Categoría",
+
+      "USER": {
+        "USER": "Usario",
+        "ACCOUNT": "Cuenta",
+        "LOGOUT": "Cerrar sesión"
+      }
+
+    }
+  }

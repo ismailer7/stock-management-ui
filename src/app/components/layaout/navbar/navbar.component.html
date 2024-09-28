@@ -4,34 +4,30 @@
     </div>
     <div class="flex-none">
         <ul class="menu menu-horizontal px-1">
-            <li>
+            <li class="navitem">
                 <details>
-                    <summary >
-                        <img width="32" height="32"
-                             src="https://raw.githubusercontent.com/ismailer7/rimberry-api/develop/frontend/src/assets/images/flags/us.jpg"/>
+                    <summary>
+                        <img [src]="selectedLanguage.flag" width="25" height="25"  alt="">
                     </summary>
                     <ul class="bg-base-100 rounded-t-none p-1">
-                        <li><a><img width="32" height="32"
-                                    src="https://raw.githubusercontent.com/ismailer7/rimberry-api/develop/frontend/src/assets/images/flags/french.jpg"/></a>
-                        </li>
-                        <li><a><img width="32" height="32"
-                                    src="https://raw.githubusercontent.com/ismailer7/rimberry-api/develop/frontend/src/assets/images/flags/italy.jpg"/></a>
-                        </li>
+                        @for(language of languages; track $index) {
+                            <li class="langs" (click)="changeLang(language.lang, $index);"><a> <img width="25" height="25" [src]="language.flag" alt=""></a></li>       
+                        }
                     </ul>
                 </details>
-
             </li>
-            <li>
+            
+            <li class="navitem">
                 <details>
                     <summary class="menu-dropdown-toggle menu-dropdown-show">
                         User
                     </summary>
                     <ul class="bg-base-100 rounded-t-none p-1 menu-dropdown menu-dropdown-show">
                         <li>
-                            <a routerLink="/account" routerLinkActive="active">Account</a>
+                            <a routerLink="/account" routerLinkActive="active">{{ 'app.USER.ACCOUNT' | translate }}</a>
                         </li>
                         <li>
-                            <a routerLink="/logout" routerLinkActive="active">Logout</a>
+                            <a routerLink="/logout" routerLinkActive="active">{{ 'app.USER.LOGOUT' | translate }}</a>
                         </li>
                     </ul>
                 </details>

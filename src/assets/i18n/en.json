@@ -1,0 +1,20 @@
+{
+  "welcome": {
+    "GRANTING": "Hello World !"
+  },
+
+    "app": {
+      "DASHBOARD": "Dashboard",
+      "PRODUCT": "products",
+      "SALES": "Sales",
+      "CATEGORIES": "Category",
+
+      "USER": {
+        "USER": "User",
+        "ACCOUNT": "Account",
+        "LOGOUT": "Logout"
+      }
+
+    }
+    
+  }
