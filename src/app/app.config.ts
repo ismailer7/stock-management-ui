@@ -4,11 +4,12 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideToastr } from 'ngx-toastr';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideAnimations(), provideToastr({
     timeOut: 3000,
     positionClass: 'toast-bottom-right',
     preventDuplicates: false,
-  })]
+  }), provideAnimationsAsync()]
 };
