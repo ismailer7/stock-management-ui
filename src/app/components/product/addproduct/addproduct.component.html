@@ -33,23 +33,23 @@
                       </label>
                   </div>
                   <div class="mb-4">
-                      <label class="input input-bordered flex items-center gap-2" [ngClass]="{inputError: productForm.get('quantity')?.invalid &&  productForm.get('quantity')?.touched}">
+                      <label class="input input-bordered flex items-center gap-2" [ngClass]="{inputError: productForm.get('quantity')?.invalid &&  productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['pattern']}">
                           <div>Quantity<span class="text-sm ms-1 text-red-500" >*</span></div>
                           <input type="text" class="grow" placeholder="100" id="quantity" formControlName="quantity"  />
                       </label>
                   </div>
-              </div>
+              </div>  
           </div>
           <div class="row">
               <div class="gap-4 columns-2">
                 <div class="mb-4">
-                    <label class="input input-bordered flex items-center gap-2" [ngClass]="{inputError: productForm.get('unitBuyPrice')?.invalid &&  productForm.get('unitBuyPrice')?.touched}">
+                    <label class="input input-bordered flex items-center gap-2" [ngClass]="{inputError: productForm.get('unitBuyPrice')?.invalid &&  productForm.get('unitBuyPrice')?.touched && productForm.get('unitBuyPrice')?.errors?.['pattern']}">
                         <div>Buying Price<span class="text-sm ms-1 text-red-500">*</span></div>
                         <input type="text" class="grow" placeholder="4000" id="unitBuyPrice" formControlName="unitBuyPrice"  />
                       </label>
                 </div>
                 <div class="mb-4">
-                    <label class="input input-bordered flex items-center gap-2" [ngClass]="{inputError: productForm.get('unitSellPrice')?.invalid &&  productForm.get('unitSellPrice')?.touched}">
+                    <label class="input input-bordered flex items-center gap-2" [ngClass]="{inputError: productForm.get('unitSellPrice')?.invalid &&  productForm.get('unitSellPrice')?.touched && productForm.get('unitSellPrice')?.errors?.['pattern']}">
                         <div>Selling Price<span class="text-sm ms-1 text-red-500">*</span></div>
                         <input type="text" class="grow" placeholder="4500" id="unitSellPrice" formControlName="unitSellPrice"  />
                       </label>

@@ -38,9 +38,9 @@ export class AddproductComponent  {
       productName: ['', Validators.required],
       productCode: ['', Validators.required],
       description: [''],
-      quantity: [, [Validators.required, Validators.min(1)]],
-      unitBuyPrice: [, [Validators.required, Validators.min(1)]],
-      unitSellPrice: [, [Validators.required, Validators.min(1)]],
+      quantity: [, [Validators.required,Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
+      unitBuyPrice: [, [Validators.required,Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
+      unitSellPrice: [, [Validators.required,Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
       buyDate: [formatDate(new Date(), 'yyyy-MM-dd', 'en')],
       category: [, Validators.required]
     });
