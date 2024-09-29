@@ -14,7 +14,7 @@ import { AddCategoryComponent } from './add-category/add-category.component';
   templateUrl: './category.component.html',
   styleUrl: './category.component.css'
 })
-export class CategoryComponent implements OnInit{
+export class CategoryComponent implements OnInit {
   categories: Category[] = []
   categoryService = inject(CategoryService);
   toastr = inject(ToastrService);
@@ -24,11 +24,19 @@ export class CategoryComponent implements OnInit{
       next: (resp) => {
         this.categories = [...resp]
       }
-    } )
+    })
+  }
+  
+  deleteCategory(index: any) {
+    this.categoryService.deleteCategory(index).subscribe( {
+      next: (resp) => {
+        this.categories = resp;
+        this.toastr.success('Category Deleted!', 'Success!');
+      }
+    })
   }
 
   onPageChange(event: number){
-    this.toastr.success('Hello world!', 'Toastr fun!');
     console.log(event)
   }
 }

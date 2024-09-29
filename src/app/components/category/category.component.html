@@ -36,10 +36,12 @@
                     <td >
                         <div class="flex space-x-2">
                           <a href="#" class="bg-blue-100 hover:bg-blue-200 text-blue-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400 inline-flex items-center justify-center">Edit</a>
-                          <a href="#" class="bg-red-100 hover:bg-red-200 text-red-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-red-700 dark:text-red-400 border border-red-400 inline-flex items-center justify-center">Delete</a>
+                          <a (click)="deleteCategory(i)" class="bg-red-100 hover:bg-red-200 text-red-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-red-700 dark:text-red-400 border border-red-400 inline-flex items-center justify-center">Delete</a>
                           </div>
                     </td>
                 </tr>
+            } @empty {
+              <h2 class="empty">No Category Found !</h2>
             }
         </tbody>
     </table>

@@ -7,8 +7,8 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideAnimations(), provideToastr({
-    timeOut: 5000,
+    timeOut: 3000,
     positionClass: 'toast-bottom-right',
-    preventDuplicates: true,
+    preventDuplicates: false,
   })]
 };
