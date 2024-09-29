@@ -10,13 +10,12 @@ import { Component } from '@angular/core';
 export class FooterComponent {
 
 
-currentYear(): any {
-  return new Date().getFullYear()
-}
+  year(): any {
+    return new Date().getFullYear();
+  }
 
-version(): any {
-  return "1.0.1";
-}
-
+  company(): any {
+    return "StockManagement"
+  }
 
 }
