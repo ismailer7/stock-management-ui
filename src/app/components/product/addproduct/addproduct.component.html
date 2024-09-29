@@ -1,90 +1,101 @@
 <dialog id="my_modal_1" class="modal">
     <div class="modal-box w-11/12 max-w-5xl">
       <form class="max-w mx-auto bg-white py-4 px-8 " [formGroup]="productForm" (ngSubmit)="submit()" >
-        @if((productForm.invalid &&  submitted)){
-            <div role="alert" class="alert alert-warning mb-3">
-                <i class="fa fa-solid fa-bell"></i>
-          <span> Warning: required inputs should not be empty!</span>
-        </div>
-      }
         <h2 class="text-2xl font-bold mb-6">Add Product:</h2>
-          <div class="row">
+          <div class="row ">
               <div class="gap-4 columns-2">
-                  <div class="mb-4">
-                      <label class="input input-bordered flex items-center gap-2">
-                          <div>Name<span class="text-sm ms-1 text-red-500">*</span></div>
-                          <input type="text" class="grow" placeholder="Samsung S24" id="productName" formControlName="productName"  />
-                      </label>
+                  <div class="mb-4 relative ">
+                      <label>
+                          Name<span class="text-sm ms-1 text-red-500">*</span> :</label>
+                          <input type="text" class="input input-bordered mt-1 w-full" [ngClass]="{inputError: productForm.get('productName')?.invalid &&  productForm.get('productName')?.touched}"  placeholder="Samsung S24" id="productName" formControlName="productName"   />
+                          <div class="text-red-500 font-bold mt-1  text-xs">
+                            @if(productForm.get('productName')?.invalid &&  productForm.get('productName')?.touched)
+                            {<p>required </p>}   
+                        </div>
                   </div>
-                  <div class="mb-4">
-                      <label class="input input-bordered flex items-center gap-2">
-                          <div>Code <span class="text-sm ms-1 text-red-500">*</span></div>
-                          <input type="text" class="grow" placeholder="WM-001" id="productCode" formControlName="productCode"  />
-                      </label>
+                  <div class="mb-4  relative">
+                      <label>
+                          Code <span class="text-sm ms-1 text-red-500">*</span> :</label>
+                          <input type="text" class="input input-bordered mt-1 w-full" [ngClass]="{inputError: productForm.get('productCode')?.invalid &&  productForm.get('productCode')?.touched}" placeholder="WM-001" id="productCode" formControlName="productCode"  />
+                          <div class="text-red-500 font-bold mt-1 text-xs ">
+                            @if(productForm.get('productCode')?.invalid &&  productForm.get('productCode')?.touched)
+                            {<p>required </p>}
+                        </div>
                   </div>
               </div>
           </div>
-          <div class="row">
+          <div class="row ">
               <div class="gap-4 columns-2">
-                  <div class="mb-4">
-                      <label class="input input-bordered flex items-center gap-2">
-                          Description
-                          <input type="text" class="grow" placeholder="128rom/6ram color black" id="description" formControlName="description"   />
-                      </label>
+                  <div class="mb-4  relative">
+                      <label> Description:  </label>
+                          <input type="text" class="input input-bordered mt-1 w-full" placeholder="128rom/6ram color black" id="description" formControlName="description"   />      
+                        </div>
+                  <div class="mb-4  relative ">   
+                      <label  >
+                          Quantity<span class="text-sm ms-1 text-red-500" >*</span> :</label>
+                          <input type="text" class="input input-bordered mt-1 w-full" [ngClass]="{inputError: productForm.get('quantity')?.invalid &&  productForm.get('quantity')?.touched}" placeholder="100" id="quantity" formControlName="quantity"  />
+                          <div class="text-red-500  font-bold mt-1  text-xs ">
+                            @if(productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['required'])
+                            {<p>required</p> } 
+                            @if(productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['pattern'])
+                            {<p>must be a number. </p>} 
+                         </div>   
                   </div>
-                  <div class="mb-4">
-                      <label class="input input-bordered flex items-center gap-2">
-                          <div>Quantity<span class="text-sm ms-1 text-red-500">*</span></div>
-                          <input type="text" class="grow" placeholder="100" id="quantity" formControlName="quantity"  />
-                      </label>
-                  </div>
-              </div>
+              </div>  
           </div>
-          <div class="row">
+          <div class="row ">
               <div class="gap-4 columns-2">
-                <div class="mb-4">
-                    <label class="input input-bordered flex items-center gap-2">
-                        <div>Buying Price<span class="text-sm ms-1 text-red-500">*</span></div>
-                        <input type="text" class="grow" placeholder="4000" id="unitBuyPrice" formControlName="unitBuyPrice"  />
-                      </label>
+                <div class="mb-4  relative ">
+                    <label  >
+                        Buying Price<span class="text-sm ms-1 text-red-500">*</span> :</label>
+                        <input type="text" class="input input-bordered mt-1 w-full" [ngClass]="{inputError: productForm.get('unitBuyPrice')?.invalid &&  productForm.get('unitBuyPrice')?.touched}" placeholder="4000" id="unitBuyPrice" formControlName="unitBuyPrice"  />
+                    <div class="text-red-500  font-bold mt-1  text-xs ">
+                        @if(productForm.get('unitBuyPrice')?.touched && productForm.get('unitBuyPrice')?.errors?.['required'])
+                        {<p>required</p> } 
+                        @if(productForm.get('unitBuyPrice')?.touched && productForm.get('unitBuyPrice')?.errors?.['pattern'])
+                        {<p>must be a number. </p>} 
+                    </div>
                 </div>
-                <div class="mb-4">
-                    <label class="input input-bordered flex items-center gap-2">
-                        <div>Selling Price<span class="text-sm ms-1 text-red-500">*</span></div>
-                        <input type="text" class="grow" placeholder="4500" id="unitSellPrice" formControlName="unitSellPrice"  />
-                      </label>
-                </div>
+                <div class="mb-4  relative ">
+                    <label >
+                        Selling Price<span class="text-sm ms-1 text-red-500">*</span> :</label>
+                        <input type="text" class="input input-bordered mt-1 w-full" [ngClass]="{inputError: productForm.get('unitSellPrice')?.invalid &&  productForm.get('unitSellPrice')?.touched}" placeholder="4500" id="unitSellPrice" formControlName="unitSellPrice"  />      
+                        <div class="text-red-500  font-bold mt-1  text-xs ">
+                        @if(productForm.get('unitSellPrice')?.touched && productForm.get('unitSellPrice')?.errors?.['required'])
+                        {<p>required</p> } 
+                        @if(productForm.get('unitSellPrice')?.touched && productForm.get('unitSellPrice')?.errors?.['pattern'])
+                        {<p>must be a number. </p>}
+                        </div>
+                    </div>
               </div>
           </div>
-          <div class="row">
+          <div class="row ">
               <div class="gap-4 columns-2">
-                  <div class="mb-4">
-                      <div class="relative max-w">
-                          <label class="input input-bordered flex items-center gap-2">
-                              <i class=" fa fa-regular fa-calendar"></i>
+                  <div class="mb-4  relative ">
+                          <label >Buying Date: </label>
                               <input type="date" id="buyDate" formControlName="buyDate"
-                                     class="bg-gray-50 focus:outline-none  text-gray-900    w-full  p-2.5   placeholder=2024-12-02">
-                          </label>
-                      </div>
+                                     class="input input-bordered mt-1  w-full  placeholder=2024-12-02">
                   </div>
-                  <div class="mb-4">
-                      <label class="input input-bordered flex items-center gap-2">
-                          <div>Category<span class="text-sm ms-1 text-red-500">*</span></div>
-                          <select class="select select-sm select-bordered w-full max-w" id="category" formControlName="category">
+                  <div class="mb-4  relative ">
+                      <label>
+                          Category<span class="text-sm ms-1 text-red-500">*</span>: </label>
+                          <select class="select select-m select-bordered w-full max-w mt-1" [ngClass]="{inputError: productForm.get('category')?.invalid &&  productForm.get('category')?.touched}" id="category" formControlName="category">
                               <option [ngValue]="null">Select</option>
                               @for (category of categories; track category.id) {
                                   <option [ngValue]="category">{{ category.name }}</option>
                               }
                           </select>
-                      </label>
-
+                          <div class="text-red-500  font-bold mt-1  text-xs ">
+                            @if(productForm.get('category')?.touched && productForm.get('category')?.errors?.['required'])
+                            {<p>required</p> } 
+                          </div>
                   </div>
               </div>
           </div>
           <div class="modal-action">
-                  <button type="submit" class="btn btn-primary px-8">Add</button>
+                  <button type="submit" [disabled]="productForm.invalid" class="btn btn-primary px-8">Add</button>
                   <form method="dialog">
-                      <button id="btn-close-modal" class="btn px-8">Close</button>
+                      <button id="btn-close-modal" class="btn px-8" (click)="close()">Close</button>
                   </form>
           </div>
       </form>
