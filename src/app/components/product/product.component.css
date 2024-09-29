@@ -23,14 +23,13 @@
 }
 .mat-mdc-header-row{
     font-size: 0.825rem;
-    /*background-color: #e2e2e2;*/
     height: 40px;
-
-
 }
+
 th, td{
     padding: 0;
 }
+
 .mat-mdc-row{
     font-size: 0.825rem;
     height: 40px;
