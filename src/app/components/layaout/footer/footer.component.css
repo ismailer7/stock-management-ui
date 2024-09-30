@@ -1,0 +1,10 @@
+p {
+    position: absolute;
+    bottom: 0;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    background-color: azure;
+    padding: 10px;
+    font-family: monospace;
+}
