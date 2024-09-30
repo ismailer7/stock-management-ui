@@ -1,6 +1,6 @@
 <nav class="navbar bg-base-100">
     <div class="flex-1">
-        <a href="#" class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Stock-Managemnt</a>
+        <a href="#" class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">{{ 'APP.NAME' | translate }}</a>
     </div>
     <div class="flex-none">
         <ul class="menu menu-horizontal px-1">
@@ -24,10 +24,10 @@
                     </summary>
                     <ul class="bg-base-100 rounded-t-none p-1 menu-dropdown menu-dropdown-show">
                         <li>
-                            <a routerLink="/account" routerLinkActive="active">{{ 'app.USER.ACCOUNT' | translate }}</a>
+                            <a routerLink="/account" routerLinkActive="active">{{ 'APP.NAVBAR.USER.ACCOUNT' | translate }}</a>
                         </li>
                         <li>
-                            <a routerLink="/logout" routerLinkActive="active">{{ 'app.USER.LOGOUT' | translate }}</a>
+                            <a routerLink="/logout" routerLinkActive="active">{{ 'APP.NAVBAR.USER.LOGOUT' | translate }}</a>
                         </li>
                     </ul>
                 </details>

@@ -1,19 +1,94 @@
 {
-    "welcome": {
-      "GRANTING": "Bonjour !"
-    },
+  "WELCOME": {
+    "GRANTING": "Hello World !"
+  },
 
-    "app": {
-      "DASHBOARD": "Dashboard",
-      "PRODUCT": "produits",
-      "SALES": "Ventes",
-      "CATEGORIES": "Categorie",
+    "APP": {
+      "NAME": "StockManagement",
+      "NAVBAR": {
+        "USER": {
+        "USER": "User",
+        "ACCOUNT": "Account",
+        "LOGOUT": "Logout"
+        }
+      },
+      "SIDEBAR": {
+        "DASHBOARD": "Dashboard",
+        "PRODUCT": "products",
+        "SALES": "Sales",
+        "CATEGORIES": "Category"
+      },
+      "FOOTER": {
+        "RIGHTS": "All Right Reserved"
+      },
 
-      "USER": {
-        "USER": "Utilisateur",
-        "ACCOUNT": "Compte",
-        "LOGOUT": "Déconnexion"
+      "PRODUCT": {
+        "BREADCRUMB": "Products/",
+        "EXPORT": "Export",
+        "TABLE": {
+          "COLUMN": {
+            "NAME": "Name",
+            "QUANTITY": "Quantity",
+            "CATEGORY": "Category",
+            "ACTIONS": "Actions"
+          }
+        },
+        "ADDPRODUCT": {
+          "ADD": "Add Product",
+          "NAME": "Name",
+          "DESCRIPTION": "Description",
+          "BUYING_PRICE": "Buying Price",
+          "CODE": "Code",
+          "QUANTITY": "Quantity",
+          "SELLING_PRICE": "Selling Price",
+          "CATEGORY": "Category",
+          "ADD_BUTTON": "Add",
+          "CLOSE": "Close",
+          "WARNING": " Warning: required inputs should not be empty!"
+        }
+      },
+
+      "CATEGORY": {
+        "BREADCRUMB": "Categories/",
+        "ADD": "Add Category",
+        "EXPORT": "Export",
+        "SEARCH": "Search",
+        "TABLE": {
+          "COLUMN": {
+            "NAME": "Name",
+            "ACTIONS": {
+              "EDIT": "Edit",
+              "DELETE": "Delete"
+            }
+          }
+        },
+        "ADDCATEGORY": {
+          "ADD": "Add Category",
+          "NAME": "Name",
+          "CLOSE": "Close",
+          "ADD_BUTTON": "Add"
+        }
+      },
+
+      "SALE": {
+        "BREADCRUMB": "Sales/",
+        "ADD": "Add Sale",
+        "EXPORT": "Export",
+        "SEARCH": "Search",
+        "TABLE": {
+          "COLUMN": {
+            "DESCRIPTION": "Description",
+            "PORDUCT": "Product",
+            "UNIT_PRICE": "Unit Price",
+            "QUANTITY": "Quantity",
+            "TOTAL_PRICE": "Total Price",
+            "ACTIONS": {
+              "EDIT": "Edit",
+              "DELETE": "Delete"
+            }
+          }
+        }
       }
-
     }
+    
   }

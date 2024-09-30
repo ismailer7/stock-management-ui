@@ -4,13 +4,15 @@ import {ProductService} from "../../services/product.service";
 import {PaginationComponent} from "../commun/pagination/pagination.component";
 import { AddproductComponent } from './addproduct/addproduct.component';
 import { ToastrService } from 'ngx-toastr';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product',
   standalone: true,
   imports: [
     PaginationComponent,
-    AddproductComponent
+    AddproductComponent,
+    TranslateModule
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'

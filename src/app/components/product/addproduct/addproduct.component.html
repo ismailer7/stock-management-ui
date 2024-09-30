@@ -4,21 +4,21 @@
         @if((productForm.invalid &&  submitted)){
             <div role="alert" class="alert alert-warning mb-3">
                 <i class="fa fa-solid fa-bell"></i>
-          <span> Warning: required inputs should not be empty!</span>
+          <span> {{ 'APP.PRODUCT.ADDPRODUCT.WARNING' | translate }}</span>
         </div>
       }
-        <h2 class="text-2xl font-bold mb-6">Add Product:</h2>
+        <h2 class="text-2xl font-bold mb-6">{{ 'APP.PRODUCT.ADDPRODUCT.ADD' | translate }}:</h2>
           <div class="row">
               <div class="gap-4 columns-2">
                   <div class="mb-4">
                       <label class="input input-bordered flex items-center gap-2">
-                          <div>Name<span class="text-sm ms-1 text-red-500">*</span></div>
+                          <div>{{ 'APP.PRODUCT.ADDPRODUCT.ADD' | translate }}<span class="text-sm ms-1 text-red-500">*</span></div>
                           <input type="text" class="grow" placeholder="Samsung S24" id="productName" formControlName="productName"  />
                       </label>
                   </div>
                   <div class="mb-4">
                       <label class="input input-bordered flex items-center gap-2">
-                          <div>Code <span class="text-sm ms-1 text-red-500">*</span></div>
+                          <div>{{ 'APP.PRODUCT.ADDPRODUCT.NAME' | translate }} <span class="text-sm ms-1 text-red-500">*</span></div>
                           <input type="text" class="grow" placeholder="WM-001" id="productCode" formControlName="productCode"  />
                       </label>
                   </div>
@@ -28,13 +28,13 @@
               <div class="gap-4 columns-2">
                   <div class="mb-4">
                       <label class="input input-bordered flex items-center gap-2">
-                          Description
+                        {{ 'APP.PRODUCT.ADDPRODUCT.DESCRIPTION' | translate }}
                           <input type="text" class="grow" placeholder="128rom/6ram color black" id="description" formControlName="description"   />
                       </label>
                   </div>
                   <div class="mb-4">
                       <label class="input input-bordered flex items-center gap-2">
-                          <div>Quantity<span class="text-sm ms-1 text-red-500">*</span></div>
+                          <div>{{ 'APP.PRODUCT.ADDPRODUCT.QUANTITY' | translate }}<span class="text-sm ms-1 text-red-500">*</span></div>
                           <input type="text" class="grow" placeholder="100" id="quantity" formControlName="quantity"  />
                       </label>
                   </div>
@@ -44,13 +44,13 @@
               <div class="gap-4 columns-2">
                 <div class="mb-4">
                     <label class="input input-bordered flex items-center gap-2">
-                        <div>Buying Price<span class="text-sm ms-1 text-red-500">*</span></div>
+                        <div>{{ 'APP.PRODUCT.ADDPRODUCT.BUYING_PRICE' | translate }}<span class="text-sm ms-1 text-red-500">*</span></div>
                         <input type="text" class="grow" placeholder="4000" id="unitBuyPrice" formControlName="unitBuyPrice"  />
                       </label>
                 </div>
                 <div class="mb-4">
                     <label class="input input-bordered flex items-center gap-2">
-                        <div>Selling Price<span class="text-sm ms-1 text-red-500">*</span></div>
+                        <div>{{ 'APP.PRODUCT.ADDPRODUCT.SELLING_PRICE' | translate }}<span class="text-sm ms-1 text-red-500">*</span></div>
                         <input type="text" class="grow" placeholder="4500" id="unitSellPrice" formControlName="unitSellPrice"  />
                       </label>
                 </div>
@@ -69,7 +69,7 @@
                   </div>
                   <div class="mb-4">
                       <label class="input input-bordered flex items-center gap-2">
-                          <div>Category<span class="text-sm ms-1 text-red-500">*</span></div>
+                          <div>{{ 'APP.PRODUCT.ADDPRODUCT.CATEGORY' | translate }}<span class="text-sm ms-1 text-red-500">*</span></div>
                           <select class="select select-sm select-bordered w-full max-w" id="category" formControlName="category">
                               <option [ngValue]="null">Select</option>
                               @for (category of categories; track category.id) {
@@ -82,9 +82,9 @@
               </div>
           </div>
           <div class="modal-action">
-                  <button type="submit" class="btn btn-primary px-8">Add</button>
+                  <button type="submit" class="btn btn-primary px-8">{{ 'APP.PRODUCT.ADDPRODUCT.ADD_BUTTON' | translate }}</button>
                   <form method="dialog">
-                      <button id="btn-close-modal" class="btn px-8">Close</button>
+                      <button id="btn-close-modal" class="btn px-8">{{ 'APP.PRODUCT.ADDPRODUCT.CLOSE' | translate }}</button>
                   </form>
           </div>
       </form>

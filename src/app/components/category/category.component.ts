@@ -4,12 +4,14 @@ import { ToastrService } from 'ngx-toastr';
 import { Category } from '../../models/category.model';
 import { CategoryService } from '../../services/category.service';
 import { AddCategoryComponent } from './add-category/add-category.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-category',
   standalone: true,
   imports: [PaginationComponent,
-           AddCategoryComponent
+           AddCategoryComponent,
+           TranslateModule
   ],
   templateUrl: './category.component.html',
   styleUrl: './category.component.css'

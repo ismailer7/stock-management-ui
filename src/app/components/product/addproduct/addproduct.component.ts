@@ -6,13 +6,14 @@ import { ToastrService } from 'ngx-toastr';
 import { ProductComponent } from '../product.component';
 import { Category } from '../../../models/category.model';
 import {formatDate} from "@angular/common";
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
 @Component({
   selector: 'app-addproduct',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslateModule],
   templateUrl: './addproduct.component.html',
   styleUrl: './addproduct.component.css'
 })
