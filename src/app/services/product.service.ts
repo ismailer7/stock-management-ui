@@ -27,11 +27,11 @@ export class ProductService {
   }
 
   getProductsFiltered(
-      search_filter: string,
-      sort_field: string,
+      search_filter: string = '',
+      sort_field: string = '',
       sort_order: SortDirection,
-      page: number,
-      limit_per_page: number
+      page: number = 1,
+      limit_per_page: number = 5
   ) {
     const params = new HttpParams()
         .set('input', search_filter)
@@ -58,4 +58,7 @@ allCategories(): Observable<Category[]> {
 }
 
 
+  deleteProductById(id: Number) {
+    return this.http.delete(`${environment.rooturl}/product/delete/${id}`, {responseType: "text", withCredentials: true })
+  }
 }
