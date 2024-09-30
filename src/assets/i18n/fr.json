@@ -1,92 +1,97 @@
 {
   "WELCOME": {
-    "GRANTING": "Hello World !"
+    "GRANTING": "Bonjour le monde !"
   },
 
     "APP": {
       "NAME": "StockManagement",
       "NAVBAR": {
         "USER": {
-        "USER": "User",
-        "ACCOUNT": "Account",
-        "LOGOUT": "Logout"
+        "USER": "Utilisateur",
+        "ACCOUNT": "Compte",
+        "LOGOUT": "Déconnexion"
         }
       },
       "SIDEBAR": {
-        "DASHBOARD": "Dashboard",
-        "PRODUCT": "products",
-        "SALES": "Sales",
-        "CATEGORIES": "Category"
+        "DASHBOARD": "Tableau de bord",
+        "PRODUCT": "Produits",
+        "SALES": "Ventes",
+        "CATEGORIES": "Catégorie"
       },
       "FOOTER": {
-        "RIGHTS": "All Right Reserved"
+        "RIGHTS": "Tous droits réservés"
       },
 
       "PRODUCT": {
-        "BREADCRUMB": "Products/",
-        "EXPORT": "Export",
+        "BREADCRUMB": "Produits/",
+        "EXPORT": "Exporter",
+        "SEARCH": "Recherche...",
         "TABLE": {
           "COLUMN": {
             "NAME": "Name",
-            "QUANTITY": "Quantity",
-            "CATEGORY": "Category",
+            "QUANTITY": "Quantité",
+            "CATEGORY": "Catégorie",
             "ACTIONS": "Actions"
           }
         },
         "ADDPRODUCT": {
-          "ADD": "Add Product",
-          "NAME": "Name",
+          "ADD": "Ajouter un produit",
+          "NAME": "Nom",
           "DESCRIPTION": "Description",
-          "BUYING_PRICE": "Buying Price",
+          "BUYING_PRICE": "Prix ​​d'achat",
           "CODE": "Code",
-          "QUANTITY": "Quantity",
-          "SELLING_PRICE": "Selling Price",
-          "CATEGORY": "Category",
-          "ADD_BUTTON": "Add",
-          "CLOSE": "Close",
-          "WARNING": " Warning: required inputs should not be empty!"
+          "QUANTITY": "Quantité",
+          "SELLING_PRICE": "Prix ​​de vente",
+          "CATEGORY": "Catégorie",
+          "ADD_BUTTON": "Ajouter",
+          "CLOSE": "Fermer",
+          "WARNING": " Attention : les champs obligatoires ne doivent pas être vides !"
         }
       },
 
       "CATEGORY": {
         "BREADCRUMB": "Categories/",
-        "ADD": "Add Category",
-        "EXPORT": "Export",
-        "SEARCH": "Search",
+        "ADD": "Ajouter une catégorie",
+        "EXPORT": "Exporter",
+        "SEARCH": "Recherche...",
+        "CATEGORY_SEARCH": "Nom",
         "TABLE": {
           "COLUMN": {
-            "NAME": "Name",
-            "ACTIONS": {
-              "EDIT": "Edit",
-              "DELETE": "Delete"
-            }
+            "NAME": "Nom",
+            "ACTIONS": "Actions"
+          },
+          "ACTIONS": {
+            "EDIT": "Modifier",
+            "DELETE": "Supprimer"
           }
         },
+        "NOT_FOUND": "Aucune catégorie trouvée !",
         "ADDCATEGORY": {
-          "ADD": "Add Category",
-          "NAME": "Name",
-          "CLOSE": "Close",
-          "ADD_BUTTON": "Add"
+          "ADD": "Ajouter une catégorie",
+          "NAME": "Nom",
+          "CLOSE": "Fermer",
+          "ADD_BUTTON": "Ajouter"
         }
       },
 
       "SALE": {
-        "BREADCRUMB": "Sales/",
-        "ADD": "Add Sale",
-        "EXPORT": "Export",
-        "SEARCH": "Search",
+        "BREADCRUMB": "Ventes/",
+        "ADD": "Ajouter une vente",
+        "EXPORT": "Exporter",
+        "SEARCH": "Recherche...",
         "TABLE": {
           "COLUMN": {
             "DESCRIPTION": "Description",
-            "PORDUCT": "Product",
-            "UNIT_PRICE": "Unit Price",
-            "QUANTITY": "Quantity",
-            "TOTAL_PRICE": "Total Price",
-            "ACTIONS": {
-              "EDIT": "Edit",
-              "DELETE": "Delete"
+            "PRODUCT": "Produits",
+            "UNIT_PRICE": "Prix ​​unitaire",
+            "QUANTITY": "Quantité",
+            "TOTAL_PRICE": "Prix ​​total",
+            "ACTIONS": "Actions"
+          },
+          "ACTIONS": {
+              "EDIT": "Modifier",
+              "DELETE": "Supprimer"
             }
-          }
         }
       }
     }

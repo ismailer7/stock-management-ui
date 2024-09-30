@@ -14,7 +14,7 @@
       },
       "SIDEBAR": {
         "DASHBOARD": "Dashboard",
-        "PRODUCT": "products",
+        "PRODUCT": "roducts",
         "SALES": "Sales",
         "CATEGORIES": "Category"
       },
@@ -25,6 +25,7 @@
       "PRODUCT": {
         "BREADCRUMB": "Products/",
         "EXPORT": "Export",
+        "SEARCH": "Search...",
         "TABLE": {
           "COLUMN": {
             "NAME": "Name",
@@ -52,7 +53,8 @@
         "BREADCRUMB": "Categories/",
         "ADD": "Add Category",
         "EXPORT": "Export",
-        "SEARCH": "Search",
+        "SEARCH": "Search...",
+        "CATEGORY_SEARCH": "Name",
         "TABLE": {
           "COLUMN": {
             "NAME": "Name",
@@ -76,19 +78,20 @@
         "BREADCRUMB": "Sales/",
         "ADD": "Add Sale",
         "EXPORT": "Export",
-        "SEARCH": "Search",
+        "SEARCH": "Search...",
         "TABLE": {
           "COLUMN": {
             "DESCRIPTION": "Description",
-            "PORDUCT": "Product",
+            "PRODUCT": "Product",
             "UNIT_PRICE": "Unit Price",
             "QUANTITY": "Quantity",
             "TOTAL_PRICE": "Total Price",
-            "ACTIONS": {
+            "ACTIONS": "Actions"
+          },
+          "ACTIONS": {
               "EDIT": "Edit",
               "DELETE": "Delete"
             }
-          }
         }
       }
     }

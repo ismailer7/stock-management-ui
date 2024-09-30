@@ -1,92 +1,97 @@
 {
   "WELCOME": {
-    "GRANTING": "Hello World !"
+    "GRANTING": "Hola Mundo !"
   },
 
     "APP": {
       "NAME": "StockManagement",
       "NAVBAR": {
         "USER": {
-        "USER": "User",
-        "ACCOUNT": "Account",
-        "LOGOUT": "Logout"
+        "USER": "Usuario",
+        "ACCOUNT": "Cuenta",
+        "LOGOUT": "Cerrar sesión"
         }
       },
       "SIDEBAR": {
-        "DASHBOARD": "Dashboard",
-        "PRODUCT": "products",
-        "SALES": "Sales",
-        "CATEGORIES": "Category"
+        "DASHBOARD": "Panel",
+        "PRODUCT": "Productos",
+        "SALES": "Ventas",
+        "CATEGORIES": "Categoría"
       },
       "FOOTER": {
-        "RIGHTS": "All Right Reserved"
+        "RIGHTS": "Todos los derechos reservados"
       },
 
       "PRODUCT": {
-        "BREADCRUMB": "Products/",
-        "EXPORT": "Export",
+        "BREADCRUMB": "Productos/",
+        "EXPORT": "Exportar",
+        "SEARCH": "Buscar...",
         "TABLE": {
           "COLUMN": {
-            "NAME": "Name",
-            "QUANTITY": "Quantity",
-            "CATEGORY": "Category",
-            "ACTIONS": "Actions"
+            "NAME": "Nombre",
+            "QUANTITY": "Cantidad",
+            "CATEGORY": "Categoría",
+            "ACTIONS": "Comportamiento"
           }
         },
         "ADDPRODUCT": {
-          "ADD": "Add Product",
-          "NAME": "Name",
-          "DESCRIPTION": "Description",
-          "BUYING_PRICE": "Buying Price",
-          "CODE": "Code",
-          "QUANTITY": "Quantity",
-          "SELLING_PRICE": "Selling Price",
-          "CATEGORY": "Category",
-          "ADD_BUTTON": "Add",
-          "CLOSE": "Close",
-          "WARNING": " Warning: required inputs should not be empty!"
+          "ADD": "Agregar producto",
+          "NAME": "Nombre",
+          "DESCRIPTION": "Descripción",
+          "BUYING_PRICE": "Precio de compra",
+          "CODE": "Código",
+          "QUANTITY": "Cantidad",
+          "SELLING_PRICE": "Precio de venta",
+          "CATEGORY": "Categoría",
+          "ADD_BUTTON": "Agregar",
+          "CLOSE": "Cerca",
+          "WARNING": " Advertencia: los campos obligatorios no deben estar vacíos!"
         }
       },
 
       "CATEGORY": {
-        "BREADCRUMB": "Categories/",
-        "ADD": "Add Category",
-        "EXPORT": "Export",
-        "SEARCH": "Search",
+        "BREADCRUMB": "Categorías/",
+        "ADD": "Agregar categoría",
+        "EXPORT": "Exportar",
+        "SEARCH": "Buscar...",
+        "CATEGORY_SEARCH": "Name",
         "TABLE": {
           "COLUMN": {
-            "NAME": "Name",
-            "ACTIONS": {
-              "EDIT": "Edit",
-              "DELETE": "Delete"
-            }
+            "NAME": "Nombre",
+            "ACTIONS": "Comportamiento"
+          },
+          "ACTIONS": {
+            "EDIT": "Editar",
+            "DELETE": "Borrar"
           }
         },
+        "NOT_FOUND": "No se encontró ninguna categoría!",
         "ADDCATEGORY": {
-          "ADD": "Add Category",
-          "NAME": "Name",
-          "CLOSE": "Close",
-          "ADD_BUTTON": "Add"
+          "ADD": "Agregar categoría",
+          "NAME": "Nombre",
+          "CLOSE": "Cerca",
+          "ADD_BUTTON": "Agregar"
         }
       },
 
       "SALE": {
-        "BREADCRUMB": "Sales/",
-        "ADD": "Add Sale",
-        "EXPORT": "Export",
-        "SEARCH": "Search",
+        "BREADCRUMB": "Ventas/",
+        "ADD": "Agregar venta",
+        "EXPORT": "Exportar",
+        "SEARCH": "Buscar...",
         "TABLE": {
           "COLUMN": {
-            "DESCRIPTION": "Description",
-            "PORDUCT": "Product",
-            "UNIT_PRICE": "Unit Price",
-            "QUANTITY": "Quantity",
-            "TOTAL_PRICE": "Total Price",
-            "ACTIONS": {
-              "EDIT": "Edit",
-              "DELETE": "Delete"
+            "DESCRIPTION": "Descripción",
+            "PRODUCT": "Producto",
+            "UNIT_PRICE": "Precio unitario",
+            "QUANTITY": "Cantidad",
+            "TOTAL_PRICE": "Precio total",
+            "ACTIONS": "Comportamiento"
+          },
+          "ACTIONS": {
+              "EDIT": "Editar",
+              "DELETE": "Borrar"
             }
-          }
         }
       }
     }

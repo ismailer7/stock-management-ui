@@ -4,11 +4,12 @@ import {ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular
 import { ToastrService } from 'ngx-toastr';
 import { CategoryComponent } from '../category.component';
 import { Category } from '../../../models/category.model';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-category',
   standalone: true,
-  imports: [ReactiveFormsModule,CategoryComponent ],
+  imports: [ReactiveFormsModule,CategoryComponent, TranslateModule],
   templateUrl: './add-category.component.html',
   styleUrl: './add-category.component.css'
 })

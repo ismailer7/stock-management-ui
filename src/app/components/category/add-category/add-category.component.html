@@ -1,19 +1,19 @@
 <dialog id="my_modal_2" class="modal">
     <div class="modal-box">
       <form class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md" [formGroup]="categoryForm" >
-        <h2 class="text-2xl font-bold mb-6">Add Category:</h2>
+        <h2 class="text-2xl font-bold mb-6">{{ 'APP.CATEGORY.ADD' | translate }}:</h2>
 
         <div class="mb-4">
             <label class="input input-bordered flex items-center gap-2">
-                Name
+              {{ 'APP.CATEGORY.CATEGORY_SEARCH' | translate }}
                 <input type="text" class="grow" placeholder="telephones" id="cname" formControlName="name" />
               </label>
         </div>
         <div class="modal-action">
           <form method="dialog">
             <div class="btn-group">
-              <button (click)="addCategory();" class="add px-3 py-2 mr-2 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Add</button>
-              <button class="close px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Close</button>
+              <button (click)="addCategory();" class="add px-3 py-2 mr-2 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">{{ 'APP.CATEGORY.ADDCATEGORY.ADD' | translate }}</button>
+              <button class="close px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">{{ 'APP.CATEGORY.ADDCATEGORY.CLOSE' | translate }}</button>
             </div>  
           </form>
         </div>
