@@ -7,7 +7,6 @@ import {ToastrService} from 'ngx-toastr';
 import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource, MatTableModule} from "@angular/material/table";
 import {MatSort, MatSortModule, Sort} from "@angular/material/sort";
-import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {debounceTime, map, merge, startWith, Subject, switchMap} from "rxjs";
 import {Page} from "../../models/product-page.model";
