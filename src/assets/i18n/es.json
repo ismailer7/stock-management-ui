@@ -19,17 +19,23 @@
         "CATEGORIES": "Categoría"
       },
       "FOOTER": {
-        "RIGHTS": "Todos los derechos reservados"
+        "COPY": "Derechos de autor",
+        "RIGHTS": "Todos los derechos reservados por"
       },
 
       "PRODUCT": {
         "BREADCRUMB": "Productos/",
         "EXPORT": "Exportar",
         "SEARCH": "Buscar...",
+        "NOT_FOUND": "No se encontraron registros !",
         "TABLE": {
           "COLUMN": {
             "NAME": "Nombre",
+            "CODE": "Code",
             "QUANTITY": "Cantidad",
+            "BUYING_PRICE": "Precio de compra unitario",
+            "SELLING_PRICE": "Precio de venta unitario",
+            "BUY_DATE": "Fecha de compra",
             "CATEGORY": "Categoría",
             "ACTIONS": "Comportamiento"
           }
@@ -45,7 +51,12 @@
           "CATEGORY": "Categoría",
           "ADD_BUTTON": "Agregar",
           "CLOSE": "Cerca",
-          "WARNING": " Advertencia: los campos obligatorios no deben estar vacíos!"
+          "WARNING": " Advertencia: los campos obligatorios no deben estar vacíos!",
+          "SELECT": "Seleccionar",
+          "VALIDATION": {
+            "REQUIRED": "requerida",
+            "NUMBER": "debe ser un numero."
+          }
         }
       },
 

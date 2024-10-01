@@ -14,22 +14,28 @@
       },
       "SIDEBAR": {
         "DASHBOARD": "Dashboard",
-        "PRODUCT": "roducts",
+        "PRODUCT": "Products",
         "SALES": "Sales",
         "CATEGORIES": "Category"
       },
       "FOOTER": {
-        "RIGHTS": "All Right Reserved"
+        "COPY": "Copyright",
+        "RIGHTS": "All Right Reserved By"
       },
 
       "PRODUCT": {
         "BREADCRUMB": "Products/",
         "EXPORT": "Export",
         "SEARCH": "Search...",
+        "NOT_FOUND": "No Records Found !",
         "TABLE": {
           "COLUMN": {
             "NAME": "Name",
+            "CODE": "Code",
             "QUANTITY": "Quantity",
+            "BUYING_PRICE": "Unit Buying Price",
+            "SELLING_PRICE": "Unit Selling Price",
+            "BUY_DATE": "Buy Date",
             "CATEGORY": "Category",
             "ACTIONS": "Actions"
           }
@@ -39,13 +45,19 @@
           "NAME": "Name",
           "DESCRIPTION": "Description",
           "BUYING_PRICE": "Buying Price",
+          "BUYING_DATE": "Buying Date",
           "CODE": "Code",
           "QUANTITY": "Quantity",
           "SELLING_PRICE": "Selling Price",
           "CATEGORY": "Category",
           "ADD_BUTTON": "Add",
           "CLOSE": "Close",
-          "WARNING": " Warning: required inputs should not be empty!"
+          "WARNING": " Warning: required inputs should not be empty!",
+          "SELECT": "Select",
+          "VALIDATION": {
+            "REQUIRED": "required",
+            "NUMBER": "must be a number."
+          }
         }
       },
 
