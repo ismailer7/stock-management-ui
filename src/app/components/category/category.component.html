@@ -3,7 +3,7 @@
     <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
       <li class="inline-flex items-center">
         <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
-          Categories/
+          {{ 'APP.CATEGORY.BREADCRUMB' | translate }}
         </a>
       </li>
     </ol>
@@ -12,20 +12,20 @@
         <!-- Search Input -->
         <input
           type="text"
-          placeholder="Search..."
+          placeholder="{{ 'APP.PRODUCT.SEARCH' | translate }}"
           class="flex-grow  p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-lightblue-500"
         />
         <!-- Buttons -->
-        <button class="btn  btn-active  ml-4 px-4 py-2" onclick="my_modal_2.showModal()">Add Category</button>
-        <button class="btn  btn-active ml-4 px-4 py-2">Export</button>
+        <button class="btn  btn-active  ml-4 px-4 py-2" onclick="my_modal_2.showModal()">{{ 'APP.CATEGORY.ADD' | translate }}</button>
+        <button class="btn  btn-active ml-4 px-4 py-2">{{ 'APP.CATEGORY.EXPORT' | translate }}</button>
       </div>
     <table class="table table-zebra">
         <!-- head -->
         <thead>
         <tr>
             <th>Id</th>
-            <th>Name</th>
-            <th>Actions</th>
+            <th>{{ 'APP.CATEGORY.TABLE.COLUMN.NAME' | translate }}</th>
+            <th>{{ 'APP.CATEGORY.TABLE.COLUMN.ACTIONS' | translate }}</th>
         </tr>
         </thead>
         <tbody>
@@ -35,13 +35,13 @@
                     <td>{{ category.name }}</td>
                     <td >
                         <div class="flex space-x-2">
-                          <a href="#" class="bg-blue-100 hover:bg-blue-200 text-blue-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400 inline-flex items-center justify-center">Edit</a>
-                          <a (click)="deleteCategory(i)" class="bg-red-100 hover:bg-red-200 text-red-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-red-700 dark:text-red-400 border border-red-400 inline-flex items-center justify-center">Delete</a>
+                          <a href="#" class="bg-blue-100 hover:bg-blue-200 text-blue-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400 inline-flex items-center justify-center">{{ 'APP.CATEGORY.TABLE.ACTIONS.EDIT' | translate }}</a>
+                          <a (click)="deleteCategory(i)" class="bg-red-100 hover:bg-red-200 text-red-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-red-700 dark:text-red-400 border border-red-400 inline-flex items-center justify-center">{{ 'APP.CATEGORY.TABLE.ACTIONS.DELETE' | translate }}</a>
                           </div>
                     </td>
                 </tr>
             } @empty {
-              <h2 class="empty">No Category Found !</h2>
+              <h2 class="empty">{{ 'APP.CATEGORY.NOT_FOUND' | translate }}</h2>
             }
         </tbody>
     </table>

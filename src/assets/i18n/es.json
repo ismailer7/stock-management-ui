@@ -1,0 +1,99 @@
+{
+  "WELCOME": {
+    "GRANTING": "Hola Mundo !"
+  },
+
+    "APP": {
+      "NAME": "StockManagement",
+      "NAVBAR": {
+        "USER": {
+        "USER": "Usuario",
+        "ACCOUNT": "Cuenta",
+        "LOGOUT": "Cerrar sesión"
+        }
+      },
+      "SIDEBAR": {
+        "DASHBOARD": "Panel",
+        "PRODUCT": "Productos",
+        "SALES": "Ventas",
+        "CATEGORIES": "Categoría"
+      },
+      "FOOTER": {
+        "RIGHTS": "Todos los derechos reservados"
+      },
+
+      "PRODUCT": {
+        "BREADCRUMB": "Productos/",
+        "EXPORT": "Exportar",
+        "SEARCH": "Buscar...",
+        "TABLE": {
+          "COLUMN": {
+            "NAME": "Nombre",
+            "QUANTITY": "Cantidad",
+            "CATEGORY": "Categoría",
+            "ACTIONS": "Comportamiento"
+          }
+        },
+        "ADDPRODUCT": {
+          "ADD": "Agregar producto",
+          "NAME": "Nombre",
+          "DESCRIPTION": "Descripción",
+          "BUYING_PRICE": "Precio de compra",
+          "CODE": "Código",
+          "QUANTITY": "Cantidad",
+          "SELLING_PRICE": "Precio de venta",
+          "CATEGORY": "Categoría",
+          "ADD_BUTTON": "Agregar",
+          "CLOSE": "Cerca",
+          "WARNING": " Advertencia: los campos obligatorios no deben estar vacíos!"
+        }
+      },
+
+      "CATEGORY": {
+        "BREADCRUMB": "Categorías/",
+        "ADD": "Agregar categoría",
+        "EXPORT": "Exportar",
+        "SEARCH": "Buscar...",
+        "CATEGORY_SEARCH": "Name",
+        "TABLE": {
+          "COLUMN": {
+            "NAME": "Nombre",
+            "ACTIONS": "Comportamiento"
+          },
+          "ACTIONS": {
+            "EDIT": "Editar",
+            "DELETE": "Borrar"
+          }
+        },
+        "NOT_FOUND": "No se encontró ninguna categoría!",
+        "ADDCATEGORY": {
+          "ADD": "Agregar categoría",
+          "NAME": "Nombre",
+          "CLOSE": "Cerca",
+          "ADD_BUTTON": "Agregar"
+        }
+      },
+
+      "SALE": {
+        "BREADCRUMB": "Ventas/",
+        "ADD": "Agregar venta",
+        "EXPORT": "Exportar",
+        "SEARCH": "Buscar...",
+        "TABLE": {
+          "COLUMN": {
+            "DESCRIPTION": "Descripción",
+            "PRODUCT": "Producto",
+            "UNIT_PRICE": "Precio unitario",
+            "QUANTITY": "Cantidad",
+            "TOTAL_PRICE": "Precio total",
+            "ACTIONS": "Comportamiento"
+          },
+          "ACTIONS": {
+              "EDIT": "Editar",
+              "DELETE": "Borrar"
+            }
+        }
+      }
+    }
+    
+  }

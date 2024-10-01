@@ -2,12 +2,13 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Sale } from '../../models/sale.model';
 import { SalesService } from '../../services/sales.service';
 import { ToastrService } from 'ngx-toastr';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-sale',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './sale.component.html',
   styleUrl: './sale.component.css'
 })

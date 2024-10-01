@@ -1,18 +1,20 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {PaginationComponent} from '../commun/pagination/pagination.component';
-import {ToastrService} from 'ngx-toastr';
-import {Category} from '../../models/category.model';
-import {CategoryService} from '../../services/category.service';
-import {AddCategoryComponent} from './add-category/add-category.component';
+import { Component, inject, OnInit } from '@angular/core';
+import { PaginationComponent } from '../commun/pagination/pagination.component';
+import { ToastrService } from 'ngx-toastr';
+import { Category } from '../../models/category.model';
+import { CategoryService } from '../../services/category.service';
+import { AddCategoryComponent } from './add-category/add-category.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-    selector: 'app-category',
-    standalone: true,
-    imports: [PaginationComponent,
-        AddCategoryComponent
-    ],
-    templateUrl: './category.component.html',
-    styleUrl: './category.component.css'
+  selector: 'app-category',
+  standalone: true,
+  imports: [PaginationComponent,
+           AddCategoryComponent,
+           TranslateModule
+  ],
+  templateUrl: './category.component.html',
+  styleUrl: './category.component.css'
 })
 export class CategoryComponent implements OnInit {
     categories: Category[] = []

@@ -3,7 +3,7 @@
     <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
       <li class="inline-flex items-center">
         <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
-          Products/
+          {{ 'APP.PRODUCT.BREADCRUMB' | translate }}
         </a>
       </li>
     </ol>
@@ -12,12 +12,12 @@
         <input
                 [formControl]="searchKeywordFilter" #input
           type="text"
-          placeholder="Search..."
-          class="flex-grow   p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-lightblue-500"
+          placeholder="{{ 'APP.PRODUCT.SEARCH' | translate }}"
+          class="flex-grow  p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-lightblue-500"
         />
         <!-- Buttons -->
         <button class="btn  bg-accent  ml-4 px-4 py-2" onclick="my_modal_1.showModal()"><i class="fa fa-solid fa-plus text-xl text-gray-600"></i></button>
-        <button class="btn  btn-active ml-4 px-4 py-2">Export</button>
+        <button class="btn  btn-active ml-4 px-4 py-2">{{ 'APP.PRODUCT.EXPORT' | translate }}</button>
       </div>
 
 <div class="mat-elevation-z8 shadow">
@@ -92,7 +92,6 @@
                 </td>
                 }
             </tr>
-
     </table>
     @if(isLoading){
         <mat-progress-bar mode="indeterminate"></mat-progress-bar>

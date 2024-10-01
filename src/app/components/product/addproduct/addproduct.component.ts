@@ -3,14 +3,15 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {ProductService} from '../../../services/product.service';
 import {ToastrService} from 'ngx-toastr';
 import {Category} from '../../../models/category.model';
-import {CommonModule, formatDate} from "@angular/common";
+import {CommonModule} from "@angular/common";
 import {CategoryService} from "../../../services/category.service";
-
+import {formatDate} from "@angular/common";
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-addproduct',
     standalone: true,
-    imports: [ReactiveFormsModule, CommonModule],
+    imports: [ReactiveFormsModule, CommonModule, TranslateModule],
     templateUrl: './addproduct.component.html',
     styleUrl: './addproduct.component.css'
 })

@@ -13,6 +13,7 @@ import {Page} from "../../models/product-page.model";
 import {HttpResponse} from "@angular/common/http";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {MatProgressBar} from "@angular/material/progress-bar";
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-product',
@@ -25,7 +26,8 @@ import {MatProgressBar} from "@angular/material/progress-bar";
         MatSortModule,
         ReactiveFormsModule,
         MatProgressSpinner,
-        MatProgressBar
+        MatProgressBar,
+        TranslateModule
     ],
     templateUrl: './product.component.html',
     styleUrl: './product.component.css'

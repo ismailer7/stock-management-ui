@@ -3,7 +3,7 @@
       <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
         <li class="inline-flex items-center">
           <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
-            Sales
+            {{ 'APP.SALE.BREADCRUMB' | translate }}
           </a>
         </li>
       </ol>
@@ -12,24 +12,24 @@
           <!-- Search Input -->
           <input
             type="text"
-            placeholder="Search..."
+            placeholder="{{ 'APP.SALE.SEARCH' | translate }}"
             class="flex-grow  p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-lightblue-500"
           />
           <!-- Buttons -->
-          <button class="btn  btn-active  ml-4 px-4 py-2" onclick="my_modal_3.showModal()">Add Sale</button>
-          <button class="btn  btn-active ml-4 px-4 py-2">Export</button>
+          <button class="btn  btn-active  ml-4 px-4 py-2" onclick="my_modal_3.showModal()">{{ 'APP.SALE.ADD' | translate }}</button>
+          <button class="btn  btn-active ml-4 px-4 py-2">{{ 'APP.SALE.EXPORT' | translate }}</button>
         </div>
       <table class="table table-zebra">
           <!-- head -->
           <thead>
           <tr>
-              <th>Id</th>
-              <th>Description</th>
-              <th>Product</th>
-              <th>Unit Price</th>
-              <th>Quantity</th>
-              <th>Total Price</th>
-              <th>Actions</th>
+              <th>ID</th>
+              <th>{{ 'APP.SALE.TABLE.COLUMN.DESCRIPTION' | translate }}</th>
+              <th>{{ 'APP.SALE.TABLE.COLUMN.PRODUCT' | translate }}</th>
+              <th>{{ 'APP.SALE.TABLE.COLUMN.UNIT_PRICE' | translate }}</th>
+              <th>{{ 'APP.SALE.TABLE.COLUMN.QUANTITY' | translate }}</th>
+              <th>{{ 'APP.SALE.TABLE.COLUMN.TOTAL_PRICE' | translate }}</th>
+              <th>{{ 'APP.SALE.TABLE.COLUMN.UNIT_PRICE' | translate }}</th>
           </tr>
           </thead>
           <tbody>
@@ -43,8 +43,8 @@
                       <td>{{ totalPrice(sale.product?.unitSellPrice, sale.saleQuantity, sale.discount)}}</td>
                       <td >
                           <div class="flex space-x-2">
-                            <a href="#" class="bg-blue-100 hover:bg-blue-200 text-blue-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400 inline-flex items-center justify-center">Edit</a>
-                            <a href="#" class="bg-red-100 hover:bg-red-200 text-red-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-red-700 dark:text-red-400 border border-red-400 inline-flex items-center justify-center">Delete</a>
+                            <a href="#" class="bg-blue-100 hover:bg-blue-200 text-blue-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400 inline-flex items-center justify-center">{{ 'APP.SALE.TABLE.ACTIONS.EDIT' | translate }}</a>
+                            <a href="#" class="bg-red-100 hover:bg-red-200 text-red-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-red-700 dark:text-red-400 border border-red-400 inline-flex items-center justify-center">{{ 'APP.SALE.TABLE.ACTIONS.DELETE' | translate }}</a>
                             </div>
                       </td>
                   </tr>

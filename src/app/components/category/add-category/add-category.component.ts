@@ -1,13 +1,15 @@
-import {Component, inject} from '@angular/core';
-import {CategoryService} from '../../../services/category.service';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {ToastrService} from 'ngx-toastr';
-import {Category} from '../../../models/category.model';
+import { Component, inject } from '@angular/core';
+import { CategoryService } from '../../../services/category.service';
+import {ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { CategoryComponent } from '../category.component';
+import { Category } from '../../../models/category.model';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-category',
   standalone: true,
-  imports: [ReactiveFormsModule ],
+  imports: [ReactiveFormsModule,CategoryComponent, TranslateModule],
   templateUrl: './add-category.component.html',
   styleUrl: './add-category.component.css'
 })
