@@ -8,7 +8,7 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource, MatTableModule} from "@angular/material/table";
 import {MatSort, MatSortModule, Sort} from "@angular/material/sort";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
-import {debounceTime, map, merge, startWith, Subject, switchMap} from "rxjs";
+import {debounceTime, map, merge, startWith, switchMap} from "rxjs";
 import {Page} from "../../models/product-page.model";
 import {HttpResponse} from "@angular/common/http";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";

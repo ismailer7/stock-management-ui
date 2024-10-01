@@ -1,14 +1,10 @@
-import { Component, inject } from '@angular/core';
-import { ReactiveFormsModule, FormGroup , FormBuilder, Validators} from '@angular/forms';
-import { ProductService } from '../../../services/product.service';
-import { Product } from '../../../models/product.model';
-import { ToastrService } from 'ngx-toastr';
-import { ProductComponent } from '../product.component';
-import { Category } from '../../../models/category.model';
+import {Component, inject} from '@angular/core';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {ProductService} from '../../../services/product.service';
+import {ToastrService} from 'ngx-toastr';
+import {Category} from '../../../models/category.model';
 import {CommonModule, formatDate} from "@angular/common";
 import {CategoryService} from "../../../services/category.service";
-import {HttpResponse} from "@angular/common/http";
-
 
 
 @Component({

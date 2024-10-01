@@ -1,9 +1,9 @@
 import {inject, Injectable} from '@angular/core';
 import {Product} from "../models/product.model";
-import {BehaviorSubject, Observable, of, Subject} from "rxjs";
+import {Observable, of, Subject} from "rxjs";
 import {MOCK_PRODUCTS} from "../data/mock-products";
-import { Category } from '../models/category.model';
-import { MOCK_CATEGORIES } from '../data/mock-categories';
+import {Category} from '../models/category.model';
+import {MOCK_CATEGORIES} from '../data/mock-categories';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {SortDirection} from "@angular/material/sort";

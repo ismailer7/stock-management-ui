@@ -1,9 +1,8 @@
 import {inject, Injectable} from '@angular/core';
-import { Category } from '../models/category.model';
-import { MOCK_CATEGORIES } from '../data/mock-categories';
-import { Observable, of } from 'rxjs';
-import {HttpClient, HttpResponse} from "@angular/common/http";
-import {Product} from "../models/product.model";
+import {Category} from '../models/category.model';
+import {MOCK_CATEGORIES} from '../data/mock-categories';
+import {Observable, of} from 'rxjs';
+import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 
 @Injectable({
