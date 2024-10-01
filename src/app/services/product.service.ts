@@ -2,8 +2,6 @@ import {inject, Injectable} from '@angular/core';
 import {Product} from "../models/product.model";
 import {Observable, of, Subject} from "rxjs";
 import {MOCK_PRODUCTS} from "../data/mock-products";
-import {Category} from '../models/category.model';
-import {MOCK_CATEGORIES} from '../data/mock-categories';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {SortDirection} from "@angular/material/sort";
@@ -15,9 +13,6 @@ import {Page} from "../models/product-page.model";
 export class ProductService {
 
   products = MOCK_PRODUCTS;
-  categories: Category[] = MOCK_CATEGORIES;
-  // $products = of(this.products)
-  //$products = new BehaviorSubject(this.products);
   $triggerLoading = new Subject()
 
   http = inject(HttpClient);
@@ -49,14 +44,9 @@ export class ProductService {
   }
 
   addProduct(product : Product){
-    //this.products = [...this.products, product];
     return this.http.post<Product>(`${environment.rooturl}/product/add`, product,  {observe: 'response', withCredentials: true })
-    //this.$products.next(this.products)
   }
 
-allCategories(): Observable<Category[]> {
-  return of(this.categories);
-}
 
 
   deleteProductById(id: Number) {

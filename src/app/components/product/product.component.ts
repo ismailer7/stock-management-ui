@@ -39,10 +39,8 @@ export class ProductComponent implements AfterViewInit {
     toastr = inject(ToastrService);
     displayedColumns: string[] = ['id', 'productName', 'productCode', 'quantity', 'unitBuyPrice', 'unitSellPrice', 'buyDate', 'category.name', 'action'];
     dataSource = new MatTableDataSource<Product>(this.products);
-    // private _liveAnnouncer = inject(LiveAnnouncer);
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
-    // cdr = inject(NgxSpinner)
     isLoading = true;
     searchKeywordFilter = new FormControl();
 
