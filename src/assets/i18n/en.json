@@ -23,6 +23,11 @@
         "RIGHTS": "All Right Reserved By"
       },
 
+      "PAGINATION": {
+        "NEXT": "Next",
+        "PREVIOUS": "Previous"
+      },
+
       "PRODUCT": {
         "BREADCRUMB": "Products/",
         "EXPORT": "Export",

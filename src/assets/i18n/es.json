@@ -22,6 +22,11 @@
         "COPY": "Derechos de autor",
         "RIGHTS": "Todos los derechos reservados por"
       },
+      
+      "PAGINATION": {
+        "NEXT": "Próxima",
+        "PREVIOUS": "Previa"
+      },
 
       "PRODUCT": {
         "BREADCRUMB": "Productos/",
