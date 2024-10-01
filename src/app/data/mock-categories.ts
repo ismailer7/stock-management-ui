@@ -2,7 +2,7 @@ import { Category } from "../models/category.model";
 
 export const MOCK_CATEGORIES: Category[] = [
     {
-        id: 1,
+        id: 1001,
         name: "electronics"
     },
     {

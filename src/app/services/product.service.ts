@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {Product} from "../models/product.model";
-import {BehaviorSubject, Observable, of} from "rxjs";
+import {BehaviorSubject, Observable, of, Subject} from "rxjs";
 import {MOCK_PRODUCTS} from "../data/mock-products";
 import { Category } from '../models/category.model';
 import { MOCK_CATEGORIES } from '../data/mock-categories';
@@ -17,8 +17,8 @@ export class ProductService {
   products = MOCK_PRODUCTS;
   categories: Category[] = MOCK_CATEGORIES;
   // $products = of(this.products)
-  $products = new BehaviorSubject(this.products);
-
+  //$products = new BehaviorSubject(this.products);
+  $triggerLoading = new Subject()
 
   http = inject(HttpClient);
 
@@ -49,8 +49,9 @@ export class ProductService {
   }
 
   addProduct(product : Product){
-    this.products = [...this.products, product];
-    this.$products.next(this.products)
+    //this.products = [...this.products, product];
+    return this.http.post<Product>(`${environment.rooturl}/product/add`, product,  {observe: 'response', withCredentials: true })
+    //this.$products.next(this.products)
   }
 
 allCategories(): Observable<Category[]> {

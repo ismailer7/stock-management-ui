@@ -1,7 +1,10 @@
-import { Injectable } from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import { Category } from '../models/category.model';
 import { MOCK_CATEGORIES } from '../data/mock-categories';
 import { Observable, of } from 'rxjs';
+import {HttpClient, HttpResponse} from "@angular/common/http";
+import {Product} from "../models/product.model";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +12,10 @@ import { Observable, of } from 'rxjs';
 export class CategoryService {
 
   categories: Category[] = MOCK_CATEGORIES;
-  
-  getAllCategories(): Observable<Category[]> {
-    return of(this.categories);
+  http = inject(HttpClient);
+
+  getAllCategories() {
+    return this.http.get<Category[]>(`${environment.rooturl}/category/all`, { observe: 'response', withCredentials: true });
   }
 
   addCategory(category : Category){

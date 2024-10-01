@@ -6,6 +6,8 @@ import { ToastrService } from 'ngx-toastr';
 import { ProductComponent } from '../product.component';
 import { Category } from '../../../models/category.model';
 import {CommonModule, formatDate} from "@angular/common";
+import {CategoryService} from "../../../services/category.service";
+import {HttpResponse} from "@angular/common/http";
 
 
 
@@ -18,7 +20,8 @@ import {CommonModule, formatDate} from "@angular/common";
 })
 export class AddproductComponent  {
 
-  productsService = inject(ProductService);
+    categoryService = inject(CategoryService);
+    productService = inject(ProductService);
   productForm: FormGroup;
   toastr = inject(ToastrService);
 
@@ -27,11 +30,13 @@ export class AddproductComponent  {
   flag:string = '';
 
 
-  constructor(private fb: FormBuilder, private productComponent: ProductComponent) {
-    this.productsService.allCategories().subscribe( {
+  constructor(private fb: FormBuilder) {
+    this.categoryService.getAllCategories().subscribe( {
       next: (resp) => {
-        this.categories = [...resp]
-      }
+          const data = resp.body ?? []
+        this.categories = [...data]
+      },
+        error: err => this.toastr.error('Error loading Categories')
     } )
 
     this.productForm = this.fb.group({
@@ -53,13 +58,20 @@ submit() {
     return;
   }
   const newProduct = this.productForm.value;
-  this.productsService.addProduct(newProduct);
-  this.toastr.success('Product added!', 'Notification!');
-  this.reset();
+  this.productService.addProduct(newProduct).subscribe({
+      next: (resp) =>{
+          const np = resp.body
+          console.log(np);
+          this.toastr.success('Product added!', 'Notification!');
+          this.reset();
+          this.productService.$triggerLoading.next(np)
+      },
+      error: (err: Error) => this.toastr.error(err.message, 'Error!')
+  })
+
 }
 
 close(){
-
   this.reset();
 }
 

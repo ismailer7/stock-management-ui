@@ -45,13 +45,13 @@ export class ProductComponent implements AfterViewInit {
     // cdr = inject(NgxSpinner)
     isLoading = true;
     searchKeywordFilter = new FormControl();
-    $triggerLoading = new Subject()
+
 
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
         this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));   //the first on sort order change, reset back to st page.
-        merge(this.searchKeywordFilter.valueChanges.pipe(debounceTime(500)), this.sort.sortChange, this.paginator.page, this.$triggerLoading)
+        merge(this.searchKeywordFilter.valueChanges.pipe(debounceTime(500)), this.sort.sortChange, this.paginator.page, this.productsService.$triggerLoading)
             .pipe(
                 startWith({}),
                 switchMap(() => {
@@ -74,7 +74,7 @@ export class ProductComponent implements AfterViewInit {
             )
             .subscribe({
                 next: (data) => {
-                    // this.products = data?.products ?? []
+                    this.products = data?.products ?? []
                     this.dataSource.data = data?.products ?? []
                     setTimeout(() => {
                         this.paginator.length = data?.totalCount ?? 0
@@ -100,6 +100,8 @@ export class ProductComponent implements AfterViewInit {
 
     editProduct(id: Product) {
         console.log(`edit ${id}`);
+        const p = this.products.find( p => p.id == id);
+        console.log(p)
     }
 
     deleteProduct(id: Number) {
@@ -107,7 +109,7 @@ export class ProductComponent implements AfterViewInit {
             .subscribe({
                 next: (resp) =>{
                     this.toastr.success(resp?? '')
-                    this.$triggerLoading.next(resp);
+                    this.productsService.$triggerLoading.next(resp);
                 },
                 error: err => {
                     this.toastr.error(err ?? '')

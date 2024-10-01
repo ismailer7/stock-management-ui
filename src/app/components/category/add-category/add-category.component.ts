@@ -1,14 +1,13 @@
-import { Component, inject } from '@angular/core';
-import { CategoryService } from '../../../services/category.service';
-import {ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
-import { CategoryComponent } from '../category.component';
-import { Category } from '../../../models/category.model';
+import {Component, inject} from '@angular/core';
+import {CategoryService} from '../../../services/category.service';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {ToastrService} from 'ngx-toastr';
+import {Category} from '../../../models/category.model';
 
 @Component({
   selector: 'app-add-category',
   standalone: true,
-  imports: [ReactiveFormsModule,CategoryComponent ],
+  imports: [ReactiveFormsModule ],
   templateUrl: './add-category.component.html',
   styleUrl: './add-category.component.css'
 })
@@ -21,7 +20,7 @@ export class AddCategoryComponent {
 
 
 
-  constructor(private fb: FormBuilder, private categoryComponent: CategoryComponent) {
+  constructor(private fb: FormBuilder) {
     
     this.categoryForm = this.fb.group({
       name: ['', Validators.required]
@@ -34,7 +33,6 @@ addCategory() {
   this.categoryService.addCategory(newCategory); 
   console.log("added");
   this.toastr.success('Category added!', 'Notification!');
-  this.categoryComponent.ngOnInit();
 }
 
 
