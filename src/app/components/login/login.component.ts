@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
   username: string = '';
   password: string = '';
   errorMessage: string = '';
+  toastr = inject(ToastrService);
   
   ngOnInit():void{
     if (this.authService.isLoggedIn()) {
@@ -24,12 +26,17 @@ export class LoginComponent implements OnInit {
 }
 
   login() {
-    if (this.authService.login(this.username, this.password)) {
-      this.router.navigate(['/home']);
-    } else {
-      this.errorMessage = 'Invalid credentials';
-      console.log(this.errorMessage)
-    }
+    this.authService.login(this.username, this.password).subscribe({
+      next: (resp: { body: any; }) => {
+          const loggedUser = resp.body
+          console.log(loggedUser);
+          localStorage.setItem('isLoggedIn', 'true'); 
+          localStorage.setItem('user', JSON.stringify(loggedUser)); 
+          this.toastr.success('Login Succesfull!', 'Notification!');
+          this.router.navigate(['/home']);
+      },
+      error: (err: Error) => this.toastr.error(err.message, 'Error!')
+    })
   }
 
 }
