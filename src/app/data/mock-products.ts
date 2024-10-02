@@ -141,4 +141,34 @@ export const MOCK_PRODUCTS: Product[] = [
             name: "Fitness",
         },
     },
+
+    {
+        id: 11,
+        productName: "Yoga Mat",
+        productCode: "YM-010",
+        description: "Non-slip yoga mat with a carrying strap.",
+        quantity: 35,
+        unitBuyPrice: 15.0,
+        unitSellPrice: 25.0,
+        buyDate: "2023-09-30",
+        category: {
+            id: 7,
+            name: "Fitness",
+        },
+    },
+
+    {
+        id: 12,
+        productName: "Yoga Mat",
+        productCode: "YM-010",
+        description: "Non-slip yoga mat with a carrying strap.",
+        quantity: 35,
+        unitBuyPrice: 15.0,
+        unitSellPrice: 25.0,
+        buyDate: "2023-09-30",
+        category: {
+            id: 7,
+            name: "Fitness",
+        },
+    },
 ];
