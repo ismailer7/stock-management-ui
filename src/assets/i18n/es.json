@@ -22,10 +22,13 @@
         "COPY": "Derechos de autor",
         "RIGHTS": "Todos los derechos reservados por"
       },
-      
+
       "PAGINATION": {
-        "NEXT": "Próxima",
-        "PREVIOUS": "Previa"
+        "FIRST": "Primera página",
+        "PREVIOUS": "Página anterior",
+        "NEXT": "Siguiente página",
+        "LAST" : "Última página",
+        "TOTAL_ITEMS": "Elementos por página"
       },
 
       "PRODUCT": {

@@ -24,8 +24,11 @@
       },
 
       "PAGINATION": {
-        "NEXT": "Next",
-        "PREVIOUS": "Previous"
+        "FIRST": "First page",
+        "PREVIOUS": "Previous page",
+        "NEXT": "Next Page",
+        "LAST" : "Last Page",
+        "TOTAL_ITEMS": "Items per page"
       },
 
       "PRODUCT": {

@@ -24,8 +24,11 @@
       },
 
       "PAGINATION": {
-        "NEXT": "Suivant",
-        "PREVIOUS": "Précédent"
+        "FIRST": "Première page",
+        "PREVIOUS": "Page précédente",
+        "NEXT": "Page suivante",
+        "LAST" : "Dernière page",
+        "TOTAL_ITEMS": "Éléments par page"
       },
 
       "PRODUCT": {
@@ -35,7 +38,7 @@
         "NOT_FOUND": "Aucun enregistrement trouvé !",
         "TABLE": {
           "COLUMN": {
-            "NAME": "Name",
+            "NAME": "Nom",
             "CODE": "Code",
             "QUANTITY": "Quantité",
             "BUYING_PRICE": "Prix ​​d'achat unitaire",

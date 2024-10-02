@@ -13,7 +13,7 @@ import {Page} from "../../models/product-page.model";
 import {HttpResponse} from "@angular/common/http";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {MatProgressBar} from "@angular/material/progress-bar";
-import { TranslateModule } from '@ngx-translate/core';
+import {LangChangeEvent, TranslateModule, TranslatePipe, TranslateService} from '@ngx-translate/core';
 
 @Component({
     selector: 'app-product',
@@ -39,6 +39,8 @@ export class ProductComponent implements AfterViewInit {
     products: Product[] = []
     productsService = inject(ProductService);
     toastr = inject(ToastrService);
+    translatePipe = inject(TranslatePipe)
+    translateSrv = inject(TranslateService)
     displayedColumns: string[] = ['id', 'productName', 'productCode', 'quantity', 'unitBuyPrice', 'unitSellPrice', 'buyDate', 'category.name', 'action'];
     dataSource = new MatTableDataSource<Product>(this.products);
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -84,7 +86,18 @@ export class ProductComponent implements AfterViewInit {
                 },
                 error: (err) => this.isLoading = false
             });
+        this.translateSrv.onLangChange.subscribe((event: LangChangeEvent) => {
+            setTimeout(()=>{
+                this.paginator._intl.itemsPerPageLabel= this.translatePipe.transform('APP.PAGINATION.TOTAL_ITEMS')
+                this.paginator._intl.firstPageLabel = this.translatePipe.transform('APP.PAGINATION.FIRST')
+                this.paginator._intl.previousPageLabel = this.translatePipe.transform('APP.PAGINATION.PREVIOUS')
+                this.paginator._intl.nextPageLabel = this.translatePipe.transform('APP.PAGINATION.NEXT')
+                this.paginator._intl.lastPageLabel = this.translatePipe.transform('APP.PAGINATION.LAST')
+                this.dataSource._updateChangeSubscription();
+                this.productsService.$triggerLoading.next("test")
+            })
 
+        });
     }
 
 
