@@ -50,6 +50,7 @@
         },
         "ADDPRODUCT": {
           "ADD": "Ajouter un produit",
+          "EDIT":"Modifier Product",
           "NAME": "Nom",
           "DESCRIPTION": "Description",
           "BUYING_PRICE": "Prix ​​d'achat",
@@ -58,12 +59,14 @@
           "SELLING_PRICE": "Prix ​​de vente",
           "CATEGORY": "Catégorie",
           "ADD_BUTTON": "Ajouter",
+          "EDIT_BUTTON": "Modifier",
           "CLOSE": "Fermer",
           "WARNING": " Attention : les champs obligatoires ne doivent pas être vides !",
           "SELECT": "Sélectionner",
           "VALIDATION": {
             "REQUIRED": "requis",
-            "NUMBER": "ça doit être un nombre."
+            "NUMBER": "ça doit être un nombre.",
+            "MIN": "doit avoir au moins 1"
           }
         }
       },

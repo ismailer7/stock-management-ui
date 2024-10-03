@@ -50,6 +50,7 @@
         },
         "ADDPRODUCT": {
           "ADD": "Add Product",
+          "EDIT":"Edit Product",
           "NAME": "Name",
           "DESCRIPTION": "Description",
           "BUYING_PRICE": "Buying Price",
@@ -59,12 +60,15 @@
           "SELLING_PRICE": "Selling Price",
           "CATEGORY": "Category",
           "ADD_BUTTON": "Add",
+          "EDIT_BUTTON": "Edit",
           "CLOSE": "Close",
           "WARNING": " Warning: required inputs should not be empty!",
           "SELECT": "Select",
           "VALIDATION": {
             "REQUIRED": "required",
-            "NUMBER": "must be a number."
+            "NUMBER": "must be a number.",
+            "MIN": "must be at least 1"
+
           }
         }
       },

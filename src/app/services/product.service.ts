@@ -47,6 +47,9 @@ export class ProductService {
     return this.http.post<Product>(`${environment.rooturl}/product/add`, product,  {observe: 'response', withCredentials: true })
   }
 
+  editProduct(id: Number, product : Product){
+    return this.http.put<Product>(`${environment.rooturl}/product/edit/${id}`, product,  {observe: 'response', withCredentials: true })
+  }
 
 
   deleteProductById(id: Number) {

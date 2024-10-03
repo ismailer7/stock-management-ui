@@ -47,7 +47,8 @@ export class ProductComponent implements AfterViewInit {
     @ViewChild(MatSort) sort: MatSort;
     isLoading = true;
     searchKeywordFilter = new FormControl();
-
+    selectedProduct: any = null;
+    currentProduct: Product | null = null;
 
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
@@ -110,11 +111,18 @@ export class ProductComponent implements AfterViewInit {
         console.log(event)
     }
 
+    addProduct(){
+        this.selectedProduct = null;
+        console.log("add product:",this.selectedProduct);
+       
+    }
 
     editProduct(id: Product) {
-        console.log(`edit ${id}`);
+        //console.log(`edit ${id}`);
         const p = this.products.find( p => p.id == id);
-        console.log(p)
+        //this.selectedProduct =p;
+        this.selectedProduct = { ...p};
+        console.log("edit product",this.selectedProduct);
     }
 
     deleteProduct(id: Number) {
