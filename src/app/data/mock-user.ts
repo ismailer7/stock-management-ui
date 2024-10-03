@@ -7,7 +7,7 @@ export const MOCK_USER: User =
         firstName: "mehdi",
         lastName: "hanafi",
         email: "mehdi@gmail.com",
-        password: "admin123",
+        password: "1234",
         phone: "0652574741",
         userStatus: 0
     }    
