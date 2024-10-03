@@ -114,6 +114,13 @@ export class AddproductComponent {
         else (document.getElementById('btn-close-modal') as HTMLFormElement)?.click();
     }
 
+    @HostListener('document:keydown', ['$event'])
+    handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      this.close();
+    }
+  }
+
     reset() {
 
         (document.getElementById('btn-close-modal') as HTMLFormElement)?.click();
