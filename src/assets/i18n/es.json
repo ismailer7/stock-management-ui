@@ -65,7 +65,8 @@
           "SELECT": "Seleccionar",
           "VALIDATION": {
             "REQUIRED": "requerida",
-            "NUMBER": "debe ser un numero."
+            "NUMBER": "debe ser un numero.",
+            "MIN": "debe tener al menos 1"
           }
         }
       },

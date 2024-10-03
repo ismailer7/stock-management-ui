@@ -42,6 +42,8 @@
                             {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }}</p> } 
                             @if(productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['pattern'])
                             {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.NUMBER' | translate }} </p>} 
+                            @if(productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['min'])
+                            {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.MIN' | translate }} </p>} 
                          </div>   
                   </div>
               </div>  
@@ -57,6 +59,8 @@
                         {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }}</p> } 
                         @if(productForm.get('unitBuyPrice')?.touched && productForm.get('unitBuyPrice')?.errors?.['pattern'])
                         {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.NUMBER' | translate }} </p>} 
+                        @if(productForm.get('unitBuyPrice')?.touched && productForm.get('unitBuyPrice')?.errors?.['min'])
+                        {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.MIN' | translate }} </p>} 
                     </div>
                 </div>
                 <div class="mb-4  relative ">
@@ -68,6 +72,8 @@
                         {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }}</p> } 
                         @if(productForm.get('unitSellPrice')?.touched && productForm.get('unitSellPrice')?.errors?.['pattern'])
                         {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.NUMBER' | translate }} </p>}
+                        @if(productForm.get('unitSellPrice')?.touched && productForm.get('unitSellPrice')?.errors?.['min'])
+                        {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.MIN' | translate }} </p>}
                         </div>
                     </div>
               </div>
