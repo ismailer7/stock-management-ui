@@ -14,7 +14,6 @@ import {HttpResponse} from "@angular/common/http";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {MatProgressBar} from "@angular/material/progress-bar";
 import {LangChangeEvent, TranslateModule, TranslatePipe, TranslateService} from '@ngx-translate/core';
-import { EditproductComponent } from './editproduct/editproduct.component';
 
 @Component({
     selector: 'app-product',
@@ -22,7 +21,6 @@ import { EditproductComponent } from './editproduct/editproduct.component';
     imports: [
         PaginationComponent,
         AddproductComponent,
-        EditproductComponent,
         MatPaginator,
         MatTableModule,
         MatSortModule,
@@ -50,6 +48,7 @@ export class ProductComponent implements AfterViewInit {
     isLoading = true;
     searchKeywordFilter = new FormControl();
     selectedProduct: any = null;
+    currentProduct: Product | null = null;
 
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
@@ -112,12 +111,18 @@ export class ProductComponent implements AfterViewInit {
         console.log(event)
     }
 
+    addProduct(){
+        this.selectedProduct = null;
+        console.log("add product:",this.selectedProduct);
+       
+    }
 
     editProduct(id: Product) {
-        console.log(`edit ${id}`);
+        //console.log(`edit ${id}`);
         const p = this.products.find( p => p.id == id);
-        //console.log(p)
-        this.selectedProduct =p;
+        //this.selectedProduct =p;
+        this.selectedProduct = { ...p};
+        console.log("edit product",this.selectedProduct);
     }
 
     deleteProduct(id: Number) {

@@ -41,8 +41,8 @@
             "NAME": "Nombre",
             "CODE": "Code",
             "QUANTITY": "Cantidad",
-            "BUYING_PRICE": "Precio de compra unitario",
-            "SELLING_PRICE": "Precio de venta unitario",
+            "BUYING_PRICE": "Precio de compra",
+            "SELLING_PRICE": "Precio de venta",
             "BUY_DATE": "Fecha de compra",
             "CATEGORY": "Categoría",
             "ACTIONS": "Comportamiento"
@@ -50,6 +50,7 @@
         },
         "ADDPRODUCT": {
           "ADD": "Agregar producto",
+          "EDIT":"Modificar Product",
           "NAME": "Nombre",
           "DESCRIPTION": "Descripción",
           "BUYING_PRICE": "Precio de compra",
@@ -58,7 +59,8 @@
           "SELLING_PRICE": "Precio de venta",
           "CATEGORY": "Categoría",
           "ADD_BUTTON": "Agregar",
-          "CLOSE": "Cerca",
+          "EDIT_BUTTON": "Modificar",
+          "CLOSE": "Cerrar",
           "WARNING": " Advertencia: los campos obligatorios no deben estar vacíos!",
           "SELECT": "Seleccionar",
           "VALIDATION": {

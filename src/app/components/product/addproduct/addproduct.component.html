@@ -1,7 +1,10 @@
 <dialog id="my_modal_1" class="modal">
     <div class="modal-box w-11/12 max-w-5xl">
       <form class="max-w mx-auto bg-white py-4 px-8 " [formGroup]="productForm" (ngSubmit)="submit()" >
-        <h2 class="text-2xl font-bold mb-6">{{ 'APP.PRODUCT.ADDPRODUCT.ADD' | translate }}:</h2>
+        @if(isEditMode ===true) {
+        <h2 class="text-2xl font-bold mb-6">{{ 'APP.PRODUCT.ADDPRODUCT.EDIT' | translate }}:</h2>}
+        @else{
+        <h2 class="text-2xl font-bold mb-6">{{ 'APP.PRODUCT.ADDPRODUCT.ADD' | translate }}:</h2>}
           <div class="row ">
               <div class="gap-4 columns-2">
                   <div class="mb-4 relative ">
@@ -93,7 +96,13 @@
               </div>
           </div>
           <div class="modal-action">
-                  <button type="submit" [disabled]="productForm.invalid" class="btn btn-primary px-8">{{ 'APP.PRODUCT.ADDPRODUCT.ADD_BUTTON' | translate }}</button>
+            @if(isEditMode ===true)
+                  { 
+                    <button type="submit" [disabled]="productForm.pristine || productForm.invalid " class="btn btn-primary px-8">{{ 'APP.PRODUCT.ADDPRODUCT.EDIT_BUTTON' | translate }}</button>          
+                  }@else
+                  {
+                    <button type="submit" [disabled]="productForm.invalid" class="btn btn-primary px-8">{{ 'APP.PRODUCT.ADDPRODUCT.ADD_BUTTON' | translate }}</button>
+                  }
                   <form method="dialog">
                       <button id="btn-close-modal" class="btn px-8" (click)="close()">{{ 'APP.PRODUCT.ADDPRODUCT.CLOSE' | translate }}</button>
                   </form>
