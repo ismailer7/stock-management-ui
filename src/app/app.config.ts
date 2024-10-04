@@ -10,7 +10,8 @@ import {appRequestInterceptor} from "./interceptor/app.request.interceptor";
 import { HttpClient, HttpClientJsonpModule, HttpHandler } from '@angular/common/http';
 import { TranslateModule, TranslateLoader, TranslatePipe } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
-import { loadingInterceptor } from './loading.interceptor';
+import { loadingInterceptor } from './interceptor/loading.interceptor';
+
 
 
 export function HttpLoaderFactory(http: HttpClient) {
