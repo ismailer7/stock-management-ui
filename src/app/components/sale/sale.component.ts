@@ -3,6 +3,7 @@ import { Sale } from '../../models/sale.model';
 import { SalesService } from '../../services/sales.service';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateModule } from '@ngx-translate/core';
+import { PdfServiceService } from '../../services/pdf-service.service';
 
 
 @Component({
@@ -18,6 +19,8 @@ export class SaleComponent implements OnInit {
   salesService = inject(SalesService);
   toastr = inject(ToastrService);
 
+  constructor(private pdfService: PdfServiceService) { }
+
   ngOnInit(): void {
       this.salesService.getAllSales().subscribe({
         next: (resp) => { this.sales = [...resp] }
@@ -27,6 +30,10 @@ export class SaleComponent implements OnInit {
 
   totalPrice(price:number | undefined,quantity:number | undefined,discount:number | undefined):any{
       return ( price ?? 0) * (quantity ?? 0) - (discount ?? 0)
+  }
+
+  genrateInvoice() {
+    this.pdfService.generateInvoice();
   }
 
 }

@@ -17,7 +17,7 @@
           />
           <!-- Buttons -->
           <button class="btn  btn-active  ml-4 px-4 py-2" onclick="my_modal_3.showModal()">{{ 'APP.SALE.ADD' | translate }}</button>
-          <button class="btn  btn-active ml-4 px-4 py-2">{{ 'APP.SALE.EXPORT' | translate }}</button>
+          <button (click)="genrateInvoice();" class="btn  btn-active ml-4 px-4 py-2">{{ 'APP.SALE.EXPORT' | translate }}</button>
         </div>
       <table class="table table-zebra">
           <!-- head -->
