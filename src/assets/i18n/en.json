@@ -110,13 +110,15 @@
             "UNIT_PRICE": "Unit Price",
             "QUANTITY": "Quantity",
             "TOTAL_PRICE": "Total Price",
+            "DATE":"Date",
             "ACTIONS": "Actions"
           },
           "ACTIONS": {
               "EDIT": "Edit",
               "DELETE": "Delete"
             }
-        }
+        },
+        "NOT_FOUND": "No Sale Found !"
       }
     }
     
