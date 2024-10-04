@@ -1,5 +1,5 @@
-<router-outlet></router-outlet>
 
-<div id="footer">
-    <app-footer></app-footer>
-</div>
+@if(loading){
+<app-loading-spinner ></app-loading-spinner>
+}
+<router-outlet></router-outlet>
