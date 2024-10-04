@@ -41,7 +41,7 @@ export class SaleComponent implements AfterViewInit {
   toastr = inject(ToastrService);
   translatePipe = inject(TranslatePipe)
   translateSrv = inject(TranslateService)
-  displayedColumns: string[] = ['id', 'description', 'product.productName', 'product.unitSellPrice', 'saleQuantity', 'saleDate', 'action'];
+  displayedColumns: string[] = ['id', 'description', 'product.productName', 'product.unitSellPrice', 'saleQuantity', 'saleDate','totalPrice', 'action'];
   dataSource = new MatTableDataSource<Sale>(this.sales);
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

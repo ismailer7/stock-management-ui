@@ -36,7 +36,10 @@
         <!-- Product Name Column -->
         <ng-container matColumnDef="product.productName">
             <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by code"> {{ 'APP.SALE.TABLE.COLUMN.PRODUCT' | translate }} </th>
-            <td mat-cell *matCellDef="let row"> {{row.product.productName}} </td>
+            <td mat-cell *matCellDef="let row">
+              <span class="  bg-green-100 text-green-800 font-medium  px-2.5 py-0.5 rounded-lg dark:bg-green-900 dark:text-green-300">   {{row.product.productName}} </span>
+
+              </td>
         </ng-container>
 
         <!-- Selling Price Column -->
@@ -52,10 +55,10 @@
         </ng-container>
 
         <!-- totalPrice Column -->
-       <!--  <ng-container matColumnDef="totalPrice">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'APP.SALE.TABLE.COLUMN.TOTAL_PRICE' | translate }} </th>
-            <td mat-cell *matCellDef="let row"> {{row.totalPrice}} </td>
-        </ng-container> -->
+        <ng-container matColumnDef="totalPrice">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Total</th>
+            <td mat-cell *matCellDef="let row"> {{(row.product.unitSellPrice * row.saleQuantity) - row.discount}} </td>
+        </ng-container>
         <!-- BuyDate Column -->
         <ng-container matColumnDef="saleDate">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'APP.SALE.TABLE.COLUMN.DATE' | translate }} </th>
