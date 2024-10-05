@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectorRef, Component} from '@angular/core';
 import {NavbarComponent} from './components/layaout/navbar/navbar.component';
 import {LayaoutComponent} from "./components/layaout/layaout.component";
 import { LoginComponent } from './components/login/login.component';
@@ -19,10 +19,11 @@ export class AppComponent {
   title = 'stock-management-ui';
   loading = false;
 
-  constructor(private loadingService: LoadingService) {
+  constructor(private loadingService: LoadingService, private cd: ChangeDetectorRef) {
     this.loadingService.loading$.subscribe(Loading => {
      
-      Promise.resolve().then( () => this.loading = Loading)
+      this.loading = Loading;
+      this.cd.detectChanges();
     });
 
 
