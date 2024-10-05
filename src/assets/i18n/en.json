@@ -118,7 +118,27 @@
               "DELETE": "Delete"
             }
         },
-        "NOT_FOUND": "No Sale Found !"
+        "NOT_FOUND": "No Sale Found !",
+      "ADDSALE": {
+          "ADD": "Add Sale",
+          "EDIT":"Edit Sale",
+          "DESCRIPTION": "Description",
+          "SELLING_DATE": "Selling Date",
+          "QUANTITY": "Quantity",
+          "DISCOUNT": "Discount",
+          "PRODUCT": "Product",
+          "ADD_BUTTON": "Add",
+          "EDIT_BUTTON": "Edit",
+          "CLOSE": "Close",
+          "WARNING": " Warning: required inputs should not be empty!",
+          "SELECT": "Select",
+          "VALIDATION": {
+            "REQUIRED": "required",
+            "NUMBER": "must be a number.",
+            "MIN": "must be at least 1"
+
+          }
+        }
       }
     }
     

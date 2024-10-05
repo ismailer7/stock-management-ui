@@ -14,6 +14,7 @@ import { SalePage } from '../../models/sale-page.model';
 import { PaginationComponent } from '../commun/pagination/pagination.component';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MatProgressBar } from '@angular/material/progress-bar';
+import { SaleOperationComponent } from './sale-operation/sale-operation.component';
 
 
 
@@ -27,7 +28,8 @@ import { MatProgressBar } from '@angular/material/progress-bar';
         MatSortModule,
         ReactiveFormsModule,
         MatProgressSpinner,
-        MatProgressBar
+        MatProgressBar,
+        SaleOperationComponent
   ],
   templateUrl: './sale.component.html',
   styleUrl: './sale.component.css'
