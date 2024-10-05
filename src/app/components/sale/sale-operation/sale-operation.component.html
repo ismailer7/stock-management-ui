@@ -19,8 +19,8 @@
                   <div class="mb-4  relative">
                       <label>
                         {{ 'APP.SALE.ADDSALE.PRODUCT' | translate }}<span class="text-sm ms-1 text-red-500">*</span>: </label>
-                          <select class="select select-m select-bordered w-full max-w mt-1"  id="product" formControlName="product">
-                              <option [ngValue]="null">{{ 'APP.SALE.ADDSALE.SELECT' | translate }}</option>
+                        <input type="text" class="input input-bordered mt-1 w-full" formControlName="search" placeholder="Search..." formControlName="productSearch">
+                          <select class="select select-m select-bordered w-full max-w mt-1"  id="product"  >
                               @for (product of products; track product.id) {
                                   <option [ngValue]="product">{{ product.productName }}</option>
                               }

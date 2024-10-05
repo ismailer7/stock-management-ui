@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ProductService } from '../../../services/product.service';
 import { SalesService } from '../../../services/sales.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -22,30 +22,39 @@ export class SaleOperationComponent {
   saleForm: FormGroup;
   products : Product [] = [];
 
-  constructor(private fb: FormBuilder) {
 
-    this.productService.getAllProducts().subscribe({
-        next: (resp) => {
-         const data = resp.body ?? []
-         this.products = [...data]
-       },
-        error: err => this.toastr.error('Error loading Products')
-   
-    })
+  constructor(private fb: FormBuilder) {
 
     this.saleForm = this.fb.group({
      description: ['', Validators.required],
-     product: [, Validators.required],
+     productSearch: ['', Validators.required],
      saleQuantity: [, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
      discount: [, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
      saleDate: [formatDate(new Date(), 'yyyy-MM-dd', 'en')]
     });
+
+
+    const value = this.saleForm.get('productSearch')?.value; 
+    
+     this.saleForm.get('productSearch')?.valueChanges.subscribe(value => { 
+          this.productService.getProductsByName(value).subscribe({
+              next: (resp) => {
+                const data = resp.body ?? []
+                this.products = [...data]
+                console.log("list products",this.products)
+             },
+            error: err => this.toastr.error('Error loading Products')});
+      }); 
+    console.log("this is search value",value);
+
   }
+
 
   submit() {
 
     
     console.log("submitted")
+    
 
   }
 
