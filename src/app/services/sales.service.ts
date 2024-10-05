@@ -35,6 +35,9 @@ export class SalesService {
   return this.http.get<SalePage>(`${environment.rooturl}/sale/filtred`, { params: params, observe: 'response', withCredentials: true });
 }
 
+deleteSaleById(id: Number) {
+  return this.http.delete(`${environment.rooturl}/sale/delete/${id}`, {responseType: "text", withCredentials: true })
+}
 
 
 }

@@ -111,7 +111,18 @@ export class SaleComponent implements AfterViewInit {
             console.log(event)
         }
 
-
+        deleteSale(id: Number) {
+          this.salesService.deleteSaleById(id)
+              .subscribe({
+                  next: (resp) =>{
+                      this.toastr.success(resp?? '')
+                      this.salesService.$triggerLoading.next(resp);
+                  },
+                  error: err => {
+                      this.toastr.error(err ?? '')
+                  }
+              })
+      }
 
 
 
