@@ -20,8 +20,9 @@ export class AppComponent {
   loading = false;
 
   constructor(private loadingService: LoadingService) {
-    this.loadingService.loading$.subscribe(isLoading => {
-      this.loading = isLoading;
+    this.loadingService.loading$.subscribe(Loading => {
+     
+      Promise.resolve().then( () => this.loading = Loading)
     });
 
 
