@@ -4,7 +4,7 @@ import { ProductComponent } from './components/product/product.component';
 import { AccountComponent } from './components/account/account.component';
 import { SaleComponent } from './components/sale/sale.component';
 import { CategoryComponent } from './components/category/category.component';
-import { LayaoutComponent } from './components/layaout/layaout.component';
+import { LayoutComponent } from './components/layaout/layout.component';
 import { LoginComponent } from './components/login/login.component';
 import { authGuard } from './auth.guard';
 
@@ -22,7 +22,7 @@ export const routes: Routes = [
     },
     { 
       path: 'home',
-      component:LayaoutComponent,
+      component:LayoutComponent,
       canMatch:[authGuard],
       data: { name: 'Home'},
       children: [

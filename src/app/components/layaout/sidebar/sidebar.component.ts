@@ -1,6 +1,16 @@
-import { Component, inject } from '@angular/core';
+import {Component} from '@angular/core';
 import {RouterLink, RouterLinkActive} from "@angular/router";
-import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
+import {TranslateModule} from '@ngx-translate/core';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome'
+import {
+  faBars,
+  faBurger,
+  faComputer,
+  faHandshake,
+  faSackDollar,
+  faTags,
+  faToggleOn
+} from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-sidebar',
@@ -8,13 +18,19 @@ import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
   imports: [
     RouterLink,
     RouterLinkActive,
-    TranslateModule
+    TranslateModule,
+    FontAwesomeModule
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
 
- 
-
+  protected readonly faHandshake = faHandshake;
+  protected readonly faSackDollar = faSackDollar;
+  protected readonly faComputer = faComputer;
+  protected readonly faTags = faTags;
+  protected readonly faBurger = faBurger;
+  protected readonly faToggleOn = faToggleOn;
+  protected readonly faBars = faBars;
 }

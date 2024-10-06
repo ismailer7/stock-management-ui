@@ -12,10 +12,10 @@ import { TranslateModule } from '@ngx-translate/core';
     selector: 'app-addproduct',
     standalone: true,
     imports: [ReactiveFormsModule, CommonModule, TranslateModule],
-    templateUrl: './addproduct.component.html',
-    styleUrl: './addproduct.component.css'
+    templateUrl: './operacion-product.component.html',
+    styleUrl: './operacion-product.component.css'
 })
-export class AddproductComponent {
+export class OperacionProductComponent {
 
     categoryService = inject(CategoryService);
     productService = inject(ProductService);
@@ -43,7 +43,7 @@ export class AddproductComponent {
         console.log("ngonchange triggered");
         this.isEditMode = this.selectedProduct !== null;
         console.log("edit mode:",this.isEditMode);
-        if (this.isEditMode === true)
+        if (this.isEditMode)
             {
                 this.categorySelected = this.categories.find(c => c.id === this.selectedProduct.category.id);
                 this.productForm = this.fb.group({

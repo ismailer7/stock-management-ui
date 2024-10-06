@@ -35,6 +35,11 @@ th, td{
     height: 40px;
 
 }
+.mat-mdc-row:hover{
+    font-size: 0.825rem;
+    height: 40px;
+    background-color: #e2e2e2;
+}
 table {
     width: 100%;
     overflow-x: auto;
