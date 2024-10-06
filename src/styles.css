@@ -8,3 +8,22 @@ body, html, app-root {
     margin: 0;
     padding: 0;
 }
+
+
+.toast-info {
+    background-color: theme('colors.info');
+    color: theme('colors.info-content');
+}
+.toast-error {
+    background-color: theme('colors.error');
+    color: theme('colors.error-content');
+}
+.toast-success {
+    background-color: theme('colors.success');
+    color: theme('colors.success-content');
+}
+.toast-warning {
+    background-color: theme('colors.warning');
+    color: theme('colors.warning-content');
+
+}

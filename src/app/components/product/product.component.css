@@ -14,8 +14,8 @@
 }
 .mat-mdc-header-cell{
     border-bottom: 0;
-    font-weight: bold;
-    color: gray;
+    color: theme('colors.gray.500');
+
     padding-top: 0;
     padding-bottom: 0;
 
@@ -24,6 +24,7 @@
 .mat-mdc-header-row{
     font-size: 0.825rem;
     height: 40px;
+    background-color: theme('colors.base-200');
 }
 
 th, td{
@@ -38,7 +39,9 @@ th, td{
 .mat-mdc-row:hover{
     font-size: 0.825rem;
     height: 40px;
-    background-color: #e2e2e2;
+    /*background-color: #e2e2e2;*/
+    background-color: theme('colors.base-200');
+    color: theme('colors.base-content');
 }
 table {
     width: 100%;

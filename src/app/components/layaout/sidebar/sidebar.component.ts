@@ -30,7 +30,5 @@ export class SidebarComponent {
   protected readonly faSackDollar = faSackDollar;
   protected readonly faComputer = faComputer;
   protected readonly faTags = faTags;
-  protected readonly faBurger = faBurger;
-  protected readonly faToggleOn = faToggleOn;
   protected readonly faBars = faBars;
 }
