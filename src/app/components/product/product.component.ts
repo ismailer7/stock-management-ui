@@ -2,7 +2,7 @@ import {AfterViewInit, Component, inject, ViewChild} from '@angular/core';
 import {Product} from "../../models/product.model";
 import {ProductService} from "../../services/product.service";
 import {PaginationComponent} from "../commun/pagination/pagination.component";
-import {AddproductComponent} from './addproduct/addproduct.component';
+import {OperacionProductComponent} from './addproduct/operacion-product.component';
 import {ToastrService} from 'ngx-toastr';
 import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource, MatTableModule} from "@angular/material/table";
@@ -20,7 +20,7 @@ import {LangChangeEvent, TranslateModule, TranslatePipe, TranslateService} from 
     standalone: true,
     imports: [
         PaginationComponent,
-        AddproductComponent,
+        OperacionProductComponent,
         MatPaginator,
         MatTableModule,
         MatSortModule,

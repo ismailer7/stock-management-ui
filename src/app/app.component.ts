@@ -1,6 +1,6 @@
 import {ChangeDetectorRef, Component} from '@angular/core';
 import {NavbarComponent} from './components/layaout/navbar/navbar.component';
-import {LayaoutComponent} from "./components/layaout/layaout.component";
+import {LayoutComponent} from "./components/layaout/layout.component";
 import { LoginComponent } from './components/login/login.component';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from './components/layaout/footer/footer.component';
@@ -11,7 +11,7 @@ import { LoadingService } from './services/loading.service';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NavbarComponent, LayaoutComponent,LoginComponent,LoadingSpinnerComponent,RouterOutlet, FooterComponent, TranslateModule],
+  imports: [NavbarComponent, LayoutComponent,LoginComponent,LoadingSpinnerComponent,RouterOutlet, FooterComponent, TranslateModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

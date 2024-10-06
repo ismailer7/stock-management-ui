@@ -13,9 +13,9 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent,
     RouterOutlet
   ],
-  templateUrl: './layaout.component.html',
-  styleUrl: './layaout.component.css'
+  templateUrl: './layout.component.html',
+  styleUrl: './layout.component.css'
 })
-export class LayaoutComponent {
+export class LayoutComponent {
 
 }
