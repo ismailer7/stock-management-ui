@@ -19,12 +19,12 @@
                   <div class="mb-4  relative">
                       <label>
                         {{ 'APP.SALE.ADDSALE.PRODUCT' | translate }}<span class="text-sm ms-1 text-red-500">*</span>: </label>
-                        <input type="text" class="input input-bordered mt-1 w-full" formControlName="search" placeholder="Search..." formControlName="productSearch">
-                          <select class="select select-m select-bordered w-full max-w mt-1"  id="product"  >
-                              @for (product of products; track product.id) {
-                                  <option [ngValue]="product">{{ product.productName }}</option>
-                              }
-                          </select>
+                        <input list="input-list" id="input" name="input" class="input input-bordered mt-1 w-full" placeholder="Select">
+                        <datalist id="input-list" class="bg-neutral-400">
+                        @for (product of products; track product.id) {
+                        <option [ngValue]="product" >{{ product.productName }}</option>
+                        }
+                        </datalist>
                           <div class="text-red-500  font-bold mt-1  text-xs ">
                            <!--  @if(productForm.get('category')?.touched && productForm.get('category')?.errors?.['required'])
                             {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }}</p> }  -->
@@ -61,7 +61,7 @@
                                      class="input input-bordered mt-1  w-full  placeholder=2024-12-02">
                   </div>
                   <div class="mb-4  relative ">
-                     
+                  
                   </div>
               </div>
           </div>

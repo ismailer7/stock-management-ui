@@ -6,6 +6,7 @@ import { Product } from '../../../models/product.model';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule, formatDate } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-sale-operation',
@@ -34,20 +35,45 @@ export class SaleOperationComponent {
     });
 
 
-    const value = this.saleForm.get('productSearch')?.value; 
-    
-     this.saleForm.get('productSearch')?.valueChanges.subscribe(value => { 
-          this.productService.getProductsByName(value).subscribe({
-              next: (resp) => {
-                const data = resp.body ?? []
-                this.products = [...data]
-                console.log("list products",this.products)
-             },
-            error: err => this.toastr.error('Error loading Products')});
-      }); 
-    console.log("this is search value",value);
+  }
+
+
+  ngOnInit(){
+
+    this.loadInitialProducts();
+    /* this.loadProductBySearch(); */
 
   }
+
+  loadInitialProducts() {
+    this.productService.getProductsByName('').subscribe({
+      next: (resp) => {
+        const data = resp.body ?? [];
+        this.products = [...data];
+        console.log("Initial product list", this.products);
+      },
+      error: (err) => this.toastr.error('Error loading initial Products')
+    });
+  }
+
+/*   loadProductBySearch() {
+    const productSearchControl = this.saleForm.get('productSearch');
+  
+    productSearchControl?.valueChanges.pipe(
+      debounceTime(500), 
+      distinctUntilChanged(),
+      switchMap(value => this.productService.getProductsByName(value))
+    ).subscribe({
+      next: (resp) => {
+        const data = resp.body ?? [];
+        this.products = [...data];
+        console.log("Filtered product list", this.products);
+      },
+      error: (err) => this.toastr.error('Error loading Products')
+    });
+  } */
+
+
 
 
   submit() {
@@ -65,3 +91,7 @@ export class SaleOperationComponent {
 
 
 }
+function loadInitialProducts() {
+  throw new Error('Function not implemented.');
+}
+
