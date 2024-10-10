@@ -62,7 +62,7 @@ export class SaleOperationComponent {
               description: [this.selectedSale?.description, Validators.required],
               product: [this.productSelected?.productName, Validators.required],
               saleQuantity: [this.selectedSale?.saleQuantity, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
-              discount: [this.selectedSale?.discount, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
+              discount: [this.selectedSale?.discount, [Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
               saleDate: [this.selectedSale?.saleDate]
              });
 
@@ -72,7 +72,7 @@ export class SaleOperationComponent {
             description: ['', Validators.required],
             product: [, Validators.required],
             saleQuantity: [, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
-            discount: [, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
+            discount: [, [ Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
             saleDate: []
            }); 
 
@@ -107,8 +107,9 @@ export class SaleOperationComponent {
    if (this.saleForm.invalid) {
          return;
    }
-
    const newSale = this.saleForm.value;
+
+   console.log("this form value:",this.saleForm.value);
    if (this.isEditMode === true)
        {  
            const id = this.selectedSale.id;
