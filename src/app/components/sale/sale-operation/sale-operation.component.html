@@ -1,10 +1,8 @@
 <dialog id="my_modal" class="modal">
     <div class="modal-box w-11/12 max-w-5xl">
       <form class="max-w mx-auto bg-white py-4 px-8 " [formGroup]="saleForm" (ngSubmit)="submit()" >
-        <!-- @if(isEditMode ===true) { -->
-        <!-- <h2 class="text-2xl font-bold mb-6">{{ 'APP.PRODUCT.ADDPRODUCT.EDIT' | translate }}:</h2>}
-        @else{ -->
-        <h2 class="text-2xl font-bold mb-6">{{ 'APP.SALE.ADDSALE.ADD' | translate }}:</h2><!-- } -->
+       
+        <h2 class="text-2xl font-bold mb-6">{{ 'APP.SALE.ADDSALE.ADD' | translate }}:</h2>
           <div class="row ">
               <div class="gap-4 columns-2">
                   <div class="mb-4 relative ">
@@ -12,22 +10,19 @@
                         {{ 'APP.SALE.ADDSALE.DESCRIPTION' | translate }}<span class="text-sm ms-1 text-red-500">*</span> :</label>
                           <input type="text" class="input input-bordered mt-1 w-full"   placeholder="Sale-A" id="description" formControlName="description"   />
                           <div class="text-red-500 font-bold mt-1  text-xs">
-                            <!-- @if(productForm.get('productName')?.invalid &&  productForm.get('productName')?.touched)
-                            {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }} </p>}    -->
+                          
                         </div>
                   </div>
                   <div class="mb-4  relative">
                       <label>
                         {{ 'APP.SALE.ADDSALE.PRODUCT' | translate }}<span class="text-sm ms-1 text-red-500">*</span>: </label>
-                        <input list="input-list" id="input" name="input" class="input input-bordered mt-1 w-full" placeholder="Select">
-                        <datalist id="input-list" class="bg-neutral-400">
+                        <input list="input-list" id="input" name="input" class="input input-bordered mt-1 w-full" placeholder="Select" formControlName="product">
+                        <datalist id="input-list" class="bg-neutral-400" >
                         @for (product of products; track product.id) {
                         <option [ngValue]="product" >{{ product.productName }}</option>
                         }
                         </datalist>
                           <div class="text-red-500  font-bold mt-1  text-xs ">
-                           <!--  @if(productForm.get('category')?.touched && productForm.get('category')?.errors?.['required'])
-                            {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }}</p> }  -->
                           </div>
                   </div>
               </div>
@@ -43,12 +38,7 @@
                         {{ 'APP.SALE.ADDSALE.DISCOUNT' | translate }}<span class="text-sm ms-1 text-red-500" >*</span> :</label>
                           <input type="text" class="input input-bordered mt-1 w-full"  placeholder="100" id="discount" formControlName="discount"  />
                           <div class="text-red-500  font-bold mt-1  text-xs ">
-                           <!--  @if(productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['required'])
-                            {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }}</p> } 
-                            @if(productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['pattern'])
-                            {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.NUMBER' | translate }} </p>} 
-                            @if(productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['min'])
-                            {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.MIN' | translate }} </p>}  -->
+                        
                          </div>   
                   </div>
               </div>  
@@ -61,18 +51,12 @@
                                      class="input input-bordered mt-1  w-full  placeholder=2024-12-02">
                   </div>
                   <div class="mb-4  relative ">
-                  
                   </div>
               </div>
           </div>
           <div class="modal-action">
-           <!--  @if(isEditMode ===true)
-                  { 
-                    <button type="submit" [disabled]="productForm.pristine || productForm.invalid " class="btn btn-primary px-8">{{ 'APP.PRODUCT.ADDPRODUCT.EDIT_BUTTON' | translate }}</button>          
-                  }@else
-                  { -->
+         
                     <button type="submit"  class="btn btn-primary px-8">{{ 'APP.SALE.ADDSALE.ADD_BUTTON' | translate }}</button>
-                  <!-- } -->
                   <form method="dialog">
                       <button id="btn-close-modal" class="btn px-8" >{{ 'APP.SALE.ADDSALE.CLOSE' | translate }}</button>
                   </form>

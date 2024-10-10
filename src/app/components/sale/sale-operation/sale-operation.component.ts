@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, HostListener, inject, Input, OnInit } from '@angular/core';
 import { ProductService } from '../../../services/product.service';
 import { SalesService } from '../../../services/sales.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -19,33 +19,23 @@ export class SaleOperationComponent {
 
   saleService = inject(SalesService);
   productService = inject(ProductService);
+  fb = inject(FormBuilder)
   toastr = inject(ToastrService);
   saleForm: FormGroup;
   products : Product [] = [];
+  @Input() selectedSale!: any;
+  productSelected: any;
+  isEditMode = false;
+  submitted = false;
 
 
-  constructor(private fb: FormBuilder) {
-
-    this.saleForm = this.fb.group({
-     description: ['', Validators.required],
-     productSearch: ['', Validators.required],
-     saleQuantity: [, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
-     discount: [, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
-     saleDate: [formatDate(new Date(), 'yyyy-MM-dd', 'en')]
-    });
-
-
+  constructor() {
+  
   }
 
 
   ngOnInit(){
 
-    this.loadInitialProducts();
-    /* this.loadProductBySearch(); */
-
-  }
-
-  loadInitialProducts() {
     this.productService.getProductsByName('').subscribe({
       next: (resp) => {
         const data = resp.body ?? [];
@@ -54,7 +44,41 @@ export class SaleOperationComponent {
       },
       error: (err) => this.toastr.error('Error loading initial Products')
     });
+    
+    /* this.loadProductBySearch(); */
+   
   }
+
+  ngOnChanges(){
+
+   console.log("onchange sale status: ",this.selectedSale);
+
+    this.isEditMode = this.selectedSale !== null;
+        console.log("edit mode:",this.isEditMode);
+        if (this.isEditMode)
+          {
+            this.productSelected = this.products.find(p => p.id === this.selectedSale.product.id);
+            this.saleForm = this.fb.group({
+              description: [this.selectedSale?.description, Validators.required],
+              product: [this.productSelected?.productName, Validators.required],
+              saleQuantity: [this.selectedSale?.saleQuantity, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
+              discount: [this.selectedSale?.discount, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
+              saleDate: [this.selectedSale?.saleDate]
+             });
+
+        }
+        else{
+          this.saleForm = this.fb.group({
+            description: ['', Validators.required],
+            product: [, Validators.required],
+            saleQuantity: [, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
+            discount: [, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
+            saleDate: []
+           }); 
+
+        }   
+  }
+ 
 
 /*   loadProductBySearch() {
     const productSearchControl = this.saleForm.get('productSearch');
@@ -77,21 +101,77 @@ export class SaleOperationComponent {
 
 
   submit() {
+   console.log("submitted")
+   
+   this.submitted = true;
+   if (this.saleForm.invalid) {
+         return;
+   }
 
-    
-    console.log("submitted")
-    
+   const newSale = this.saleForm.value;
+   if (this.isEditMode === true)
+       {  
+           const id = this.selectedSale.id;
+           console.log("edit sale with id: ",id)
+           this.saleService.editSale(id,newSale).subscribe({
+               next: (resp) => {
+                   const np = resp.body
+                   console.log(np);
+                   this.toastr.success('Sale edited!', 'Notification!');
+                   this.saleService.$triggerLoading.next(np)
+               },
+               error: (err: Error) => this.toastr.error(err.message, 'Error!')
+           })
+       }else
+           {  
+           this.saleService.addSale(newSale).subscribe({
+               next: (resp) => {
+                   const np = resp.body
+                   console.log(np);
+                   this.toastr.success('Sale added!', 'Notification!');
+                   this.reset();
+                   this.saleService.$triggerLoading.next(np)
+               },
+               error: (err: Error) => this.toastr.error(err.message, 'Error!')
+           })      
+           }
+  }
 
+  close() {   
+    if (this.isEditMode === false)
+      { console.log("errase for add only");
+        this.reset();}
+      else (document.getElementById('btn-close-modal') as HTMLFormElement)?.click();
+        
+    
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+  if (event.key === 'Escape') 
+    this.close();
+  
+ } 
+
+  reset() {
+
+    (document.getElementById('btn-close-modal') as HTMLFormElement)?.click();
+      this.saleForm.reset()
+      this.saleForm.patchValue({
+      buyDate: formatDate(new Date(), 'yyyy-MM-dd', 'en')
+        });
+        this.submitted = false
   }
 
 
 
-
-
-
-
 }
-function loadInitialProducts() {
-  throw new Error('Function not implemented.');
-}
+
+
+
+
+
+
+
+
 
