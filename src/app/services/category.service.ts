@@ -1,28 +1,50 @@
 import {inject, Injectable} from '@angular/core';
 import {Category} from '../models/category.model';
 import {MOCK_CATEGORIES} from '../data/mock-categories';
-import {Observable, of} from 'rxjs';
-import {HttpClient} from "@angular/common/http";
+import {Observable, of, Subject} from 'rxjs';
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {environment} from "../../environments/environment";
+import { SortDirection } from '@angular/material/sort';
+import { CategoryPage } from '../models/category-page.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
 
-  categories: Category[] = MOCK_CATEGORIES;
+  $triggerLoading = new Subject();
   http = inject(HttpClient);
 
   getAllCategories() {
     return this.http.get<Category[]>(`${environment.rooturl}/category/all`, { observe: 'response', withCredentials: true });
   }
+  
+  getCategoriesFiltered(
+    search_filter: string = '',
+    sort_field: string = '',
+    sort_order: SortDirection,
+    page: number = 1,
+    limit_per_page: number = 5
+) {
+  const params = new HttpParams()
+      .set('input', search_filter)
+      .set("sort", sort_field)
+      .set("order", sort_order)
+      .set("page", page)
+      .set("per_page", limit_per_page);
+  return this.http.get<CategoryPage>(`${environment.rooturl}/category/filtred`, { params: params, observe: 'response', withCredentials: true });
+}
+
+
+
+
+
 
   addCategory(category : Category){
-    this.categories.push(category);
+    
   }
 
-  deleteCategory(index: any): Observable<Category[]>{
-    this.categories.splice(index, 1);
-    return of(this.categories);
+  deleteCategory(index: any){
+    
   }
 }
