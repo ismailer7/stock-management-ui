@@ -1,7 +1,7 @@
-<div id="logo-sidebar" [ngClass]="hideSideBar ? 'px-0' : 'px-5'" class=" bg-accent rounded  pt-3   text-base-content" aria-label="Sidebar">
+<div id="logo-sidebar" [ngClass]="hideSideBar ? 'px-0' : 'px-5'" class="rounded  pt-3  text-base-content" aria-label="Sidebar">
     <div class="w-full flex flex-row mb-3">
-        <button [ngClass]="hideSideBar ? ' px-4':''" class="hover:bg-base-300 hover:text-base-content btn-circle -mt-2 me-2 text-xl transition-transform  active:rotate-45 ">
-            <fa-icon [icon]="faBars" (click)="toggleSidebar()"></fa-icon>
+        <button (click)="toggleSidebar()" [ngClass]="hideSideBar ? 'w-full px-4 py-2 mb-0 ':'btn-circle me-2 -mt-2'" class="hover:bg-base-300 hover:text-base-content  text-xl transition-transform  active:rotate-45 ">
+            <fa-icon [icon]="faBars" ></fa-icon>
         </button>
         <div>
             <a [ngClass]="hideSideBar ? 'hidden' : ''" routerLink="/home"
