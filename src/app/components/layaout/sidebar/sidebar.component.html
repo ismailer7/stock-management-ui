@@ -1,49 +1,49 @@
-<div id="logo-sidebar" class=" rounded px-5 pt-3   text-base-content" aria-label="Sidebar">
+<div id="logo-sidebar" [ngClass]="hideSideBar ? 'px-0' : 'px-5'" class=" bg-accent rounded  pt-3   text-base-content" aria-label="Sidebar">
     <div class="w-full flex flex-row mb-3">
-        <button class="hover:bg-base-300 hover:text-base-content btn-circle -mt-2 me-2 text-xl transition-transform  active:rotate-45 ">
-            <fa-icon [icon]="faBars"></fa-icon>
+        <button [ngClass]="hideSideBar ? ' px-4':''" class="hover:bg-base-300 hover:text-base-content btn-circle -mt-2 me-2 text-xl transition-transform  active:rotate-45 ">
+            <fa-icon [icon]="faBars" (click)="toggleSidebar()"></fa-icon>
         </button>
         <div>
-            <a routerLink="/home"
+            <a [ngClass]="hideSideBar ? 'hidden' : ''" routerLink="/home"
                class="self-center text-xl font-mono sm:text-2xl whitespace-nowrap dark:text-white">{{ 'APP.NAME' | translate }}</a>
         </div>
     </div>
-    <div class="h-96 px-3 pb-4 overflow-y-auto  text-base-content">
+    <div [ngClass]="hideSideBar ? 'ps-0':'px-3'" class="h-96 pb-4 overflow-y-auto  text-base-content">
         <ul class="space-y-0.5 font-medium">
-            <li>
+            <li class="block text-center w-full">
                 <a routerLink="/home/dashboard" routerLinkActive="active" ariaCurrentWhenActive="page"
-                   class="flex items-center p-2 text-gray-900 rounded-lg transition duration-75 focus:bg-neutral-300 focus:text-accent-content hover:bg-base-300 hover:text-base-content group">
-                    <fa-icon [icon]="faComputer"
+                   [ngClass]="hideSideBar ? 'px-3':''" class="flex items-center p-2 text-gray-900 rounded-lg transition duration-75 focus:bg-neutral-300 focus:text-accent-content hover:bg-base-300 hover:text-base-content group">
+                    <fa-icon  [icon]="faComputer"
                              class="text-lg"></fa-icon>
-                    <span class="ms-3 ">{{ 'APP.SIDEBAR.DASHBOARD' | translate }}</span>
+                    <span [ngClass]="hideSideBar ? 'hidden' : ''" class="ms-3 ">{{ 'APP.SIDEBAR.DASHBOARD' | translate }}</span>
                 </a>
             </li>
 
 
             <li>
-                <a routerLink="/home/sales" routerLinkActive="active" ariaCurrentWhenActive="page"
+                <a [ngClass]="hideSideBar ? 'px-3':''" routerLink="/home/sales" routerLinkActive="active" ariaCurrentWhenActive="page"
                    class="flex items-center p-2 text-gray-900 rounded-lg transition duration-75 focus:bg-neutral-300 focus:text-accent-content hover:bg-base-300 hover:text-base-content group">
-                    <fa-icon [icon]="faSackDollar"
+                    <fa-icon [ngClass]="hideSideBar ? 'ps-0':''" [icon]="faSackDollar"
                              class="text-lg"></fa-icon>
-                    <span class="ms-3">{{ 'APP.SIDEBAR.SALES' | translate }}</span>
+                    <span [ngClass]="hideSideBar ? 'hidden' : ''" class="ms-3">{{ 'APP.SIDEBAR.SALES' | translate }}</span>
 
                 </a>
             </li>
             <li>
-                <a routerLink="/home/products" routerLinkActive="active" ariaCurrentWhenActive="page"
+                <a [ngClass]="hideSideBar ? 'px-3':''" routerLink="/home/products" routerLinkActive="active" ariaCurrentWhenActive="page"
                    class="flex items-center p-2 text-gray-900 rounded-lg transition duration-75 focus:bg-neutral-300 focus:text-accent-content hover:bg-base-300 hover:text-base-content group">
                     <fa-icon [icon]="faHandshake"
                              class="text-lg"></fa-icon>
-                    <span class="ms-3">{{ 'APP.SIDEBAR.PRODUCT' | translate }}</span>
+                    <span [ngClass]="hideSideBar ? 'hidden' : ''" class="ms-3">{{ 'APP.SIDEBAR.PRODUCT' | translate }}</span>
                 </a>
             </li>
 
             <li>
-                <a routerLink="/home/category" routerLinkActive="active" ariaCurrentWhenActive="page"
+                <a [ngClass]="hideSideBar ? 'px-3':''" routerLink="/home/category" routerLinkActive="active" ariaCurrentWhenActive="page"
                    class="flex items-center p-2 text-gray-900 rounded-lg transition duration-75 focus:bg-neutral-300 focus:text-accent-content hover:bg-base-300 hover:text-base-content group">
                     <fa-icon [icon]="faTags"
                              class="text-lg"></fa-icon>
-                    <span class="ms-3">{{ 'APP.SIDEBAR.CATEGORIES' | translate }}</span>
+                    <span [ngClass]="hideSideBar ? 'hidden' : ''" class="ms-3">{{ 'APP.SIDEBAR.CATEGORIES' | translate }}</span>
                 </a>
             </li>
         </ul>
