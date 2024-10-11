@@ -35,16 +35,15 @@ export class CategoryService {
   return this.http.get<CategoryPage>(`${environment.rooturl}/category/filtred`, { params: params, observe: 'response', withCredentials: true });
 }
 
-
-
-
-
-
   addCategory(category : Category){
-    
+    return this.http.post<Category>(`${environment.rooturl}/category/add`, category,  {observe: 'response', withCredentials: true })
   }
 
-  deleteCategory(index: any){
-    
+  editCategory(id: Number, category : Category){
+    return this.http.put<Category>(`${environment.rooturl}/category/edit/${id}`, category,  {observe: 'response', withCredentials: true })
+  }
+
+  deleteCategory(id: Number){
+    return this.http.delete(`${environment.rooturl}/category/delete/${id}`, {responseType: "text", withCredentials: true })
   }
 }

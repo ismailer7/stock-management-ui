@@ -25,7 +25,8 @@ import { CategoryPage } from '../../models/category-page.model';
             MatSortModule,
             ReactiveFormsModule,
             MatProgressSpinner,
-            MatProgressBar
+            MatProgressBar,
+            AddCategoryComponent
   ],
   templateUrl: './category.component.html',
   styleUrl: './category.component.css'
@@ -44,6 +45,7 @@ export class CategoryComponent implements AfterViewInit {
     @ViewChild(MatSort) sort: MatSort;
     isLoading = true;
     searchKeywordFilter = new FormControl();
+    selectedCategory: any = null;
 
     ngAfterViewInit(): void {
         this.dataSource.paginator = this.paginator;
@@ -107,14 +109,28 @@ export class CategoryComponent implements AfterViewInit {
 
             addCategory(){
                 
+                this.selectedCategory = null;
+                console.log("add Category:",this.selectedCategory);
             }
         
             editCategory(id: Category) {
                
+                const p = this.categories.find( c => c.id == id);
+                this.selectedCategory = { ...p};
+                console.log("edit Category",this.selectedCategory);
             }
     
             deleteCategory(id: Number) {
-               
+                this.categoryService.deleteCategory(id)
+                .subscribe({
+                    next: (resp) =>{
+                        this.toastr.success(resp?? '')
+                        this.categoryService.$triggerLoading.next(resp);
+                    },
+                    error: err => {
+                        this.toastr.error(err ?? '')
+                    }
+                })
             }
     
 
