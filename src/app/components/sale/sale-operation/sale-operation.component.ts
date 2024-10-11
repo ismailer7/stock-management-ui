@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CommonModule, formatDate } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
+import { ErrorResponse } from '../../../models/error-response.model';
 
 @Component({
   selector: 'app-sale-operation',
@@ -27,6 +28,7 @@ export class SaleOperationComponent {
   productSelected: any;
   isEditMode = false;
   submitted = false;
+  
 
 
   constructor() {
@@ -60,7 +62,7 @@ export class SaleOperationComponent {
             this.productSelected = this.products.find(p => p.id === this.selectedSale.product.id);
             this.saleForm = this.fb.group({
               description: [this.selectedSale?.description, Validators.required],
-              product: [this.productSelected?.productName, Validators.required],
+              product: [this.productSelected, Validators.required],
               saleQuantity: [this.selectedSale?.saleQuantity, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
               discount: [this.selectedSale?.discount, [Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
               saleDate: [this.selectedSale?.saleDate]
@@ -116,12 +118,17 @@ export class SaleOperationComponent {
            console.log("edit sale with id: ",id)
            this.saleService.editSale(id,newSale).subscribe({
                next: (resp) => {
-                   const np = resp.body
+                   const np = resp.body;
                    console.log(np);
                    this.toastr.success('Sale edited!', 'Notification!');
-                   this.saleService.$triggerLoading.next(np)
+                   this.saleService.$triggerLoading.next(np);
+                   this.close();
                },
-               error: (err: Error) => this.toastr.error(err.message, 'Error!')
+               error: (err) => {
+                const errorResponse = err.error as ErrorResponse;
+                const errorMessage = errorResponse?.message || 'Error';
+                this.toastr.error(errorMessage);
+              }
            })
        }else
            {  
@@ -133,7 +140,11 @@ export class SaleOperationComponent {
                    this.reset();
                    this.saleService.$triggerLoading.next(np)
                },
-               error: (err: Error) => this.toastr.error(err.message, 'Error!')
+               error: (err) => {
+                const errorResponse = err.error as ErrorResponse;
+                const errorMessage = errorResponse?.message || 'Error';
+                this.toastr.error(errorMessage);
+               }
            })      
            }
   }

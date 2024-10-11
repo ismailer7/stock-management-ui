@@ -20,13 +20,12 @@
                   <div class="mb-4  relative">
                       <label>
                         {{ 'APP.SALE.ADDSALE.PRODUCT' | translate }}<span class="text-sm ms-1 text-red-500">*</span>: </label>
-                        <input list="input-list" id="input" name="input" class="input input-bordered mt-1 w-full" placeholder="Select" id="product" formControlName="product"
-                        [ngClass]="{inputError: saleForm.get('product')?.invalid && saleForm.get('product')?.touched}">
-                        <datalist id="input-list"   >
+                        <select class="select select-m select-bordered w-full max-w mt-1" placeholder="Select Product"
+                         [ngClass]="{inputError: saleForm.get('product')?.invalid &&  saleForm.get('product')?.touched}" id="category" formControlName="product" >
                         @for (product of products; track product.id) {
                         <option [ngValue]="product" >{{ product.productName }}</option>
                         }
-                        </datalist>
+                        </select>
                         <div class="text-red-500  font-bold mt-1  text-xs ">
                           @if(saleForm.get('product')?.touched && saleForm.get('product')?.errors?.['required'])
                           {<p>{{ 'APP.SALE.ADDSALE.VALIDATION.REQUIRED' | translate }}</p> } 
