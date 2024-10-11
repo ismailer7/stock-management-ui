@@ -35,6 +35,22 @@ export class SalesService {
   return this.http.get<SalePage>(`${environment.rooturl}/sale/filtred`, { params: params, observe: 'response', withCredentials: true });
 }
 
+/* deleteSaleById(id: Number) {
+  return this.http.delete(`${environment.rooturl}/sale/delete/${id}`, {responseType: "text", withCredentials: true })
+} */
+
+  addSale(sale : Sale){
+    return this.http.post<Sale>(`${environment.rooturl}/sale/add`, sale,  {observe: 'response', withCredentials: true })
+  }
+
+  editSale(id: Number, sale : Sale){
+    return this.http.put<Sale>(`${environment.rooturl}/sale/edit/${id}`, sale,  {observe: 'response', withCredentials: true })
+  }
+
+
+  deleteSaleById(id: Number) {
+    return this.http.delete(`${environment.rooturl}/sale/delete/${id}`, {responseType: "text", withCredentials: true })
+  }
 
 
 }

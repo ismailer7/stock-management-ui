@@ -14,6 +14,7 @@ import { SalePage } from '../../models/sale-page.model';
 import { PaginationComponent } from '../commun/pagination/pagination.component';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MatProgressBar } from '@angular/material/progress-bar';
+import { SaleOperationComponent } from './sale-operation/sale-operation.component';
 
 
 
@@ -27,7 +28,8 @@ import { MatProgressBar } from '@angular/material/progress-bar';
         MatSortModule,
         ReactiveFormsModule,
         MatProgressSpinner,
-        MatProgressBar
+        MatProgressBar,
+        SaleOperationComponent
   ],
   templateUrl: './sale.component.html',
   styleUrl: './sale.component.css'
@@ -47,7 +49,7 @@ export class SaleComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   isLoading = true;
   searchKeywordFilter = new FormControl();
-  selectedProduct: any = null;
+  selectedSale: any = null;
   currentSale: Sale | null = null;
 
 
@@ -103,6 +105,32 @@ export class SaleComponent implements AfterViewInit {
 
         }
 
+        addSale(){
+            this.selectedSale = null;
+            console.log("add Sale:",this.selectedSale);
+           
+        }
+    
+        editSale(id: Sale) {
+            const p = this.sales.find( p => p.id == id);
+            this.selectedSale = { ...p};
+            console.log("edit Sale",this.selectedSale);
+        }
+
+        deleteSale(id: Number) {
+            this.salesService.deleteSaleById(id)
+                .subscribe({
+                    next: (resp) =>{
+                        this.toastr.success(resp?? '')
+                        this.salesService.$triggerLoading.next(resp);
+                    },
+                    error: err => {
+                        this.toastr.error(err ?? '')
+                    }
+                })
+        }
+
+
           onSortChange(sortState: Sort) {
             console.log(sortState)
         }
@@ -111,7 +139,7 @@ export class SaleComponent implements AfterViewInit {
             console.log(event)
         }
 
-
+     
 
 
 
