@@ -8,7 +8,7 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource, MatTableModule} from "@angular/material/table";
 import {MatSort, MatSortModule, Sort} from "@angular/material/sort";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
-import {debounceTime, map, merge, startWith, switchMap} from "rxjs";
+import {debounceTime, map, merge, scan, startWith, switchMap} from "rxjs";
 import {Page} from "../../models/product-page.model";
 import {HttpResponse} from "@angular/common/http";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
@@ -55,15 +55,17 @@ export class ProductComponent implements AfterViewInit {
         this.dataSource.sort = this.sort;
         this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));   //the first on sort order change, reset back to st page.
         merge(this.searchKeywordFilter.valueChanges.pipe(debounceTime(500)), this.sort.sortChange, this.paginator.page, this.productsService.$triggerLoading)
-            .pipe(
+            .pipe(scan((acc, current) => {
+                if (typeof current == "string") {
+                    this.paginator.pageIndex = 0;
+                }
+                return acc;
+            }, 0),
                 startWith({}),
                 switchMap(() => {
                     this.isLoading = true;
                     this.dataSource.data = this.dataSource.data // this is to keep old data while loading to prevent flickering behavior
                     const filterValue = this.searchKeywordFilter.value == null ? '' : this.searchKeywordFilter.value;
-                    if (filterValue) {
-                        this.paginator.pageIndex = 0
-                    }
                     return this.productsService
                         .getProductsFiltered(
                             filterValue,

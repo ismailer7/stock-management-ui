@@ -1,22 +1,35 @@
-<dialog id="my_modal_2" class="modal">
-    <div class="modal-box">
-      <form class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md" [formGroup]="categoryForm" >
-        <h2 class="text-2xl font-bold mb-6">{{ 'APP.CATEGORY.ADD' | translate }}:</h2>
-
-        <div class="mb-4">
-            <label class="input input-bordered flex items-center gap-2">
-              {{ 'APP.CATEGORY.CATEGORY_SEARCH' | translate }}
-                <input type="text" class="grow" placeholder="telephones" id="cname" formControlName="name" />
-              </label>
+<dialog id="my_modal2" class="modal">
+  <div class="modal-box w-11/12 max-w-5xl">
+    <form class="max-w mx-auto bg-white py-4 px-8 " [formGroup]="categoryForm" (ngSubmit)="submit()" >
+      @if(isEditMode ===true) {
+      <h2 class="text-2xl font-bold mb-6">{{ 'APP.CATEGORY.ADDCATEGORY.EDIT' | translate }}:</h2>
+      }
+      @else{
+      <h2 class="text-2xl font-bold mb-6">{{ 'APP.CATEGORY.ADDCATEGORY.ADD' | translate }}:</h2>
+      }
+        <div class="row ">
+                    <label>
+                      {{ 'APP.CATEGORY.ADDCATEGORY.NAME' | translate }} :</label>
+                        <input type="text" class="input input-bordered mt-1 w-full"   placeholder="Phones" id="name" formControlName="name"
+                        [ngClass]="{inputError: categoryForm.get('name')?.invalid &&  categoryForm.get('name')?.touched}"   />
+                        <div class="text-red-500 font-bold mt-1  text-xs">
+                          @if(categoryForm.get('name')?.touched && categoryForm.get('name')?.errors?.['required'])
+                          {<p>{{ 'APP.CATEGORY.ADDCATEGORY.VALIDATION.REQUIRED' | translate }}</p> } 
+                        </div>
         </div>
         <div class="modal-action">
-          <form method="dialog">
-            <div class="btn-group">
-              <button (click)="addCategory();" class="add px-3 py-2 mr-2 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">{{ 'APP.CATEGORY.ADDCATEGORY.ADD' | translate }}</button>
-              <button class="close px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">{{ 'APP.CATEGORY.ADDCATEGORY.CLOSE' | translate }}</button>
-            </div>  
-          </form>
+          @if(isEditMode ===true)
+          { 
+            <button type="submit"  [disabled]="categoryForm.pristine || categoryForm.invalid " class="btn btn-primary px-8">{{ 'APP.CATEGORY.ADDCATEGORY.EDIT_BUTTON' | translate }}</button>
+          }@else
+          {
+            <button type="submit" [disabled]="categoryForm.invalid"  class="btn btn-primary px-8">{{ 'APP.CATEGORY.ADDCATEGORY.ADD_BUTTON' | translate }}</button>
+          }    
+                <form method="dialog">
+                    <button id="btn-close-modal" class="btn px-8" (click)="close()">{{ 'APP.CATEGORY.ADDCATEGORY.CLOSE' | translate }}</button>
+                </form>
         </div>
     </form>
-    </div>
-  </dialog>
+  </div>
+
+</dialog>
