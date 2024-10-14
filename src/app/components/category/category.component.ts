@@ -14,6 +14,7 @@ import { MatProgressBar } from '@angular/material/progress-bar';
 import { debounceTime, map, merge, startWith, switchMap } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 import { CategoryPage } from '../../models/category-page.model';
+import { ErrorResponse } from '../../models/error-response.model';
 
 @Component({
   selector: 'app-category',
@@ -124,11 +125,13 @@ export class CategoryComponent implements AfterViewInit {
                 this.categoryService.deleteCategory(id)
                 .subscribe({
                     next: (resp) =>{
-                        this.toastr.success(resp?? '')
+                        this.toastr.success('Sale Deleted!', 'Notification!');
                         this.categoryService.$triggerLoading.next(resp);
                     },
                     error: err => {
-                        this.toastr.error(err ?? '')
+                        const errorResponse = err.error as ErrorResponse;
+                        const errorMessage = errorResponse?.message || 'Error';
+                        this.toastr.error(errorMessage);
                     }
                 })
             }
