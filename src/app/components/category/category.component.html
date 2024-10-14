@@ -8,19 +8,19 @@
       </li>
     </ol>
     </nav><br>
-    <div class="flex p-4 bg-[#f2f2f2] rounded-md mb-5 shadow">
+    <div class="flex p-3 pb-7 border-secondary border-b-2 mb-8">
         <input
           [formControl]="searchKeywordFilter" #input
           type="text"
           placeholder="{{ 'APP.CATEGORY.SEARCH' | translate }}"
-          class="flex-grow  p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-lightblue-500"
+          class="flex-grow  p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-secondary"
         />
         <!-- Buttons -->
-        <button class="btn  bg-[#212b39] text-gray-300 hover:bg-gray-300 hover:text-[#212b39]  ml-4 px-4 py-2" (click)="addCategory()"   onclick="my_modal2.showModal()"><i class="fa fa-solid fa-plus text-xl"></i></button>
-        <button class="btn  btn-active ml-4 px-4 py-2">{{ 'APP.CATEGORY.EXPORT' | translate }}</button>
+        <button class="btn  btn-primary btn-outline ml-4 px-4 py-2" (click)="addCategory()"   onclick="my_modal2.showModal()"><i class="fa fa-solid fa-plus text-xl"></i></button>
+        <button class="btn  btn-primary ml-4 px-4 py-2">{{ 'APP.CATEGORY.EXPORT' | translate }}</button>
       </div>
 <div class="mat-elevation-z8 shadow">
-    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="onSortChange($event)" class="table table-zebra ">
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="onSortChange($event)" class="table">
         <!-- Id Column -->
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
