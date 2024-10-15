@@ -7,6 +7,66 @@ body, html, app-root {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: "Montserrat Alternates", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+table {
+    width: 100%;
+    overflow-x: auto;
+}
+th, td {
+    padding: 16px;
+    text-align: left;
+}
+
+@media (max-width: 600px) {
+    th, td {
+        display: block;
+        width: 100%;
+    }
+}
+
+table .mat-mdc-header-row {
+    font-size: 0.825rem;
+    height: 40px;
+    background-color: theme('colors.base-200');
+    font-family: "Montserrat Alternates", sans-serif;
+}
+
+
+table .mat-mdc-cell{
+    border-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-family: "Roboto", sans-serif;
+}
+table.mat-mdc-table{
+    background-color: transparent;
+}
+mat-paginator.mat-mdc-paginator{
+    background-color: transparent;
+    border-top: 1px dashed lightgray;
+
+}
+table .mat-mdc-header-cell{
+    border-bottom: 0;
+    color: theme('colors.gray.500');
+    padding-top: 0;
+    padding-bottom: 0;
+}
+table .mat-mdc-row{
+    font-size: 0.825rem;
+    height: 40px;
+}
+
+table .mat-mdc-row:hover{
+    font-size: 0.825rem;
+    height: 40px;
+    /*background-color: #e2e2e2;*/
+    background-color: theme('colors.base-200');
+    color: theme('colors.base-content');
 }
 
 
@@ -26,4 +86,11 @@ body, html, app-root {
     background-color: theme('colors.warning');
     color: theme('colors.warning-content');
 
+}
+
+
+.pacifico-regular {
+    font-family: "Pacifico", cursive;
+    font-weight: 900;
+    font-style: normal;
 }

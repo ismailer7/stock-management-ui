@@ -1,4 +1,9 @@
-.inputError{
+.bg-image {
+    /* The image used */
+    background-image: url("https://img.freepik.com/free-photo/industrial-warehouse-stacking-packages-with-order-invoices_482257-83355.jpg?t=st=1727534808~exp=1727538408~hmac=bd06310658ca284e75891d860daa25390dbc8cce7387db98c6f5a4f5539a86ef&w=1060");
 
-    outline: 2px solid #F40009;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
