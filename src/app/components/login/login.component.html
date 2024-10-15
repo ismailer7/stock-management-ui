@@ -3,11 +3,8 @@
     <div class="container z-20 mx-auto max-w-md ">
         <div class="py-12 p-10 bg-accent rounded-xl bg-opacity-40  shadow-2xl glass ">
             <div class="mb-8 flex flex-col items-center">
-                <!--        <img src="https://i.ibb.co/vvstP1N/gradient-data-logo-template-2-1-1.png" width="70" alt="" srcset="" />-->
-
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="150"
-                     height="150" zoomAndPan="magnify" viewBox="0 0 375 374.999991" preserveAspectRatio="xMidYMid meet"
-                     version="1.0">
+                     height="150" viewBox="0 0 375 374.999991" preserveAspectRatio="xMidYMid meet">
                     <defs>
                         <g/>
                         <clipPath id="78e4dd12cc">
@@ -239,19 +236,14 @@
             </div>
             <form (ngSubmit)="login()" [formGroup]="loginForm" class="">
                 <div class="mb-6">
-                    <label class="mr-4 text-gray-700 font-bold inline-block mb-2" for="name">Username</label>
+                    <label class="mr-4 text-gray-700 font-bold inline-block mb-2" for="username">Username</label>
                     <label class="input input-bordered flex items-center gap-2"
                            [ngClass]="{'outline outline-error': (loginForm.get('username')?.invalid && loginForm.get('username')?.touched) ||
         (loginForm.get('username')?.invalid && submitted)}">
-                        <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 16 16"
-                                fill="currentColor"
-                                class="h-4 w-4 opacity-70">
-                            <path
-                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"/>
-                        </svg>
-                        <input type="text" class="grow  focus:ring-0 border-none border-0" placeholder="Username" id="username" formControlName="username"
+                        <fa-icon  [icon]="faUser"
+                                  class="text-xs mt-0.5 text-gray-600"></fa-icon>
+                        <input type="text" class="grow  focus:ring-0 border-none border-0" placeholder="Username"
+                               id="username" formControlName="username"
                                name="username"/>
                     </label>
                     <div class="text-error font-bold mt-1  text-xs">
@@ -262,21 +254,14 @@
                     </div>
                 </div>
                 <div class="">
-                    <label class="mr-4 text-gray-700 font-bold inline-block mb-2" for="name">Password</label>
+                    <label class="mr-4 text-gray-700 font-bold inline-block mb-2" for="password">Password</label>
                     <label class="input flex items-center gap-2 outline-error"
                            [ngClass]="{'outline outline-error': (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) ||
         (loginForm.get('password')?.invalid && submitted)}">
-                        <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 16 16"
-                                fill="currentColor"
-                                class="h-4 w-4 opacity-70">
-                            <path
-                                    fill-rule="evenodd"
-                                    d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
-                                    clip-rule="evenodd"/>
-                        </svg>
-                        <input type="password" class="grow focus:ring-0 border-none border-0" placeholder="**********" id="password"
+                        <fa-icon  [icon]="faKey"
+                                  class="text-xs text-gray-600"></fa-icon>
+                        <input type="password" class="grow focus:ring-0 border-none border-0" placeholder="**********"
+                               id="password"
                                formControlName="password" name="password"/>
                     </label>
                     <div class="text-error font-bold mt-1  text-xs">
