@@ -21,7 +21,7 @@ th, td {
     text-align: left;
 }
 
-@media (max-width: 600px) {
+@media (min-width: 5000px) {
     th, td {
         display: block;
         width: 100%;

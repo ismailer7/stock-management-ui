@@ -8,16 +8,16 @@
       </li>
     </ol>
     </nav><br>
-    <div class="flex p-3 pb-7 border-secondary border-b-2 mb-8">
+    <div class="flex flex-col md:flex-row p-3 pb-7 border-secondary border-b-2 mb-8">
         <input
           [formControl]="searchKeywordFilter" #input
           type="text"
           placeholder="{{ 'APP.CATEGORY.SEARCH' | translate }}"
-          class="flex-grow  p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-secondary"
+          class="flex-grow mt-2 p-2 border border-gray-300 rounded-md focus:outline focus:outline-none focus:border-secondary focus:border-2 focus:ring-0"
         />
         <!-- Buttons -->
-        <button class="btn  btn-primary btn-outline ml-4 px-4 py-2" (click)="addCategory()"   onclick="my_modal2.showModal()"><i class="fa fa-solid fa-plus text-xl"></i></button>
-        <button class="btn  btn-primary ml-4 px-4 py-2">{{ 'APP.CATEGORY.EXPORT' | translate }}</button>
+        <button class="btn mt-2 btn-primary btn-outline md:ml-4 md:px-4 py-2" (click)="addCategory()"   onclick="my_modal2.showModal()"><i class="hidden md:inline fa fa-solid fa-plus text-xl"></i> <span class="md:hidden">{{ 'APP.PRODUCT.ADDPRODUCT.ADD_BUTTON' | translate }}</span></button>
+        <button class="btn mt-2 btn-primary md:ml-4 md:px-4 py-2">{{ 'APP.CATEGORY.EXPORT' | translate }}</button>
       </div>
 <div class="mat-elevation-z8 shadow">
     <table mat-table [dataSource]="dataSource" matSort (matSortChange)="onSortChange($event)" class="table">
