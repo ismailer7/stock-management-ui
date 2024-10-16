@@ -3,6 +3,10 @@
     <form class="max-w mx-auto bg-white py-4 px-8 " [formGroup]="categoryForm" (ngSubmit)="submit()" >
       @if(isEditMode ===true) {
       <h2 class="text-2xl font-bold mb-6">{{ 'APP.CATEGORY.ADDCATEGORY.EDIT' | translate }}:</h2>
+      @if(isView)
+      {
+      <h2 class="text-2xl font-bold mb-6">View:</h2>
+      }
       }
       @else{
       <h2 class="text-2xl font-bold mb-6">{{ 'APP.CATEGORY.ADDCATEGORY.ADD' | translate }}:</h2>
@@ -18,9 +22,16 @@
                         </div>
         </div>
         <div class="modal-action">
-          @if(isEditMode ===true)
+          @if(isEditMode === true)
           { 
-            <button type="submit"  [disabled]="categoryForm.pristine || categoryForm.invalid " class="btn btn-primary px-8">{{ 'APP.CATEGORY.ADDCATEGORY.EDIT_BUTTON' | translate }}</button>
+            @if(isView ===true)
+            {
+              <button  class="btn btn-primary px-8">View</button>
+            }@else{
+              <button type="submit"  [disabled]="categoryForm.pristine || categoryForm.invalid " class="btn btn-primary px-8">{{ 'APP.CATEGORY.ADDCATEGORY.EDIT_BUTTON' | translate }}</button>
+
+            }
+          
           }@else
           {
             <button type="submit" [disabled]="categoryForm.invalid"  class="btn btn-primary px-8">{{ 'APP.CATEGORY.ADDCATEGORY.ADD_BUTTON' | translate }}</button>
