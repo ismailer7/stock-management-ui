@@ -1,58 +1,20 @@
-
-.mat-mdc-cell{
-    border-bottom: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-}
-.mat-mdc-table{
-    background-color: transparent;
-}
-.mat-mdc-paginator{
-    background-color: transparent;
-    border-top: 1px dashed lightgray;
-
-}
-.mat-mdc-header-cell{
-    border-bottom: 0;
-    font-weight: bold;
-    color: gray;
-    padding-top: 0;
-    padding-bottom: 0;
-
-
-}
-.mat-mdc-header-row{
-    font-size: 0.825rem;
-    height: 40px;
+.mat-column-id{
+    width: 5%;
 }
 
-th, td{
-    padding: 0;
+.mat-column-description{
+    width: 30%;
 }
 
-.mat-mdc-row{
-    font-size: 0.825rem;
-    height: 40px;
-
-}
-.mat-mdc-row:hover{
-    font-size: 0.825rem;
-    height: 40px;
-    background-color: #e2e2e2;
-}
-table {
-    width: 100%;
-    overflow-x: auto;
+.mat-column-product-productName{
+    width: 20%;
 }
 
-th, td {
-    padding: 16px;
-    text-align: left;
+.mat-column-product-unitSellPrice{
+    width: 10%;
 }
 
-@media (max-width: 600px) {
-    th, td {
-        display: block;
-        width: 100%;
-    }
+
+.mat-column-saleQuantity{
+    width: 10%;
 }

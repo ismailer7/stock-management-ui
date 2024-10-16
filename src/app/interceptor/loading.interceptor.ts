@@ -1,8 +1,8 @@
-import { HttpHandler, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
-import { finalize, Observable } from 'rxjs';
+import {HttpInterceptorFn} from '@angular/common/http';
+import {finalize} from 'rxjs';
 
-import { inject } from '@angular/core';
-import { LoadingService } from '../services/loading.service';
+import {inject} from '@angular/core';
+import {LoadingService} from '../services/loading.service';
 import {environment} from "../../environments/environment";
 
 export const loadingInterceptor: HttpInterceptorFn = (req, next) => {

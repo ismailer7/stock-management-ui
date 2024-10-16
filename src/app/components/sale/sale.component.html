@@ -8,20 +8,20 @@
       </li>
     </ol>
     </nav><br>
-    <div class="flex p-4 bg-[#f2f2f2] rounded-md mb-5 shadow">
+    <div class="flex flex-col md:flex-row p-3 pb-7 border-secondary border-b-2 mb-8">
         <input
                 [formControl]="searchKeywordFilter" #input
           type="text"
           placeholder="{{ 'APP.SALE.SEARCH' | translate }}"
-          class="flex-grow  p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-lightblue-500"
+          class="flex-grow mt-2 p-2 border border-gray-300 rounded-md focus:outline focus:outline-none focus:border-secondary focus:border-2 focus:ring-0"
         />
         <!-- Buttons -->
-        <button class="btn  bg-[#212b39] text-gray-300 hover:bg-gray-300 hover:text-[#212b39]  ml-4 px-4 py-2" (click)="addSale()"   onclick="my_modal.showModal()"><i class="fa fa-solid fa-plus text-xl"></i></button>
-        <button class="btn  btn-active ml-4 px-4 py-2">{{ 'APP.SALE.EXPORT' | translate }}</button>
+        <button class="btn mt-2 btn-primary btn-outline md:ml-4 md:px-4 py-2" (click)="addSale()"   onclick="my_modal.showModal()"><i class="hidden md:inline fa fa-solid fa-plus text-xl"></i> <span class="md:hidden">{{ 'APP.PRODUCT.ADDPRODUCT.ADD_BUTTON' | translate }}</span></button>
+        <button class="btn mt-2 btn-primary md:ml-4 md:px-4 py-2">{{ 'APP.SALE.EXPORT' | translate }}</button>
       </div>
 
 <div class="mat-elevation-z8 shadow">
-    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="onSortChange($event)" class="table table-zebra ">
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="onSortChange($event)" class="table ">
         <!-- Id Column -->
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>

@@ -9,7 +9,7 @@ import {formatDate} from "@angular/common";
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-    selector: 'app-addproduct',
+    selector: 'app-operation-product',
     standalone: true,
     imports: [ReactiveFormsModule, CommonModule, TranslateModule],
     templateUrl: './operacion-product.component.html',

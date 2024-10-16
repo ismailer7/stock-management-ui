@@ -20,9 +20,8 @@ export class LoadingService {
     setTimeout(() => {
       // Your API call or data loading logic
       console.log('Data fetched successfully');
-      
       this.loadingSubject.next(false); // Hide spinner after data is loaded
-    }, 1000);
+    }, 500);
     
   }
 }

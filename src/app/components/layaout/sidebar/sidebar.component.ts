@@ -11,6 +11,7 @@ import {
   faTags,
   faToggleOn
 } from '@fortawesome/free-solid-svg-icons'
+import {NgClass} from "@angular/common";
 
 @Component({
   selector: 'app-sidebar',
@@ -19,18 +20,24 @@ import {
     RouterLink,
     RouterLinkActive,
     TranslateModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgClass
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
 
+  hideSideBar = false;
+
   protected readonly faHandshake = faHandshake;
   protected readonly faSackDollar = faSackDollar;
   protected readonly faComputer = faComputer;
   protected readonly faTags = faTags;
-  protected readonly faBurger = faBurger;
-  protected readonly faToggleOn = faToggleOn;
   protected readonly faBars = faBars;
+
+  toggleSidebar() {
+    this.hideSideBar = !this.hideSideBar;
+    console.log(this.hideSideBar);
+  }
 }

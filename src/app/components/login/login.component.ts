@@ -5,11 +5,13 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import {faComputer, faKey, faUser} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, TranslateModule],
+    imports: [ReactiveFormsModule, CommonModule, TranslateModule, FaIconComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -58,4 +60,7 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  protected readonly faComputer = faComputer;
+  protected readonly faKey = faKey;
+  protected readonly faUser = faUser;
 }

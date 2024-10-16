@@ -1,7 +1,7 @@
 <dialog id="my_modal_1" class="modal">
     <div class="modal-box w-11/12 max-w-5xl">
       <form class="max-w mx-auto bg-white py-4 px-8 " [formGroup]="productForm" (ngSubmit)="submit()" >
-        @if(isEditMode ===true) {
+        @if(isEditMode) {
         <h2 class="text-2xl font-bold mb-6">{{ 'APP.PRODUCT.ADDPRODUCT.EDIT' | translate }}:</h2>}
         @else{
         <h2 class="text-2xl font-bold mb-6">{{ 'APP.PRODUCT.ADDPRODUCT.ADD' | translate }}:</h2>}
@@ -83,7 +83,7 @@
                   <div class="mb-4  relative ">
                           <label >{{ 'APP.PRODUCT.ADDPRODUCT.BUYING_DATE' | translate }}: </label>
                               <input type="date" id="buyDate" formControlName="buyDate"
-                                     class="input input-bordered mt-1  w-full  placeholder=2024-12-02">
+                                     class="input input-bordered mt-1 w-full  placeholder=2024-12-02">
                   </div>
                   <div class="mb-4  relative ">
                       <label>

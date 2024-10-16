@@ -1,50 +1,49 @@
-<div id="logo-sidebar" class="px-5 pt-3 h-full" aria-label="Sidebar">
+<div id="logo-sidebar" class="h-[100%] rounded pt-0 text-base-content" aria-label="Sidebar">
     <div class="w-full flex flex-row mb-3">
-        <div  class="btn btn-ghost btn-circle -mt-2 text-xl">
-
-            <fa-icon [icon]="faBars"></fa-icon>
-        </div>
+        <button (click)="toggleSidebar()" [ngClass]="hideSideBar ? '':'md:btn-circle md:transition-transform md:active:rotate-45'" class="px-4 py-2 mb-0 hover:bg-base-300 hover:text-base-content  text-xl  ">
+            <fa-icon [icon]="faBars" ></fa-icon>
+        </button>
         <div>
-            <a routerLink="/home"
-               class="self-center text-xl font-mono sm:text-2xl whitespace-nowrap dark:text-white">{{ 'APP.NAME' | translate }}</a>
+            <a [ngClass]="hideSideBar ? '' : 'md:block'" routerLink="/home"
+               class="hidden mt-3 self-center text-xl font-mono whitespace-nowrap dark:text-white me-3 pacifico-regular">{{ 'APP.NAME' | translate }}</a>
         </div>
     </div>
-    <div class="h-full px-3 pb-4 overflow-y-auto bg-base-100 text-neutral-content">
+    <div  class="ps-0  h-96 pb-4 overflow-y-auto text-base-content">
         <ul class="space-y-0.5 font-medium">
-            <li>
+            <li class="block text-center w-full">
                 <a routerLink="/home/dashboard" routerLinkActive="active" ariaCurrentWhenActive="page"
-                   class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-[#212b39] group">
-                    <fa-icon [icon]="faComputer"
-                             class="text-lg  text-gray-500 transition duration-75 group-hover:text-gray-400"></fa-icon>
-                    <span class="ms-3 group-hover:text-gray-400">{{ 'APP.SIDEBAR.DASHBOARD' | translate }}</span>
+                    class="flex items-center px-3.5 py-2 text-base-content rounded-lg transition duration-75 focus:bg-neutral-300 focus:text-accent-content hover:bg-base-300 hover:text-base-content group">
+                    <fa-icon  [icon]="faComputer"
+                             class="text-lg w-5"></fa-icon>
+                    <span [ngClass]="hideSideBar ? '' : 'md:block'" class="ms-3 hidden">{{ 'APP.SIDEBAR.DASHBOARD' | translate }}</span>
                 </a>
             </li>
 
 
             <li>
-                <a routerLink="/home/sales" routerLinkActive="active" ariaCurrentWhenActive="page"
-                   class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-[#212b39] group">
-                    <fa-icon [icon]="faSackDollar"
-                             class="text-lg  text-gray-500 transition duration-75 group-hover:text-gray-400"></fa-icon>
-                    <span class="ms-3 group-hover:text-gray-400">{{ 'APP.SIDEBAR.SALES' | translate }}</span>
+                <a  routerLink="/home/sales" routerLinkActive="active" ariaCurrentWhenActive="page"
+                   class="flex items-center px-3.5  py-2 text-gray-900 rounded-lg transition duration-75 focus:bg-neutral-300 focus:text-accent-content hover:bg-base-300 hover:text-base-content group">
+                    <fa-icon [ngClass]="hideSideBar ? 'ps-0':''" [icon]="faSackDollar"
+                             class="text-lg w-5"></fa-icon>
+                    <span [ngClass]="hideSideBar ? '' : 'md:block'" class="ms-3 hidden">{{ 'APP.SIDEBAR.SALES' | translate }}</span>
 
                 </a>
             </li>
             <li>
-                <a routerLink="/home/products" routerLinkActive="active" ariaCurrentWhenActive="page"
-                   class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-[#212b39] group">
+                <a  routerLink="/home/products" routerLinkActive="active" ariaCurrentWhenActive="page"
+                   class="flex items-center px-3.5 py-2 text-gray-900 rounded-lg transition duration-75 focus:bg-neutral-300 focus:text-accent-content hover:bg-base-300 hover:text-base-content group">
                     <fa-icon [icon]="faHandshake"
-                             class="text-lg  text-gray-500 transition duration-75 group-hover:text-gray-400"></fa-icon>
-                    <span class="ms-3 group-hover:text-gray-400">{{ 'APP.SIDEBAR.PRODUCT' | translate }}</span>
+                             class="text-lg w-5"></fa-icon>
+                    <span [ngClass]="hideSideBar ? '' : 'md:block'" class="ms-3 hidden">{{ 'APP.SIDEBAR.PRODUCT' | translate }}</span>
                 </a>
             </li>
 
             <li>
                 <a routerLink="/home/category" routerLinkActive="active" ariaCurrentWhenActive="page"
-                   class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-[#212b39] group">
+                   class="flex items-center px-3.5 py-2 text-gray-900 rounded-lg transition duration-75 focus:bg-neutral-300 focus:text-accent-content hover:bg-base-300 hover:text-base-content group">
                     <fa-icon [icon]="faTags"
-                             class="text-lg  text-gray-500 transition duration-75 group-hover:text-gray-400"></fa-icon>
-                    <span class="ms-3 group-hover:text-gray-400">{{ 'APP.SIDEBAR.CATEGORIES' | translate }}</span>
+                             class="text-lg w-5"></fa-icon>
+                    <span [ngClass]="hideSideBar ? '' : 'md:block'" class="ms-3 hidden">{{ 'APP.SIDEBAR.CATEGORIES' | translate }}</span>
                 </a>
             </li>
         </ul>
