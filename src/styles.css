@@ -52,8 +52,7 @@ table.mat-mdc-table{
     background-color: transparent;
     border-left: 1px solid lightgray;
     border-right: 1px solid lightgray;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+    border-radius: 0;
 }
 mat-paginator.mat-mdc-paginator{
     background-color: transparent;
