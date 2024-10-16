@@ -17,38 +17,13 @@ export const routes: Routes = [
       pathMatch: 'full' },
     { 
       path: 'login',
-      component: LoginComponent,
+      loadComponent: () => import('./components/login/login.component').then(c => c.LoginComponent),
       data: { name: 'Login'} 
     },
     { 
       path: 'home',
-      component:LayoutComponent,
-      canMatch:[authGuard],
-      data: { name: 'Home'},
-      children: [
-        { 
-            path: 'dashboard',
-            component: DashboardComponent,
-            data: { name: 'Dashboard'} 
-        },
-        {
-            path: 'products',
-            component: ProductComponent,
-            data: { name: 'Products'} 
-        },
-        {  
-            path: 'category',
-            component: CategoryComponent,
-            data: { name: 'Category'} 
-        },
-        {   
-            path: 'sales',
-            component: SaleComponent,
-            data: { name: 'Sales'} 
-        },
-        {       
-            path: 'account',
-            component: AccountComponent,
-            data: { name: 'Account'} 
-        }]
+      // component:LayoutComponent,
+        loadComponent: () => import('./components/layaout/layout.component').then(c => c.LayoutComponent),
+        loadChildren: () => import('./layout.routes').then( c => c.routes),
+      canMatch:[authGuard]
     }];
