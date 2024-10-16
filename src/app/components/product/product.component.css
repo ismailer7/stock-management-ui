@@ -1,0 +1,21 @@
+.mat-column-id{
+    width: 5%;
+}
+
+.mat-column-productName{
+    width: 30%;
+}
+.mat-column-productCode{
+    width: 20%;
+}
+
+.mat-column-quantity{
+    width: 10%;
+}
+
+.mat-column-unitBuyPrice{
+    width: 10%;
+}
+.mat-column-unitSellPrice{
+    width: 10%;
+}
