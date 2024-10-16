@@ -35,17 +35,17 @@ ngOnChanges(){
        
 
        if (this.isEditMode)
-         { 
-          if(this.isView){
-            this.categoryForm = this.fb.group({
-              name: [{ value: this.selectedCategory?.name, disabled: true }, Validators.required]
-             });
-          }
+        { 
+         if(this.isView){
            this.categoryForm = this.fb.group({
-             name: [this.selectedCategory?.name, Validators.required]
+             name: [{ value: this.selectedCategory?.name, disabled: true }]
             });
- 
-       }
+         }else{
+          this.categoryForm = this.fb.group({
+            name: [this.selectedCategory?.name, Validators.required]
+           });
+         }
+      }
        else{
          this.categoryForm = this.fb.group({
            name: ['', Validators.required]
