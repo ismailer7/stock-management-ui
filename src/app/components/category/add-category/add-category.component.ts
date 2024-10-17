@@ -25,6 +25,7 @@ isEditMode = false;
 submitted = false;
 
 
+
 ngOnChanges(){
 
   console.log("onchange Category status: ",this.selectedCategory);
@@ -36,15 +37,13 @@ ngOnChanges(){
 
        if (this.isEditMode)
         { 
-         if(this.isView){
-           this.categoryForm = this.fb.group({
-             name: [{ value: this.selectedCategory?.name, disabled: true }]
-            });
-         }else{
           this.categoryForm = this.fb.group({
             name: [this.selectedCategory?.name, Validators.required]
            });
-         }
+           if(this.isView){
+            this.categoryForm.get('name')?.disable();
+          }
+         
       }
        else{
          this.categoryForm = this.fb.group({
@@ -89,6 +88,12 @@ ngOnChanges(){
               error: (err: Error) => this.toastr.error(err.message, 'Error!')
           })      
           }
+ }
+
+
+ print(){
+
+  console.log("print this view");
  }
 
 

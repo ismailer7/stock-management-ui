@@ -2,7 +2,12 @@
   <div class="modal-box w-11/12 max-w-5xl">
     <form class="max-w mx-auto bg-white py-4 px-8 " [formGroup]="categoryForm" (ngSubmit)="submit()" >
       @if(isEditMode ===true) {
+        @if(isView)
+        {
+          <h2 class="text-2xl font-bold mb-6">{{ 'APP.CATEGORY.ADDCATEGORY.VIEW' | translate }}:</h2>
+        }@else{
       <h2 class="text-2xl font-bold mb-6">{{ 'APP.CATEGORY.ADDCATEGORY.EDIT' | translate }}:</h2>
+        }
       @if(isView)
       {
       <h2 class="text-2xl font-bold mb-6">View:</h2>
@@ -24,9 +29,9 @@
         <div class="modal-action">
           @if(isEditMode === true)
           { 
-            @if(isView ===true)
+            @if(isView === true)
             {
-              <button  class="btn btn-primary px-8">View</button>
+              <button type="button" (click)="print()" class="btn btn-primary px-8">Print</button>
             }@else{
               <button type="submit"  [disabled]="categoryForm.pristine || categoryForm.invalid " class="btn btn-primary px-8">{{ 'APP.CATEGORY.ADDCATEGORY.EDIT_BUTTON' | translate }}</button>
 
