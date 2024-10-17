@@ -20,6 +20,7 @@ fb = inject(FormBuilder);
 toastr = inject(ToastrService);
 categoryForm: FormGroup;
 @Input() selectedCategory!: any;
+@Input() isView:boolean;
 isEditMode = false;
 submitted = false;
 
@@ -27,16 +28,24 @@ submitted = false;
 ngOnChanges(){
 
   console.log("onchange Category status: ",this.selectedCategory);
+  console.log("isview satus:",this.isView)
 
    this.isEditMode = this.selectedCategory !== null;
        console.log("edit mode:",this.isEditMode);
-       if (this.isEditMode)
-         {
-           this.categoryForm = this.fb.group({
-             name: [this.selectedCategory?.name, Validators.required]
-            });
+       
 
-       }
+       if (this.isEditMode)
+        { 
+         if(this.isView){
+           this.categoryForm = this.fb.group({
+             name: [{ value: this.selectedCategory?.name, disabled: true }]
+            });
+         }else{
+          this.categoryForm = this.fb.group({
+            name: [this.selectedCategory?.name, Validators.required]
+           });
+         }
+      }
        else{
          this.categoryForm = this.fb.group({
            name: ['', Validators.required]
@@ -84,10 +93,11 @@ ngOnChanges(){
 
 
  close() {   
-
+  
   if (this.isEditMode === false)
      { console.log("errase for add only");
-      this.reset();}
+      this.reset();
+     }
   else (document.getElementById('btn-close-modal') as HTMLFormElement)?.click();
 }
 
@@ -95,6 +105,7 @@ ngOnChanges(){
 handleKeyboardEvent(event: KeyboardEvent) {
 if (event.key === 'Escape') {
   this.close();
+  
 }
 }
 

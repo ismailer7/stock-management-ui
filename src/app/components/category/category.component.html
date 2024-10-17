@@ -36,8 +36,9 @@
             <th mat-header-cell *matHeaderCellDef> {{ 'APP.CATEGORY.TABLE.COLUMN.ACTIONS' | translate }}</th>
             <td mat-cell *matCellDef="let row">
                     <div class="flex space-x-2">
-                        <button  (click)="editCategory(row.id)" onclick="my_modal2.showModal()"  class="bg-blue-100 hover:bg-blue-200 text-blue-900 text-sm font-bold me-2 pe-1.5 ps-2 py-1.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-700 inline-flex items-center justify-center"><i class="fa fa-edit"></i></button>
-                        <button (click)="deleteCategory(row.id)"  class="bg-red-100 hover:bg-red-200 text-red-800 font-semibold me-2 px-2 py-1.5 text-sm rounded dark:bg-red-700 dark:text-red-400 border border-red-700 inline-flex items-center justify-center"><i class="fa fa-solid fa-trash"></i></button>
+                        <button  (click)="editCategory(row.id)" onclick="my_modal2.showModal()"  class="bg-blue-100 hover:bg-blue-200 text-blue-900 text-sm font-bold  pe-1.5 ps-2 py-1.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-700 inline-flex items-center justify-center"><i class="fa fa-edit"></i></button>
+                        <button (click)="deleteCategory(row.id)"   class="bg-red-100 hover:bg-red-200 text-red-800 font-semibold me-2 px-2 py-1.5  text-sm rounded dark:bg-red-700 dark:text-red-400 border border-red-700 inline-flex items-center justify-center "><i class="fa fa-solid fa-trash"></i></button>
+                        <button (click)="viewCategory(row.id)" onclick="my_modal2.showModal()"  class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold me-2 px-2 py-1.5  text-sm rounded dark:bg-gray-700 dark:text-gray-400 border border-gray-700 inline-flex items-center justify-center "><i class="fa fa-solid fa-eye"></i></button>
                       </div>
             </td>
         </ng-container>
@@ -67,5 +68,5 @@
                    aria-label="Select page of periodic elements">
     </mat-paginator>
 </div>
-<app-add-category [selectedCategory]="selectedCategory"></app-add-category>
+<app-add-category [selectedCategory]="selectedCategory" [isView]="isView"></app-add-category>
 </div>

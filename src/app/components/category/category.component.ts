@@ -47,6 +47,7 @@ export class CategoryComponent implements AfterViewInit {
     isLoading = true;
     searchKeywordFilter = new FormControl();
     selectedCategory: any = null;
+    isView: boolean = false;
 
     ngAfterViewInit(): void {
         this.dataSource.paginator = this.paginator;
@@ -116,6 +117,7 @@ export class CategoryComponent implements AfterViewInit {
         
             editCategory(id: Category) {
                
+                this.isView = false
                 const p = this.categories.find( c => c.id == id);
                 this.selectedCategory = { ...p};
                 console.log("edit Category",this.selectedCategory);
@@ -134,6 +136,14 @@ export class CategoryComponent implements AfterViewInit {
                         this.toastr.error(errorMessage);
                     }
                 })
+            }
+
+            viewCategory(id: Number) {
+               
+                this.isView = true;
+                const p = this.categories.find( c => c.id == id);
+                this.selectedCategory = { ...p};
+                console.log("view Category");
             }
     
 
