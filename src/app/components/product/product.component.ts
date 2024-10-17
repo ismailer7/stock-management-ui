@@ -49,21 +49,19 @@ export class ProductComponent implements AfterViewInit {
     isLoading = true;
     searchKeywordFilter = new FormControl();
     selectedProduct: any = null;
-    currentProduct: Product | null = null;
-
     destroyRef = inject(DestroyRef)
 
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-        this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));   //the first on sort order change, reset back to st page.
+        this.sort.sortChange.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => (this.paginator.pageIndex = 0));   //the first on sort order change, reset back to st page.
         merge(this.searchKeywordFilter.valueChanges.pipe(debounceTime(500)), this.sort.sortChange, this.paginator.page, this.productsService.$triggerLoading)
-            .pipe(takeUntilDestroyed(this.destroyRef), scan((acc, current) => {
-                if (typeof current == "string") {
-                    this.paginator.pageIndex = 0;
-                }
-                return acc;
-            }, 0),
+            .pipe(scan((acc, current) => {
+                    if (typeof current == "string") {
+                        this.paginator.pageIndex = 0;
+                    }
+                    return acc;
+                }, 0),
                 startWith({}),
                 switchMap(() => {
                     this.isLoading = true;
@@ -91,20 +89,22 @@ export class ProductComponent implements AfterViewInit {
                         this.isLoading = false;
                     });
                 },
-                error: (err) => this.isLoading = false
+                error: (_) => this.isLoading = false
             });
-        this.translateSrv.onLangChange.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((event: LangChangeEvent) => {
-            setTimeout(()=>{
-                this.paginator._intl.itemsPerPageLabel= this.translatePipe.transform('APP.PAGINATION.TOTAL_ITEMS')
-                this.paginator._intl.firstPageLabel = this.translatePipe.transform('APP.PAGINATION.FIRST')
-                this.paginator._intl.previousPageLabel = this.translatePipe.transform('APP.PAGINATION.PREVIOUS')
-                this.paginator._intl.nextPageLabel = this.translatePipe.transform('APP.PAGINATION.NEXT')
-                this.paginator._intl.lastPageLabel = this.translatePipe.transform('APP.PAGINATION.LAST')
-                this.dataSource._updateChangeSubscription();
-                this.productsService.$triggerLoading.next("test")
-            })
+        this.translateSrv.onLangChange
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe((_: LangChangeEvent) => {
+                setTimeout(() => {
+                    this.paginator._intl.itemsPerPageLabel = this.translatePipe.transform('APP.PAGINATION.TOTAL_ITEMS')
+                    this.paginator._intl.firstPageLabel = this.translatePipe.transform('APP.PAGINATION.FIRST')
+                    this.paginator._intl.previousPageLabel = this.translatePipe.transform('APP.PAGINATION.PREVIOUS')
+                    this.paginator._intl.nextPageLabel = this.translatePipe.transform('APP.PAGINATION.NEXT')
+                    this.paginator._intl.lastPageLabel = this.translatePipe.transform('APP.PAGINATION.LAST')
+                    this.dataSource._updateChangeSubscription();
+                    this.productsService.$triggerLoading.next("test")
+                })
 
-        });
+            });
     }
 
 
@@ -117,25 +117,25 @@ export class ProductComponent implements AfterViewInit {
         console.log(event)
     }
 
-    addProduct(){
+    addProduct() {
         this.selectedProduct = null;
-        console.log("add product:",this.selectedProduct);
-       
+        console.log("add product:", this.selectedProduct);
+
     }
 
     editProduct(id: Product) {
         //console.log(`edit ${id}`);
-        const p = this.products.find( p => p.id == id);
+        const p = this.products.find(p => p.id == id);
         //this.selectedProduct =p;
-        this.selectedProduct = { ...p};
-        console.log("edit product",this.selectedProduct);
+        this.selectedProduct = {...p};
+        console.log("edit product", this.selectedProduct);
     }
 
     deleteProduct(id: Number) {
         this.productsService.deleteProductById(id)
             .subscribe({
-                next: (resp) =>{
-                    this.toastr.success(resp?? '')
+                next: (resp) => {
+                    this.toastr.success(resp ?? '')
                     this.productsService.$triggerLoading.next(resp);
                 },
                 error: err => {

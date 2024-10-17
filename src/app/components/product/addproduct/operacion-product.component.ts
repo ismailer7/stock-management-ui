@@ -1,12 +1,12 @@
-import {Component, HostListener, inject, Input} from '@angular/core';
+import {Component, DestroyRef, HostListener, inject, Input} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ProductService} from '../../../services/product.service';
 import {ToastrService} from 'ngx-toastr';
 import {Category} from '../../../models/category.model';
-import {CommonModule} from "@angular/common";
+import {CommonModule, formatDate} from "@angular/common";
 import {CategoryService} from "../../../services/category.service";
-import {formatDate} from "@angular/common";
-import { TranslateModule } from '@ngx-translate/core';
+import {TranslateModule} from '@ngx-translate/core';
+import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 @Component({
     selector: 'app-operation-product',
@@ -26,63 +26,66 @@ export class OperacionProductComponent {
     @Input() selectedProduct!: any;
     categorySelected: any;
     isEditMode = false;
+    destroyRef = inject(DestroyRef)
 
     constructor(private fb: FormBuilder) {
 
-        this.categoryService.getAllCategories().subscribe({
-            next: (resp) => {
-                const data = resp.body ?? []
-                this.categories = [...data]
-            },
-            error: err => this.toastr.error('Error loading Categories')
-        })
+        this.categoryService.getAllCategories()
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe({
+                next: (resp) => {
+                    const data = resp.body ?? []
+                    this.categories = [...data]
+                },
+                error: _ => this.toastr.error('Error loading Categories')
+            })
     }
 
-    ngOnChanges() {  
+    ngOnChanges() {
 
         console.log("ngonchange triggered");
         this.isEditMode = this.selectedProduct !== null;
-        console.log("edit mode:",this.isEditMode);
-        if (this.isEditMode)
-            {
-                this.categorySelected = this.categories.find(c => c.id === this.selectedProduct.category.id);
-                this.productForm = this.fb.group({
+        console.log("edit mode:", this.isEditMode);
+        if (this.isEditMode) {
+            this.categorySelected = this.categories.find(c => c.id === this.selectedProduct.category.id);
+            this.productForm = this.fb.group({
                 productName: [this.selectedProduct?.productName || '', Validators.required],
                 productCode: [this.selectedProduct?.productCode, Validators.required],
                 description: [this.selectedProduct?.description],
-                quantity: [this.selectedProduct?.quantity, [Validators.required,Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
-                unitBuyPrice: [this.selectedProduct?.unitBuyPrice, [Validators.required,Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
-                unitSellPrice: [this.selectedProduct?.unitSellPrice, [Validators.required,Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
+                quantity: [this.selectedProduct?.quantity, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
+                unitBuyPrice: [this.selectedProduct?.unitBuyPrice, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
+                unitSellPrice: [this.selectedProduct?.unitSellPrice, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
                 buyDate: [this.selectedProduct?.buyDate],
                 category: [this.categorySelected, Validators.required]
-              });
-              
-    }else{ 
-        this.productForm = this.fb.group({
-            productName: ['', Validators.required],
-            productCode: ['', Validators.required],
-            description: [''],
-            quantity: [, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
-            unitBuyPrice: [, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
-            unitSellPrice: [, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
-            buyDate: [formatDate(new Date(), 'yyyy-MM-dd', 'en')],
-            category: [, Validators.required]
-        });
-    }
+            });
+
+        } else {
+            this.productForm = this.fb.group({
+                productName: ['', Validators.required],
+                productCode: ['', Validators.required],
+                description: [''],
+                quantity: [, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
+                unitBuyPrice: [, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
+                unitSellPrice: [, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
+                buyDate: [formatDate(new Date(), 'yyyy-MM-dd', 'en')],
+                category: [, Validators.required]
+            });
+        }
     }
 
     submit() {
 
         this.submitted = true;
         if (this.productForm.invalid) {
-              return;
+            return;
         }
         const newProduct = this.productForm.value;
-        if (this.isEditMode === true)
-            {  
-                const id = this.selectedProduct.id;
-                console.log("edit product with id: ",id)
-                this.productService.editProduct(id,newProduct).subscribe({
+        if (this.isEditMode) {
+            const id = this.selectedProduct.id;
+            console.log("edit product with id: ", id)
+            this.productService.editProduct(id, newProduct)
+                .pipe(takeUntilDestroyed(this.destroyRef))
+                .subscribe({
                     next: (resp) => {
                         const np = resp.body
                         console.log(np);
@@ -91,9 +94,10 @@ export class OperacionProductComponent {
                     },
                     error: (err: Error) => this.toastr.error(err.message, 'Error!')
                 })
-            }else
-                {  
-                this.productService.addProduct(newProduct).subscribe({
+        } else {
+            this.productService.addProduct(newProduct)
+                .pipe(takeUntilDestroyed(this.destroyRef))
+                .subscribe({
                     next: (resp) => {
                         const np = resp.body
                         console.log(np);
@@ -102,24 +106,24 @@ export class OperacionProductComponent {
                         this.productService.$triggerLoading.next(np)
                     },
                     error: (err: Error) => this.toastr.error(err.message, 'Error!')
-                })      
-                }
+                })
+        }
     }
 
-    close() {   
+    close() {
 
-        if (this.isEditMode === false)
-           { console.log("errase for add only");
-            this.reset();}
-        else (document.getElementById('btn-close-modal') as HTMLFormElement)?.click();
+        if (!this.isEditMode) {
+            console.log("erase for add only");
+            this.reset();
+        } else (document.getElementById('btn-close-modal') as HTMLFormElement)?.click();
     }
 
     @HostListener('document:keydown', ['$event'])
     handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.key === 'Escape') {
-      this.close();
+        if (event.key === 'Escape') {
+            this.close();
+        }
     }
-  }
 
     reset() {
 
