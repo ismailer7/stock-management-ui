@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
+import {Component, inject, LOCALE_ID} from '@angular/core';
 import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
+import {CurrencyPipe} from "@angular/common";
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [TranslateModule],
+  imports: [TranslateModule, CurrencyPipe],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
