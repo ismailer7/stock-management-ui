@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, inject, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, DestroyRef, inject, ViewChild} from '@angular/core';
 import {Product} from "../../models/product.model";
 import {ProductService} from "../../services/product.service";
 import {PaginationComponent} from "../commun/pagination/pagination.component";
@@ -14,6 +14,7 @@ import {HttpResponse} from "@angular/common/http";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {MatProgressBar} from "@angular/material/progress-bar";
 import {LangChangeEvent, TranslateModule, TranslatePipe, TranslateService} from '@ngx-translate/core';
+import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 @Component({
     selector: 'app-product',
@@ -50,12 +51,14 @@ export class ProductComponent implements AfterViewInit {
     selectedProduct: any = null;
     currentProduct: Product | null = null;
 
+    destroyRef = inject(DestroyRef)
+
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
         this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));   //the first on sort order change, reset back to st page.
         merge(this.searchKeywordFilter.valueChanges.pipe(debounceTime(500)), this.sort.sortChange, this.paginator.page, this.productsService.$triggerLoading)
-            .pipe(scan((acc, current) => {
+            .pipe(takeUntilDestroyed(this.destroyRef), scan((acc, current) => {
                 if (typeof current == "string") {
                     this.paginator.pageIndex = 0;
                 }
@@ -77,6 +80,7 @@ export class ProductComponent implements AfterViewInit {
                 }),
                 map((resp: HttpResponse<Page>) => resp.body)
             )
+            .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe({
                 next: (data) => {
                     this.products = data?.products ?? []
@@ -89,7 +93,7 @@ export class ProductComponent implements AfterViewInit {
                 },
                 error: (err) => this.isLoading = false
             });
-        this.translateSrv.onLangChange.subscribe((event: LangChangeEvent) => {
+        this.translateSrv.onLangChange.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((event: LangChangeEvent) => {
             setTimeout(()=>{
                 this.paginator._intl.itemsPerPageLabel= this.translatePipe.transform('APP.PAGINATION.TOTAL_ITEMS')
                 this.paginator._intl.firstPageLabel = this.translatePipe.transform('APP.PAGINATION.FIRST')
