@@ -15,7 +15,7 @@
                 <input type="text" class="input input-bordered mt-1 w-full" placeholder="Phones" id="name"
                        formControlName="name"
                        [ngClass]="{inputError: categoryForm.get('name')?.invalid &&  categoryForm.get('name')?.touched}"/>
-                <div class="text-red-500 font-bold mt-1  text-xs">
+                <div class="inputError-text font-bold mt-1  text-xs">
                     @if (categoryForm.get('name')?.touched && categoryForm.get('name')?.errors?.['required']) {
                         <p>{{ 'APP.CATEGORY.ADDCATEGORY.VALIDATION.REQUIRED' | translate }}</p>
                     }

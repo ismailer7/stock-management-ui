@@ -2,11 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-
-body[data-theme="dark"] {
+[data-theme]{
+        --mat-paginator-disabled-icon-color: theme(colors.neutral-400) ;
+        --mat-paginator-enabled-icon-color: theme(colors.neutral-700);
+}
+[data-theme="dark"],
+[data-theme="forest"],
+[data-theme="synthwave"],
+[data-theme="business"],
+[data-theme="night"],
+[data-theme="dim"],
+[data-theme="luxury"],
+[data-theme="sunset"],
+[data-theme="halloween"]{
         --mat-paginator-disabled-icon-color: theme(colors.neutral-600) ;
         --mat-paginator-enabled-icon-color: theme(colors.neutral-content);
-
 }
 
 body, html, app-root {
@@ -132,4 +142,11 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     transition: background-color 5000000s ease-in-out 0s;
+}
+
+.inputError{
+    outline: 2px solid theme(colors.error);
+}
+.inputError-text{
+    color: theme(colors.error)
 }

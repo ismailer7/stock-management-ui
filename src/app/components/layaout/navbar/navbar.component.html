@@ -2,10 +2,10 @@
     <div class="flex flex-wrap items-center justify-between mx-auto py-4">
         <div></div>
         <div class="flex items-center md:order-2 space-x-1 md:space-x-0 ">
-            <div class="mt-0.5">{{ 'APP.NAVBAR.THEME' | translate }}: </div>
+            <div class="mt-0.5 me-2 font-bold">{{ 'APP.NAVBAR.THEME' | translate }}: </div>
             <button type="button" data-dropdown-toggle="theme-dropdown-menu"
                     class="inline-flex items-center font-medium justify-center p-2 text-sm rounded-lg cursor-pointer text-base-content hover:bg-base-300">
-                 {{ selectedTheme }}
+                 {{ selectedTheme | titlecase }}
                 <fa-icon [icon]="faCaretDown"
                          class="text-lg w-5 ms-1"></fa-icon>
             </button>
@@ -18,7 +18,7 @@
                             <a class="block px-4 py-2 text-sm hover:bg-neutral hover:text-neutral-content "
                                role="menuitem">
                                 <div class="inline-flex items-center">
-                                    {{ theme }}
+                                    {{ theme | titlecase}}
                                 </div>
                             </a>
                         </li>
@@ -26,8 +26,9 @@
 
                 </ul>
             </div>
+            <div class="block mx-4">  |  </div>
             <button type="button" data-dropdown-toggle="language-dropdown-menu"
-                    class="me-3 inline-flex items-center font-medium justify-center md:w-44 px-4 py-2 text-sm rounded-lg cursor-pointer text-base-content hover:bg-base-300">
+                    class="inline-flex items-center font-medium justify-center md:w-40 p-2 text-sm rounded-lg cursor-pointer text-base-content hover:bg-base-300">
                 <img class="w-5 h-5 rounded-full me-2" [src]="selectedLanguage.flag" alt="">
                 {{ selectedLanguage.fullName }}
                 <fa-icon [icon]="faCaretDown"

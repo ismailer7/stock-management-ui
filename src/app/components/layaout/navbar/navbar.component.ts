@@ -7,11 +7,12 @@ import {themes} from '../../../data/themes';
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faCaretDown, faColonSign, faComputer, faPaintBrush, faPaintRoller} from "@fortawesome/free-solid-svg-icons";
 import {faArtstation, faSymfony, faThemeco} from "@fortawesome/free-brands-svg-icons";
+import {TitleCasePipe} from "@angular/common";
 
 @Component({
     selector: 'app-navbar',
     standalone: true,
-    imports: [RouterOutlet, RouterLink, RouterLinkActive, TranslateModule, FaIconComponent],
+    imports: [RouterOutlet, RouterLink, RouterLinkActive, TranslateModule, FaIconComponent, TitleCasePipe],
     templateUrl: './navbar.component.html',
     styleUrl: './navbar.component.css'
 })

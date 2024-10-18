@@ -13,20 +13,20 @@
                       <label>
                         {{ 'APP.SALE.ADDSALE.DESCRIPTION' | translate }} :</label>
                           <input type="text" class="input input-bordered mt-1 w-full"   placeholder="Sale-A" id="description" formControlName="description"   />
-                          <div class="text-red-500 font-bold mt-1  text-xs">
+                          <div class="inputError-text font-bold mt-1  text-xs">
                           
                         </div>
                   </div>
                   <div class="mb-4  relative">
                       <label>
-                        {{ 'APP.SALE.ADDSALE.PRODUCT' | translate }}<span class="text-sm ms-1 text-red-500">*</span>: </label>
+                        {{ 'APP.SALE.ADDSALE.PRODUCT' | translate }}<span class="text-sm ms-1 inputError-text">*</span>: </label>
                         <select class="select select-m select-bordered w-full max-w mt-1"
                          [ngClass]="{inputError: saleForm.get('product')?.invalid &&  saleForm.get('product')?.touched}" id="category" formControlName="product" >
                         @for (product of products; track product.id) {
                         <option [ngValue]="product" >{{ product.productName }}</option>
                         }
                         </select>
-                        <div class="text-red-500  font-bold mt-1  text-xs ">
+                        <div class="inputError-text  font-bold mt-1  text-xs ">
                           @if(saleForm.get('product')?.touched && saleForm.get('product')?.errors?.['required'])
                           {<p>{{ 'APP.SALE.ADDSALE.VALIDATION.REQUIRED' | translate }}</p> } 
                         </div>
@@ -36,10 +36,10 @@
           <div class="row ">
               <div class="gap-4 columns-2">
                   <div class="mb-4  relative">
-                      <label> {{ 'APP.SALE.ADDSALE.QUANTITY' | translate }}<span class="text-sm ms-1 text-red-500">*</span>:  </label>
+                      <label> {{ 'APP.SALE.ADDSALE.QUANTITY' | translate }}<span class="text-sm ms-1 inputError-text">*</span>:  </label>
                           <input type="text" class="input input-bordered mt-1 w-full" placeholder="128rom/6ram color black" id="saleQuantity" formControlName="saleQuantity"
                           [ngClass]="{inputError: saleForm.get('saleQuantity')?.invalid &&  saleForm.get('saleQuantity')?.touched}"   />      
-                          <div class="text-red-500  font-bold mt-1  text-xs ">
+                          <div class="inputError-text  font-bold mt-1  text-xs ">
                             @if(saleForm.get('saleQuantity')?.touched && saleForm.get('saleQuantity')?.errors?.['required'])
                             {<p>{{ 'APP.SALE.ADDSALE.VALIDATION.REQUIRED' | translate }}</p> } 
                             @if(saleForm.get('saleQuantity')?.touched && saleForm.get('saleQuantity')?.errors?.['pattern'])
@@ -54,7 +54,7 @@
                         {{ 'APP.SALE.ADDSALE.DISCOUNT' | translate }}:</label>
                           <input type="text" class="input input-bordered mt-1 w-full"  placeholder="100" id="discount" formControlName="discount"
                           [ngClass]="{inputError: saleForm.get('discount')?.invalid &&  saleForm.get('discount')?.touched}"  />
-                          <div class="text-red-500  font-bold mt-1  text-xs ">
+                          <div class="inputError-text  font-bold mt-1  text-xs ">
                             @if(saleForm.get('discount')?.touched && saleForm.get('discount')?.errors?.['pattern'])
                             {<p>{{ 'APP.SALE.ADDSALE.VALIDATION.NUMBER' | translate }} </p>}
                             @if(saleForm.get('discount')?.touched && saleForm.get('discount')?.errors?.['min'])
