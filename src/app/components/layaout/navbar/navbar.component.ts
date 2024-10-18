@@ -3,6 +3,7 @@ import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {AuthService} from '../../../services/auth.service';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {languages} from '../../../data/langs';
+import {themes} from '../../../data/themes';
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faCaretDown, faColonSign, faComputer, faPaintBrush, faPaintRoller} from "@fortawesome/free-solid-svg-icons";
 import {faArtstation, faSymfony, faThemeco} from "@fortawesome/free-brands-svg-icons";
@@ -19,7 +20,7 @@ export class NavbarComponent implements OnInit{
 
     languages = languages;
     selectedLanguage = languages[0];
-    themes = ["mytheme", "light", "dark", "cupcake"]
+    themes = ['mytheme', ...themes]
     selectedTheme: string;
 
     constructor(private translate: TranslateService, private authService: AuthService) {

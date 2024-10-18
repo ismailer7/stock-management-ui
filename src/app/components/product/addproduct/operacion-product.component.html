@@ -1,6 +1,6 @@
-<dialog id="my_modal_1" class="modal">
+<dialog id="my_modal_1" class="modal ">
     <div class="modal-box w-11/12 max-w-5xl">
-      <form class="max-w mx-auto bg-white py-4 px-8 " [formGroup]="productForm" (ngSubmit)="submit()" >
+      <form class="max-w mx-auto py-4 px-8 " [formGroup]="productForm" (ngSubmit)="submit()" >
         @if(isEditMode) {
         <h2 class="text-2xl font-bold mb-6">{{ 'APP.PRODUCT.ADDPRODUCT.EDIT' | translate }}:</h2>}
         @else{

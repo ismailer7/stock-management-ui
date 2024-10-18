@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const {themes} = require("./src/app/data/themes");
 module.exports = {
     content: [
         "./src/**/*.{html,js,ts}",
@@ -25,7 +26,7 @@ module.exports = {
                     "warning": "#FFA500",
                     "error": "#FF6F61",
                 }
-            },"light", "dark", "cupcake"
+            },...themes
         ]
     },
 }

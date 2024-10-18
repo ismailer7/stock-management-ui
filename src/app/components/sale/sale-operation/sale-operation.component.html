@@ -1,7 +1,7 @@
 <dialog id="my_modal" class="modal">
     <div class="modal-box w-11/12 max-w-5xl">
-      <form class="max-w mx-auto bg-white py-4 px-8 " [formGroup]="saleForm" (ngSubmit)="submit()" >
-        @if(isEditMode ===true) {
+      <form class="max-w mx-auto py-4 px-8 " [formGroup]="saleForm" (ngSubmit)="submit()" >
+        @if(isEditMode) {
         <h2 class="text-2xl font-bold mb-6">{{ 'APP.SALE.ADDSALE.EDIT' | translate }}:</h2>
         }
         @else{
@@ -20,7 +20,7 @@
                   <div class="mb-4  relative">
                       <label>
                         {{ 'APP.SALE.ADDSALE.PRODUCT' | translate }}<span class="text-sm ms-1 text-red-500">*</span>: </label>
-                        <select class="select select-m select-bordered w-full max-w mt-1" placeholder="Select Product"
+                        <select class="select select-m select-bordered w-full max-w mt-1"
                          [ngClass]="{inputError: saleForm.get('product')?.invalid &&  saleForm.get('product')?.touched}" id="category" formControlName="product" >
                         @for (product of products; track product.id) {
                         <option [ngValue]="product" >{{ product.productName }}</option>
