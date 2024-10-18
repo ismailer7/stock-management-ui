@@ -2,15 +2,7 @@ import {Component} from '@angular/core';
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {TranslateModule} from '@ngx-translate/core';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome'
-import {
-  faBars,
-  faBurger,
-  faComputer,
-  faHandshake,
-  faSackDollar,
-  faTags,
-  faToggleOn
-} from '@fortawesome/free-solid-svg-icons'
+import {faBars, faComputer, faHandshake, faSackDollar, faTags} from '@fortawesome/free-solid-svg-icons'
 import {NgClass} from "@angular/common";
 
 @Component({

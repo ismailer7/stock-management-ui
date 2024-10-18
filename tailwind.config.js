@@ -24,8 +24,8 @@ module.exports = {
                     "success": "#3ab490",
                     "warning": "#FFA500",
                     "error": "#FF6F61",
-                },
-            },
+                }
+            },"light", "dark", "cupcake"
         ]
     },
 }

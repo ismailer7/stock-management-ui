@@ -2,120 +2,115 @@
   "WELCOME": {
     "GRANTING": "Hola Mundo !"
   },
-
-    "APP": {
-      "NAME": "StockManagement",
-      "NAVBAR": {
-        "USER": {
+  "APP": {
+    "NAME": "StockManagement",
+    "NAVBAR": {
+      "USER": {
         "USER": "Usuario",
         "ACCOUNT": "Cuenta",
         "LOGOUT": "Cerrar sesión"
-        }
       },
-      "SIDEBAR": {
-        "DASHBOARD": "Panel",
-        "PRODUCT": "Productos",
-        "SALES": "Ventas",
-        "CATEGORIES": "Categoría"
-      },
-      "FOOTER": {
-        "COPY": "Derechos de autor",
-        "RIGHTS": "Todos los derechos reservados por"
-      },
-
-      "PAGINATION": {
-        "FIRST": "Primera página",
-        "PREVIOUS": "Página anterior",
-        "NEXT": "Siguiente página",
-        "LAST" : "Última página",
-        "TOTAL_ITEMS": "Elementos por página"
-      },
-
-      "PRODUCT": {
-        "BREADCRUMB": "Productos/",
-        "EXPORT": "Exportar",
-        "SEARCH": "Buscar...",
-        "NOT_FOUND": "No se encontraron registros !",
-        "TABLE": {
-          "COLUMN": {
-            "NAME": "Nombre",
-            "CODE": "Code",
-            "QUANTITY": "Cantidad",
-            "BUYING_PRICE": "Precio de compra",
-            "SELLING_PRICE": "Precio de venta",
-            "BUY_DATE": "Fecha de compra",
-            "CATEGORY": "Categoría",
-            "ACTIONS": "Comportamiento"
-          }
-        },
-        "ADDPRODUCT": {
-          "ADD": "Agregar producto",
-          "EDIT":"Modificar Product",
+      "THEME": "Estilo"
+    },
+    "SIDEBAR": {
+      "DASHBOARD": "Panel",
+      "PRODUCT": "Productos",
+      "SALES": "Ventas",
+      "CATEGORIES": "Categoría"
+    },
+    "FOOTER": {
+      "COPY": "Derechos de autor",
+      "RIGHTS": "Todos los derechos reservados por"
+    },
+    "PAGINATION": {
+      "FIRST": "Primera página",
+      "PREVIOUS": "Página anterior",
+      "NEXT": "Siguiente página",
+      "LAST": "Última página",
+      "TOTAL_ITEMS": "Elementos por página"
+    },
+    "PRODUCT": {
+      "BREADCRUMB": "Productos/",
+      "EXPORT": "Exportar",
+      "SEARCH": "Buscar...",
+      "NOT_FOUND": "No se encontraron registros !",
+      "TABLE": {
+        "COLUMN": {
           "NAME": "Nombre",
-          "DESCRIPTION": "Descripción",
-          "BUYING_PRICE": "Precio de compra",
-          "CODE": "Código",
+          "CODE": "Code",
           "QUANTITY": "Cantidad",
+          "BUYING_PRICE": "Precio de compra",
           "SELLING_PRICE": "Precio de venta",
+          "BUY_DATE": "Fecha de compra",
           "CATEGORY": "Categoría",
-          "ADD_BUTTON": "Agregar",
-          "EDIT_BUTTON": "Modificar",
-          "CLOSE": "Cerrar",
-          "WARNING": " Advertencia: los campos obligatorios no deben estar vacíos!",
-          "SELECT": "Seleccionar",
-          "VALIDATION": {
-            "REQUIRED": "requerida",
-            "NUMBER": "debe ser un numero.",
-            "MIN": "debe tener al menos 1"
-          }
+          "ACTIONS": "Comportamiento"
         }
       },
-
-      "CATEGORY": {
-        "BREADCRUMB": "Categorías/",
-        "ADD": "Agregar categoría",
-        "EXPORT": "Exportar",
-        "SEARCH": "Buscar...",
-        "CATEGORY_SEARCH": "Name",
-        "TABLE": {
-          "COLUMN": {
-            "NAME": "Nombre",
-            "ACTIONS": "Comportamiento"
-          },
-          "ACTIONS": {
-            "EDIT": "Editar",
-            "DELETE": "Borrar"
-          }
-        },
-        "NOT_FOUND": "No se encontró ninguna categoría!",
-        "ADDCATEGORY": {
-          "ADD": "Agregar categoría",
+      "ADDPRODUCT": {
+        "ADD": "Agregar producto",
+        "EDIT": "Modificar Product",
+        "NAME": "Nombre",
+        "DESCRIPTION": "Descripción",
+        "BUYING_PRICE": "Precio de compra",
+        "CODE": "Código",
+        "QUANTITY": "Cantidad",
+        "SELLING_PRICE": "Precio de venta",
+        "CATEGORY": "Categoría",
+        "ADD_BUTTON": "Agregar",
+        "EDIT_BUTTON": "Modificar",
+        "CLOSE": "Cerrar",
+        "WARNING": " Advertencia: los campos obligatorios no deben estar vacíos!",
+        "SELECT": "Seleccionar",
+        "VALIDATION": {
+          "REQUIRED": "requerida",
+          "NUMBER": "debe ser un numero.",
+          "MIN": "debe tener al menos 1"
+        }
+      }
+    },
+    "CATEGORY": {
+      "BREADCRUMB": "Categorías/",
+      "ADD": "Agregar categoría",
+      "EXPORT": "Exportar",
+      "SEARCH": "Buscar...",
+      "CATEGORY_SEARCH": "Name",
+      "TABLE": {
+        "COLUMN": {
           "NAME": "Nombre",
-          "CLOSE": "Cerca",
-          "ADD_BUTTON": "Agregar"
+          "ACTIONS": "Comportamiento"
+        },
+        "ACTIONS": {
+          "EDIT": "Editar",
+          "DELETE": "Borrar"
         }
       },
-
-      "SALE": {
-        "BREADCRUMB": "Ventas/",
-        "ADD": "Agregar venta",
-        "EXPORT": "Exportar",
-        "SEARCH": "Buscar...",
-        "TABLE": {
-          "COLUMN": {
-            "DESCRIPTION": "Descripción",
-            "PRODUCT": "Producto",
-            "UNIT_PRICE": "Precio unitario",
-            "QUANTITY": "Cantidad",
-            "TOTAL_PRICE": "Precio total",
-            "ACTIONS": "Comportamiento"
-          },
-          "ACTIONS": {
-              "EDIT": "Editar",
-              "DELETE": "Borrar"
-            }
+      "NOT_FOUND": "No se encontró ninguna categoría!",
+      "ADDCATEGORY": {
+        "ADD": "Agregar categoría",
+        "NAME": "Nombre",
+        "CLOSE": "Cerca",
+        "ADD_BUTTON": "Agregar"
+      }
+    },
+    "SALE": {
+      "BREADCRUMB": "Ventas/",
+      "ADD": "Agregar venta",
+      "EXPORT": "Exportar",
+      "SEARCH": "Buscar...",
+      "TABLE": {
+        "COLUMN": {
+          "DESCRIPTION": "Descripción",
+          "PRODUCT": "Producto",
+          "UNIT_PRICE": "Precio unitario",
+          "QUANTITY": "Cantidad",
+          "TOTAL_PRICE": "Precio total",
+          "ACTIONS": "Comportamiento"
+        },
+        "ACTIONS": {
+          "EDIT": "Editar",
+          "DELETE": "Borrar"
         }
       }
     }
-    
   }
+}
