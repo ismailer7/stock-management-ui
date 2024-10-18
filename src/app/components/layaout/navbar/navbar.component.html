@@ -1,23 +1,24 @@
 <nav class="">
     <div class="flex flex-wrap items-center justify-between mx-auto py-4">
         <div></div>
-        <div class="flex items-center md:order-2 space-x-1 md:space-x-0 me-7">
-            <button type="button" data-dropdown-toggle="language-dropdown-menu" class="me-3 inline-flex items-center font-medium justify-center md:w-44 px-4 py-2 text-sm text-gray-900 dark:text-white rounded-lg cursor-pointer hover:bg-base-200 dark:hover:bg-gray-700 dark:hover:text-white">
-                <img class="w-5 h-5 rounded-full me-2" [src]="selectedLanguage.flag"  alt="">
-                {{selectedLanguage.fullName}} <fa-icon  [icon]="faCaretDown"
-                                                        class="text-lg w-5"></fa-icon>
+        <div class="flex items-center md:order-2 space-x-1 md:space-x-0 ">
+            <div class="mt-0.5 me-2 font-bold">{{ 'APP.NAVBAR.THEME' | translate }}: </div>
+            <button type="button" data-dropdown-toggle="theme-dropdown-menu"
+                    class="inline-flex items-center font-medium justify-center p-2 text-sm rounded-lg cursor-pointer text-base-content hover:bg-base-300">
+                 {{ selectedTheme | titlecase }}
+                <fa-icon [icon]="faCaretDown"
+                         class="text-lg w-5 ms-1"></fa-icon>
             </button>
             <!-- Dropdown -->
-            <div class="z-50 hidden  my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="language-dropdown-menu">
+            <div class=" overflow-y-scroll max-h-96 z-50 hidden  my-4 text-base list-none bg-base-100 text-base-content divide-y divide-gray-100 rounded-lg shadow "
+                 id="theme-dropdown-menu">
                 <ul class="py-2 font-medium" role="none">
-                    @for (language of languages; track $index) {
-
-                        <li class="cursor-pointer" (click)="changeLang(language.lang, $index);">
-                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
+                    @for (theme of themes; track $index) {
+                        <li class="cursor-pointer" (click)="changeTheme(theme);">
+                            <a class="block px-4 py-2 text-sm hover:bg-neutral hover:text-neutral-content "
+                               role="menuitem">
                                 <div class="inline-flex items-center">
-                                    <img class="h-3.5 w-3.5 rounded-full me-2"
-                                         [src]="language.flag"
-                                         alt=""> {{language.fullName}}
+                                    {{ theme | titlecase}}
                                 </div>
                             </a>
                         </li>
@@ -25,30 +26,58 @@
 
                 </ul>
             </div>
-            <button type="button" class=" flex text-sm bg-gray-800 border-gray-500 border-2 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+            <div class="block mx-4">  |  </div>
+            <button type="button" data-dropdown-toggle="language-dropdown-menu"
+                    class="inline-flex items-center font-medium justify-center md:w-40 p-2 text-sm rounded-lg cursor-pointer text-base-content hover:bg-base-300">
+                <img class="w-5 h-5 rounded-full me-2" [src]="selectedLanguage.flag" alt="">
+                {{ selectedLanguage.fullName }}
+                <fa-icon [icon]="faCaretDown"
+                         class="text-lg w-5"></fa-icon>
+            </button>
+            <!-- Dropdown -->
+            <div class="z-50 hidden  my-4 text-base list-none bg-base-100 divide-y divide-gray-100 rounded-lg shadow"
+                 id="language-dropdown-menu">
+                <ul class="py-2 font-medium" role="none">
+                    @for (language of languages; track $index) {
+
+                        <li class="cursor-pointer" (click)="changeLang(language.lang, $index);">
+                            <a class="block px-4 py-2 text-sm  hover:bg-neutral hover:text-neutral-content bg-base-100 text-base-content"
+                               role="menuitem">
+                                <div class="inline-flex items-center">
+                                    <img class="h-3.5 w-3.5 rounded-full me-2"
+                                         [src]="language.flag"
+                                         alt=""> {{ language.fullName }}
+                                </div>
+                            </a>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+            <button type="button"
+                    class=" flex text-sm bg-gray-800 border-gray-500 border-2 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300"
+                    id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
+                    data-dropdown-placement="bottom">
                 <img class="w-8 h-8" src="../../../../assets/icons/user/profile.png" alt="user photo">
             </button>
             <!-- Dropdown menu -->
-            <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
+            <div class="z-50 hidden my-4 text-base list-none bg-base-100 divide-y divide-gray-100 rounded-lg shadow"
+                 id="user-dropdown">
                 <div class="px-4 py-3">
-                    <span class="block text-sm text-gray-900 dark:text-white">John User</span>
-                    <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">user&#64;test.com</span>
+                    <span class="block text-sm text-base-content ">John User</span>
+                    <span class="block text-sm  text-base-content truncate ">user&#64;test.com</span>
                 </div>
                 <ul class="py-2" aria-labelledby="user-menu-button">
                     <li>
-                        <a routerLink="/account" routerLinkActive="active" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">{{ 'APP.NAVBAR.USER.ACCOUNT' | translate }}</a>
+                        <a routerLink="/account" routerLinkActive="active"
+                           class="block px-4 py-2 text-sm text-base-content hover:bg-neutral hover:text-neutral-content">{{ 'APP.NAVBAR.USER.ACCOUNT' | translate }}</a>
                     </li>
                     <li>
-                        <a (click)="logout()" routerLink="/login" routerLinkActive="active" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">{{ 'APP.NAVBAR.USER.LOGOUT' | translate }}</a>
+                        <a (click)="logout()" routerLink="/login" routerLinkActive="active"
+                           class="block px-4 py-2 text-sm text-base-content hover:bg-neutral hover:text-neutral-content">{{ 'APP.NAVBAR.USER.LOGOUT' | translate }}</a>
                     </li>
                 </ul>
             </div>
-<!--            <button data-collapse-toggle="navbar-language" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-language" aria-expanded="false">-->
-<!--                <span class="sr-only">Open main menu</span>-->
-<!--                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">-->
-<!--                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>-->
-<!--                </svg>-->
-<!--            </button>-->
         </div>
 
     </div>

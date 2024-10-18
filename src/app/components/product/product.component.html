@@ -2,7 +2,7 @@
   <nav class="flex" aria-label="Breadcrumb">
     <ol class="inline-flex items-center space-x-1 md:space-x-2">
       <li class="inline-flex items-center">
-        <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+        <a href="#" class="inline-flex items-center text-sm font-medium text-neutral-500 hover:text-secondary">
           {{ 'APP.PRODUCT.BREADCRUMB' | translate }}
         </a>
       </li>
@@ -13,7 +13,7 @@
                 [formControl]="searchKeywordFilter" #input
           type="text"
           placeholder="{{ 'APP.PRODUCT.SEARCH' | translate }}"
-          class="flex-grow mt-2 p-2 border border-gray-300 rounded-md focus:outline focus:outline-none focus:border-secondary focus:border-2 focus:ring-0"
+          class="flex-grow mt-2 p-2 bg-neutral-50 border border-gray-300 rounded-md focus:outline focus:outline-none focus:border-secondary focus:border-2 focus:ring-0"
         />
         <!-- Buttons -->
         <button class="btn mt-2  btn-primary btn-outline md:ml-4 md:px-4 py-2" (click)="addProduct()"  onclick="my_modal_1.showModal()"><i class="hidden md:inline fa fa-solid fa-plus text-xl"></i> <span class="md:hidden">{{ 'APP.PRODUCT.ADDPRODUCT.ADD_BUTTON' | translate }}</span></button>
@@ -65,7 +65,7 @@
         <ng-container matColumnDef="category.name">
             <th mat-header-cell *matHeaderCellDef mat-sort-header > {{ 'APP.PRODUCT.TABLE.COLUMN.CATEGORY' | translate }} </th>
             <td mat-cell *matCellDef="let row">
-                <span class="  bg-green-100 text-green-800 font-medium  px-2.5 py-0.5 rounded-lg dark:bg-green-900 dark:text-green-300">{{row.category.name}}</span>
+                <span class="text-xs bg-secondary text-secondary-content font-medium  px-2.5 py-0.5 rounded-lg dark:bg-green-900 dark:text-green-300">{{row.category.name}}</span>
             </td>
         </ng-container>
         <ng-container matColumnDef="action">

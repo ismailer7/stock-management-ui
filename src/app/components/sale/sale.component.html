@@ -2,7 +2,7 @@
   <nav class="flex" aria-label="Breadcrumb">
     <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
       <li class="inline-flex items-center">
-        <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+        <a href="#" class="inline-flex items-center text-sm font-medium text-neutral-500 hover:text-secondary">
           {{ 'APP.SALE.BREADCRUMB' | translate }}
         </a>
       </li>
@@ -37,7 +37,7 @@
         <ng-container matColumnDef="product.productName">
             <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by code"> {{ 'APP.SALE.TABLE.COLUMN.PRODUCT' | translate }} </th>
             <td mat-cell *matCellDef="let row">
-              <span class="  bg-green-100 text-green-800 font-medium  px-2.5 py-0.5 rounded-lg dark:bg-green-900 dark:text-green-300">   {{row.product.productName}} </span>
+              <span class="text-xs bg-secondary text-secondary-content font-medium  px-2.5 py-0.5 rounded-lg dark:bg-green-900 dark:text-green-300">   {{row.product.productName}} </span>
 
               </td>
         </ng-container>

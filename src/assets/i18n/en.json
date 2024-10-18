@@ -2,144 +2,137 @@
   "WELCOME": {
     "GRANTING": "Hello World !"
   },
-
-    "APP": {
-      "NAME": "StockManagement",
-      "NAVBAR": {
-        "USER": {
+  "APP": {
+    "NAME": "StockManagement",
+    "NAVBAR": {
+      "USER": {
         "USER": "User",
         "ACCOUNT": "Account",
         "LOGOUT": "Logout"
-        }
       },
-      "SIDEBAR": {
-        "DASHBOARD": "Dashboard",
-        "PRODUCT": "Products",
-        "SALES": "Sales",
-        "CATEGORIES": "Category"
-      },
-      "FOOTER": {
-        "COPY": "Copyright",
-        "RIGHTS": "All Right Reserved By"
-      },
-
-      "PAGINATION": {
-        "FIRST": "First page",
-        "PREVIOUS": "Previous page",
-        "NEXT": "Next Page",
-        "LAST" : "Last Page",
-        "TOTAL_ITEMS": "Items per page"
-      },
-
-      "PRODUCT": {
-        "BREADCRUMB": "Products/",
-        "EXPORT": "Export",
-        "SEARCH": "Search...",
-        "NOT_FOUND": "No Records Found !",
-        "TABLE": {
-          "COLUMN": {
-            "NAME": "Name",
-            "CODE": "Code",
-            "QUANTITY": "Quantity",
-            "BUYING_PRICE": "Unit Buying Price",
-            "SELLING_PRICE": "Unit Selling Price",
-            "BUY_DATE": "Buy Date",
-            "CATEGORY": "Category",
-            "ACTIONS": "Actions"
-          }
-        },
-        "ADDPRODUCT": {
-          "ADD": "Add Product",
-          "EDIT":"Edit Product",
+      "THEME": "Theme"
+    },
+    "SIDEBAR": {
+      "DASHBOARD": "Dashboard",
+      "PRODUCT": "Products",
+      "SALES": "Sales",
+      "CATEGORIES": "Category"
+    },
+    "FOOTER": {
+      "COPY": "Copyright",
+      "RIGHTS": "All Right Reserved By"
+    },
+    "PAGINATION": {
+      "FIRST": "First page",
+      "PREVIOUS": "Previous page",
+      "NEXT": "Next Page",
+      "LAST": "Last Page",
+      "TOTAL_ITEMS": "Items per page"
+    },
+    "PRODUCT": {
+      "BREADCRUMB": "Products/",
+      "EXPORT": "Export",
+      "SEARCH": "Search...",
+      "NOT_FOUND": "No Records Found !",
+      "TABLE": {
+        "COLUMN": {
           "NAME": "Name",
-          "DESCRIPTION": "Description",
-          "BUYING_PRICE": "Buying Price",
-          "BUYING_DATE": "Buying Date",
           "CODE": "Code",
           "QUANTITY": "Quantity",
-          "SELLING_PRICE": "Selling Price",
+          "BUYING_PRICE": "Unit Buying Price",
+          "SELLING_PRICE": "Unit Selling Price",
+          "BUY_DATE": "Buy Date",
           "CATEGORY": "Category",
-          "ADD_BUTTON": "Add",
-          "EDIT_BUTTON": "Edit",
-          "CLOSE": "Close",
-          "WARNING": " Warning: required inputs should not be empty!",
-          "SELECT": "Select",
-          "VALIDATION": {
-            "REQUIRED": "required",
-            "NUMBER": "must be a number.",
-            "MIN": "must be at least 1"
-
-          }
+          "ACTIONS": "Actions"
         }
       },
-
-      "CATEGORY": {
-        "BREADCRUMB": "Categories/",
-        "ADD": "Add Category",
-        "EXPORT": "Export",
-        "SEARCH": "Search...",
-        "CATEGORY_SEARCH": "Name",
-        "TABLE": {
-          "COLUMN": {
-            "NAME": "Name",
-            "ACTIONS": "Actions"
-          },
-          "ACTIONS": {
-            "EDIT": "Edit",
-            "DELETE": "Delete"
-          }
-        },
-        "NOT_FOUND": "No Category Found !",
-        "ADDCATEGORY": {
-          "ADD": "Add Category",
+      "ADDPRODUCT": {
+        "ADD": "Add Product",
+        "EDIT": "Edit Product",
+        "NAME": "Name",
+        "DESCRIPTION": "Description",
+        "BUYING_PRICE": "Buying Price",
+        "BUYING_DATE": "Buying Date",
+        "CODE": "Code",
+        "QUANTITY": "Quantity",
+        "SELLING_PRICE": "Selling Price",
+        "CATEGORY": "Category",
+        "ADD_BUTTON": "Add",
+        "EDIT_BUTTON": "Edit",
+        "CLOSE": "Close",
+        "WARNING": " Warning: required inputs should not be empty!",
+        "SELECT": "Select",
+        "VALIDATION": {
+          "REQUIRED": "required",
+          "NUMBER": "must be a number.",
+          "MIN": "must be at least 1"
+        }
+      }
+    },
+    "CATEGORY": {
+      "BREADCRUMB": "Categories/",
+      "ADD": "Add Category",
+      "EXPORT": "Export",
+      "SEARCH": "Search...",
+      "CATEGORY_SEARCH": "Name",
+      "TABLE": {
+        "COLUMN": {
           "NAME": "Name",
-          "CLOSE": "Close",
-          "ADD_BUTTON": "Add"
+          "ACTIONS": "Actions"
+        },
+        "ACTIONS": {
+          "EDIT": "Edit",
+          "DELETE": "Delete"
         }
       },
-
-      "SALE": {
-        "BREADCRUMB": "Sales/",
-        "ADD": "Add Sale",
-        "EXPORT": "Export",
-        "SEARCH": "Search...",
-        "TABLE": {
-          "COLUMN": {
-            "DESCRIPTION": "Description",
-            "PRODUCT": "Product",
-            "UNIT_PRICE": "Unit Price",
-            "QUANTITY": "Quantity",
-            "TOTAL_PRICE": "Total Price",
-            "DATE":"Date",
-            "ACTIONS": "Actions"
-          },
-          "ACTIONS": {
-              "EDIT": "Edit",
-              "DELETE": "Delete"
-            }
-        },
-        "NOT_FOUND": "No Sale Found !",
-      "ADDSALE": {
-          "ADD": "Add Sale",
-          "EDIT":"Edit Sale",
+      "NOT_FOUND": "No Category Found !",
+      "ADDCATEGORY": {
+        "ADD": "Add Category",
+        "NAME": "Name",
+        "CLOSE": "Close",
+        "ADD_BUTTON": "Add"
+      }
+    },
+    "SALE": {
+      "BREADCRUMB": "Sales/",
+      "ADD": "Add Sale",
+      "EXPORT": "Export",
+      "SEARCH": "Search...",
+      "TABLE": {
+        "COLUMN": {
           "DESCRIPTION": "Description",
-          "SELLING_DATE": "Selling Date",
-          "QUANTITY": "Quantity",
-          "DISCOUNT": "Discount",
           "PRODUCT": "Product",
-          "ADD_BUTTON": "Add",
-          "EDIT_BUTTON": "Edit",
-          "CLOSE": "Close",
-          "WARNING": " Warning: required inputs should not be empty!",
-          "SELECT": "Select",
-          "VALIDATION": {
-            "REQUIRED": "required",
-            "NUMBER": "must be a number.",
-            "MIN": "must be at least 1"
-
-          }
+          "UNIT_PRICE": "Unit Price",
+          "QUANTITY": "Quantity",
+          "TOTAL_PRICE": "Total Price",
+          "DATE": "Date",
+          "ACTIONS": "Actions"
+        },
+        "ACTIONS": {
+          "EDIT": "Edit",
+          "DELETE": "Delete"
+        }
+      },
+      "NOT_FOUND": "No Sale Found !",
+      "ADDSALE": {
+        "ADD": "Add Sale",
+        "EDIT": "Edit Sale",
+        "DESCRIPTION": "Description",
+        "SELLING_DATE": "Selling Date",
+        "QUANTITY": "Quantity",
+        "DISCOUNT": "Discount",
+        "PRODUCT": "Product",
+        "ADD_BUTTON": "Add",
+        "EDIT_BUTTON": "Edit",
+        "CLOSE": "Close",
+        "WARNING": " Warning: required inputs should not be empty!",
+        "SELECT": "Select",
+        "VALIDATION": {
+          "REQUIRED": "required",
+          "NUMBER": "must be a number.",
+          "MIN": "must be at least 1"
         }
       }
     }
-    
   }
+}
