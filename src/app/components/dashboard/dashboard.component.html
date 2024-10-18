@@ -1,37 +1,37 @@
 <div class=" w-full h-full">
-    <div class="flex justify-around gap-2 py-10">
+    <div class="flex flex-col md:flex-row justify-around gap-2 py-10">
+        <div role="alert" class="w-64  h-full block overflow-auto">
+            <div class="bg-error text-error-content font-bold rounded-t px-4 py-2">
+                Total Cash spent
+            </div>
+            <div class="border border-t-0 border-error rounded-b  py-7 bg-base-200 text-base-content text-center">
+
+                {{ 40000.33525 | currency:'Dh':'symbol':'1.2-2':'fr-MA' }}
+            </div>
+        </div>
         <div role="alert" class="w-64 h-full block overflow-auto">
-            <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
-                Danger
+            <div class="bg-info text-info-content font-bold rounded-t px-4 py-2">
+                Total Cash received
             </div>
-            <div class="border border-t-0 border-red-400 rounded-b bg-red-100 py-7 text-red-700 text-center">
+            <div class="border border-t-0 border-info rounded-b  py-7 bg-base-200 text-base-content text-center">
 
                 {{ 40000.33525 | currency:'Dh':'symbol':'1.2-2':'fr-MA' }}
             </div>
         </div>
-        <div role="alert" class="w-56 h-full block overflow-auto">
-            <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
-                Danger
+        <div role="alert" class="w-64 h-full block overflow-auto">
+            <div class="bg-warning text-warning-content font-bold rounded-t px-4 py-2">
+                Value of Stock
             </div>
-            <div class="border border-t-0 border-red-400 rounded-b bg-red-100 py-7 text-red-700 text-center">
+            <div class="border border-t-0 border-warning rounded-b  py-7 bg-base-200 text-base-content text-center">
 
                 {{ 40000.33525 | currency:'Dh':'symbol':'1.2-2':'fr-MA' }}
             </div>
         </div>
-        <div role="alert" class="w-56 h-full block overflow-auto">
-            <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
-                Danger
+        <div role="alert" class="w-64 h-full block overflow-auto">
+            <div class="bg-success text-success-content font-bold rounded-t px-4 py-2">
+                Net cash received
             </div>
-            <div class="border border-t-0 border-red-400 rounded-b bg-red-100 py-7 text-red-700 text-center">
-
-                {{ 40000.33525 | currency:'Dh':'symbol':'1.2-2':'fr-MA' }}
-            </div>
-        </div>
-        <div role="alert" class="w-56 h-full block overflow-auto">
-            <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
-                Danger
-            </div>
-            <div class="border border-t-0 border-red-400 rounded-b bg-red-100 py-7 text-red-700 text-center">
+            <div class="border border-t-0 border-success rounded-b  py-7 bg-base-200 text-base-content text-center">
 
                 {{ 40000.33525 | currency:'Dh':'symbol':'1.2-2':'fr-MA' }}
             </div>
