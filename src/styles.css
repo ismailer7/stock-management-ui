@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+
+body[data-theme="dark"] {
+        --mat-paginator-disabled-icon-color: theme(colors.neutral-600) ;
+        --mat-paginator-enabled-icon-color: theme(colors.neutral-content);
+
+}
+
 body, html, app-root {
     display:block;
     position: relative;
@@ -37,7 +44,7 @@ th, td {
 table .mat-mdc-header-row {
     font-size: 0.825rem;
     height: 40px;
-    background-color: theme('colors.base-200');
+    background-color: theme('colors.neutral-500');
     font-family: "Montserrat Alternates", sans-serif;
 }
 
@@ -47,25 +54,28 @@ table .mat-mdc-cell{
     padding-top: 0;
     padding-bottom: 0;
     font-family: "Roboto", sans-serif;
+    color: theme('colors.base-content')
 }
 table.mat-mdc-table{
-    background-color: transparent;
+    background-color: theme('colors.base-100');
     border-left: 1px solid lightgray;
     border-right: 1px solid lightgray;
     border-radius: 0;
 }
+
 mat-paginator.mat-mdc-paginator{
-    background-color: transparent;
+    background-color: theme('colors.base-100');
     border-top: 1px dashed lightgray;
     border-bottom: 1px solid lightgray;
     border-left: 1px solid lightgray;
     border-right: 1px solid lightgray;
     overflow-x: auto;
+    color: theme('colors.base-content')
 
 }
 table .mat-mdc-header-cell{
     border-bottom: 0;
-    color: theme('colors.neutral-600');
+    color: theme('colors.neutral-content');
     padding-top: 0;
     padding-bottom: 0;
 }
@@ -82,6 +92,15 @@ table .mat-mdc-row:hover{
     color: theme('colors.base-content');
 }
 
+mat-paginator .mat-mdc-select-trigger {
+    color: theme('colors.base-content')
+}
+mat-mdc-paginator-range-actions .mat-mdc-button-disabled{
+    color: red;
+}
+mat-paginator .mat-mdc-paginator-icon:disabled{
+    color:red;
+}
 
 .toast-info {
     background-color: theme('colors.info');

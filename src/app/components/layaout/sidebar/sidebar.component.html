@@ -5,7 +5,7 @@
         </button>
         <div>
             <a [ngClass]="hideSideBar ? '' : 'md:block'" routerLink="/home"
-               class="hidden mt-3 self-center text-xl font-mono whitespace-nowrap dark:text-white me-3 pacifico-regular">{{ 'APP.NAME' | translate }}</a>
+               class="hidden mt-3 self-center text-xl font-mono whitespace-nowrap  me-3 pacifico-regular">{{ 'APP.NAME' | translate }}</a>
         </div>
     </div>
     <div  class="ps-0  h-96 pb-4 overflow-y-auto text-base-content">
@@ -20,7 +20,7 @@
             </li>
             <li>
                 <a  routerLink="/home/sales" routerLinkActive="active" ariaCurrentWhenActive="page"
-                    [ngClass]="hideSideBar ? 'flex-col' : 'md:flex-row md:px-3.5'" class="flex flex-col items-center  py-2 text-gray-900 rounded-lg transition duration-75 focus:bg-neutral-300 focus:text-accent-content hover:bg-base-300 hover:text-base-content group">
+                    [ngClass]="hideSideBar ? 'flex-col' : 'md:flex-row md:px-3.5'" class="flex flex-col items-center  py-2 text-base-content rounded-lg transition duration-75 focus:bg-neutral-300 focus:text-accent-content hover:bg-base-300 hover:text-base-content group">
                     <fa-icon [icon]="faSackDollar"
                              class="text-lg w-5"></fa-icon>
                     <span [ngClass]="hideSideBar ? '' : 'md:text-base md:ms-3'" class="text-xs">{{ 'APP.SIDEBAR.SALES' | translate }}</span>
@@ -29,7 +29,7 @@
             </li>
             <li>
                 <a  routerLink="/home/products" routerLinkActive="active" ariaCurrentWhenActive="page"
-                    [ngClass]="hideSideBar ? 'flex-col' : 'md:flex-row md:px-3.5'" class="flex flex-col items-center px-3.5 py-2 text-gray-900 rounded-lg transition duration-75 focus:bg-neutral-300 focus:text-accent-content hover:bg-base-300 hover:text-base-content group">
+                    [ngClass]="hideSideBar ? 'flex-col' : 'md:flex-row md:px-3.5'" class="flex flex-col items-center px-3.5 py-2 text-base-content rounded-lg transition duration-75 focus:bg-neutral-300 focus:text-accent-content hover:bg-base-300 hover:text-base-content group">
                     <fa-icon [icon]="faHandshake"
                              class="text-lg w-5"></fa-icon>
                     <span [ngClass]="hideSideBar ? '' : 'md:text-base md:ms-3'" class="text-xs">{{ 'APP.SIDEBAR.PRODUCT' | translate }}</span>
@@ -38,7 +38,7 @@
 
             <li>
                 <a routerLink="/home/category" routerLinkActive="active" ariaCurrentWhenActive="page"
-                   [ngClass]="hideSideBar ? 'flex-col' : 'md:flex-row md:px-3.5'" class="flex flex-col items-center px-3.5 py-2 text-gray-900 rounded-lg transition duration-75 focus:bg-neutral-300 focus:text-accent-content hover:bg-base-300 hover:text-base-content group">
+                   [ngClass]="hideSideBar ? 'flex-col' : 'md:flex-row md:px-3.5'" class="flex flex-col items-center px-3.5 py-2 text-base-content rounded-lg transition duration-75 focus:bg-neutral-300 focus:text-accent-content hover:bg-base-300 hover:text-base-content group">
                     <fa-icon [icon]="faTags"
                              class="text-lg w-5"></fa-icon>
                     <span [ngClass]="hideSideBar ? '' : 'md:text-base md:ms-3'" class="text-xs">{{ 'APP.SIDEBAR.CATEGORIES' | translate }}</span>
