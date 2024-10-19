@@ -2,8 +2,12 @@
     <div class="modal-box w-11/12 max-w-5xl">
       <form class="max-w mx-auto py-4 px-8 " [formGroup]="saleForm" (ngSubmit)="submit()" >
         @if(isEditMode) {
-        <h2 class="text-2xl font-bold mb-6">{{ 'APP.SALE.ADDSALE.EDIT' | translate }}:</h2>
-        }
+           @if(isView){
+             <h2 class="text-2xl font-bold mb-6">{{ 'APP.SALE.ADDSALE.VIEW' | translate }}:</h2>
+           }@else{
+            <h2 class="text-2xl font-bold mb-6">{{ 'APP.SALE.ADDSALE.EDIT' | translate }}:</h2>
+            }  
+         }
         @else{
         <h2 class="text-2xl font-bold mb-6">{{ 'APP.SALE.ADDSALE.ADD' | translate }}:</h2>
         }
@@ -77,7 +81,11 @@
           <div class="modal-action">
             @if(isEditMode ===true)
             { 
+              @if(isView === true){
+                <button type="button" (click)="print()" class="btn btn-primary px-8">{{ 'APP.SALE.ADDSALE.PRINT_BUTTON' | translate }}</button>
+              }@else{ 
               <button type="submit"  [disabled]="saleForm.pristine || saleForm.invalid " class="btn btn-primary px-8">{{ 'APP.SALE.ADDSALE.EDIT_BUTTON' | translate }}</button>
+              }
             }@else
             {
               <button type="submit" [disabled]="saleForm.invalid"  class="btn btn-primary px-8">{{ 'APP.SALE.ADDSALE.ADD_BUTTON' | translate }}</button>

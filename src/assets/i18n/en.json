@@ -121,12 +121,14 @@
           "ACTIONS": {
               "EDIT": "Edit",
               "DELETE": "Delete"
+             
             }
         },
         "NOT_FOUND": "No Sale Found !",
       "ADDSALE": {
         "ADD": "Add Sale",
         "EDIT": "Edit Sale",
+        "VIEW": "View Sale",
         "DESCRIPTION": "Description",
         "SELLING_DATE": "Selling Date",
         "QUANTITY": "Quantity",
@@ -134,6 +136,7 @@
         "PRODUCT": "Product",
         "ADD_BUTTON": "Add",
         "EDIT_BUTTON": "Edit",
+        "PRINT_BUTTON": "Print",
         "CLOSE": "Close",
         "WARNING": " Warning: required inputs should not be empty!",
         "SELECT": "Select",

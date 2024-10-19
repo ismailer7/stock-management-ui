@@ -20,18 +20,18 @@ export class SaleOperationComponent {
 
     saleService = inject(SalesService);
     productService = inject(ProductService);
-    fb = inject(FormBuilder)
     toastr = inject(ToastrService);
     saleForm: FormGroup;
     products: Product [] = [];
     @Input() selectedSale!: any;
+    @Input() isView:boolean;
     productSelected: any;
     isEditMode = false;
     submitted = false;
     destroyRef = inject(DestroyRef)
 
 
-    constructor() {
+    constructor(private fb: FormBuilder) {
 
     }
 
@@ -61,6 +61,9 @@ export class SaleOperationComponent {
         console.log("edit mode:", this.isEditMode);
         if (this.isEditMode) {
             this.productSelected = this.products.find(p => p.id === this.selectedSale.product.id);
+            if(this.isView){
+                this.saleForm.disable();
+              }else{
             this.saleForm = this.fb.group({
                 description: [this.selectedSale?.description, Validators.required],
                 product: [this.productSelected, Validators.required],
@@ -68,7 +71,7 @@ export class SaleOperationComponent {
                 discount: [this.selectedSale?.discount, [Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
                 saleDate: [this.selectedSale?.saleDate]
             });
-
+        }
         } else {
             this.saleForm = this.fb.group({
                 description: ['', Validators.required],
@@ -175,6 +178,7 @@ export class SaleOperationComponent {
         this.submitted = false
     }
 
+    print(){}
 
 }
 
