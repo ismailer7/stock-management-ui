@@ -1,119 +1,150 @@
 <dialog id="my_modal_1" class="modal ">
-    <div class="modal-box w-11/12 max-w-5xl">
-      <form class="max-w mx-auto py-4 px-8 " [formGroup]="productForm" (ngSubmit)="submit()" >
-        @if(isEditMode) {
+  <div class="modal-box w-11/12 max-w-5xl">
+    <form class="max-w mx-auto py-4 px-8 " [formGroup]="productForm" (ngSubmit)="submit()" >
+      @if(isEditMode) {
+        @if(isView){
+          <h2 class="text-2xl font-bold mb-6">{{ 'APP.PRODUCT.ADDPRODUCT.VIEW' | translate }}:</h2>
+        }@else{
         <h2 class="text-2xl font-bold mb-6">{{ 'APP.PRODUCT.ADDPRODUCT.EDIT' | translate }}:</h2>}
-        @else{
-        <h2 class="text-2xl font-bold mb-6">{{ 'APP.PRODUCT.ADDPRODUCT.ADD' | translate }}:</h2>}
-          <div class="row ">
-              <div class="gap-4 columns-2">
-                  <div class="mb-4 relative ">
-                      <label>
-                        {{ 'APP.PRODUCT.ADDPRODUCT.NAME' | translate }}<span class="text-sm ms-1 inputError-text">*</span> :</label>
-                          <input type="text" class="input input-bordered mt-1 w-full" [ngClass]="{inputError: productForm.get('productName')?.invalid &&  productForm.get('productName')?.touched}"  placeholder="Samsung S24" id="productName" formControlName="productName"   />
-                          <div class="inputError-text font-bold mt-1  text-xs">
-                            @if(productForm.get('productName')?.invalid &&  productForm.get('productName')?.touched)
-                            {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }} </p>}   
-                        </div>
-                  </div>
-                  <div class="mb-4  relative">
-                      <label>
-                        {{ 'APP.PRODUCT.ADDPRODUCT.CODE' | translate }} <span class="text-sm ms-1 inputError-text">*</span> :</label>
-                          <input type="text" class="input input-bordered mt-1 w-full" [ngClass]="{inputError: productForm.get('productCode')?.invalid &&  productForm.get('productCode')?.touched}" placeholder="WM-001" id="productCode" formControlName="productCode"  />
-                          <div class="inputError-text font-bold mt-1 text-xs ">
-                            @if(productForm.get('productCode')?.invalid &&  productForm.get('productCode')?.touched)
-                            {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }} </p>}
-                        </div>
+      }@else{
+      <h2 class="text-2xl font-bold mb-6">{{ 'APP.PRODUCT.ADDPRODUCT.ADD' | translate }}:</h2>}
+        <div class="row ">
+            <div class="gap-4 columns-2">
+                <div class="mb-4 relative ">
+                    <label for="product_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                          {{ 'APP.PRODUCT.ADDPRODUCT.NAME' | translate }}
+                          <span class="text-sm ms-1 inputError-text">*</span>
+                        </label>
+                        <input type="text" placeholder="Samsung S24" id="productName" formControlName="productName" 
+                        class="mt-1  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                        [ngClass]="{inputError: productForm.get('productName')?.invalid &&  productForm.get('productName')?.touched}" />
+                        <div class="inputError-text font-bold mt-1  text-xs">
+                          @if(productForm.get('productName')?.invalid &&  productForm.get('productName')?.touched)
+                          {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }} </p>}   
+                      </div>
+                </div>
+                <div class="mb-4  relative">
+                         <label for="product_code" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                          {{ 'APP.PRODUCT.ADDPRODUCT.CODE' | translate }}
+                         <span class="text-sm ms-1 inputError-text">*</span>
+                         </label>
+                         <input type="text" placeholder="WM-001" id="productCode" formControlName="productCode" 
+                          class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          [ngClass]="{inputError: productForm.get('productCode')?.invalid &&  productForm.get('productCode')?.touched}"/>
+                         <div class="inputError-text font-bold mt-1 text-xs ">
+                          @if(productForm.get('productCode')?.invalid &&  productForm.get('productCode')?.touched)
+                          {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }} </p>}
+                      </div>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="gap-4 columns-2">
+                <div class="mb-4  relative">
+                  <label for="product_description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                     {{ 'APP.PRODUCT.ADDPRODUCT.DESCRIPTION' | translate }}
+                      </label>
+                        <input type="text" placeholder="128rom/6ram color black" id="description" formControlName="description" 
+                        class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>      
+                      </div>
+                <div class="mb-4  relative ">   
+                    <label  for="product_quantity" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" >
+                      {{ 'APP.PRODUCT.ADDPRODUCT.QUANTITY' | translate }}
+                      <span class="text-sm ms-1 inputError-text" >*</span>
+                    </label>
+                        <input type="text" placeholder="100" id="quantity" formControlName="quantity"
+                        class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"   
+                        [ngClass]="{inputError: productForm.get('quantity')?.invalid &&  productForm.get('quantity')?.touched}"   />
+                        <div class="inputError-text  font-bold mt-1 text-xs ">
+                          @if(productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['required'])
+                          {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }}</p> } 
+                          @if((productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['pattern']) ||
+                              (productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['min']))
+                          {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.NUMBER' | translate }} </p>}
+                       </div>   
+                </div>
+            </div>  
+        </div>
+        <div class="row ">
+            <div class="gap-4 columns-2">
+              <div class="mb-4  relative ">
+                  <label for="product_bPrice" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"  >
+                      {{ 'APP.PRODUCT.ADDPRODUCT.BUYING_PRICE' | translate }}<span class="text-sm ms-1 inputError-text">*</span> 
+                  </label>
+                      <input type="text" placeholder="4000" id="unitBuyPrice" formControlName="unitBuyPrice"
+                      class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  
+                      [ngClass]="{inputError: productForm.get('unitBuyPrice')?.invalid &&  productForm.get('unitBuyPrice')?.touched}"   />
+                  <div class="inputError-text  font-bold mt-1  text-xs ">
+                      @if(productForm.get('unitBuyPrice')?.touched && productForm.get('unitBuyPrice')?.errors?.['required'])
+                      {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }}</p> } 
+                      @if((productForm.get('unitBuyPrice')?.touched && productForm.get('unitBuyPrice')?.errors?.['pattern']) ||
+                          (productForm.get('unitBuyPrice')?.touched && productForm.get('unitBuyPrice')?.errors?.['min']) )
+                      {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.NUMBER' | translate }} </p>} 
                   </div>
               </div>
-          </div>
-          <div class="row ">
-              <div class="gap-4 columns-2">
-                  <div class="mb-4  relative">
-                      <label> {{ 'APP.PRODUCT.ADDPRODUCT.DESCRIPTION' | translate }}:  </label>
-                          <input type="text" class="input input-bordered mt-1 w-full" placeholder="128rom/6ram color black" id="description" formControlName="description"   />      
-                        </div>
-                  <div class="mb-4  relative ">   
-                      <label  >
-                        {{ 'APP.PRODUCT.ADDPRODUCT.QUANTITY' | translate }}<span class="text-sm ms-1 inputError-text" >*</span> :</label>
-                          <input type="text" class="input input-bordered mt-1 w-full" [ngClass]="{inputError: productForm.get('quantity')?.invalid &&  productForm.get('quantity')?.touched}" placeholder="100" id="quantity" formControlName="quantity"  />
-                          <div class="inputError-text  font-bold mt-1  text-xs ">
-                            @if(productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['required'])
-                            {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }}</p> } 
-                            @if(productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['pattern'])
-                            {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.NUMBER' | translate }} </p>} 
-                            @if(productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['min'])
-                            {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.MIN' | translate }} </p>} 
-                         </div>   
+              <div class="mb-4  relative ">
+                  <label for="product_sPrice" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" >
+                      {{ 'APP.PRODUCT.ADDPRODUCT.SELLING_PRICE' | translate }}
+                      <span class="text-sm ms-1 inputError-text">*</span> 
+                  </label>
+                      <input type="text" placeholder="4500" id="unitSellPrice" formControlName="unitSellPrice"
+                      class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  
+                      [ngClass]="{inputError: productForm.get('unitSellPrice')?.invalid &&  productForm.get('unitSellPrice')?.touched}"   />      
+                      <div class="inputError-text  font-bold mt-1  text-xs ">
+                      @if(productForm.get('unitSellPrice')?.touched && productForm.get('unitSellPrice')?.errors?.['required'])
+                      {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }}</p> } 
+                      @if((productForm.get('unitSellPrice')?.touched && productForm.get('unitSellPrice')?.errors?.['pattern']) ||
+                          (productForm.get('unitSellPrice')?.touched && productForm.get('unitSellPrice')?.errors?.['min']))
+                      {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.NUMBER' | translate }} </p>}
+                      </div>
                   </div>
-              </div>  
-          </div>
-          <div class="row ">
-              <div class="gap-4 columns-2">
+            </div>
+        </div>
+        <div class="row ">
+            <div class="gap-4 columns-2">
                 <div class="mb-4  relative ">
-                    <label  >
-                        {{ 'APP.PRODUCT.ADDPRODUCT.BUYING_PRICE' | translate }}<span class="text-sm ms-1 inputError-text">*</span> :</label>
-                        <input type="text" class="input input-bordered mt-1 w-full" [ngClass]="{inputError: productForm.get('unitBuyPrice')?.invalid &&  productForm.get('unitBuyPrice')?.touched}" placeholder="4000" id="unitBuyPrice" formControlName="unitBuyPrice"  />
-                    <div class="inputError-text  font-bold mt-1  text-xs ">
-                        @if(productForm.get('unitBuyPrice')?.touched && productForm.get('unitBuyPrice')?.errors?.['required'])
-                        {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }}</p> } 
-                        @if(productForm.get('unitBuyPrice')?.touched && productForm.get('unitBuyPrice')?.errors?.['pattern'])
-                        {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.NUMBER' | translate }} </p>} 
-                        @if(productForm.get('unitBuyPrice')?.touched && productForm.get('unitBuyPrice')?.errors?.['min'])
-                        {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.MIN' | translate }} </p>} 
-                    </div>
+                        <label for="product_bDate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" >
+                          {{ 'APP.PRODUCT.ADDPRODUCT.BUY_DATE' | translate }} 
+                        </label>
+                            <input type="date" id="buyDate" formControlName="buyDate"
+                            class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  >
                 </div>
                 <div class="mb-4  relative ">
-                    <label >
-                        {{ 'APP.PRODUCT.ADDPRODUCT.SELLING_PRICE' | translate }}<span class="text-sm ms-1 inputError-text">*</span> :</label>
-                        <input type="text" class="input input-bordered mt-1 w-full" [ngClass]="{inputError: productForm.get('unitSellPrice')?.invalid &&  productForm.get('unitSellPrice')?.touched}" placeholder="4500" id="unitSellPrice" formControlName="unitSellPrice"  />      
+                    <label for="product_category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                      {{ 'APP.PRODUCT.ADDPRODUCT.CATEGORY' | translate }}
+                      <span class="text-sm ms-1 inputError-text">*</span>
+                     </label>
+                        <select  id="category" formControlName="category"
+                        
+                        class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        [ngClass]="{inputError: productForm.get('category')?.invalid &&  productForm.get('category')?.touched}" >
+                            <option [ngValue]="null">{{ 'APP.PRODUCT.ADDPRODUCT.SELECT' | translate }}</option>
+                            @for (category of categories; track category.id) {
+                                <option [ngValue]="category">{{ category.name }}</option>
+                            }
+                        </select>
                         <div class="inputError-text  font-bold mt-1  text-xs ">
-                        @if(productForm.get('unitSellPrice')?.touched && productForm.get('unitSellPrice')?.errors?.['required'])
-                        {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }}</p> } 
-                        @if(productForm.get('unitSellPrice')?.touched && productForm.get('unitSellPrice')?.errors?.['pattern'])
-                        {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.NUMBER' | translate }} </p>}
-                        @if(productForm.get('unitSellPrice')?.touched && productForm.get('unitSellPrice')?.errors?.['min'])
-                        {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.MIN' | translate }} </p>}
+                          @if(productForm.get('category')?.touched && productForm.get('category')?.errors?.['required'])
+                          {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }}</p> } 
                         </div>
-                    </div>
-              </div>
-          </div>
-          <div class="row ">
-              <div class="gap-4 columns-2">
-                  <div class="mb-4  relative ">
-                          <label >{{ 'APP.PRODUCT.ADDPRODUCT.BUYING_DATE' | translate }}: </label>
-                              <input type="date" id="buyDate" formControlName="buyDate"
-                                     class="input input-bordered mt-1 w-full  placeholder=2024-12-02">
-                  </div>
-                  <div class="mb-4  relative ">
-                      <label>
-                        {{ 'APP.PRODUCT.ADDPRODUCT.CATEGORY' | translate }}<span class="text-sm ms-1 inputError-text">*</span>: </label>
-                          <select class="select select-m select-bordered w-full max-w mt-1" [ngClass]="{inputError: productForm.get('category')?.invalid &&  productForm.get('category')?.touched}" id="category" formControlName="category">
-                              <option [ngValue]="null">{{ 'APP.PRODUCT.ADDPRODUCT.SELECT' | translate }}</option>
-                              @for (category of categories; track category.id) {
-                                  <option [ngValue]="category">{{ category.name }}</option>
-                              }
-                          </select>
-                          <div class="inputError-text  font-bold mt-1  text-xs ">
-                            @if(productForm.get('category')?.touched && productForm.get('category')?.errors?.['required'])
-                            {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }}</p> } 
-                          </div>
-                  </div>
-              </div>
-          </div>
-          <div class="modal-action">
-            @if(isEditMode)
-                  { 
-                    <button type="submit" [disabled]="productForm.pristine || productForm.invalid " class="btn btn-primary px-8">{{ 'APP.PRODUCT.ADDPRODUCT.EDIT_BUTTON' | translate }}</button>
-                  }@else
-                  {
-                    <button type="submit" [disabled]="productForm.invalid" class="btn btn-primary px-8">{{ 'APP.PRODUCT.ADDPRODUCT.ADD_BUTTON' | translate }}</button>
-                  }
-                  <form method="dialog">
-                      <button id="btn-close-modal" class="btn px-8" (click)="close()">{{ 'APP.PRODUCT.ADDPRODUCT.CLOSE' | translate }}</button>
-                  </form>
-          </div>
-      </form>
-    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-action">
+          @if(isEditMode){
+             @if(isView === true){
+               <button type="button" (click)="print()" class="btn btn-primary px-8 rounded-full">{{ 'APP.PRODUCT.ADDPRODUCT.PRINT_BUTTON' | translate }}</button>
+             }@else{ 
+               <button type="submit" [disabled]="productForm.pristine || productForm.invalid " class="btn btn-primary px-8 rounded-full">{{ 'APP.PRODUCT.ADDPRODUCT.EDIT_BUTTON' | translate }}</button>
+             }
+          }@else{
+            <button type="submit" [disabled]="productForm.invalid" class="btn btn-primary px-8 rounded-full">{{ 'APP.PRODUCT.ADDPRODUCT.ADD_BUTTON' | translate }}</button>
+          }
+                <form method="dialog">
+                    <button id="btn-close-modal" class="btn px-8 btn-active rounded-full" (click)="close()">{{ 'APP.PRODUCT.ADDPRODUCT.CLOSE' | translate }}</button>
+                </form>
+        </div>
+    </form>
+  </div>
 
-  </dialog>
+</dialog>

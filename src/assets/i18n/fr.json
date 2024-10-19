@@ -48,22 +48,25 @@
       },
       "ADDPRODUCT": {
         "ADD": "Ajouter un produit",
-        "EDIT": "Modifier Product",
+        "EDIT": "Modifier produit",
+        "VIEW":"Examiner produit",
         "NAME": "Nom",
         "DESCRIPTION": "Description",
         "BUYING_PRICE": "Prix ​​d'achat",
         "CODE": "Code",
         "QUANTITY": "Quantité",
         "SELLING_PRICE": "Prix ​​de vente",
+        "BUY_DATE": "Date d'achat",
         "CATEGORY": "Catégorie",
         "ADD_BUTTON": "Ajouter",
         "EDIT_BUTTON": "Modifier",
+        "PRINT_BUTTON": "Imprimer",
         "CLOSE": "Fermer",
         "WARNING": " Attention : les champs obligatoires ne doivent pas être vides !",
         "SELECT": "Sélectionner",
         "VALIDATION": {
           "REQUIRED": "requis",
-          "NUMBER": "ça doit être un nombre.",
+          "NUMBER": "ça doit être un nombre au moins 1.",
           "MIN": "doit avoir au moins 1"
         }
       }
@@ -73,7 +76,6 @@
       "ADD": "Ajouter une catégorie",
       "EXPORT": "Exporter",
       "SEARCH": "Recherche...",
-      "CATEGORY_SEARCH": "Nom",
       "TABLE": {
         "COLUMN": {
           "NAME": "Nom",
@@ -86,10 +88,17 @@
       },
       "NOT_FOUND": "Aucune catégorie trouvée !",
       "ADDCATEGORY": {
-        "ADD": "Ajouter une catégorie",
-        "NAME": "Nom",
-        "CLOSE": "Fermer",
-        "ADD_BUTTON": "Ajouter"
+          "ADD": "Ajouter Categorie",
+          "EDIT": "Modifier Categorie",
+          "VIEW": "Examiner Categorie",
+          "NAME": "Nom",
+          "CLOSE": "Fermer",
+          "ADD_BUTTON": "Ajouter",
+          "EDIT_BUTTON": "Modifier",
+          "PRINT_BUTTON": "Imprimer",
+          "VALIDATION": {
+            "REQUIRED": "requis"
+          }
       }
     },
     "SALE": {
@@ -110,7 +119,38 @@
           "EDIT": "Modifier",
           "DELETE": "Supprimer"
         }
+      },
+      "NOT_FOUND": "Vente non trouvé!",
+      "ADDSALE": {
+        "ADD": "Ajouter vente",
+        "EDIT": "Modifier vente",
+        "VIEW": "Examiner vente",
+        "DESCRIPTION": "Description",
+        "SELLING_DATE": "Date de vente",
+        "QUANTITY": "Quantité",
+        "DISCOUNT": "Remise",
+        "PRODUCT": "Produit",
+        "ADD_BUTTON": "Ajouter",
+        "EDIT_BUTTON": "Modifier",
+        "PRINT_BUTTON": "Imprimer",
+        "CLOSE": "Fermer",
+        "WARNING": "Attention : les champs obligatoires ne doivent pas être vides !",
+        "SELECT": "Sélectionner",
+        "VALIDATION": {
+          "REQUIRED": "requis",
+          "NUMBER": "doit être un nombre et au moins 1 .",
+          "MIN": "doit être au moins 1"
+        }
       }
+    },
+    "LOGIN": {
+        "DETAILS": "entrez les détails de connexion",
+        "USERNAME": "Utilisateur",
+        "PASSWORD": "Mot de Passe",
+        "LOGIN_BUTTON": "Connexion",
+        "VALIDATION": {
+          "REQUIRED": "requis"
+        }
     }
   }
 }

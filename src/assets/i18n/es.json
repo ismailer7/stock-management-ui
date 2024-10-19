@@ -37,47 +37,49 @@
       "TABLE": {
         "COLUMN": {
           "NAME": "Nombre",
-          "CODE": "Code",
+          "CODE": "Codigo",
           "QUANTITY": "Cantidad",
           "BUYING_PRICE": "Precio de compra",
           "SELLING_PRICE": "Precio de venta",
           "BUY_DATE": "Fecha de compra",
           "CATEGORY": "Categoría",
-          "ACTIONS": "Comportamiento"
+          "ACTIONS": "Acciones"
         }
       },
       "ADDPRODUCT": {
-        "ADD": "Agregar producto",
-        "EDIT": "Modificar Product",
+        "ADD": "Añadir producto",
+        "EDIT": "Modificar producto",
+        "VIEW":"Examinar producto",
         "NAME": "Nombre",
         "DESCRIPTION": "Descripción",
         "BUYING_PRICE": "Precio de compra",
         "CODE": "Código",
         "QUANTITY": "Cantidad",
         "SELLING_PRICE": "Precio de venta",
+        "BUY_DATE": "Fecha de compra",
         "CATEGORY": "Categoría",
-        "ADD_BUTTON": "Agregar",
+        "ADD_BUTTON": "Añadir",
+        "PRINT_BUTTON": "Imprimir",
         "EDIT_BUTTON": "Modificar",
         "CLOSE": "Cerrar",
         "WARNING": " Advertencia: los campos obligatorios no deben estar vacíos!",
         "SELECT": "Seleccionar",
         "VALIDATION": {
-          "REQUIRED": "requerida",
-          "NUMBER": "debe ser un numero.",
+          "REQUIRED": "necesario",
+          "NUMBER": "debe ser un numero y mínimo 1.",
           "MIN": "debe tener al menos 1"
         }
       }
     },
     "CATEGORY": {
       "BREADCRUMB": "Categorías/",
-      "ADD": "Agregar categoría",
+      "ADD": "Añadir categoría",
       "EXPORT": "Exportar",
       "SEARCH": "Buscar...",
-      "CATEGORY_SEARCH": "Name",
       "TABLE": {
         "COLUMN": {
           "NAME": "Nombre",
-          "ACTIONS": "Comportamiento"
+          "ACTIONS": "Acciones"
         },
         "ACTIONS": {
           "EDIT": "Editar",
@@ -86,15 +88,22 @@
       },
       "NOT_FOUND": "No se encontró ninguna categoría!",
       "ADDCATEGORY": {
-        "ADD": "Agregar categoría",
+        "ADD": "Añadir categoría",
+        "EDIT": "Modificar categoría",
+        "VIEW": "Examinar categoría",
         "NAME": "Nombre",
-        "CLOSE": "Cerca",
-        "ADD_BUTTON": "Agregar"
+        "CLOSE": "Cerrar",
+        "ADD_BUTTON": "Añadir",
+        "EDIT_BUTTON": "Modificar",
+        "PRINT_BUTTON": "imprimir",
+        "VALIDATION": {
+          "REQUIRED": "necesario"
+          }
       }
     },
     "SALE": {
       "BREADCRUMB": "Ventas/",
-      "ADD": "Agregar venta",
+      "ADD": "Añadir venta",
       "EXPORT": "Exportar",
       "SEARCH": "Buscar...",
       "TABLE": {
@@ -103,14 +112,46 @@
           "PRODUCT": "Producto",
           "UNIT_PRICE": "Precio unitario",
           "QUANTITY": "Cantidad",
+          "DATE": "Fecha",
           "TOTAL_PRICE": "Precio total",
-          "ACTIONS": "Comportamiento"
+          "ACTIONS": "Acciones"
         },
         "ACTIONS": {
           "EDIT": "Editar",
           "DELETE": "Borrar"
         }
+      },
+      "NOT_FOUND": "No venta encuentra!",
+      "ADDSALE": {
+        "ADD": "Añadir venta",
+        "EDIT": "Modificar venta",
+        "VIEW": "Examinar venta",
+        "DESCRIPTION": "Descripcion",
+        "SELLING_DATE": "Fecha de Venta",
+        "QUANTITY": "cantidad",
+        "DISCOUNT": "Descuenta",
+        "PRODUCT": "Producto",
+        "ADD_BUTTON": "Añadir",
+        "EDIT_BUTTON": "Modificar",
+        "PRINT_BUTTON": "Imprimir",
+        "CLOSE": "Cerrar",
+        "WARNING": "Advertencia:¡los campos obligatorios no deben estar vacíos!",
+        "SELECT": "Seleccionar",
+        "VALIDATION": {
+          "REQUIRED": "necesario",
+          "NUMBER": "debe ser un numero y mínimo 1.",
+          "MIN": "debe tener al menos 1"
+        }
       }
+    },
+    "LOGIN": {
+        "DETAILS": "entrar los datos de acceso.",
+        "USERNAME": "Usuario",
+        "PASSWORD": "Contrasena",
+        "LOGIN_BUTTON": "entrar",
+        "VALIDATION": {
+          "REQUIRED": "ْnecesario"
+        }
     }
   }
 }

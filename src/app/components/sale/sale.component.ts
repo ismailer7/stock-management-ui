@@ -49,7 +49,8 @@ export class SaleComponent implements AfterViewInit {
     isLoading = true;
     searchKeywordFilter = new FormControl();
     selectedSale: any = null;
-    destroyRef = inject(DestroyRef)
+    destroyRef = inject(DestroyRef);
+    isView: boolean = false;
 
     ngAfterViewInit(): void {
         this.dataSource.paginator = this.paginator;
@@ -116,6 +117,7 @@ export class SaleComponent implements AfterViewInit {
         const p = this.sales.find(p => p.id == id);
         this.selectedSale = {...p};
         console.log("edit Sale", this.selectedSale);
+        this.isView = false;
     }
 
     deleteSale(id: Number) {
@@ -140,6 +142,13 @@ export class SaleComponent implements AfterViewInit {
         console.log(event)
     }
 
+    viewSale(id: Number) {
+
+        this.isView = true;
+        const s = this.sales.find(s => s.id == id);
+        this.selectedSale = {...s};
+        console.log("view Sale");
+    }
 
 }
 

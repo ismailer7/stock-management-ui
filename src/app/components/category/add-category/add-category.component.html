@@ -1,44 +1,47 @@
 <dialog id="my_modal2" class="modal">
-    <div class="modal-box w-11/12 max-w-5xl">
-        <form class="max-w mx-auto py-4 px-8 " [formGroup]="categoryForm" (ngSubmit)="submit()">
-            @if (isEditMode) {
-                <h2 class="text-2xl font-bold mb-6">{{ 'APP.CATEGORY.ADDCATEGORY.EDIT' | translate }}:</h2>
-                @if (isView) {
-                    <h2 class="text-2xl font-bold mb-6">View:</h2>
-                }
-            } @else {
-                <h2 class="text-2xl font-bold mb-6">{{ 'APP.CATEGORY.ADDCATEGORY.ADD' | translate }}:</h2>
-            }
-            <div class="row ">
-                <label>
-                    {{ 'APP.CATEGORY.ADDCATEGORY.NAME' | translate }} :</label>
-                <input type="text" class="input input-bordered mt-1 w-full" placeholder="Phones" id="name"
-                       formControlName="name"
-                       [ngClass]="{inputError: categoryForm.get('name')?.invalid &&  categoryForm.get('name')?.touched}"/>
-                <div class="inputError-text font-bold mt-1  text-xs">
-                    @if (categoryForm.get('name')?.touched && categoryForm.get('name')?.errors?.['required']) {
-                        <p>{{ 'APP.CATEGORY.ADDCATEGORY.VALIDATION.REQUIRED' | translate }}</p>
-                    }
-                </div>
-            </div>
-            <div class="modal-action">
-                @if (isEditMode) {
-                    @if (isView) {
-                        <button class="btn btn-primary px-8">View</button>
-                    } @else {
-                        <button type="submit" [disabled]="categoryForm.pristine || categoryForm.invalid "
-                                class="btn btn-primary px-8">{{ 'APP.CATEGORY.ADDCATEGORY.EDIT_BUTTON' | translate }}
-                        </button>
+  <div class="modal-box w-11/12 max-w-5xl">
+    <form class="max-w mx-auto bg-white py-4 px-8 " [formGroup]="categoryForm" (ngSubmit)="submit()" >
+      @if(isEditMode ===true) {
+        @if(isView)
+        {
+          <h2 class="text-2xl font-bold mb-6">{{ 'APP.CATEGORY.ADDCATEGORY.VIEW' | translate }}:</h2>
+        }@else{
+      <h2 class="text-2xl font-bold mb-6">{{ 'APP.CATEGORY.ADDCATEGORY.EDIT' | translate }}:</h2>
+        }
+      }
+      @else{
+      <h2 class="text-2xl font-bold mb-6">{{ 'APP.CATEGORY.ADDCATEGORY.ADD' | translate }}:</h2>
+      }
+        <div class="row ">
+                      <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        {{ 'APP.CATEGORY.ADDCATEGORY.NAME' | translate }} :
+                      </label>
+                        <input type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Phones" id="name"   formControlName="name"
+                        [ngClass]="{'outline outline-error': categoryForm.get('name')?.invalid &&  categoryForm.get('name')?.touched}" >
+                        <div class="text-red-500 font-bold mt-1  text-xs">
+                          @if(categoryForm.get('name')?.touched && categoryForm.get('name')?.errors?.['required'])
+                          {<p>{{ 'APP.CATEGORY.ADDCATEGORY.VALIDATION.REQUIRED' | translate }}</p> } 
+                        </div>
+        </div>
+        <div class="modal-action">
+          @if(isEditMode === true)
+          { 
+            @if(isView === true)
+            {
+              <button type="button" (click)="print()" class="btn btn-primary px-8 rounded-full">{{ 'APP.CATEGORY.ADDCATEGORY.PRINT_BUTTON' | translate }}</button>
+            }@else{
+              <button type="submit"  [disabled]="categoryForm.pristine || categoryForm.invalid " class="btn btn-primary px-8 rounded-full">{{ 'APP.CATEGORY.ADDCATEGORY.EDIT_BUTTON' | translate }}</button>
 
                     }
 
                 } @else {
                     <button type="submit" [disabled]="categoryForm.invalid"
-                            class="btn btn-primary px-8">{{ 'APP.CATEGORY.ADDCATEGORY.ADD_BUTTON' | translate }}
+                            class="btn btn-primary px-8  rounded-full">{{ 'APP.CATEGORY.ADDCATEGORY.ADD_BUTTON' | translate }}
                     </button>
                 }
                 <form method="dialog">
-                    <button id="btn-close-modal" class="btn px-8"
+                    <button id="btn-close-modal" class="btn btn-active rounded-full px-8"
                             (click)="close()">{{ 'APP.CATEGORY.ADDCATEGORY.CLOSE' | translate }}
                     </button>
                 </form>
