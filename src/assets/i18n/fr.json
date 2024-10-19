@@ -73,7 +73,6 @@
       "ADD": "Ajouter une catégorie",
       "EXPORT": "Exporter",
       "SEARCH": "Recherche...",
-      "CATEGORY_SEARCH": "Nom",
       "TABLE": {
         "COLUMN": {
           "NAME": "Nom",
@@ -86,10 +85,17 @@
       },
       "NOT_FOUND": "Aucune catégorie trouvée !",
       "ADDCATEGORY": {
-        "ADD": "Ajouter une catégorie",
-        "NAME": "Nom",
-        "CLOSE": "Fermer",
-        "ADD_BUTTON": "Ajouter"
+          "ADD": "Ajouter Categorie",
+          "EDIT": "Modifier Categorie",
+          "VIEW": "Examiner Categorie",
+          "NAME": "Nom",
+          "CLOSE": "Fermer",
+          "ADD_BUTTON": "Ajouter",
+          "EDIT_BUTTON": "Modifier",
+          "PRINT_BUTTON": "Imprimer",
+          "VALIDATION": {
+            "REQUIRED": "requis"
+          }
       }
     },
     "SALE": {

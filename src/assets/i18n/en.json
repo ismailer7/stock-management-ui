@@ -79,7 +79,6 @@
         "ADD": "Add Category",
         "EXPORT": "Export",
         "SEARCH": "Search...",
-        "CATEGORY_SEARCH": "Name",
         "TABLE": {
           "COLUMN": {
             "NAME": "Name",
