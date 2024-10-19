@@ -142,6 +142,15 @@
           "MIN": "doit être au moins 1"
         }
       }
+    },
+    "LOGIN": {
+        "DETAILS": "entrez les détails de connexion",
+        "USERNAME": "Utilisateur",
+        "PASSWORD": "Mot de Passe",
+        "LOGIN_BUTTON": "Connexion",
+        "VALIDATION": {
+          "REQUIRED": "requis"
+        }
     }
   }
 }

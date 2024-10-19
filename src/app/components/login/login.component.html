@@ -232,11 +232,11 @@
                     </g>
                 </svg>
                 <h1 class="mb-2 text-2xl text-sky-700">Stock Ma</h1>
-                <span class="text-gray-800">Enter Login Details</span>
+                <span class="text-gray-800">{{ 'APP.LOGIN.DETAILS' | translate }}</span>
             </div>
             <form (ngSubmit)="login()" [formGroup]="loginForm" class="">
                 <div class="mb-6">
-                    <label class="mr-4 text-gray-700 font-bold inline-block mb-2" for="username">Username</label>
+                    <label class="mr-4 text-gray-700 font-bold inline-block mb-2" for="username">{{'APP.LOGIN.USERNAME'| translate }}</label>
                     <label class="input input-bordered flex items-center gap-2"
                            [ngClass]="{'outline outline-error': (loginForm.get('username')?.invalid && loginForm.get('username')?.touched) ||
         (loginForm.get('username')?.invalid && submitted)}">
@@ -249,12 +249,12 @@
                     <div class="text-error font-bold mt-1  text-xs">
                         @if ((loginForm.get('username')?.invalid && loginForm.get('username')?.touched) ||
                         (loginForm.get('username')?.invalid && submitted)) {
-                            <p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }} </p>
+                            <p>{{ 'APP.LOGIN.VALIDATION.REQUIRED' | translate }} </p>
                         }
                     </div>
                 </div>
                 <div class="">
-                    <label class="mr-4 text-gray-700 font-bold inline-block mb-2" for="password">Password</label>
+                    <label class="mr-4 text-gray-700 font-bold inline-block mb-2" for="password">{{'APP.LOGIN.PASSWORD'| translate }}</label>
                     <label class="input flex items-center gap-2 outline-error"
                            [ngClass]="{'outline outline-error': (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) ||
         (loginForm.get('password')?.invalid && submitted)}">
@@ -267,13 +267,13 @@
                     <div class="text-error font-bold mt-1  text-xs">
                         @if ((loginForm.get('password')?.invalid && loginForm.get('password')?.touched) ||
                         (loginForm.get('password')?.invalid && submitted)) {
-                            <p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }} </p>
+                            <p>{{ 'APP.LOGIN.VALIDATION.REQUIRED' | translate }} </p>
                         }
                     </div>
                 </div>
                 <button type="submit"
                         class="w-full mt-6 font-bold bg-primary text-primary-content py-3 rounded-md transition duration-300">
-                    LOGIN
+                        {{ 'APP.LOGIN.LOGIN_BUTTON' | translate }}
                 </button>
             </form>
         </div>

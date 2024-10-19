@@ -143,6 +143,15 @@
           "MIN": "debe tener al menos 1"
         }
       }
+    },
+    "LOGIN": {
+        "DETAILS": "entrar los datos de acceso.",
+        "USERNAME": "Usuario",
+        "PASSWORD": "Contrasena",
+        "LOGIN_BUTTON": "entrar",
+        "VALIDATION": {
+          "REQUIRED": "ْnecesario"
+        }
     }
   }
 }

@@ -148,6 +148,16 @@
           "MIN": "must be at least 1"
         }
       }
-    }
+    },
+      "LOGIN": {
+        "DETAILS": "Enter Login Details",
+        "USERNAME": "Username",
+        "PASSWORD": "Password",
+        "LOGIN_BUTTON": "Login",
+        "VALIDATION": {
+          "REQUIRED": "required"
+        }
+      }
+
   }
 }
