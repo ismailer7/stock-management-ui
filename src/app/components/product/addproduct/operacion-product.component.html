@@ -58,7 +58,8 @@
                         <div class="inputError-text  font-bold mt-1 text-xs ">
                           @if(productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['required'])
                           {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }}</p> } 
-                          @if(productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['pattern'] )
+                          @if((productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['pattern']) ||
+                              (productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['min']))
                           {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.NUMBER' | translate }} </p>}
                        </div>   
                 </div>
@@ -76,7 +77,8 @@
                   <div class="inputError-text  font-bold mt-1  text-xs ">
                       @if(productForm.get('unitBuyPrice')?.touched && productForm.get('unitBuyPrice')?.errors?.['required'])
                       {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }}</p> } 
-                      @if(productForm.get('unitBuyPrice')?.touched && productForm.get('unitBuyPrice')?.errors?.['pattern'])
+                      @if((productForm.get('unitBuyPrice')?.touched && productForm.get('unitBuyPrice')?.errors?.['pattern']) ||
+                          (productForm.get('unitBuyPrice')?.touched && productForm.get('unitBuyPrice')?.errors?.['min']) )
                       {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.NUMBER' | translate }} </p>} 
                   </div>
               </div>
@@ -91,7 +93,8 @@
                       <div class="inputError-text  font-bold mt-1  text-xs ">
                       @if(productForm.get('unitSellPrice')?.touched && productForm.get('unitSellPrice')?.errors?.['required'])
                       {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }}</p> } 
-                      @if(productForm.get('unitSellPrice')?.touched && productForm.get('unitSellPrice')?.errors?.['pattern'])
+                      @if((productForm.get('unitSellPrice')?.touched && productForm.get('unitSellPrice')?.errors?.['pattern']) ||
+                          (productForm.get('unitSellPrice')?.touched && productForm.get('unitSellPrice')?.errors?.['min']))
                       {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.NUMBER' | translate }} </p>}
                       </div>
                   </div>

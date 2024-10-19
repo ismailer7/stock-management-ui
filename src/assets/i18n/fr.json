@@ -56,6 +56,7 @@
         "CODE": "Code",
         "QUANTITY": "Quantité",
         "SELLING_PRICE": "Prix ​​de vente",
+        "BUY_DATE": "Date d'achat",
         "CATEGORY": "Catégorie",
         "ADD_BUTTON": "Ajouter",
         "EDIT_BUTTON": "Modifier",
@@ -65,7 +66,7 @@
         "SELECT": "Sélectionner",
         "VALIDATION": {
           "REQUIRED": "requis",
-          "NUMBER": "ça doit être un nombre.",
+          "NUMBER": "ça doit être un nombre au moins 1.",
           "MIN": "doit avoir au moins 1"
         }
       }

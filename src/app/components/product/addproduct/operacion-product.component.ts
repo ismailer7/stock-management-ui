@@ -57,9 +57,9 @@ export class OperacionProductComponent {
                 productName: [this.selectedProduct?.productName || '', Validators.required],
                 productCode: [this.selectedProduct?.productCode, Validators.required],
                 description: [this.selectedProduct?.description],
-                quantity: [this.selectedProduct?.quantity, [Validators.required, Validators.pattern(/^[1-9]*$/)]],
-                unitBuyPrice: [this.selectedProduct?.unitBuyPrice, [Validators.required, Validators.pattern(/^[1-9]*$/)]],
-                unitSellPrice: [this.selectedProduct?.unitSellPrice, [Validators.required, Validators.pattern(/^[1-9]*$/)]],
+                quantity: [this.selectedProduct?.quantity, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
+                unitBuyPrice: [this.selectedProduct?.unitBuyPrice, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
+                unitSellPrice: [this.selectedProduct?.unitSellPrice, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
                 buyDate: [this.selectedProduct?.buyDate],
                 category: [this.categorySelected, Validators.required]
             });
@@ -69,9 +69,9 @@ export class OperacionProductComponent {
                 productName: ['', Validators.required],
                 productCode: ['', Validators.required],
                 description: [''],
-                quantity: [, [Validators.required, Validators.pattern(/^[1-9]*$/)]],
-                unitBuyPrice: [, [Validators.required, Validators.pattern(/^[1-9]*$/)]],
-                unitSellPrice: [, [Validators.required, Validators.pattern(/^[1-9]*$/)]],
+                quantity: [, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
+                unitBuyPrice: [, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
+                unitSellPrice: [, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
                 buyDate: [formatDate(new Date(), 'yyyy-MM-dd', 'en')],
                 category: [, Validators.required]
             });
