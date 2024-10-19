@@ -47,7 +47,7 @@
         }
       },
       "ADDPRODUCT": {
-        "ADD": "Agregar producto",
+        "ADD": "Añadir producto",
         "EDIT": "Modificar producto",
         "VIEW":"Mostrar producto",
         "NAME": "Nombre",
@@ -58,7 +58,7 @@
         "SELLING_PRICE": "Precio de venta",
         "BUY_DATE": "Fecha de compra",
         "CATEGORY": "Categoría",
-        "ADD_BUTTON": "Agregar",
+        "ADD_BUTTON": "Añadir",
         "PRINT_BUTTON": "Imprimir",
         "EDIT_BUTTON": "Modificar",
         "CLOSE": "Cerrar",
@@ -73,7 +73,7 @@
     },
     "CATEGORY": {
       "BREADCRUMB": "Categorías/",
-      "ADD": "Agregar categoría",
+      "ADD": "Añadir categoría",
       "EXPORT": "Exportar",
       "SEARCH": "Buscar...",
       "TABLE": {
@@ -103,7 +103,7 @@
     },
     "SALE": {
       "BREADCRUMB": "Ventas/",
-      "ADD": "Agregar venta",
+      "ADD": "Añadir venta",
       "EXPORT": "Exportar",
       "SEARCH": "Buscar...",
       "TABLE": {
