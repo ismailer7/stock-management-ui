@@ -50,6 +50,7 @@ export class ProductComponent implements AfterViewInit {
     searchKeywordFilter = new FormControl();
     selectedProduct: any = null;
     destroyRef = inject(DestroyRef)
+    isView: boolean = false;
 
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
@@ -124,7 +125,8 @@ export class ProductComponent implements AfterViewInit {
     }
 
     editProduct(id: Product) {
-        //console.log(`edit ${id}`);
+        
+        this.isView = false;
         const p = this.products.find(p => p.id == id);
         //this.selectedProduct =p;
         this.selectedProduct = {...p};
@@ -143,4 +145,21 @@ export class ProductComponent implements AfterViewInit {
                 }
             })
     }
+
+    viewProduct(id: Number) {
+
+        this.isView = true;
+        const p = this.products.find(p => p.id == id);
+        this.selectedProduct = {...p};
+        console.log("view Product");
+    }
+    
+
+
+
+
+
+
+
+
 }

@@ -50,6 +50,7 @@
         "ADDPRODUCT": {
           "ADD": "Add Product",
           "EDIT":"Edit Product",
+          "VIEW":"View Product",
           "NAME": "Name",
           "DESCRIPTION": "Description",
           "BUYING_PRICE": "Buying Price",
@@ -59,6 +60,7 @@
           "SELLING_PRICE": "Selling Price",
           "CATEGORY": "Category",
           "ADD_BUTTON": "Add",
+          "PRINT_BUTTON": "Print",
           "EDIT_BUTTON": "Edit",
           "CLOSE": "Close",
           "WARNING": " Warning: required inputs should not be empty!",

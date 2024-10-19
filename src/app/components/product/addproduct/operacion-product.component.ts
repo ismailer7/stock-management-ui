@@ -24,6 +24,7 @@ export class OperacionProductComponent {
     categories: Category[] = []
     submitted = false;
     @Input() selectedProduct!: any;
+    @Input() isView:boolean;
     categorySelected: any;
     isEditMode = false;
     destroyRef = inject(DestroyRef)
@@ -44,10 +45,14 @@ export class OperacionProductComponent {
     ngOnChanges() {
 
         console.log("ngonchange triggered");
+        console.log("isview satus:",this.isView);
         this.isEditMode = this.selectedProduct !== null;
         console.log("edit mode:", this.isEditMode);
         if (this.isEditMode) {
             this.categorySelected = this.categories.find(c => c.id === this.selectedProduct.category.id);
+            if(this.isView){
+                this.productForm.disable();
+              }else{
             this.productForm = this.fb.group({
                 productName: [this.selectedProduct?.productName || '', Validators.required],
                 productCode: [this.selectedProduct?.productCode, Validators.required],
@@ -58,7 +63,7 @@ export class OperacionProductComponent {
                 buyDate: [this.selectedProduct?.buyDate],
                 category: [this.categorySelected, Validators.required]
             });
-
+        }
         } else {
             this.productForm = this.fb.group({
                 productName: ['', Validators.required],
@@ -134,4 +139,6 @@ export class OperacionProductComponent {
         });
         this.submitted = false
     }
+
+    print(){}
 }
