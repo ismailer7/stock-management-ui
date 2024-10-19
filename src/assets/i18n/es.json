@@ -37,33 +37,36 @@
       "TABLE": {
         "COLUMN": {
           "NAME": "Nombre",
-          "CODE": "Code",
+          "CODE": "Codigo",
           "QUANTITY": "Cantidad",
           "BUYING_PRICE": "Precio de compra",
           "SELLING_PRICE": "Precio de venta",
           "BUY_DATE": "Fecha de compra",
           "CATEGORY": "Categoría",
-          "ACTIONS": "Comportamiento"
+          "ACTIONS": "Acciones"
         }
       },
       "ADDPRODUCT": {
         "ADD": "Agregar producto",
-        "EDIT": "Modificar Product",
+        "EDIT": "Modificar producto",
+        "VIEW":"Mostrar producto",
         "NAME": "Nombre",
         "DESCRIPTION": "Descripción",
         "BUYING_PRICE": "Precio de compra",
         "CODE": "Código",
         "QUANTITY": "Cantidad",
         "SELLING_PRICE": "Precio de venta",
+        "BUY_DATE": "Fecha de compra",
         "CATEGORY": "Categoría",
         "ADD_BUTTON": "Agregar",
+        "PRINT_BUTTON": "Imprimir",
         "EDIT_BUTTON": "Modificar",
         "CLOSE": "Cerrar",
         "WARNING": " Advertencia: los campos obligatorios no deben estar vacíos!",
         "SELECT": "Seleccionar",
         "VALIDATION": {
-          "REQUIRED": "requerida",
-          "NUMBER": "debe ser un numero.",
+          "REQUIRED": "necesario",
+          "NUMBER": "debe ser un numero y mínimo 1.",
           "MIN": "debe tener al menos 1"
         }
       }
@@ -76,7 +79,7 @@
       "TABLE": {
         "COLUMN": {
           "NAME": "Nombre",
-          "ACTIONS": "Comportamiento"
+          "ACTIONS": "Acciones"
         },
         "ACTIONS": {
           "EDIT": "Editar",
@@ -110,11 +113,33 @@
           "UNIT_PRICE": "Precio unitario",
           "QUANTITY": "Cantidad",
           "TOTAL_PRICE": "Precio total",
-          "ACTIONS": "Comportamiento"
+          "ACTIONS": "Acciones"
         },
         "ACTIONS": {
           "EDIT": "Editar",
           "DELETE": "Borrar"
+        }
+      },
+      "NOT_FOUND": "No venta encuentra!",
+      "ADDSALE": {
+        "ADD": "Añadir venta",
+        "EDIT": "Modificar venta",
+        "VIEW": "Mostrar venta",
+        "DESCRIPTION": "Descripcion",
+        "SELLING_DATE": "Fecha de Venta",
+        "QUANTITY": "caantidad",
+        "DISCOUNT": "Descuenta",
+        "PRODUCT": "Producto",
+        "ADD_BUTTON": "Añadir",
+        "EDIT_BUTTON": "Modificar",
+        "PRINT_BUTTON": "Imprimir",
+        "CLOSE": "Cerrar",
+        "WARNING": "Advertencia:¡los campos obligatorios no deben estar vacíos!",
+        "SELECT": "Seleccionar",
+        "VALIDATION": {
+          "REQUIRED": "necesario",
+          "NUMBER": "debe ser un numero y mínimo 1.",
+          "MIN": "debe tener al menos 1"
         }
       }
     }

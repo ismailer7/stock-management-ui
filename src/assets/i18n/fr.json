@@ -48,7 +48,8 @@
       },
       "ADDPRODUCT": {
         "ADD": "Ajouter un produit",
-        "EDIT": "Modifier Product",
+        "EDIT": "Modifier produit",
+        "VIEW":"Examiner produit",
         "NAME": "Nom",
         "DESCRIPTION": "Description",
         "BUYING_PRICE": "Prix ​​d'achat",
@@ -58,6 +59,7 @@
         "CATEGORY": "Catégorie",
         "ADD_BUTTON": "Ajouter",
         "EDIT_BUTTON": "Modifier",
+        "PRINT_BUTTON": "Imprimer",
         "CLOSE": "Fermer",
         "WARNING": " Attention : les champs obligatoires ne doivent pas être vides !",
         "SELECT": "Sélectionner",
@@ -115,6 +117,28 @@
         "ACTIONS": {
           "EDIT": "Modifier",
           "DELETE": "Supprimer"
+        }
+      },
+      "NOT_FOUND": "Vente non trouvé!",
+      "ADDSALE": {
+        "ADD": "Ajouter vente",
+        "EDIT": "Modifier vente",
+        "VIEW": "Examiner vente",
+        "DESCRIPTION": "Description",
+        "SELLING_DATE": "Date de vente",
+        "QUANTITY": "Quantité",
+        "DISCOUNT": "Remise",
+        "PRODUCT": "Produit",
+        "ADD_BUTTON": "Ajouter",
+        "EDIT_BUTTON": "Modifier",
+        "PRINT_BUTTON": "Imprimer",
+        "CLOSE": "Fermer",
+        "WARNING": "Attention : les champs obligatoires ne doivent pas être vides !",
+        "SELECT": "Sélectionner",
+        "VALIDATION": {
+          "REQUIRED": "requis",
+          "NUMBER": "doit être un nombre et au moins 1 .",
+          "MIN": "doit être au moins 1"
         }
       }
     }

@@ -58,10 +58,9 @@
                         <div class="inputError-text  font-bold mt-1 text-xs ">
                           @if(productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['required'])
                           {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }}</p> } 
-                          @if(productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['pattern'])
-                          {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.NUMBER' | translate }} </p>} 
-                          @if(productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['min'])
-                          {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.MIN' | translate }} </p>} 
+                          @if((productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['pattern']) ||
+                               (productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['min']))
+                          {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.NUMBER' | translate }} </p>}
                        </div>   
                 </div>
             </div>  
@@ -78,10 +77,9 @@
                   <div class="inputError-text  font-bold mt-1  text-xs ">
                       @if(productForm.get('unitBuyPrice')?.touched && productForm.get('unitBuyPrice')?.errors?.['required'])
                       {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }}</p> } 
-                      @if(productForm.get('unitBuyPrice')?.touched && productForm.get('unitBuyPrice')?.errors?.['pattern'])
+                      @if((productForm.get('unitBuyPrice')?.touched && productForm.get('unitBuyPrice')?.errors?.['pattern']) ||
+                           (productForm.get('unitBuyPrice')?.touched && productForm.get('unitBuyPrice')?.errors?.['min']))
                       {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.NUMBER' | translate }} </p>} 
-                      @if(productForm.get('unitBuyPrice')?.touched && productForm.get('unitBuyPrice')?.errors?.['min'])
-                      {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.MIN' | translate }} </p>} 
                   </div>
               </div>
               <div class="mb-4  relative ">
@@ -95,10 +93,9 @@
                       <div class="inputError-text  font-bold mt-1  text-xs ">
                       @if(productForm.get('unitSellPrice')?.touched && productForm.get('unitSellPrice')?.errors?.['required'])
                       {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.REQUIRED' | translate }}</p> } 
-                      @if(productForm.get('unitSellPrice')?.touched && productForm.get('unitSellPrice')?.errors?.['pattern'])
+                      @if((productForm.get('unitSellPrice')?.touched && productForm.get('unitSellPrice')?.errors?.['pattern']) ||
+                          (productForm.get('unitSellPrice')?.touched&& productForm.get('unitSellPrice')?.errors?.['min']))
                       {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.NUMBER' | translate }} </p>}
-                      @if(productForm.get('unitSellPrice')?.touched && productForm.get('unitSellPrice')?.errors?.['min'])
-                      {<p>{{ 'APP.PRODUCT.ADDPRODUCT.VALIDATION.MIN' | translate }} </p>}
                       </div>
                   </div>
             </div>
@@ -107,7 +104,7 @@
             <div class="gap-4 columns-2">
                 <div class="mb-4  relative ">
                         <label for="product_bDate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" >
-                          {{ 'APP.PRODUCT.ADDPRODUCT.BUYING_DATE' | translate }} 
+                          {{ 'APP.PRODUCT.ADDPRODUCT.BUY_DATE' | translate }} 
                         </label>
                             <input type="date" id="buyDate" formControlName="buyDate"
                             class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  >

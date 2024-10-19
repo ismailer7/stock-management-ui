@@ -67,7 +67,7 @@
           "SELECT": "Select",
           "VALIDATION": {
             "REQUIRED": "required",
-            "NUMBER": "must be a number.",
+            "NUMBER": "must be a number and at least 1",
             "MIN": "must be at least 1"
 
           }
@@ -144,7 +144,7 @@
         "SELECT": "Select",
         "VALIDATION": {
           "REQUIRED": "required",
-          "NUMBER": "must be a number.",
+          "NUMBER": "must be a number and at least 1.",
           "MIN": "must be at least 1"
         }
       }
