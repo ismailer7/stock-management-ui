@@ -1,13 +1,15 @@
-<nav class="">
+<nav class="me-2">
     <div class="flex flex-wrap items-center justify-between mx-auto py-4">
         <div></div>
         <div class="flex items-center md:order-2 space-x-1 md:space-x-0 ">
-            <div class="mt-0.5 me-2 font-bold">{{ 'APP.NAVBAR.THEME' | translate }}: </div>
+<!--            <div class="mt-0.5 me-2 font-bold">{{ 'APP.NAVBAR.THEME' | translate }}: </div>-->
             <button type="button" data-dropdown-toggle="theme-dropdown-menu"
-                    class="inline-flex items-center font-medium justify-center p-2 text-sm rounded-lg cursor-pointer text-base-content hover:bg-base-300">
-                 {{ selectedTheme | titlecase }}
+                    class="inline-flex items-center font-medium justify-center p-2 text-sm rounded-lg cursor-pointer text-neutral-500 hover:text-secondary">
+<!--                 {{ selectedTheme | titlecase }}-->
+                <fa-icon [icon]="faBrush"
+                         class="text-base w-4 ms-1"></fa-icon>
                 <fa-icon [icon]="faCaretDown"
-                         class="text-lg w-5 ms-1"></fa-icon>
+                         class="text-base w-5 "></fa-icon>
             </button>
             <!-- Dropdown -->
             <div class=" overflow-y-scroll max-h-96 z-50 hidden  my-4 text-base list-none bg-base-100 text-base-content divide-y divide-gray-100 rounded-lg shadow "
@@ -15,7 +17,7 @@
                 <ul class="py-2 font-medium" role="none">
                     @for (theme of themes; track $index) {
                         <li class="cursor-pointer" (click)="changeTheme(theme);">
-                            <a class="block px-4 py-2 text-sm hover:bg-neutral hover:text-neutral-content "
+                            <a [ngClass]="{'bg-accent text-accent-content': theme == selectedTheme}" class="block px-4 py-2 text-sm hover:bg-neutral hover:text-neutral-content "
                                role="menuitem">
                                 <div class="inline-flex items-center">
                                     {{ theme | titlecase}}
@@ -26,13 +28,13 @@
 
                 </ul>
             </div>
-            <div class="block mx-4">  |  </div>
             <button type="button" data-dropdown-toggle="language-dropdown-menu"
-                    class="inline-flex items-center font-medium justify-center md:w-40 p-2 text-sm rounded-lg cursor-pointer text-base-content hover:bg-base-300">
-                <img class="w-5 h-5 rounded-full me-2" [src]="selectedLanguage.flag" alt="">
-                {{ selectedLanguage.fullName }}
+                    class="inline-flex items-center font-medium justify-center  m-2 pe-4 text-sm rounded-lg cursor-pointer text-neutral-500 hover:text-secondary">
+<!--                <img class="w-5 h-5 rounded-full me-2" [src]="selectedLanguage.flag" alt="">-->
+<!--                {{ selectedLanguage.fullName }}-->
+                <fa-icon [icon]="faLanguage" class="text-lg w-5 ms-2 me-1"></fa-icon>
                 <fa-icon [icon]="faCaretDown"
-                         class="text-lg w-5"></fa-icon>
+                         class="text-base w-5"></fa-icon>
             </button>
             <!-- Dropdown -->
             <div class="z-50 hidden  my-4 text-base list-none bg-base-100 divide-y divide-gray-100 rounded-lg shadow"
@@ -41,7 +43,7 @@
                     @for (language of languages; track $index) {
 
                         <li class="cursor-pointer" (click)="changeLang(language.lang, $index);">
-                            <a class="block px-4 py-2 text-sm  hover:bg-neutral hover:text-neutral-content bg-base-100 text-base-content"
+                            <a [ngClass]="{'bg-accent text-accent-content': language.lang == selectedLanguage.lang}" class="block  px-4 py-2 text-sm  hover:bg-neutral hover:text-neutral-content  text-base-content"
                                role="menuitem">
                                 <div class="inline-flex items-center">
                                     <img class="h-3.5 w-3.5 rounded-full me-2"
@@ -55,7 +57,7 @@
                 </ul>
             </div>
             <button type="button"
-                    class=" flex text-sm bg-gray-800 border-gray-500 border-2 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300"
+                    class="block text-sm bg-gray-800 border-gray-500 border-2 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300"
                     id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                     data-dropdown-placement="bottom">
                 <img class="w-8 h-8" src="../../../../assets/icons/user/profile.png" alt="user photo">
