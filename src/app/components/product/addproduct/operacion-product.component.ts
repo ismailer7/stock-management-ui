@@ -95,7 +95,8 @@ export class OperacionProductComponent {
                         const np = resp.body
                         console.log(np);
                         this.toastr.success('Product edited!', 'Notification!');
-                        this.productService.$triggerLoading.next(np)
+                        this.productService.$triggerLoading.next(np);
+                        this.close();
                     },
                     error: (err: Error) => this.toastr.error(err.message, 'Error!')
                 })
