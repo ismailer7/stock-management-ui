@@ -49,7 +49,7 @@
       "ADDPRODUCT": {
         "ADD": "Añadir producto",
         "EDIT": "Modificar producto",
-        "VIEW":"Mostrar producto",
+        "VIEW":"Examinar producto",
         "NAME": "Nombre",
         "DESCRIPTION": "Descripción",
         "BUYING_PRICE": "Precio de compra",
@@ -90,7 +90,7 @@
       "ADDCATEGORY": {
         "ADD": "Añadir categoría",
         "EDIT": "Modificar categoría",
-        "VIEW": "Mostrar categoría",
+        "VIEW": "Examinar categoría",
         "NAME": "Nombre",
         "CLOSE": "Cerrar",
         "ADD_BUTTON": "Añadir",
@@ -124,7 +124,7 @@
       "ADDSALE": {
         "ADD": "Añadir venta",
         "EDIT": "Modificar venta",
-        "VIEW": "Mostrar venta",
+        "VIEW": "Examinar venta",
         "DESCRIPTION": "Descripcion",
         "SELLING_DATE": "Fecha de Venta",
         "QUANTITY": "caantidad",
