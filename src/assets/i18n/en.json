@@ -99,7 +99,10 @@
           "CLOSE": "Close",
           "ADD_BUTTON": "Add",
           "EDIT_BUTTON": "Edit",
-          "PRINT_BUTTON": "Print"
+          "PRINT_BUTTON": "Print",
+          "VALIDATION": {
+            "REQUIRED": "required"
+          }
         }
       },
 

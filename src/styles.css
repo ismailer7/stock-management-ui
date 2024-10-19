@@ -145,7 +145,7 @@ input:-webkit-autofill:active {
 }
 
 .inputError{
-    outline: 2px solid theme(colors.error);
+    outline: 2px solid theme(colors.error); 
 }
 .inputError-text{
     color: theme(colors.error)
