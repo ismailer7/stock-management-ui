@@ -67,8 +67,8 @@ export class SaleOperationComponent {
             this.saleForm = this.fb.group({
                 description: [this.selectedSale?.description, Validators.required],
                 product: [this.productSelected, Validators.required],
-                saleQuantity: [this.selectedSale?.saleQuantity, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
-                discount: [this.selectedSale?.discount, [Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
+                saleQuantity: [this.selectedSale?.saleQuantity, [Validators.required, Validators.pattern(/^[1-9]*$/)]],
+                discount: [this.selectedSale?.discount, [Validators.pattern(/^[1-9]*$/)]],
                 saleDate: [this.selectedSale?.saleDate]
             });
         }
@@ -76,8 +76,8 @@ export class SaleOperationComponent {
             this.saleForm = this.fb.group({
                 description: ['', Validators.required],
                 product: [, Validators.required],
-                saleQuantity: [, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
-                discount: [, [Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
+                saleQuantity: [, [Validators.required, Validators.pattern(/^[1-9]*$/)]],
+                discount: [, [Validators.pattern(/^[1-9]*$/)]],
                 saleDate: []
             });
 

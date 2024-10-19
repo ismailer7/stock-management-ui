@@ -112,6 +112,7 @@
           "PRODUCT": "Producto",
           "UNIT_PRICE": "Precio unitario",
           "QUANTITY": "Cantidad",
+          "DATE": "Fecha",
           "TOTAL_PRICE": "Precio total",
           "ACTIONS": "Acciones"
         },
@@ -127,7 +128,7 @@
         "VIEW": "Examinar venta",
         "DESCRIPTION": "Descripcion",
         "SELLING_DATE": "Fecha de Venta",
-        "QUANTITY": "caantidad",
+        "QUANTITY": "cantidad",
         "DISCOUNT": "Descuenta",
         "PRODUCT": "Producto",
         "ADD_BUTTON": "Añadir",

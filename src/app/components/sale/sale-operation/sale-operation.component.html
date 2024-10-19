@@ -58,9 +58,6 @@
                             {<p>{{ 'APP.SALE.ADDSALE.VALIDATION.REQUIRED' | translate }}</p> } 
                             @if(saleForm.get('saleQuantity')?.touched && saleForm.get('saleQuantity')?.errors?.['pattern'])
                             {<p>{{ 'APP.SALE.ADDSALE.VALIDATION.NUMBER' | translate }} </p>}
-                            @if(saleForm.get('saleQuantity')?.touched && saleForm.get('saleQuantity')?.errors?.['min'])
-                            {<p>{{ 'APP.SALE.ADDSALE.VALIDATION.MIN' | translate }} </p>}
-                            
                          </div>   
                         </div>
                   <div class="mb-4  relative ">   
