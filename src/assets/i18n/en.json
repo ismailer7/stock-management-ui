@@ -92,9 +92,13 @@
         "NOT_FOUND": "No Category Found !",
         "ADDCATEGORY": {
           "ADD": "Add Category",
+          "EDIT": "Edit Category",
+          "VIEW": "View Category",
           "NAME": "Name",
           "CLOSE": "Close",
-          "ADD_BUTTON": "Add"
+          "ADD_BUTTON": "Add",
+          "EDIT_BUTTON": "Edit",
+          "PRINT_BUTTON": "Print"
         }
       },
 

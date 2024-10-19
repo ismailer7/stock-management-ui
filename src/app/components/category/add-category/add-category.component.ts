@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AddCategoryComponent {
 categoryService = inject(CategoryService);
-fb = inject(FormBuilder);
+
 toastr = inject(ToastrService);
 categoryForm: FormGroup;
 @Input() selectedCategory!: any;
@@ -26,24 +26,29 @@ submitted = false;
 
 
 
+constructor(private fb: FormBuilder) {
+
+}
+
 ngOnChanges(){
 
   console.log("onchange Category status: ",this.selectedCategory);
   console.log("isview satus:",this.isView)
-
+   
    this.isEditMode = this.selectedCategory !== null;
        console.log("edit mode:",this.isEditMode);
        
 
        if (this.isEditMode)
         { 
+          if(this.isView){
+           
+            this.categoryForm.disable();
+          }else{
           this.categoryForm = this.fb.group({
             name: [this.selectedCategory?.name, Validators.required]
            });
-           if(this.isView){
-            this.categoryForm.get('name')?.disable();
-          }
-         
+         }  
       }
        else{
          this.categoryForm = this.fb.group({
