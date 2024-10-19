@@ -14,18 +14,22 @@
           <div class="row ">
               <div class="gap-4 columns-2">
                   <div class="mb-4 relative ">
-                      <label>
-                        {{ 'APP.SALE.ADDSALE.DESCRIPTION' | translate }} :</label>
-                          <input type="text" class="input input-bordered mt-1 w-full"   placeholder="Sale-A" id="description" formControlName="description"   />
+                      <label for="sale_description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        {{ 'APP.SALE.ADDSALE.DESCRIPTION' | translate }}
+                      </label>
+                          <input type="text" placeholder="Sale-A" id="description" formControlName="description" 
+                          class="mt-1  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"   />
                           <div class="inputError-text font-bold mt-1  text-xs">
                           
                         </div>
                   </div>
                   <div class="mb-4  relative">
-                      <label>
+                      <label for="sale_product" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         {{ 'APP.SALE.ADDSALE.PRODUCT' | translate }}<span class="text-sm ms-1 inputError-text">*</span>: </label>
-                        <select class="select select-m select-bordered w-full max-w mt-1"
-                         [ngClass]="{inputError: saleForm.get('product')?.invalid &&  saleForm.get('product')?.touched}" id="category" formControlName="product" >
+                        <select  id="category" formControlName="product"
+                        class="mt-1  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  
+                        [ngClass]="{inputError: saleForm.get('product')?.invalid &&  saleForm.get('product')?.touched}" >
+                        <option [ngValue]="null" >{{ 'APP.SALE.ADDSALE.SELECT' | translate }}</option>
                         @for (product of products; track product.id) {
                         <option [ngValue]="product" >{{ product.productName }}</option>
                         }
@@ -40,8 +44,12 @@
           <div class="row ">
               <div class="gap-4 columns-2">
                   <div class="mb-4  relative">
-                      <label> {{ 'APP.SALE.ADDSALE.QUANTITY' | translate }}<span class="text-sm ms-1 inputError-text">*</span>:  </label>
-                          <input type="text" class="input input-bordered mt-1 w-full" placeholder="128rom/6ram color black" id="saleQuantity" formControlName="saleQuantity"
+                      <label for="sale_quantity" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> 
+                        {{ 'APP.SALE.ADDSALE.QUANTITY' | translate }}
+                        <span class="text-sm ms-1 inputError-text">*</span>
+                      </label>
+                          <input type="text" placeholder="128rom/6ram color black" id="saleQuantity" formControlName="saleQuantity"
+                          class="mt-1  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  
                           [ngClass]="{inputError: saleForm.get('saleQuantity')?.invalid &&  saleForm.get('saleQuantity')?.touched}"   />      
                           <div class="inputError-text  font-bold mt-1  text-xs ">
                             @if(saleForm.get('saleQuantity')?.touched && saleForm.get('saleQuantity')?.errors?.['required'])
@@ -54,9 +62,11 @@
                          </div>   
                         </div>
                   <div class="mb-4  relative ">   
-                      <label  >
-                        {{ 'APP.SALE.ADDSALE.DISCOUNT' | translate }}:</label>
-                          <input type="text" class="input input-bordered mt-1 w-full"  placeholder="100" id="discount" formControlName="discount"
+                      <label for="sale_discount" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"  >
+                        {{ 'APP.SALE.ADDSALE.DISCOUNT' | translate }}
+                      </label>
+                          <input type="text" placeholder="100" id="discount" formControlName="discount"
+                          class="mt-1  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  
                           [ngClass]="{inputError: saleForm.get('discount')?.invalid &&  saleForm.get('discount')?.touched}"  />
                           <div class="inputError-text  font-bold mt-1  text-xs ">
                             @if(saleForm.get('discount')?.touched && saleForm.get('discount')?.errors?.['pattern'])
@@ -70,9 +80,9 @@
           <div class="row ">
               <div class="gap-4 columns-2">
                   <div class="mb-4  relative ">
-                          <label >{{ 'APP.SALE.ADDSALE.SELLING_DATE' | translate }}: </label>
+                          <label for="sale_date" class=" mb-2 text-sm font-medium text-gray-900 dark:text-white" >{{ 'APP.SALE.ADDSALE.SELLING_DATE' | translate }}: </label>
                               <input type="date" id="saleDate" formControlName="saleDate"
-                                     class="input input-bordered mt-1  w-full  placeholder=2024-12-02">
+                              class="mt-1  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  />
                   </div>
                   <div class="mb-4  relative ">
                   </div>
