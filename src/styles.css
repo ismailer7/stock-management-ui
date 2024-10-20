@@ -2,10 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-[data-theme]{
-        --mat-paginator-disabled-icon-color: theme(colors.neutral-400) ;
-        --mat-paginator-enabled-icon-color: theme(colors.neutral-700);
+[data-theme] {
+    --mat-paginator-disabled-icon-color: theme(colors.neutral-400);
+    --mat-paginator-enabled-icon-color: theme(colors.neutral-700);
 }
+
 [data-theme="dark"],
 [data-theme="forest"],
 [data-theme="synthwave"],
@@ -14,13 +15,18 @@
 [data-theme="dim"],
 [data-theme="luxury"],
 [data-theme="sunset"],
-[data-theme="halloween"]{
-        --mat-paginator-disabled-icon-color: theme(colors.neutral-600) ;
-        --mat-paginator-enabled-icon-color: theme(colors.neutral-content);
+[data-theme="halloween"] {
+    --mat-paginator-disabled-icon-color: theme(colors.neutral-600);
+    --mat-paginator-enabled-icon-color: theme(colors.neutral-content);
+}
+[data-theme="lofi"] {
+    input{
+        color: theme(colors.base-content);
+    }
 }
 
 body, html, app-root {
-    display:block;
+    display: block;
     position: relative;
     height: 100%;
     width: 100%;
@@ -32,12 +38,15 @@ body, html, app-root {
     font-weight: 400;
     font-style: normal;
 }
-.mat-elevation-z8{
-    --tw-shadow: 0 0 #0000;     --tw-shadow-colored: 0 0 #0000;
+
+.mat-elevation-z8 {
+    --tw-shadow: 0 0 #0000;
+    --tw-shadow-colored: 0 0 #0000;
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 
 }
-.table{
+
+.table {
     display: block;
     overflow-x: auto;
 
@@ -59,21 +68,22 @@ table .mat-mdc-header-row {
 }
 
 
-table .mat-mdc-cell{
+table .mat-mdc-cell {
     border-bottom: 0;
     padding-top: 0;
     padding-bottom: 0;
     font-family: "Roboto", sans-serif;
     color: theme('colors.base-content')
 }
-table.mat-mdc-table{
+
+table.mat-mdc-table {
     background-color: theme('colors.base-100');
     border-left: 1px solid lightgray;
     border-right: 1px solid lightgray;
     border-radius: 0;
 }
 
-mat-paginator.mat-mdc-paginator{
+mat-paginator.mat-mdc-paginator {
     background-color: theme('colors.base-100');
     border-top: 1px dashed lightgray;
     border-bottom: 1px solid lightgray;
@@ -83,18 +93,20 @@ mat-paginator.mat-mdc-paginator{
     color: theme('colors.base-content')
 
 }
-table .mat-mdc-header-cell{
+
+table .mat-mdc-header-cell {
     border-bottom: 0;
     color: theme('colors.neutral-content');
     padding-top: 0;
     padding-bottom: 0;
 }
-table .mat-mdc-row{
+
+table .mat-mdc-row {
     font-size: 0.825rem;
     height: 40px;
 }
 
-table .mat-mdc-row:hover{
+table .mat-mdc-row:hover {
     font-size: 0.825rem;
     height: 40px;
     /*background-color: #e2e2e2;*/
@@ -105,25 +117,30 @@ table .mat-mdc-row:hover{
 mat-paginator .mat-mdc-select-trigger {
     color: theme('colors.base-content')
 }
-mat-mdc-paginator-range-actions .mat-mdc-button-disabled{
+
+mat-mdc-paginator-range-actions .mat-mdc-button-disabled {
     color: red;
 }
-mat-paginator .mat-mdc-paginator-icon:disabled{
-    color:red;
+
+mat-paginator .mat-mdc-paginator-icon:disabled {
+    color: red;
 }
 
 .toast-info {
     background-color: theme('colors.info');
     color: theme('colors.info-content');
 }
+
 .toast-error {
     background-color: theme('colors.error');
     color: theme('colors.error-content');
 }
+
 .toast-success {
     background-color: theme('colors.success');
     color: theme('colors.success-content');
 }
+
 .toast-warning {
     background-color: theme('colors.warning');
     color: theme('colors.warning-content');
@@ -144,9 +161,10 @@ input:-webkit-autofill:active {
     transition: background-color 5000000s ease-in-out 0s;
 }
 
-.inputError{
-    outline: 2px solid theme(colors.error); 
+.inputError {
+    outline: 2px solid theme(colors.error);
 }
-.inputError-text{
+
+.inputError-text {
     color: theme(colors.error)
 }
