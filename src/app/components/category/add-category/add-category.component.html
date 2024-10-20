@@ -17,7 +17,7 @@
                         {{ 'APP.CATEGORY.ADDCATEGORY.NAME' | translate }} :
                       </label>
                         <input type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Phones" id="name"   formControlName="name"
+                        placeholder="Phones"    formControlName="name"
                         [ngClass]="{'outline outline-error': categoryForm.get('name')?.invalid &&  categoryForm.get('name')?.touched}" >
                         <div class="text-red-500 font-bold mt-1  text-xs">
                           @if(categoryForm.get('name')?.touched && categoryForm.get('name')?.errors?.['required'])
