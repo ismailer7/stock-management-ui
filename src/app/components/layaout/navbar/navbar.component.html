@@ -2,17 +2,17 @@
 <nav class="pe-2">
     <div class="flex flex-wrap items-center justify-between mx-auto">
         <div class="flex mt-0">
-            <button (click)="toggleSidebar()" [ngClass]="hideSideBar ? 'md:active:rotate-0':'md:ms-3.5 md:btn-circle'"
-                    class="w-full py-2 px-9 mb-0 md:hover:bg-secondary md:hover:text-secondary-content  text-xl transition-transform active:rotate-45 ">
-                <fa-icon [icon]="faBars" class=" text-2xl w-full md:text-xl text-base-content" ></fa-icon>
+            <button (click)="toggleSidebar()" [ngClass]="hideSideBar ? 'lg:active:rotate-0':'lg:ms-3.5 lg:btn-circle'"
+                    class="w-full py-2 px-9 mb-0 lg:hover:bg-secondary lg:hover:text-secondary-content  text-xl transition-transform active:rotate-45 ">
+                <fa-icon [icon]="faBars" class=" text-2xl w-full lg:text-xl text-base-content" ></fa-icon>
             </button>
-            <div class="md:mt-2">
-                <a [ngClass]="hideSideBar ? '' : ' md:opacity-100 '" routerLink="/home"
-                   class="hidden md:block opacity-0 transition ease-in-out duration-500 self-center text-xl font-mono whitespace-nowrap pacifico-regular">{{ 'APP.NAME' | translate }}</a>
+            <div class="lg:mt-2" (touchend)="closeSideBar()">
+                <a [ngClass]="hideSideBar ? '' : ' lg:opacity-100 '" routerLink="/home"
+                   class="hidden lg:block opacity-0 transition ease-in-out duration-300 self-center text-xl font-mono whitespace-nowrap pacifico-regular">{{ 'APP.NAME' | translate }}</a>
             </div>
         </div>
-        <div></div>
-        <div class="flex items-center md:order-2 space-x-1 md:space-x-0 ">
+        <div (touchend)="closeSideBar()"></div>
+        <div (touchend)="closeSideBar()" class="flex items-center lg:order-2 space-x-1 lg:space-x-0 ">
 <!--            <div class="mt-0.5 me-2 font-bold">{{ 'APP.NAVBAR.THEME' | translate }}: </div>-->
             <button #themeBtnRef type="button" data-dropdown-toggle="theme-dropdown-menu"
                     class="inline-flex items-center font-medium justify-center p-2 text-sm rounded-lg cursor-pointer text-neutral-500 hover:text-secondary">
@@ -68,7 +68,7 @@
                 </ul>
             </div>
             <button type="button"
-                    class="block text-sm bg-gray-800 border-gray-500 border-2 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300"
+                    class="block text-sm bg-gray-800 border-gray-500 border-2 rounded-full lg:me-0 focus:ring-4 focus:ring-gray-300"
                     id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                     data-dropdown-placement="bottom">
                 <img class="w-8 h-8" src="../../../../assets/icons/user/profile.png" alt="user photo">

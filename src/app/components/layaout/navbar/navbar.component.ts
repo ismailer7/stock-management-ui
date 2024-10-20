@@ -26,7 +26,6 @@ export class NavbarComponent implements OnInit{
     themes = ['mytheme', ...themes]
     selectedTheme: string;
     compComunicationSrv = inject(ComponentComunicationService);
-    hideSideBar = this.compComunicationSrv.$hideSideBar();
 
     constructor(private translate: TranslateService, private authService: AuthService) {
         translate.setDefaultLang('en');
@@ -61,9 +60,10 @@ export class NavbarComponent implements OnInit{
     }
 
     toggleSidebar() {
-        this.hideSideBar = !this.hideSideBar;
         this.compComunicationSrv.$hideSideBar.set(!this.compComunicationSrv.$hideSideBar());
-
+        console.log(this.compComunicationSrv.$hideSideBar())
     }
-
+    closeSideBar(){
+        this.compComunicationSrv.$hideSideBar.set(false);
+    }
 }
