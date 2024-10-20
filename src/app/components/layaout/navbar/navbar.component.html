@@ -3,7 +3,7 @@
         <div></div>
         <div class="flex items-center md:order-2 space-x-1 md:space-x-0 ">
 <!--            <div class="mt-0.5 me-2 font-bold">{{ 'APP.NAVBAR.THEME' | translate }}: </div>-->
-            <button type="button" data-dropdown-toggle="theme-dropdown-menu"
+            <button #themeBtnRef type="button" data-dropdown-toggle="theme-dropdown-menu"
                     class="inline-flex items-center font-medium justify-center p-2 text-sm rounded-lg cursor-pointer text-neutral-500 hover:text-secondary">
 <!--                 {{ selectedTheme | titlecase }}-->
                 <fa-icon [icon]="faBrush"
@@ -16,7 +16,7 @@
                  id="theme-dropdown-menu">
                 <ul class="py-2 font-medium" role="none">
                     @for (theme of themes; track $index) {
-                        <li class="cursor-pointer" (click)="changeTheme(theme);">
+                        <li class="cursor-pointer" (click)="changeTheme(theme);themeBtnRef.click()">
                             <a [ngClass]="{'bg-accent text-accent-content': theme == selectedTheme}" class="block px-4 py-2 text-sm hover:bg-neutral hover:text-neutral-content "
                                role="menuitem">
                                 <div class="inline-flex items-center">
@@ -28,21 +28,21 @@
 
                 </ul>
             </div>
-            <button type="button" data-dropdown-toggle="language-dropdown-menu"
+            <button #langBtnRef type="button" data-dropdown-toggle="language-dropdown-menu"
                     class="inline-flex items-center font-medium justify-center  m-2 pe-4 text-sm rounded-lg cursor-pointer text-neutral-500 hover:text-secondary">
-<!--                <img class="w-5 h-5 rounded-full me-2" [src]="selectedLanguage.flag" alt="">-->
+                <img class="w-6 h-6 " [src]="selectedLanguage.flag" alt="">
 <!--                {{ selectedLanguage.fullName }}-->
-                <fa-icon [icon]="faLanguage" class="text-lg w-5 ms-2 me-1"></fa-icon>
+<!--                <fa-icon [icon]="faLanguage" class="text-lg w-5 ms-2 me-1"></fa-icon>-->
                 <fa-icon [icon]="faCaretDown"
                          class="text-base w-5"></fa-icon>
             </button>
             <!-- Dropdown -->
-            <div class="z-50 hidden  my-4 text-base list-none bg-base-100 divide-y divide-gray-100 rounded-lg shadow"
+            <div  class="z-50 hidden my-4 text-base list-none bg-base-100 divide-y divide-gray-100 rounded-lg shadow"
                  id="language-dropdown-menu">
                 <ul class="py-2 font-medium" role="none">
                     @for (language of languages; track $index) {
 
-                        <li class="cursor-pointer" (click)="changeLang(language.lang, $index);">
+                        <li  class="cursor-pointer" (click)="changeLang(language.lang, $index);langBtnRef.click()">
                             <a [ngClass]="{'bg-accent text-accent-content': language.lang == selectedLanguage.lang}" class="block  px-4 py-2 text-sm  hover:bg-neutral hover:text-neutral-content  text-base-content"
                                role="menuitem">
                                 <div class="inline-flex items-center">

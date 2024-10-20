@@ -13,7 +13,7 @@
                 [formControl]="searchKeywordFilter" #input
           type="text"
           placeholder="{{ 'APP.PRODUCT.SEARCH' | translate }}"
-          class="flex-grow mt-2 p-2 bg-neutral-50 border border-gray-300 rounded-md focus:outline focus:outline-none focus:border-secondary focus:border-2 focus:ring-0"
+          class="flex-grow caret-accent mt-2 p-2 bg-neutral-50 text-accent-content border border-gray-300 rounded-md  focus:outline focus:outline-none focus:border-accent focus:border-2 focus:ring-0"
         />
         <!-- Buttons -->
         <button class="btn mt-2  btn-primary btn-outline md:ml-4 md:px-4 py-2" (click)="addProduct()"  onclick="my_modal_1.showModal()"><i class="hidden md:inline fa fa-solid fa-plus text-xl"></i> <span class="md:hidden">{{ 'APP.PRODUCT.ADDPRODUCT.ADD_BUTTON' | translate }}</span></button>
