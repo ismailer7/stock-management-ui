@@ -1,9 +1,10 @@
-import {Component} from '@angular/core';
+import {Component, computed, inject, OnInit} from '@angular/core';
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {TranslateModule} from '@ngx-translate/core';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome'
 import {faBars, faComputer, faHandshake, faSackDollar, faTags} from '@fortawesome/free-solid-svg-icons'
 import {NgClass} from "@angular/common";
+import {ComponentComunicationService} from "../../../services/shared/component-comunication.service";
 
 @Component({
   selector: 'app-sidebar',
@@ -20,16 +21,10 @@ import {NgClass} from "@angular/common";
 })
 export class SidebarComponent {
 
-  hideSideBar = false;
-
+  compComunicationSrv = inject(ComponentComunicationService);
   protected readonly faHandshake = faHandshake;
   protected readonly faSackDollar = faSackDollar;
   protected readonly faComputer = faComputer;
   protected readonly faTags = faTags;
-  protected readonly faBars = faBars;
 
-  toggleSidebar() {
-    this.hideSideBar = !this.hideSideBar;
-    console.log(this.hideSideBar);
-  }
 }
