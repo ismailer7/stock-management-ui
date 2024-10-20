@@ -11,12 +11,12 @@
         <div class="row ">
             <div class="gap-4 columns-2">
                 <div class="mb-4 relative ">
-                    <label for="product_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    <label for="product_name" class="block mb-2 text-sm font-medium  ">
                           {{ 'APP.PRODUCT.ADDPRODUCT.NAME' | translate }}
                           <span class="text-sm ms-1 inputError-text">*</span>
                         </label>
                         <input type="text" placeholder="Samsung S24" id="productName" formControlName="productName" 
-                        class="mt-1  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                        class="mt-1  text-sm rounded-lg  block w-full p-2.5 " 
                         [ngClass]="{inputError: productForm.get('productName')?.invalid &&  productForm.get('productName')?.touched}" />
                         <div class="inputError-text font-bold mt-1  text-xs">
                           @if(productForm.get('productName')?.invalid &&  productForm.get('productName')?.touched)
@@ -24,12 +24,12 @@
                       </div>
                 </div>
                 <div class="mb-4  relative">
-                         <label for="product_code" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                         <label for="product_code" class="block mb-2 text-sm font-medium  ">
                           {{ 'APP.PRODUCT.ADDPRODUCT.CODE' | translate }}
                          <span class="text-sm ms-1 inputError-text">*</span>
                          </label>
                          <input type="text" placeholder="WM-001" id="productCode" formControlName="productCode" 
-                          class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          class="mt-1   text-sm rounded-lg  block w-full p-2.5 "
                           [ngClass]="{inputError: productForm.get('productCode')?.invalid &&  productForm.get('productCode')?.touched}"/>
                          <div class="inputError-text font-bold mt-1 text-xs ">
                           @if(productForm.get('productCode')?.invalid &&  productForm.get('productCode')?.touched)
@@ -41,19 +41,19 @@
         <div class="row ">
             <div class="gap-4 columns-2">
                 <div class="mb-4  relative">
-                  <label for="product_description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  <label for="product_description" class="block mb-2 text-sm font-medium  ">
                      {{ 'APP.PRODUCT.ADDPRODUCT.DESCRIPTION' | translate }}
                       </label>
                         <input type="text" placeholder="128rom/6ram color black" id="description" formControlName="description" 
-                        class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>      
+                        class="mt-1   text-sm rounded-lg  block w-full p-2.5 "/>      
                       </div>
                 <div class="mb-4  relative ">   
-                    <label  for="product_quantity" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" >
+                    <label  for="product_quantity" class="block mb-2 text-sm font-medium  " >
                       {{ 'APP.PRODUCT.ADDPRODUCT.QUANTITY' | translate }}
                       <span class="text-sm ms-1 inputError-text" >*</span>
                     </label>
                         <input type="text" placeholder="100" id="quantity" formControlName="quantity"
-                        class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"   
+                        class="mt-1   text-sm rounded-lg  block w-full p-2.5 "   
                         [ngClass]="{inputError: productForm.get('quantity')?.invalid &&  productForm.get('quantity')?.touched}"   />
                         <div class="inputError-text  font-bold mt-1 text-xs ">
                           @if(productForm.get('quantity')?.touched && productForm.get('quantity')?.errors?.['required'])
@@ -68,11 +68,11 @@
         <div class="row ">
             <div class="gap-4 columns-2">
               <div class="mb-4  relative ">
-                  <label for="product_bPrice" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"  >
+                  <label for="product_bPrice" class="block mb-2 text-sm font-medium  "  >
                       {{ 'APP.PRODUCT.ADDPRODUCT.BUYING_PRICE' | translate }}<span class="text-sm ms-1 inputError-text">*</span> 
                   </label>
                       <input type="text" placeholder="4000" id="unitBuyPrice" formControlName="unitBuyPrice"
-                      class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  
+                      class="mt-1   text-sm rounded-lg  block w-full p-2.5 "  
                       [ngClass]="{inputError: productForm.get('unitBuyPrice')?.invalid &&  productForm.get('unitBuyPrice')?.touched}"   />
                   <div class="inputError-text  font-bold mt-1  text-xs ">
                       @if(productForm.get('unitBuyPrice')?.touched && productForm.get('unitBuyPrice')?.errors?.['required'])
@@ -83,12 +83,12 @@
                   </div>
               </div>
               <div class="mb-4  relative ">
-                  <label for="product_sPrice" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" >
+                  <label for="product_sPrice" class="block mb-2 text-sm font-medium  " >
                       {{ 'APP.PRODUCT.ADDPRODUCT.SELLING_PRICE' | translate }}
                       <span class="text-sm ms-1 inputError-text">*</span> 
                   </label>
                       <input type="text" placeholder="4500" id="unitSellPrice" formControlName="unitSellPrice"
-                      class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  
+                      class="mt-1   text-sm rounded-lg  block w-full p-2.5 "  
                       [ngClass]="{inputError: productForm.get('unitSellPrice')?.invalid &&  productForm.get('unitSellPrice')?.touched}"   />      
                       <div class="inputError-text  font-bold mt-1  text-xs ">
                       @if(productForm.get('unitSellPrice')?.touched && productForm.get('unitSellPrice')?.errors?.['required'])
@@ -103,20 +103,19 @@
         <div class="row ">
             <div class="gap-4 columns-2">
                 <div class="mb-4  relative ">
-                        <label for="product_bDate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" >
+                        <label for="product_bDate" class="block mb-2 text-sm font-medium  " >
                           {{ 'APP.PRODUCT.ADDPRODUCT.BUY_DATE' | translate }} 
                         </label>
                             <input type="date" id="buyDate" formControlName="buyDate"
-                            class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  >
+                            class="mt-1   text-sm rounded-lg  block w-full p-2.5 "  >
                 </div>
                 <div class="mb-4  relative ">
-                    <label for="product_category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    <label for="product_category" class="block mb-2 text-sm font-medium  ">
                       {{ 'APP.PRODUCT.ADDPRODUCT.CATEGORY' | translate }}
                       <span class="text-sm ms-1 inputError-text">*</span>
                      </label>
                         <select  id="category" formControlName="category"
-                        
-                        class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        class=" mt-1   text-sm rounded-lg  block w-full p-2.5 "
                         [ngClass]="{inputError: productForm.get('category')?.invalid &&  productForm.get('category')?.touched}" >
                             <option [ngValue]="null">{{ 'APP.PRODUCT.ADDPRODUCT.SELECT' | translate }}</option>
                             @for (category of categories; track category.id) {

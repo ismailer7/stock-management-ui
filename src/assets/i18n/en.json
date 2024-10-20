@@ -58,6 +58,7 @@
           "CODE": "Code",
           "QUANTITY": "Quantity",
           "SELLING_PRICE": "Selling Price",
+          "BUY_DATE": "Buy Date",
           "CATEGORY": "Category",
           "ADD_BUTTON": "Add",
           "PRINT_BUTTON": "Print",
