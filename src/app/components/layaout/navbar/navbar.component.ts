@@ -1,21 +1,11 @@
-import {Component, EventEmitter, inject, OnInit, Output} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {AuthService} from '../../../services/auth.service';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {languages} from '../../../data/langs';
 import {themes} from '../../../data/themes';
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
-import {
-    faBars,
-    faBrush,
-    faCaretDown,
-    faColonSign,
-    faComputer,
-    faLanguage,
-    faPaintBrush,
-    faPaintRoller
-} from "@fortawesome/free-solid-svg-icons";
-import {faArtstation, faSymfony, faThemeco} from "@fortawesome/free-brands-svg-icons";
+import {faBars, faBrush, faCaretDown} from "@fortawesome/free-solid-svg-icons";
 import {NgClass, TitleCasePipe} from "@angular/common";
 import {ComponentComunicationService} from "../../../services/shared/component-comunication.service";
 
@@ -72,8 +62,8 @@ export class NavbarComponent implements OnInit{
 
     toggleSidebar() {
         this.hideSideBar = !this.hideSideBar;
-        this.compComunicationSrv.$hideSideBar.set(this.hideSideBar);
-        console.log(this.hideSideBar)
+        this.compComunicationSrv.$hideSideBar.set(!this.compComunicationSrv.$hideSideBar());
+
     }
 
 }
