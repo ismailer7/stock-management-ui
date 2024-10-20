@@ -32,7 +32,13 @@ export class SaleOperationComponent {
 
 
     constructor(private fb: FormBuilder) {
-
+        this.saleForm = this.fb.group({
+            description: ['', Validators.required],
+            product: [, Validators.required],
+            saleQuantity: [, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
+            discount: [, [Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
+            saleDate: []
+        });
     }
 
 
@@ -55,35 +61,24 @@ export class SaleOperationComponent {
 
     ngOnChanges() {
 
-        console.log("onchange sale status: ", this.selectedSale);
-
         this.isEditMode = this.selectedSale !== null;
-        console.log("edit mode:", this.isEditMode);
+        this.saleForm.enable();
+        this.saleForm.reset();
+
         if (this.isEditMode) {
             this.productSelected = this.products.find(p => p.id === this.selectedSale.product.id);
-            if(this.isView){
-                this.saleForm.disable();
-              }else{
-            this.saleForm = this.fb.group({
-                description: [this.selectedSale?.description, Validators.required],
-                product: [this.productSelected, Validators.required],
-                saleQuantity: [this.selectedSale?.saleQuantity, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
-                discount: [this.selectedSale?.discount, [Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
-                saleDate: [this.selectedSale?.saleDate]
-            });
+            this.saleForm.setValue({
+                description: this.selectedSale?.description,
+                product: this.productSelected,
+                saleQuantity: this.selectedSale?.saleQuantity,
+                discount: this.selectedSale?.discount,
+                saleDate: this.selectedSale?.saleDate
+            })
         }
-        } else {
-            this.saleForm = this.fb.group({
-                description: ['', Validators.required],
-                product: [, Validators.required],
-                saleQuantity: [, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
-                discount: [, [Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
-                saleDate: []
-            });
-
+        if(this.isEditMode && this.isView){
+           this.saleForm.disable();
         }
     }
-
 
     /*   loadProductBySearch() {
         const productSearchControl = this.saleForm.get('productSearch');
@@ -104,18 +99,14 @@ export class SaleOperationComponent {
 
 
     submit() {
-        console.log("submitted")
 
         this.submitted = true;
         if (this.saleForm.invalid) {
             return;
         }
         const newSale = this.saleForm.value;
-
-        console.log("this form value:", this.saleForm.value);
         if (this.isEditMode) {
             const id = this.selectedSale.id;
-            console.log("edit sale with id: ", id)
             this.saleService.editSale(id, newSale)
                 .pipe(takeUntilDestroyed(this.destroyRef))
                 .subscribe({
@@ -154,7 +145,6 @@ export class SaleOperationComponent {
 
     close() {
         if (!this.isEditMode) {
-            console.log("errase for add only");
             this.reset();
         } else (document.getElementById('btn-close-modal') as HTMLFormElement)?.click();
 

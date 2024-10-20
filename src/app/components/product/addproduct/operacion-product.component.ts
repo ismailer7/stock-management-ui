@@ -39,32 +39,8 @@ export class OperacionProductComponent {
                     this.categories = [...data]
                 },
                 error: _ => this.toastr.error('Error loading Categories')
-            })
-    }
-
-    ngOnChanges() {
-
-        console.log("ngonchange triggered");
-        console.log("isview satus:",this.isView);
-        this.isEditMode = this.selectedProduct !== null;
-        console.log("edit mode:", this.isEditMode);
-        if (this.isEditMode) {
-            this.categorySelected = this.categories.find(c => c.id === this.selectedProduct.category.id);
-            if(this.isView){
-                this.productForm.disable();
-              }else{
-            this.productForm = this.fb.group({
-                productName: [this.selectedProduct?.productName || '', Validators.required],
-                productCode: [this.selectedProduct?.productCode, Validators.required],
-                description: [this.selectedProduct?.description],
-                quantity: [this.selectedProduct?.quantity, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
-                unitBuyPrice: [this.selectedProduct?.unitBuyPrice, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
-                unitSellPrice: [this.selectedProduct?.unitSellPrice, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
-                buyDate: [this.selectedProduct?.buyDate],
-                category: [this.categorySelected, Validators.required]
             });
-        }
-        } else {
+
             this.productForm = this.fb.group({
                 productName: ['', Validators.required],
                 productCode: ['', Validators.required],
@@ -75,7 +51,37 @@ export class OperacionProductComponent {
                 buyDate: [formatDate(new Date(), 'yyyy-MM-dd', 'en')],
                 category: [, Validators.required]
             });
+    }
+
+    ngOnChanges() {
+
+        console.log("ngOnChange triggered")
+
+        this.isEditMode = this.selectedProduct !== null;
+        
+        this.productForm.enable();
+        this.productForm.reset();
+        if (this.isEditMode) {
+            this.categorySelected = this.categories.find(c => c.id === this.selectedProduct.category.id);
+           this.productForm.setValue({
+            productName: this.selectedProduct?.productName,
+            productCode: this.selectedProduct?.productCode,
+            description: this.selectedProduct?.description,
+            quantity: this.selectedProduct?.quantity,
+            unitBuyPrice: this.selectedProduct?.unitBuyPrice,
+            unitSellPrice: this.selectedProduct?.unitSellPrice,
+            buyDate: this.selectedProduct?.buyDate,
+            category: this.categorySelected,
+            });
+        }   
+        if(this.isEditMode && this.isView){
+          this.productForm.disable();
         }
+            
+        
+        
+           
+       
     }
 
     submit() {

@@ -35,6 +35,7 @@ export class AddCategoryComponent implements OnChanges {
     ngOnChanges() {
         this.isEditMode = this.selectedCategory !== null;
         this.categoryForm.enable();
+        this.categoryForm.reset();
         if (this.isEditMode) { // edit Mode
             this.categoryForm.setValue({name: this.selectedCategory.name})
         }
