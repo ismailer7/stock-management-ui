@@ -27,7 +27,8 @@ export class OperacionProductComponent {
     @Input() isView:boolean;
     categorySelected: any;
     isEditMode = false;
-    destroyRef = inject(DestroyRef)
+    destroyRef = inject(DestroyRef);
+    isChecked: boolean = false;
 
     constructor(private fb: FormBuilder) {
 
@@ -51,6 +52,30 @@ export class OperacionProductComponent {
                 buyDate: [formatDate(new Date(), 'yyyy-MM-dd', 'en')],
                 category: [, Validators.required]
             });
+    }
+
+    onCheckboxChange(){
+        
+        this.isChecked = !this.isChecked;
+        this.productForm.setValue({
+            productName: this.selectedProduct?.productName,
+            productCode: this.selectedProduct?.productCode,
+            description: this.selectedProduct?.description,
+            quantity: this.selectedProduct?.quantity,
+            unitBuyPrice: this.selectedProduct?.unitBuyPrice,
+            unitSellPrice: this.selectedProduct?.unitSellPrice,
+            buyDate: this.selectedProduct?.buyDate,
+            category: this.categorySelected,
+            });
+        console.log("checkbox value:",this.isChecked)
+
+        if(this.isChecked){
+          this.isEditMode = true;
+          this.productForm.enable();
+        }else{
+        this.isView = true;
+        this.productForm.disable(); 
+        }
     }
 
     ngOnChanges() {
@@ -123,11 +148,18 @@ export class OperacionProductComponent {
     }
 
     close() {
+        if (!this.isEditMode) 
+            this.reset();  
+        
+       if(this.isEditMode && !this.isView) {
+         (document.getElementById('btn_close') as HTMLFormElement)?.click(); 
+        }
 
-        if (!this.isEditMode) {
-            console.log("erase for add only");
-            this.reset();
-        } else (document.getElementById('btn-close-modal') as HTMLFormElement)?.click();
+        if(this.isView){
+            this.isChecked = false;
+            (document.getElementById('edit_checkbox') as HTMLInputElement).checked = false;
+            (document.getElementById('btn_close') as HTMLFormElement)?.click();       
+        }
     }
 
     @HostListener('document:keydown', ['$event'])
@@ -139,7 +171,7 @@ export class OperacionProductComponent {
 
     reset() {
 
-        (document.getElementById('btn-close-modal') as HTMLFormElement)?.click();
+        (document.getElementById('btn_close') as HTMLFormElement)?.click();
         this.productForm.reset()
         this.productForm.patchValue({
             buyDate: formatDate(new Date(), 'yyyy-MM-dd', 'en')

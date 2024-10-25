@@ -119,6 +119,7 @@ export class ProductComponent implements AfterViewInit {
     }
 
     addProduct() {
+        this.isView = false;
         this.selectedProduct = null;
         console.log("add product:", this.selectedProduct);
 

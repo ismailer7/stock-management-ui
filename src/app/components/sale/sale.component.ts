@@ -108,6 +108,7 @@ export class SaleComponent implements AfterViewInit {
     }
 
     addSale() {
+        this.isView = false;
         this.selectedSale = null;
         console.log("add Sale:", this.selectedSale);
 

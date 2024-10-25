@@ -2,17 +2,24 @@
   <div class="modal-box w-11/12 max-w-5xl">
     
     <form class="max-w mx-auto bg-white py-4 px-8 " [formGroup]="categoryForm" (ngSubmit)="submit()" >
-      @if(isEditMode ===true) {
-        @if(isView)
+      @if(isEditMode && !isView)
+      { 
+        <h2 class="text-2xl font-bold mb-6">{{ 'APP.CATEGORY.ADDCATEGORY.EDIT' | translate }}:</h2>
+      }
+        @if(isView)   
         {
-          <h2 class="text-2xl font-bold mb-6">{{ 'APP.CATEGORY.ADDCATEGORY.VIEW' | translate }}:</h2>
-        }@else{
-      <h2 class="text-2xl font-bold mb-6">{{ 'APP.CATEGORY.ADDCATEGORY.EDIT' | translate }}:</h2>
-        }
-      }
-      @else{
-      <h2 class="text-2xl font-bold mb-6">{{ 'APP.CATEGORY.ADDCATEGORY.ADD' | translate }}:</h2>
-      }
+          @if(isChecked)
+          {
+            <h2 class="text-2xl font-bold mb-6">{{ 'APP.CATEGORY.ADDCATEGORY.EDIT' | translate }}:</h2>
+          }@else{
+            <h2 class="text-2xl font-bold mb-6">{{ 'APP.CATEGORY.ADDCATEGORY.VIEW' | translate }}:</h2>
+          }
+       }
+       @if(!isEditMode)
+       {
+        <h2 class="text-2xl font-bold mb-6">{{ 'APP.CATEGORY.ADDCATEGORY.ADD' | translate }}:</h2>
+       }
+
       @if(isView){
       <div class="flex">
         <label class="relative inline-flex items-center cursor-pointer ml-auto ">
@@ -55,7 +62,7 @@
               </button>
            }
                 <form method="dialog">
-                    <button id="btn-close-modal" class="btn btn-active rounded-full px-8"
+                    <button id="btn_close" class="btn btn-active rounded-full px-8"
                             (click)="close()">{{ 'APP.CATEGORY.ADDCATEGORY.CLOSE' | translate }}
                     </button>
                 </form>

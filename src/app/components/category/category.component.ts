@@ -121,7 +121,7 @@ export class CategoryComponent implements AfterViewInit {
     }
 
     addCategory() {
-
+        this.isView = false;
         this.selectedCategory = null;
         console.log("add Category:", this.selectedCategory);
     }

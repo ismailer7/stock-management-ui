@@ -28,7 +28,8 @@ export class SaleOperationComponent {
     productSelected: any;
     isEditMode = false;
     submitted = false;
-    destroyRef = inject(DestroyRef)
+    destroyRef = inject(DestroyRef);
+    isChecked: boolean = false;
 
 
     constructor(private fb: FormBuilder) {
@@ -39,6 +40,29 @@ export class SaleOperationComponent {
             discount: [, [Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
             saleDate: []
         });
+    }
+
+    
+    onCheckboxChange(){
+        
+        this.isChecked = !this.isChecked;
+            this.productSelected = this.products.find(p => p.id === this.selectedSale.product.id);
+            this.saleForm.setValue({
+                description: this.selectedSale?.description,
+                product: this.productSelected,
+                saleQuantity: this.selectedSale?.saleQuantity,
+                discount: this.selectedSale?.discount,
+                saleDate: this.selectedSale?.saleDate
+            });
+        console.log("checkbox value:",this.isChecked)
+
+        if(this.isChecked){
+          this.isEditMode = true;
+          this.saleForm.enable();
+        }else{
+        this.isView = true;
+        this.saleForm.disable(); 
+        }
     }
 
 
@@ -73,7 +97,7 @@ export class SaleOperationComponent {
                 saleQuantity: this.selectedSale?.saleQuantity,
                 discount: this.selectedSale?.discount,
                 saleDate: this.selectedSale?.saleDate
-            })
+            });
         }
         if(this.isEditMode && this.isView){
            this.saleForm.disable();
@@ -144,10 +168,18 @@ export class SaleOperationComponent {
     }
 
     close() {
-        if (!this.isEditMode) {
-            this.reset();
-        } else (document.getElementById('btn-close-modal') as HTMLFormElement)?.click();
+        if (!this.isEditMode) 
+            this.reset();  
+        
+       if(this.isEditMode && !this.isView) {
+         (document.getElementById('btn_close') as HTMLFormElement)?.click(); 
+        }
 
+        if(this.isView){
+            this.isChecked = false;
+            (document.getElementById('edit_checkbox') as HTMLInputElement).checked = false;
+            (document.getElementById('btn_close') as HTMLFormElement)?.click();       
+        }
 
     }
 
@@ -160,7 +192,7 @@ export class SaleOperationComponent {
 
     reset() {
 
-        (document.getElementById('btn-close-modal') as HTMLFormElement)?.click();
+        (document.getElementById('btn_close') as HTMLFormElement)?.click();
         this.saleForm.reset()
         this.saleForm.patchValue({
             buyDate: formatDate(new Date(), 'yyyy-MM-dd', 'en')

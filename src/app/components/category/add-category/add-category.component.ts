@@ -40,8 +40,10 @@ export class AddCategoryComponent implements OnChanges {
         console.log("checkbox value:",this.isChecked)
 
         if(this.isChecked){
+          this.isEditMode = true;
           this.categoryForm.enable();
         }else{
+        this.isView = true;
         this.categoryForm.disable(); 
         }
     }
@@ -105,18 +107,31 @@ export class AddCategoryComponent implements OnChanges {
 
 
     close() {
-
-        
-        if (!this.isEditMode) {
-            console.log("errase for add only");
+        console.log("close clicked")
+        if (!this.isEditMode) 
+        {
+            console.log("close clicked for add mode");
             this.reset();
-        } else {
-        (document.getElementById('btn-close-modal') as HTMLFormElement)?.click();
-        this.isChecked = false;
-        (document.getElementById('edit_checkbox') as HTMLInputElement).checked = false;
+        }
+           
         
-            }
+       if(this.isEditMode && !this.isView) {
+        console.log("close clicked for edit mode");
+         (document.getElementById('btn_close') as HTMLFormElement)?.click(); 
+        }
+
+
+        if(this.isView){
+            console.log("close clicked for view mode");
+            this.isChecked = false;
+            (document.getElementById('edit_checkbox') as HTMLInputElement).checked = false;
+            (document.getElementById('btn_close') as HTMLFormElement)?.click(); 
+            
+        }
+
     }
+
+
 
     @HostListener('document:keydown', ['$event'])
     handleKeyboardEvent(event: KeyboardEvent) {
@@ -129,7 +144,7 @@ export class AddCategoryComponent implements OnChanges {
 
     reset() {
 
-        (document.getElementById('btn-close-modal') as HTMLFormElement)?.click();
+        (document.getElementById('btn_close') as HTMLFormElement)?.click();
         this.categoryForm.reset()
         this.submitted = false
     }
