@@ -47,6 +47,7 @@ export class AddCategoryComponent implements OnChanges {
     }
 
     ngOnChanges() {
+        
         this.isEditMode = this.selectedCategory !== null;
         this.categoryForm.enable();
         this.categoryForm.reset();
@@ -111,6 +112,9 @@ export class AddCategoryComponent implements OnChanges {
             this.reset();
         } else {
         (document.getElementById('btn-close-modal') as HTMLFormElement)?.click();
+        this.isChecked = false;
+        (document.getElementById('edit_checkbox') as HTMLInputElement).checked = false;
+        
             }
     }
 
@@ -118,6 +122,7 @@ export class AddCategoryComponent implements OnChanges {
     handleKeyboardEvent(event: KeyboardEvent) {
         if (event.key === 'Escape') {
             this.close();
+            
 
         }
     }
