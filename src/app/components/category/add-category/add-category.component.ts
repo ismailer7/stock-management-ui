@@ -23,6 +23,7 @@ export class AddCategoryComponent implements OnChanges {
     isEditMode = false;
     submitted = false;
     destroyRef = inject(DestroyRef)
+    isChecked: boolean = false;
 
 
     constructor(private fb: FormBuilder) {
@@ -30,6 +31,19 @@ export class AddCategoryComponent implements OnChanges {
             name: ['', Validators.required]
         });
 
+    }
+
+    onCheckboxChange(){
+        
+        this.isChecked = !this.isChecked;
+        this.categoryForm.setValue({name: this.selectedCategory.name});
+        console.log("checkbox value:",this.isChecked)
+
+        if(this.isChecked){
+          this.categoryForm.enable();
+        }else{
+        this.categoryForm.disable(); 
+        }
     }
 
     ngOnChanges() {
@@ -64,6 +78,7 @@ export class AddCategoryComponent implements OnChanges {
                     this.toastr.success('Category edited!', 'Notification!');
                     this.categoryService.$triggerLoading.next(np);
                     this.close();
+                    
                 },
                 error: (err: Error) => this.toastr.error(err.message, 'Error!')
             })
@@ -90,10 +105,13 @@ export class AddCategoryComponent implements OnChanges {
 
     close() {
 
+        
         if (!this.isEditMode) {
             console.log("errase for add only");
             this.reset();
-        } else (document.getElementById('btn-close-modal') as HTMLFormElement)?.click();
+        } else {
+        (document.getElementById('btn-close-modal') as HTMLFormElement)?.click();
+            }
     }
 
     @HostListener('document:keydown', ['$event'])

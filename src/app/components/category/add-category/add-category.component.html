@@ -1,5 +1,6 @@
 <dialog id="my_modal2" class="modal">
   <div class="modal-box w-11/12 max-w-5xl">
+    
     <form class="max-w mx-auto bg-white py-4 px-8 " [formGroup]="categoryForm" (ngSubmit)="submit()" >
       @if(isEditMode ===true) {
         @if(isView)
@@ -11,6 +12,15 @@
       }
       @else{
       <h2 class="text-2xl font-bold mb-6">{{ 'APP.CATEGORY.ADDCATEGORY.ADD' | translate }}:</h2>
+      }
+      @if(isView){
+      <div class="flex">
+        <label class="relative inline-flex items-center cursor-pointer ml-auto ">
+          <input type="checkbox"  (change)="onCheckboxChange()" class="sr-only peer ">
+          <div class="w-9 h-5 bg-gray-200 hover:bg-gray-300 peer-focus:outline-0 peer-focus:ring-transparent rounded-full peer transition-all ease-in-out duration-500 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-600 hover:peer-checked:bg-indigo-700"></div>
+          <span class="ml-3 text-sm font-medium ">Edit</span>  
+        </label>
+        </div>
       }
         <div class="row ">
                       <label for="name" class="block mb-2 text-sm font-medium">
@@ -25,21 +35,25 @@
                         </div>
         </div>
         <div class="modal-action">
-          @if(isEditMode === true)
+          @if(isEditMode && !isView)
           { 
-            @if(isView === true)
-            {
-              <button type="button" (click)="print()" class="btn btn-primary px-8 rounded-full">{{ 'APP.CATEGORY.ADDCATEGORY.PRINT_BUTTON' | translate }}</button>
-            }@else{
               <button type="submit"  [disabled]="categoryForm.pristine || categoryForm.invalid " class="btn btn-primary px-8 rounded-full">{{ 'APP.CATEGORY.ADDCATEGORY.EDIT_BUTTON' | translate }}</button>
-
-                    }
-
-                } @else {
-                    <button type="submit" [disabled]="categoryForm.invalid"
+          }
+            @if(isView)
+            {
+              @if(isChecked)
+              {
+                <button type="submit"  [disabled]="categoryForm.pristine || categoryForm.invalid " class="btn btn-primary px-8 rounded-full">{{ 'APP.CATEGORY.ADDCATEGORY.EDIT_BUTTON' | translate }}</button>
+              }@else{
+              <button type="button" (click)="print()" class="btn btn-primary px-8 rounded-full">{{ 'APP.CATEGORY.ADDCATEGORY.PRINT_BUTTON' | translate }}</button>
+              }
+           }
+           @if(!isEditMode)
+           {
+              <button type="submit" [disabled]="categoryForm.invalid"
                             class="btn btn-primary px-8  rounded-full">{{ 'APP.CATEGORY.ADDCATEGORY.ADD_BUTTON' | translate }}
-                    </button>
-                }
+              </button>
+           }
                 <form method="dialog">
                     <button id="btn-close-modal" class="btn btn-active rounded-full px-8"
                             (click)="close()">{{ 'APP.CATEGORY.ADDCATEGORY.CLOSE' | translate }}
