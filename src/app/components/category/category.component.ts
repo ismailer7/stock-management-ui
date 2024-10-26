@@ -138,14 +138,17 @@ export class CategoryComponent implements AfterViewInit {
         this.categoryService.deleteCategory(id)
             .subscribe({
                 next: (resp) => {
-                    this.toastr.success('Sale Deleted!', 'Notification!');
+                    this.toastr.success(resp ?? '')
                     this.categoryService.$triggerLoading.next(resp);
                 },
                 error: err => {
+                    this.toastr.error(err ?? '')
+                }
+              /*   error: err => {
                     const errorResponse = err.error as ErrorResponse;
                     const errorMessage = errorResponse?.message || 'Error';
                     this.toastr.error(errorMessage);
-                }
+                } */
             })
     }
 

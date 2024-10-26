@@ -44,6 +44,6 @@ export class CategoryService {
   }
 
   deleteCategory(id: Number){
-    return this.http.delete(`${environment.rooturl}/category/delete/${id}`, {observe: 'response', withCredentials: true })
+    return this.http.delete(`${environment.rooturl}/category/delete/${id}`, {responseType: "text", withCredentials: true })
   }
 }
