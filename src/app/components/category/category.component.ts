@@ -16,20 +16,21 @@ import {HttpResponse} from '@angular/common/http';
 import {CategoryPage} from '../../models/category-page.model';
 import {ErrorResponse} from '../../models/error-response.model';
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import { DeleteConfirmationComponent } from "../delete-confirmation/delete-confirmation.component";
 
 @Component({
     selector: 'app-category',
     standalone: true,
     imports: [TranslateModule,
-        PaginationComponent,
-        MatPaginator,
-        MatTableModule,
-        MatSortModule,
-        ReactiveFormsModule,
-        MatProgressSpinner,
-        MatProgressBar,
-        AddCategoryComponent
-    ],
+    PaginationComponent,
+    MatPaginator,
+    MatTableModule,
+    MatSortModule,
+    ReactiveFormsModule,
+    MatProgressSpinner,
+    MatProgressBar,
+    AddCategoryComponent,
+    DeleteConfirmationComponent],
     templateUrl: './category.component.html',
     styleUrl: './category.component.css'
 })
@@ -49,7 +50,8 @@ export class CategoryComponent implements AfterViewInit {
     searchKeywordFilter = new FormControl();
     selectedCategory: any = null;
     isView: boolean = false;
-    destroyRef = inject(DestroyRef)
+    destroyRef = inject(DestroyRef);
+    deletion_id: Number;
 
     ngAfterViewInit(): void {
         this.dataSource.paginator = this.paginator;
@@ -135,21 +137,8 @@ export class CategoryComponent implements AfterViewInit {
     }
 
     deleteCategory(id: Number) {
-        this.categoryService.deleteCategory(id)
-            .subscribe({
-                next: (resp) => {
-                    this.toastr.success(resp ?? '')
-                    this.categoryService.$triggerLoading.next(resp);
-                },
-                error: err => {
-                    this.toastr.error(err ?? '')
-                }
-              /*   error: err => {
-                    const errorResponse = err.error as ErrorResponse;
-                    const errorMessage = errorResponse?.message || 'Error';
-                    this.toastr.error(errorMessage);
-                } */
-            })
+       
+        this.deletion_id = id;
     }
 
     viewCategory(id: Number) {

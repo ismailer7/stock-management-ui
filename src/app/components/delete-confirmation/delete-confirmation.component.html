@@ -1,0 +1,17 @@
+<dialog id="modal_delete" class="modal">
+    <div class="modal-box">
+      <!-- <h3 class="text-lg font-bold">{{ 'APP.CATEGORY.DELETE.CONFIRMATION' | translate }}</h3> -->
+      <h3 class="text-lg font-bold">Confrimation</h3>
+      <!-- <p class="py-4">{{ 'APP.CATEGORY.DELETE.MESSAGE' | translate }}</p> -->
+      <p class="py-4">are you sure you want to delete this record</p>
+      <div class="modal-action">
+       
+        <form method="dialog">
+          <!-- <button type="submit" (click)="deleteCategory()"   class="btn btn-primary px-8 rounded-full">{{ 'APP.CATEGORY.DELETE.CONFIRM' | translate }}</button> -->
+          <button type="submit" (click)="deleteCategory()"   class="btn btn-primary px-8 rounded-full">Confirm</button>
+          <!-- <button id="btn_close" class="btn btn-active rounded-full px-8">{{ 'APP.CATEGORY.DELETE.CLOSE' | translate }}</button> -->
+          <button id="btn_close" class="btn btn-active rounded-full px-8">Close</button>
+        </form>
+      </div>
+    </div>
+  </dialog>

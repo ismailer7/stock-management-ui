@@ -99,7 +99,13 @@
         "VALIDATION": {
           "REQUIRED": "necesario"
           }
-      }
+      },
+      "DELETE": {
+          "CONFIRM": "Confirmar",
+          "CLOSE": "Cerrar",
+          "CONFIRMATION": "Estas Seguro?",
+          "MESSAGE": "¿Realmente desea eliminar este registro? Este proceso no se puede deshacer"
+        }
     },
     "SALE": {
       "BREADCRUMB": "Ventas/",

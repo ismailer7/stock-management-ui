@@ -103,6 +103,12 @@
           "VALIDATION": {
             "REQUIRED": "required"
           }
+        },
+        "DELETE": {
+          "CONFIRM": "Confirm",
+          "CLOSE": "Close",
+          "CONFIRMATION": "Are you sure?",
+          "MESSAGE": "Do you really want to delete this record, this process cannot be undone."
         }
       },
 
