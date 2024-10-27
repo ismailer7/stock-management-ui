@@ -115,12 +115,13 @@
                 {
                   <button type="submit"  [disabled]="saleForm.pristine || saleForm.invalid " class="btn btn-primary px-8 rounded-full">{{ 'APP.SALE.ADDSALE.EDIT_BUTTON' | translate }}</button>             
                 }
-              }@else{
+              @else{
                   <button type="button" (click)="print()" class="btn btn-primary px-8 rounded-full">{{ 'APP.SALE.ADDSALE.PRINT_BUTTON' | translate }}</button>               
                }
+             }
              @if(!isEditMode)
              {
-              <button id="btn_close" class="btn px-8 btn-active rounded-full" (click)="close()">{{ 'APP.SALE.ADDSALE.CLOSE' | translate }}</button>             
+              <button type="submit" [disabled]="saleForm.invalid"  class="btn btn-primary px-8 rounded-full">{{ 'APP.SALE.ADDSALE.ADD_BUTTON' | translate }}</button>            
             }
                  
                   <form method="dialog">

@@ -153,7 +153,7 @@ export class CategoryComponent implements AfterViewInit {
     }
 
     handleValueChange(newValue: any) {
-        this.deleteConfirmation = newValue; /
+        this.deleteConfirmation = newValue; 
         if(this.deleteConfirmation){     
             this.categoryService.deleteCategory(this.rowid)
             .subscribe({
