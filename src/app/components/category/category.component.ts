@@ -169,10 +169,7 @@ export class CategoryComponent implements AfterViewInit {
                     const errorMessage = errorResponse?.message || 'Error';
                     this.toastr.error(errorMessage);
                 } */
-           
-        }else{
-            return;        
-        }
+        }else return;        
        
       }
 }

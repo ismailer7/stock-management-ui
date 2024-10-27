@@ -15,6 +15,7 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {MatProgressBar} from "@angular/material/progress-bar";
 import {LangChangeEvent, TranslateModule, TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import { DeleteConfirmationComponent } from "../commun/delete-confirmation/delete-confirmation.component";
 
 @Component({
     selector: 'app-product',
@@ -28,7 +29,8 @@ import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
         ReactiveFormsModule,
         MatProgressSpinner,
         MatProgressBar,
-        TranslateModule
+        TranslateModule,
+        DeleteConfirmationComponent
     ],
     templateUrl: './product.component.html',
     styleUrl: './product.component.css'
@@ -51,6 +53,8 @@ export class ProductComponent implements AfterViewInit {
     selectedProduct: any = null;
     destroyRef = inject(DestroyRef)
     isView: boolean = false;
+    deleteConfirmation: boolean = false;
+    rowid!: Number;
 
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
@@ -135,7 +139,13 @@ export class ProductComponent implements AfterViewInit {
     }
 
     deleteProduct(id: Number) {
-        this.productsService.deleteProductById(id)
+        this.rowid = id;
+    }
+
+    handleValueChange(newValue: any) {
+        this.deleteConfirmation = newValue; 
+        if(this.deleteConfirmation){ 
+            this.productsService.deleteProductById(this.rowid)
             .subscribe({
                 next: (resp) => {
                     this.toastr.success(resp ?? '')
@@ -144,7 +154,13 @@ export class ProductComponent implements AfterViewInit {
                 error: err => {
                     this.toastr.error(err ?? '')
                 }
-            })
+            });  
+            /* error: err => {
+                    const errorResponse = err.error as ErrorResponse;
+                    const errorMessage = errorResponse?.message || 'Error';
+                    this.toastr.error(errorMessage);
+                }  */    
+        }else   return;        
     }
 
     viewProduct(id: Number) {

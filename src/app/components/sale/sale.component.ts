@@ -15,6 +15,7 @@ import {MatProgressSpinner} from '@angular/material/progress-spinner';
 import {MatProgressBar} from '@angular/material/progress-bar';
 import {SaleOperationComponent} from './sale-operation/sale-operation.component';
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import { DeleteConfirmationComponent } from "../commun/delete-confirmation/delete-confirmation.component";
 
 
 @Component({
@@ -28,7 +29,8 @@ import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
         ReactiveFormsModule,
         MatProgressSpinner,
         MatProgressBar,
-        SaleOperationComponent
+        SaleOperationComponent,
+        DeleteConfirmationComponent
     ],
     templateUrl: './sale.component.html',
     styleUrl: './sale.component.css'
@@ -51,6 +53,8 @@ export class SaleComponent implements AfterViewInit {
     selectedSale: any = null;
     destroyRef = inject(DestroyRef);
     isView: boolean = false;
+    deleteConfirmation: boolean = false;
+    rowid!: Number;
 
     ngAfterViewInit(): void {
         this.dataSource.paginator = this.paginator;
@@ -122,19 +126,31 @@ export class SaleComponent implements AfterViewInit {
     }
 
     deleteSale(id: Number) {
-        this.salesService.deleteSaleById(id)
-            .subscribe({
-                next: (resp) => {
-                    this.toastr.success(resp ?? '')
-                    this.salesService.$triggerLoading.next(resp);
-                },
-                error: err => {
-                    this.toastr.error(err ?? '')
-                }
-            })
+        this.rowid = id;
+        
     }
 
-
+    handleValueChange(newValue: any) {
+        this.deleteConfirmation = newValue; 
+        if(this.deleteConfirmation){ 
+           this.salesService.deleteSaleById(this.rowid)
+               .subscribe({
+                 next: (resp) => {
+                    this.toastr.success(resp ?? '')
+                    this.salesService.$triggerLoading.next(resp);
+                 },
+                  error: err => {
+                  this.toastr.error(err ?? '')
+                }
+            });  
+            /* error: err => {
+                    const errorResponse = err.error as ErrorResponse;
+                    const errorMessage = errorResponse?.message || 'Error';
+                    this.toastr.error(errorMessage);
+                }  */    
+        }else   return;        
+    }
+       
     onSortChange(sortState: Sort) {
         console.log(sortState)
     }
@@ -144,7 +160,6 @@ export class SaleComponent implements AfterViewInit {
     }
 
     viewSale(id: Number) {
-
         this.isView = true;
         const s = this.sales.find(s => s.id == id);
         this.selectedSale = {...s};
