@@ -75,7 +75,7 @@
     </mat-paginator>
 </div>
 <app-add-category [selectedCategory]="selectedCategory" [isView]="isView"></app-add-category>
-<app-delete-confirmation [deletion_id]="deletion_id"></app-delete-confirmation>
+<app-delete-confirmation [deleteConfirmation] ="deleteConfirmation" (valueChange)="handleValueChange($event)"></app-delete-confirmation>
 </div>
 
 

@@ -16,7 +16,8 @@ import {HttpResponse} from '@angular/common/http';
 import {CategoryPage} from '../../models/category-page.model';
 import {ErrorResponse} from '../../models/error-response.model';
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import { DeleteConfirmationComponent } from "../delete-confirmation/delete-confirmation.component";
+import { DeleteConfirmationComponent } from "../commun/delete-confirmation/delete-confirmation.component";
+
 
 @Component({
     selector: 'app-category',
@@ -30,7 +31,7 @@ import { DeleteConfirmationComponent } from "../delete-confirmation/delete-confi
     MatProgressSpinner,
     MatProgressBar,
     AddCategoryComponent,
-    DeleteConfirmationComponent],
+     DeleteConfirmationComponent],
     templateUrl: './category.component.html',
     styleUrl: './category.component.css'
 })
@@ -51,9 +52,12 @@ export class CategoryComponent implements AfterViewInit {
     selectedCategory: any = null;
     isView: boolean = false;
     destroyRef = inject(DestroyRef);
-    deletion_id: Number;
+    deleteConfirmation: boolean = false;
+    rowid!: Number;
 
     ngAfterViewInit(): void {
+        console.log("ngafterviewinit triggered")
+        console.log("value of delete in category:",this.deleteConfirmation);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
         this.sort.sortChange.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => (this.paginator.pageIndex = 0));
@@ -136,10 +140,9 @@ export class CategoryComponent implements AfterViewInit {
         console.log("edit Category", this.selectedCategory);
     }
 
-    deleteCategory(id: Number) {
-       
-        this.deletion_id = id;
-    }
+    deleteCategory(id: Number) { 
+        this.rowid = id;
+            }
 
     viewCategory(id: Number) {
 
@@ -149,5 +152,27 @@ export class CategoryComponent implements AfterViewInit {
         console.log("view Category");
     }
 
-
+    handleValueChange(newValue: any) {
+        this.deleteConfirmation = newValue; /
+        if(this.deleteConfirmation){     
+            this.categoryService.deleteCategory(this.rowid)
+            .subscribe({
+                next: (resp) => {
+                    this.toastr.success(resp ?? '')
+                    this.categoryService.$triggerLoading.next(resp);
+                },
+                error: err => {
+                    this.toastr.error(err ?? '')
+                } }) ;
+                    /*   error: err => {
+                    const errorResponse = err.error as ErrorResponse;
+                    const errorMessage = errorResponse?.message || 'Error';
+                    this.toastr.error(errorMessage);
+                } */
+           
+        }else{
+            return;        
+        }
+       
+      }
 }

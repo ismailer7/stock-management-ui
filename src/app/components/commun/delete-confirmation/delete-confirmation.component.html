@@ -8,9 +8,9 @@
        
         <form method="dialog">
           <!-- <button type="submit" (click)="deleteCategory()"   class="btn btn-primary px-8 rounded-full">{{ 'APP.CATEGORY.DELETE.CONFIRM' | translate }}</button> -->
-          <button type="submit" (click)="deleteCategory()"   class="btn btn-primary px-8 rounded-full">Confirm</button>
+          <button type="submit" (click)="submit()"    class="btn btn-primary px-8 rounded-full">Confirm</button>
           <!-- <button id="btn_close" class="btn btn-active rounded-full px-8">{{ 'APP.CATEGORY.DELETE.CLOSE' | translate }}</button> -->
-          <button id="btn_close" class="btn btn-active rounded-full px-8">Close</button>
+          <button id="btn_close" (click)="close()" class="btn btn-active rounded-full px-8">Close</button>
         </form>
       </div>
     </div>
