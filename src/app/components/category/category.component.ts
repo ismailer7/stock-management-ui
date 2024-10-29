@@ -54,6 +54,7 @@ export class CategoryComponent implements AfterViewInit {
     destroyRef = inject(DestroyRef);
     deleteConfirmation: boolean = false;
     rowid!: Number;
+    idList: number[]= [];
 
     ngAfterViewInit(): void {
         console.log("ngafterviewinit triggered")
@@ -178,11 +179,13 @@ export class CategoryComponent implements AfterViewInit {
         const isChecked = (event.target as HTMLInputElement).checked;
         if (isChecked) {
           console.log('Row checked:', row_Id);
-          // Add your logic here to handle the checked row ID
+          this.idList.push(row_Id);
         } else {
           console.log('Row unchecked:', row_Id);
-          // Handle the unchecked case if needed
+          this.idList = this.idList.filter(id => id !== row_Id);
         }
 
+
+        console.log("list:", this.idList)
     }
 }
