@@ -94,6 +94,7 @@ export class CategoryComponent implements AfterViewInit {
                 next: (data) => {
                     this.categories = data?.categories ?? []
                     this.dataSource.data = data?.categories ?? []
+                    this.idList = [];
                     setTimeout(() => {
                         this.paginator.length = data?.totalCount ?? 0
                         this.paginator.pageIndex = data?.pageIndex ?? 0
@@ -116,7 +117,7 @@ export class CategoryComponent implements AfterViewInit {
                 })
 
             });
-
+                
     }
 
     onSortChange(sortState: Sort) {
@@ -178,14 +179,25 @@ export class CategoryComponent implements AfterViewInit {
       onRowChecked(row_Id: number,event: Event) {
         const isChecked = (event.target as HTMLInputElement).checked;
         if (isChecked) {
-          console.log('Row checked:', row_Id);
           this.idList.push(row_Id);
         } else {
-          console.log('Row unchecked:', row_Id);
           this.idList = this.idList.filter(id => id !== row_Id);
-        }
-
-
-        console.log("list:", this.idList)
+        }       
     }
+
+     deletecategoriesbutton()
+     {
+
+        this.categoryService.deleteCategoriesById(this.idList)
+        .subscribe({
+            next: (resp) => {
+                this.toastr.success(resp ?? '')
+                this.categoryService.$triggerLoading.next(resp);
+            },
+            error: err => {
+                this.toastr.error(err ?? '')
+            } }) ;
+
+     }
+
 }

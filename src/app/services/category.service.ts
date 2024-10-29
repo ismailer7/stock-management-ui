@@ -46,4 +46,13 @@ export class CategoryService {
   deleteCategory(id: Number){
     return this.http.delete(`${environment.rooturl}/category/delete/${id}`, {responseType: "text", withCredentials: true })
   }
+
+  deleteCategoriesById(idList:number[]){
+    return this.http.delete(`${environment.rooturl}/category/deletebyids`, {
+      body: idList, 
+      responseType: 'text',
+      withCredentials: true
+    }
+
+    )}
 }

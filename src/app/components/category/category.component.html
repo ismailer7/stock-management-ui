@@ -18,6 +18,7 @@
         <!-- Buttons -->
         <button class="btn mt-2 btn-primary btn-outline md:ml-4 md:px-4 py-2" (click)="addCategory()"   onclick="my_modal2.showModal()"><i class="hidden md:inline fa fa-solid fa-plus text-xl"></i> <span class="md:hidden">{{ 'APP.PRODUCT.ADDPRODUCT.ADD_BUTTON' | translate }}</span></button>
         <button class="btn mt-2 btn-primary md:ml-4 md:px-4 py-2">{{ 'APP.CATEGORY.EXPORT' | translate }}</button>
+        <button class="btn mt-2 btn-primary md:ml-4 md:px-4 py-2" (click)="deletecategoriesbutton()">delete Categories by Ids</button>
       </div>
 <div class="mat-elevation-z8 md:w-[80%] 2xl:w-[60%] m-auto">
     <table mat-table [dataSource]="dataSource" matSort (matSortChange)="onSortChange($event)" class="table">
