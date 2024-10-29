@@ -90,6 +90,7 @@
             "DELETE": "Delete"
           }
         },
+        "DELETE_CATEGORIES": "Delete Categories",
         "NOT_FOUND": "No Category Found !",
         "ADDCATEGORY": {
           "ADD": "Add Category",

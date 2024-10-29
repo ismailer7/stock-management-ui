@@ -86,6 +86,7 @@
           "DELETE": "Borrar"
         }
       },
+      "DELETE_CATEGORIES": "Borrar Categorias",
       "NOT_FOUND": "No se encontró ninguna categoría!",
       "ADDCATEGORY": {
         "ADD": "Añadir categoría",
