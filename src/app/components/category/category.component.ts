@@ -174,13 +174,13 @@ export class CategoryComponent implements AfterViewInit {
       }
 
 
-      onRowChecked(rowId: number,event: Event) {
+      onRowChecked(row_Id: number,event: Event) {
         const isChecked = (event.target as HTMLInputElement).checked;
         if (isChecked) {
-          console.log('Row checked:', rowId);
+          console.log('Row checked:', row_Id);
           // Add your logic here to handle the checked row ID
         } else {
-          console.log('Row unchecked:', rowId);
+          console.log('Row unchecked:', row_Id);
           // Handle the unchecked case if needed
         }
 
