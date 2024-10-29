@@ -21,7 +21,19 @@
       </div>
 <div class="mat-elevation-z8 md:w-[80%] 2xl:w-[60%] m-auto">
     <table mat-table [dataSource]="dataSource" matSort (matSortChange)="onSortChange($event)" class="table">
-        <!-- Id Column -->
+        <!-- checkbox Column -->
+      <ng-container matColumnDef="checkbox">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>  </th>
+        <td mat-cell *matCellDef="let row" class="font-bold">
+          <input
+             class="rounded-[0.25rem] border-[0.125rem] checked:bg-primary  "
+            type="checkbox"
+            (change)="onRowChecked(row.id, $event)" 
+            id="checkboxDefault" />
+
+        </td>
+    </ng-container>
+      <!-- Id Column -->
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
             <td mat-cell *matCellDef="let row" class="font-bold"> {{row.id}} </td>

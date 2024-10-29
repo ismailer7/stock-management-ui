@@ -43,7 +43,7 @@ export class CategoryComponent implements AfterViewInit {
     toastr = inject(ToastrService);
     translatePipe = inject(TranslatePipe)
     translateSrv = inject(TranslateService)
-    displayedColumns: string[] = ['id', 'name', 'action'];
+    displayedColumns: string[] = ['checkbox','id', 'name', 'action'];
     dataSource = new MatTableDataSource<Category>(this.categories);
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
@@ -172,4 +172,17 @@ export class CategoryComponent implements AfterViewInit {
         }else return;        
        
       }
+
+
+      onRowChecked(rowId: number,event: Event) {
+        const isChecked = (event.target as HTMLInputElement).checked;
+        if (isChecked) {
+          console.log('Row checked:', rowId);
+          // Add your logic here to handle the checked row ID
+        } else {
+          console.log('Row unchecked:', rowId);
+          // Handle the unchecked case if needed
+        }
+
+    }
 }
