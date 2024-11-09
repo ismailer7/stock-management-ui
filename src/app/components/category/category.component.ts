@@ -1,4 +1,13 @@
-import {AfterViewInit, Component, DestroyRef, inject, ViewChild} from '@angular/core';
+import {
+    AfterViewInit,
+    Component,
+    DestroyRef,
+    ElementRef,
+    inject,
+    QueryList,
+    ViewChild,
+    ViewChildren
+} from '@angular/core';
 import {PaginationComponent} from '../commun/pagination/pagination.component';
 import {ToastrService} from 'ngx-toastr';
 import {Category} from '../../models/category.model';
@@ -14,24 +23,23 @@ import {MatProgressBar} from '@angular/material/progress-bar';
 import {debounceTime, map, merge, scan, startWith, switchMap} from 'rxjs';
 import {HttpResponse} from '@angular/common/http';
 import {CategoryPage} from '../../models/category-page.model';
-import {ErrorResponse} from '../../models/error-response.model';
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import { DeleteConfirmationComponent } from "../commun/delete-confirmation/delete-confirmation.component";
+import {DeleteConfirmationComponent} from "../commun/delete-confirmation/delete-confirmation.component";
 
 
 @Component({
     selector: 'app-category',
     standalone: true,
     imports: [TranslateModule,
-    PaginationComponent,
-    MatPaginator,
-    MatTableModule,
-    MatSortModule,
-    ReactiveFormsModule,
-    MatProgressSpinner,
-    MatProgressBar,
-    AddCategoryComponent,
-     DeleteConfirmationComponent],
+        PaginationComponent,
+        MatPaginator,
+        MatTableModule,
+        MatSortModule,
+        ReactiveFormsModule,
+        MatProgressSpinner,
+        MatProgressBar,
+        AddCategoryComponent,
+        DeleteConfirmationComponent],
     templateUrl: './category.component.html',
     styleUrl: './category.component.css'
 })
@@ -43,7 +51,7 @@ export class CategoryComponent implements AfterViewInit {
     toastr = inject(ToastrService);
     translatePipe = inject(TranslatePipe)
     translateSrv = inject(TranslateService)
-    displayedColumns: string[] = ['checkbox','id', 'name', 'action'];
+    displayedColumns: string[] = ['checkbox', 'id', 'name', 'action'];
     dataSource = new MatTableDataSource<Category>(this.categories);
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
@@ -54,11 +62,13 @@ export class CategoryComponent implements AfterViewInit {
     destroyRef = inject(DestroyRef);
     deleteConfirmation: boolean = false;
     rowid!: Number;
-    idList: number[]= [];
+    idList: number[] = [];
+    @ViewChildren('checkBoxTable') checkboxes: QueryList<ElementRef>;
+    @ViewChild('headerCheckbox') headerCheckBox: ElementRef;
 
     ngAfterViewInit(): void {
-        console.log("ngafterviewinit triggered")
-        console.log("value of delete in category:",this.deleteConfirmation);
+        // console.log("ngafterviewinit triggered")
+        // console.log("value of delete in category:",this.deleteConfirmation);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
         this.sort.sortChange.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => (this.paginator.pageIndex = 0));
@@ -73,6 +83,9 @@ export class CategoryComponent implements AfterViewInit {
                 startWith({}),
                 switchMap(() => {
                     this.isLoading = true;
+                    this.headerCheckBox.nativeElement.checked = false;
+                    this.toggleCheckboxes();
+
                     this.dataSource.data = this.dataSource.data // this is to keep old data while loading to prevent flickering behavior
                     const filterValue = this.searchKeywordFilter.value == null ? '' : this.searchKeywordFilter.value;
                     if (filterValue) {
@@ -117,7 +130,7 @@ export class CategoryComponent implements AfterViewInit {
                 })
 
             });
-    
+
     }
 
     onSortChange(sortState: Sort) {
@@ -142,9 +155,9 @@ export class CategoryComponent implements AfterViewInit {
         console.log("edit Category", this.selectedCategory);
     }
 
-    deleteCategory(id: Number) { 
+    deleteCategory(id: Number) {
         this.rowid = id;
-            }
+    }
 
     viewCategory(id: Number) {
 
@@ -155,39 +168,26 @@ export class CategoryComponent implements AfterViewInit {
     }
 
     handleValueChange(newValue: any) {
-        this.deleteConfirmation = newValue; 
-        if(this.deleteConfirmation){     
+        this.deleteConfirmation = newValue;
+        if (this.deleteConfirmation) {
             this.categoryService.deleteCategory(this.rowid)
-            .subscribe({
-                next: (resp) => {
-                    this.toastr.success(resp ?? '')
-                    this.categoryService.$triggerLoading.next(resp);
-                },
-                error: err => {
-                    this.toastr.error(err ?? '')
-                } }) ;
-                    /*   error: err => {
-                    const errorResponse = err.error as ErrorResponse;
-                    const errorMessage = errorResponse?.message || 'Error';
-                    this.toastr.error(errorMessage);
-                } */
-        }else return;        
-       
-      }
+                .subscribe({
+                    next: (resp) => {
+                        this.toastr.success(resp ?? '')
+                        this.categoryService.$triggerLoading.next(resp);
+                    },
+                    error: err => {
+                        this.toastr.error(err ?? '')
+                    }
+                });
 
+        } else return;
 
-      onRowChecked(row_Id: number,event: Event) {
-        const isChecked = (event.target as HTMLInputElement).checked;
-        if (isChecked) {
-          this.idList.push(row_Id);
-        } else {
-          this.idList = this.idList.filter(id => id !== row_Id);
-        }       
     }
 
-     deletecategoriesbutton()
-     {
 
+    deletecategoriesbutton() {
+        this.idList = this.getIdList();
         this.categoryService.deleteCategoriesById(this.idList)
         .subscribe({
             next: (resp) => {
@@ -198,17 +198,27 @@ export class CategoryComponent implements AfterViewInit {
                 this.toastr.error(err ?? '')
             } }) ;
 
-     }
+    }
 
-     toggleCheckboxes(){
+    toggleCheckboxes() {
+        const isChecked = this.headerCheckBox?.nativeElement?.checked ?? false;
+        if (!this.checkboxes) return;
+        Array.from(this.checkboxes)
+            .forEach(cbx => cbx.nativeElement.checked = isChecked);
+    }
 
-        const checkboxes = Array.from(document.getElementsByClassName('checkbox-item') as HTMLCollectionOf<HTMLInputElement>);
-        checkboxes.forEach(checkbox => checkbox.checked = true);
+
+    getIdList(): number[] {
+        if (!this.checkboxes) return [];
+        return Array.from(this.checkboxes)
+            .filter(cbx => cbx.nativeElement.checked)
+            .map(cBox => +cBox.nativeElement.dataset['id']!);
+    }
 
 
-
-     }
-
-  
-
+    toggleCheckBox($event: Event) {
+        if (!this.headerCheckBox) return;
+        const isChecked = ($event.target as HTMLInputElement).checked;
+        if (!isChecked) this.headerCheckBox.nativeElement.checked = false;
+    }
 }
