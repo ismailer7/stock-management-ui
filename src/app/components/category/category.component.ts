@@ -117,7 +117,7 @@ export class CategoryComponent implements AfterViewInit {
                 })
 
             });
-                
+    
     }
 
     onSortChange(sortState: Sort) {
@@ -199,5 +199,16 @@ export class CategoryComponent implements AfterViewInit {
             } }) ;
 
      }
+
+     toggleCheckboxes(){
+
+        const checkboxes = Array.from(document.getElementsByClassName('checkbox-item') as HTMLCollectionOf<HTMLInputElement>);
+        checkboxes.forEach(checkbox => checkbox.checked = true);
+
+
+
+     }
+
+  
 
 }
