@@ -56,6 +56,15 @@ export class ProductService {
     return this.http.delete(`${environment.rooturl}/product/delete/${id}`, {responseType: "text", withCredentials: true })
   }
 
+  deleteProductsById(idList:number[]){
+    return this.http.delete(`${environment.rooturl}/product/deletebyids`, {
+      body: idList, 
+      responseType: 'text',
+      withCredentials: true
+    }
+
+    )}
+
   getProductsByName(name: String){
     return this.http.get<Product[]>(`${environment.rooturl}/product/search?name=${name}`,{observe: 'response', withCredentials: true });
   }

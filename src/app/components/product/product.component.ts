@@ -44,7 +44,7 @@ export class ProductComponent implements AfterViewInit {
     toastr = inject(ToastrService);
     translatePipe = inject(TranslatePipe)
     translateSrv = inject(TranslateService)
-    displayedColumns: string[] = ['id', 'productName', 'productCode', 'quantity', 'unitBuyPrice', 'unitSellPrice', 'buyDate', 'category.name', 'action'];
+    displayedColumns: string[] = ['checkbox','id', 'productName', 'productCode', 'quantity', 'unitBuyPrice', 'unitSellPrice', 'buyDate', 'category.name', 'action'];
     dataSource = new MatTableDataSource<Product>(this.products);
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
@@ -55,6 +55,7 @@ export class ProductComponent implements AfterViewInit {
     isView: boolean = false;
     deleteConfirmation: boolean = false;
     rowid!: Number;
+    idList: number[]= [];
 
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
@@ -88,6 +89,7 @@ export class ProductComponent implements AfterViewInit {
                 next: (data) => {
                     this.products = data?.products ?? []
                     this.dataSource.data = data?.products ?? []
+                    this.idList = [];
                     setTimeout(() => {
                         this.paginator.length = data?.totalCount ?? 0
                         this.paginator.pageIndex = data?.pageIndex ?? 0
@@ -137,6 +139,30 @@ export class ProductComponent implements AfterViewInit {
         this.selectedProduct = {...p};
         console.log("edit product", this.selectedProduct);
     }
+
+    onRowChecked(row_Id: number,event: Event) {
+        const isChecked = (event.target as HTMLInputElement).checked;
+        if (isChecked) {
+          this.idList.push(row_Id);
+        } else {
+          this.idList = this.idList.filter(id => id !== row_Id);
+        }       
+    }
+
+    deleteproductsbutton()
+     {
+
+        this.productsService.deleteProductsById(this.idList)
+        .subscribe({
+            next: (resp) => {
+                this.toastr.success(resp ?? '')
+                this.productsService.$triggerLoading.next(resp);
+            },
+            error: err => {
+                this.toastr.error(err ?? '')
+            } }) ;
+
+     }
 
     deleteProduct(id: Number) {
         this.rowid = id;

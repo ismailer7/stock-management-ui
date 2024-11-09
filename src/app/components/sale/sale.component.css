@@ -18,3 +18,7 @@
 .mat-column-saleQuantity{
     width: 10%;
 }
+
+.mat-column-checkbox{
+    width: 5%;
+}
