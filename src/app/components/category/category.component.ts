@@ -61,7 +61,7 @@ export class CategoryComponent implements AfterViewInit {
     isView: boolean = false;
     destroyRef = inject(DestroyRef);
     deleteConfirmation: boolean = false;
-    rowid!: Number;
+    rowid: Number | null;
     idList: number[] = [];
     @ViewChildren('checkBoxTable') checkboxes: QueryList<ElementRef>;
     @ViewChild('headerCheckbox') headerCheckBox: ElementRef;
@@ -155,10 +155,6 @@ export class CategoryComponent implements AfterViewInit {
         console.log("edit Category", this.selectedCategory);
     }
 
-    deleteCategory(id: Number) {
-        this.rowid = id;
-    }
-
     viewCategory(id: Number) {
 
         this.isView = true;
@@ -167,27 +163,46 @@ export class CategoryComponent implements AfterViewInit {
         console.log("view Category");
     }
 
-    handleValueChange(newValue: any) {
-        this.deleteConfirmation = newValue;
-        if (this.deleteConfirmation) {
-            this.categoryService.deleteCategory(this.rowid)
-                .subscribe({
-                    next: (resp) => {
-                        this.toastr.success(resp ?? '')
-                        this.categoryService.$triggerLoading.next(resp);
-                    },
-                    error: err => {
-                        this.toastr.error(err ?? '')
-                    }
-                });
+    getCategoryId(id: Number) {
+        this.rowid = id;
+       
+    }
 
-        } else return;
-
+    deleteCategory(){
+        if(this.rowid != null){
+        this.categoryService.deleteCategory(this.rowid)
+        .subscribe({
+            next: (resp) => {
+                this.toastr.success(resp ?? '')
+                this.categoryService.$triggerLoading.next(resp);
+            },
+            error: err => {
+                this.toastr.error(err ?? '')
+            }
+        });
+    }
     }
 
 
-    deletecategoriesbutton() {
+    handleValueChange(status: any) {
+        this.deleteConfirmation = status;
+        console.log("handle value triggered")
+        console.log("rowid status:",this.rowid);
+        if (this.deleteConfirmation ) {
+            if(this.rowid == null) this.deletecategoriesbutton();
+            else this.deleteCategory();
+        } else return;
+
+        this.rowid = null;
+    }
+
+    getCategorieslist(){
+
         this.idList = this.getIdList();
+    }
+
+    deletecategoriesbutton() {
+  
         this.categoryService.deleteCategoriesById(this.idList)
         .subscribe({
             next: (resp) => {
@@ -220,5 +235,6 @@ export class CategoryComponent implements AfterViewInit {
         if (!this.headerCheckBox) return;
         const isChecked = ($event.target as HTMLInputElement).checked;
         if (!isChecked) this.headerCheckBox.nativeElement.checked = false;
+
     }
 }
