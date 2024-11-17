@@ -200,7 +200,24 @@ export class SaleOperationComponent {
         this.submitted = false
     }
 
-    print(){}
+    print(){
+
+        this.saleService.exportPdf(this.selectedSale?.id).subscribe({
+            next: (response: Blob) => {
+              const blob = new Blob([response], { type: 'application/pdf' });
+              const url = window.URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = 'SaleReport.pdf'; 
+              a.click(); 
+              window.URL.revokeObjectURL(url); // Clean up
+            },
+            error: (err) => {
+              console.error('Error downloading the PDF:', err);
+            }
+          });
+          this.close();
+    }
 
 }
 

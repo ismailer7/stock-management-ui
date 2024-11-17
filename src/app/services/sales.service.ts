@@ -53,4 +53,10 @@ export class SalesService {
   }
 
 
+
+  exportPdf(id: Number){
+
+    return this.http.get(`${environment.rooturl}/sale/exportpdf/${id}`, {responseType: "blob", withCredentials: true });
+  }
+
 }
