@@ -44,7 +44,7 @@ export class SaleComponent implements AfterViewInit {
     toastr = inject(ToastrService);
     translatePipe = inject(TranslatePipe)
     translateSrv = inject(TranslateService)
-    displayedColumns: string[] = ['id', 'description', 'product.productName', 'product.unitSellPrice', 'saleQuantity', 'saleDate', 'totalPrice', 'action'];
+    displayedColumns: string[] = ['checkbox','id', 'description', 'product.productName', 'product.unitSellPrice', 'saleQuantity', 'saleDate', 'totalPrice', 'action'];
     dataSource = new MatTableDataSource<Sale>(this.sales);
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
@@ -55,6 +55,7 @@ export class SaleComponent implements AfterViewInit {
     isView: boolean = false;
     deleteConfirmation: boolean = false;
     rowid!: Number;
+    idList: number[]= [];
 
     ngAfterViewInit(): void {
         this.dataSource.paginator = this.paginator;
@@ -86,6 +87,7 @@ export class SaleComponent implements AfterViewInit {
                 next: (data) => {
                     this.sales = data?.sales ?? []
                     this.dataSource.data = data?.sales ?? []
+                    this.idList = [];
                     setTimeout(() => {
                         this.paginator.length = data?.totalCount ?? 0
                         this.paginator.pageIndex = data?.pageIndex ?? 0
@@ -129,6 +131,30 @@ export class SaleComponent implements AfterViewInit {
         this.rowid = id;
         
     }
+
+    onRowChecked(row_Id: number,event: Event) {
+        const isChecked = (event.target as HTMLInputElement).checked;
+        if (isChecked) {
+          this.idList.push(row_Id);
+        } else {
+          this.idList = this.idList.filter(id => id !== row_Id);
+        }       
+    }
+
+    deletesalesbutton()
+     {
+
+        this.salesService.deleteSalesById(this.idList)
+        .subscribe({
+            next: (resp) => {
+                this.toastr.success(resp ?? '')
+                this.salesService.$triggerLoading.next(resp);
+            },
+            error: err => {
+                this.toastr.error(err ?? '')
+            } }) ;
+
+     }
 
     handleValueChange(newValue: any) {
         this.deleteConfirmation = newValue; 

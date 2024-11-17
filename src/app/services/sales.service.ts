@@ -52,6 +52,14 @@ export class SalesService {
     return this.http.delete(`${environment.rooturl}/sale/delete/${id}`, {responseType: "text", withCredentials: true })
   }
 
+  deleteSalesById(idList:number[]){
+    return this.http.delete(`${environment.rooturl}/sale/deletebyids`, {
+      body: idList, 
+      responseType: 'text',
+      withCredentials: true
+    }
+
+    )}
 
 
   exportPdf(id: Number){
