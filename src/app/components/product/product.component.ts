@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, DestroyRef, inject, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, DestroyRef, ElementRef, inject, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {Product} from "../../models/product.model";
 import {ProductService} from "../../services/product.service";
 import {PaginationComponent} from "../commun/pagination/pagination.component";
@@ -54,8 +54,10 @@ export class ProductComponent implements AfterViewInit {
     destroyRef = inject(DestroyRef)
     isView: boolean = false;
     deleteConfirmation: boolean = false;
-    rowid!: Number;
+    rowid: Number | null;
     idList: number[]= [];
+    @ViewChildren('checkBoxTable') checkboxes: QueryList<ElementRef>;
+    @ViewChild('headerCheckbox') headerCheckBox: ElementRef;
 
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
@@ -71,6 +73,8 @@ export class ProductComponent implements AfterViewInit {
                 startWith({}),
                 switchMap(() => {
                     this.isLoading = true;
+                    this.headerCheckBox.nativeElement.checked = false;
+                    this.toggleCheckboxes();
                     this.dataSource.data = this.dataSource.data // this is to keep old data while loading to prevent flickering behavior
                     const filterValue = this.searchKeywordFilter.value == null ? '' : this.searchKeywordFilter.value;
                     return this.productsService
@@ -131,6 +135,14 @@ export class ProductComponent implements AfterViewInit {
 
     }
 
+    viewProduct(id: Number) {
+
+        this.isView = true;
+        const p = this.products.find(p => p.id == id);
+        this.selectedProduct = {...p};
+        console.log("view Product");
+    }
+
     editProduct(id: Product) {
         
         this.isView = false;
@@ -149,6 +161,33 @@ export class ProductComponent implements AfterViewInit {
         }       
     }
 
+    getIdList(): number[] {
+        if (!this.checkboxes) return [];
+        return Array.from(this.checkboxes)
+            .filter(cbx => cbx.nativeElement.checked)
+            .map(cBox => +cBox.nativeElement.dataset['id']!);
+    }
+
+    
+    getCategorieslist(){
+
+        this.idList = this.getIdList();
+    }
+
+    toggleCheckBox($event: Event) {
+        if (!this.headerCheckBox) return;
+        const isChecked = ($event.target as HTMLInputElement).checked;
+        if (!isChecked) this.headerCheckBox.nativeElement.checked = false;
+
+    }
+
+    toggleCheckboxes() {
+        const isChecked = this.headerCheckBox?.nativeElement?.checked ?? false;
+        if (!this.checkboxes) return;
+        Array.from(this.checkboxes)
+            .forEach(cbx => cbx.nativeElement.checked = isChecked);
+    }
+
     deleteproductsbutton()
      {
 
@@ -164,38 +203,42 @@ export class ProductComponent implements AfterViewInit {
 
      }
 
-    deleteProduct(id: Number) {
+    getProductId(id: Number) {
         this.rowid = id;
     }
 
+    deleteProduct(){
+
+        if(this.rowid != null){
+        this.productsService.deleteProductById(this.rowid)
+        .subscribe({
+            next: (resp) => {
+                this.toastr.success(resp ?? '')
+                this.productsService.$triggerLoading.next(resp);
+            },
+            error: err => {
+                this.toastr.error(err ?? '')
+            }
+        });  
+    }
+        /* error: err => {
+                const errorResponse = err.error as ErrorResponse;
+                const errorMessage = errorResponse?.message || 'Error';
+                this.toastr.error(errorMessage);
+            }  */   
+
+
+    }
+    
     handleValueChange(newValue: any) {
         this.deleteConfirmation = newValue; 
         if(this.deleteConfirmation){ 
-            this.productsService.deleteProductById(this.rowid)
-            .subscribe({
-                next: (resp) => {
-                    this.toastr.success(resp ?? '')
-                    this.productsService.$triggerLoading.next(resp);
-                },
-                error: err => {
-                    this.toastr.error(err ?? '')
-                }
-            });  
-            /* error: err => {
-                    const errorResponse = err.error as ErrorResponse;
-                    const errorMessage = errorResponse?.message || 'Error';
-                    this.toastr.error(errorMessage);
-                }  */    
-        }else   return;        
+            if(this.rowid == null) this.deleteproductsbutton();
+            else this.deleteProduct();
+        }else return;        
     }
 
-    viewProduct(id: Number) {
-
-        this.isView = true;
-        const p = this.products.find(p => p.id == id);
-        this.selectedProduct = {...p};
-        console.log("view Product");
-    }
+    
     
 
 
