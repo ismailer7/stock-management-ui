@@ -168,6 +168,9 @@ export class ProductComponent implements AfterViewInit {
             .map(cBox => +cBox.nativeElement.dataset['id']!);
     }
 
+    getProductId(id: Number) {
+        this.rowid = id;
+    }
     
     getCategorieslist(){
 
@@ -200,12 +203,7 @@ export class ProductComponent implements AfterViewInit {
             error: err => {
                 this.toastr.error(err ?? '')
             } }) ;
-
      }
-
-    getProductId(id: Number) {
-        this.rowid = id;
-    }
 
     deleteProduct(){
 
@@ -226,8 +224,6 @@ export class ProductComponent implements AfterViewInit {
                 const errorMessage = errorResponse?.message || 'Error';
                 this.toastr.error(errorMessage);
             }  */   
-
-
     }
     
     handleValueChange(newValue: any) {
@@ -237,15 +233,6 @@ export class ProductComponent implements AfterViewInit {
             else this.deleteProduct();
         }else return;        
     }
-
-    
-    
-
-
-
-
-
-
 
 
 }
