@@ -8,7 +8,6 @@ import {
     ViewChild,
     ViewChildren
 } from '@angular/core';
-import {PaginationComponent} from '../commun/pagination/pagination.component';
 import {ToastrService} from 'ngx-toastr';
 import {Category} from '../../models/category.model';
 import {CategoryService} from '../../services/category.service';
@@ -18,7 +17,6 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatSort, MatSortModule, Sort} from '@angular/material/sort';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {MatProgressSpinner} from '@angular/material/progress-spinner';
 import {MatProgressBar} from '@angular/material/progress-bar';
 import {debounceTime, map, merge, scan, startWith, switchMap} from 'rxjs';
 import {HttpResponse} from '@angular/common/http';
@@ -31,12 +29,10 @@ import {DeleteConfirmationComponent} from "../commun/delete-confirmation/delete-
     selector: 'app-category',
     standalone: true,
     imports: [TranslateModule,
-        PaginationComponent,
         MatPaginator,
         MatTableModule,
         MatSortModule,
         ReactiveFormsModule,
-        MatProgressSpinner,
         MatProgressBar,
         AddCategoryComponent,
         DeleteConfirmationComponent],
@@ -236,5 +232,33 @@ export class CategoryComponent implements AfterViewInit {
         const isChecked = ($event.target as HTMLInputElement).checked;
         if (!isChecked) this.headerCheckBox.nativeElement.checked = false;
 
+    }
+
+    export(){
+        const filterValue = this.searchKeywordFilter.value == null ? '' : this.searchKeywordFilter.value;
+        this.categoryService.export(
+            filterValue,
+            this.sort.active,
+            this.sort.direction,
+            this.paginator.pageIndex,
+            this.paginator.pageSize
+        )
+            .subscribe({
+                next: (resp) => {
+                    const link = document.createElement('a');
+                    // Create an object URL for the Blob
+                    const url = window.URL.createObjectURL(resp.body!);
+                    const contentDisposition = resp.headers.get('Content-Disposition');
+                    const filename = contentDisposition?.split('filename=')[1].replace(/"/g, '') || 'default.csv';
+
+                    link.href = url;
+                    console.log(resp);
+                    link.download = filename;  // Set the filename for the downloaded file
+                    link.click();  // Trigger the download
+                    window.URL.revokeObjectURL(url);  // Clean up the object URL
+                },
+                error: err => {
+                    this.toastr.error(err ?? '')
+                } }) ;
     }
 }
