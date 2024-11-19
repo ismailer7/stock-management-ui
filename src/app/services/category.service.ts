@@ -78,23 +78,23 @@ export class CategoryService {
         page: number = 1,
         limit_per_page: number = 5
     ) {
-            const params = new HttpParams()
-                .set('input', search_filter)
-                .set("sort", sort_field)
-                .set("order", sort_order)
-                .set("page", page)
-                .set("per_page", limit_per_page);
+        const params = new HttpParams()
+            .set('input', search_filter)
+            .set("sort", sort_field)
+            .set("order", sort_order)
+            .set("page", page)
+            .set("per_page", limit_per_page);
 
-            const headers = new HttpHeaders({
-                Accept: 'text/csv'
-            });
-            return this.http.get(`${environment.rooturl}/category/export-csv-file`, {
-                    headers: headers,
-                    params: params,
-                    responseType: 'blob',
-                    observe: 'response',
-                    withCredentials: true
-                }
-            )
-        }
+        const headers = new HttpHeaders({
+            Accept: 'text/csv'
+        });
+        return this.http.get(`${environment.rooturl}/category/export-csv-file`, {
+                headers: headers,
+                params: params,
+                responseType: 'blob',
+                observe: 'response',
+                withCredentials: true
+            }
+        )
     }
+}

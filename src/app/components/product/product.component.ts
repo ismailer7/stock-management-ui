@@ -196,8 +196,34 @@ export class ProductComponent implements AfterViewInit {
         this.selectedProduct = {...p};
         console.log("view Product");
     }
-    
 
+    export(){
+        const filterValue = this.searchKeywordFilter.value == null ? '' : this.searchKeywordFilter.value;
+        this.productsService.export(
+            filterValue,
+            this.sort.active,
+            this.sort.direction,
+            this.paginator.pageIndex,
+            this.paginator.pageSize
+        )
+            .subscribe({
+                next: (resp) => {
+                    const link = document.createElement('a');
+                    // Create an object URL for the Blob
+                    const url = window.URL.createObjectURL(resp.body!);
+                    const contentDisposition = resp.headers.get('Content-Disposition');
+                    const filename = contentDisposition?.split('filename=')[1].replace(/"/g, '') || 'default.csv';
+
+                    link.href = url;
+                    console.log(resp);
+                    link.download = filename;  // Set the filename for the downloaded file
+                    link.click();  // Trigger the download
+                    window.URL.revokeObjectURL(url);  // Clean up the object URL
+                },
+                error: err => {
+                    this.toastr.error(err ?? '')
+                } }) ;
+    }
 
 
 
