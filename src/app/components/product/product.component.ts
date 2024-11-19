@@ -1,7 +1,6 @@
 import {AfterViewInit, Component, DestroyRef, inject, ViewChild} from '@angular/core';
 import {Product} from "../../models/product.model";
 import {ProductService} from "../../services/product.service";
-import {PaginationComponent} from "../commun/pagination/pagination.component";
 import {OperacionProductComponent} from './addproduct/operacion-product.component';
 import {ToastrService} from 'ngx-toastr';
 import {MatPaginator} from "@angular/material/paginator";
@@ -11,23 +10,20 @@ import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {debounceTime, map, merge, scan, startWith, switchMap} from "rxjs";
 import {Page} from "../../models/product-page.model";
 import {HttpResponse} from "@angular/common/http";
-import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {MatProgressBar} from "@angular/material/progress-bar";
 import {LangChangeEvent, TranslateModule, TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import { DeleteConfirmationComponent } from "../commun/delete-confirmation/delete-confirmation.component";
+import {DeleteConfirmationComponent} from "../commun/delete-confirmation/delete-confirmation.component";
 
 @Component({
     selector: 'app-product',
     standalone: true,
     imports: [
-        PaginationComponent,
         OperacionProductComponent,
         MatPaginator,
         MatTableModule,
         MatSortModule,
         ReactiveFormsModule,
-        MatProgressSpinner,
         MatProgressBar,
         TranslateModule,
         DeleteConfirmationComponent

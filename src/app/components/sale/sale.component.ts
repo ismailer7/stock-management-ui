@@ -10,24 +10,20 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {debounceTime, map, merge, startWith, switchMap} from 'rxjs';
 import {HttpResponse} from '@angular/common/http';
 import {SalePage} from '../../models/sale-page.model';
-import {PaginationComponent} from '../commun/pagination/pagination.component';
-import {MatProgressSpinner} from '@angular/material/progress-spinner';
 import {MatProgressBar} from '@angular/material/progress-bar';
 import {SaleOperationComponent} from './sale-operation/sale-operation.component';
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import { DeleteConfirmationComponent } from "../commun/delete-confirmation/delete-confirmation.component";
+import {DeleteConfirmationComponent} from "../commun/delete-confirmation/delete-confirmation.component";
 
 
 @Component({
     selector: 'app-sale',
     standalone: true,
     imports: [TranslateModule,
-        PaginationComponent,
         MatPaginator,
         MatTableModule,
         MatSortModule,
         ReactiveFormsModule,
-        MatProgressSpinner,
         MatProgressBar,
         SaleOperationComponent,
         DeleteConfirmationComponent
