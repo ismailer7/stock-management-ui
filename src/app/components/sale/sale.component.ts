@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, DestroyRef, inject, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, DestroyRef, ElementRef, inject, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {Sale} from '../../models/sale.model';
 import {SalesService} from '../../services/sales.service';
 import {ToastrService} from 'ngx-toastr';
@@ -50,8 +50,10 @@ export class SaleComponent implements AfterViewInit {
     destroyRef = inject(DestroyRef);
     isView: boolean = false;
     deleteConfirmation: boolean = false;
-    rowid!: Number;
+    rowid: Number | null;
     idList: number[]= [];
+    @ViewChildren('checkBoxTable') checkboxes: QueryList<ElementRef>;
+    @ViewChild('headerCheckbox') headerCheckBox: ElementRef;
 
     ngAfterViewInit(): void {
         this.dataSource.paginator = this.paginator;
@@ -62,6 +64,8 @@ export class SaleComponent implements AfterViewInit {
                 startWith({}),
                 switchMap(() => {
                     this.isLoading = true;
+                    this.headerCheckBox.nativeElement.checked = false;
+                    this.toggleCheckboxes();
                     this.dataSource.data = this.dataSource.data // this is to keep old data while loading to prevent flickering behavior
                     const filterValue = this.searchKeywordFilter.value == null ? '' : this.searchKeywordFilter.value;
                     if (filterValue) {
@@ -116,16 +120,18 @@ export class SaleComponent implements AfterViewInit {
 
     }
 
+    viewSale(id: Number) {
+        this.isView = true;
+        const s = this.sales.find(s => s.id == id);
+        this.selectedSale = {...s};
+        console.log("view Sale");
+    }
+
     editSale(id: Sale) {
         const p = this.sales.find(p => p.id == id);
         this.selectedSale = {...p};
         console.log("edit Sale", this.selectedSale);
         this.isView = false;
-    }
-
-    deleteSale(id: Number) {
-        this.rowid = id;
-        
     }
 
     onRowChecked(row_Id: number,event: Event) {
@@ -135,6 +141,35 @@ export class SaleComponent implements AfterViewInit {
         } else {
           this.idList = this.idList.filter(id => id !== row_Id);
         }       
+    }
+
+    getSaleId(id: Number) {
+        this.rowid = id;    
+    }
+
+    getIdList(): number[] {
+        if (!this.checkboxes) return [];
+        return Array.from(this.checkboxes)
+            .filter(cbx => cbx.nativeElement.checked)
+            .map(cBox => +cBox.nativeElement.dataset['id']!);
+    }
+
+    getSaleslist(){
+        this.idList = this.getIdList();
+    }
+
+    toggleCheckBox($event: Event) {
+        if (!this.headerCheckBox) return;
+        const isChecked = ($event.target as HTMLInputElement).checked;
+        if (!isChecked) this.headerCheckBox.nativeElement.checked = false;
+
+    }
+
+    toggleCheckboxes() {
+        const isChecked = this.headerCheckBox?.nativeElement?.checked ?? false;
+        if (!this.checkboxes) return;
+        Array.from(this.checkboxes)
+            .forEach(cbx => cbx.nativeElement.checked = isChecked);
     }
 
     deletesalesbutton()
@@ -152,24 +187,31 @@ export class SaleComponent implements AfterViewInit {
 
      }
 
+    deleteSale(){
+        if(this.rowid != null){
+        this.salesService.deleteSaleById(this.rowid)
+        .subscribe({
+          next: (resp) => {
+             this.toastr.success(resp ?? '')
+             this.salesService.$triggerLoading.next(resp);
+          },
+           error: err => {
+           this.toastr.error(err ?? '')
+         }
+     }); 
+    } 
+     /* error: err => {
+             const errorResponse = err.error as ErrorResponse;
+             const errorMessage = errorResponse?.message || 'Error';
+             this.toastr.error(errorMessage);
+         }  */    
+
+    }
     handleValueChange(newValue: any) {
         this.deleteConfirmation = newValue; 
         if(this.deleteConfirmation){ 
-           this.salesService.deleteSaleById(this.rowid)
-               .subscribe({
-                 next: (resp) => {
-                    this.toastr.success(resp ?? '')
-                    this.salesService.$triggerLoading.next(resp);
-                 },
-                  error: err => {
-                  this.toastr.error(err ?? '')
-                }
-            });  
-            /* error: err => {
-                    const errorResponse = err.error as ErrorResponse;
-                    const errorMessage = errorResponse?.message || 'Error';
-                    this.toastr.error(errorMessage);
-                }  */    
+            if(this.rowid == null) this.deletesalesbutton();
+            else this.deleteSale();
         }else   return;        
     }
        
@@ -181,12 +223,7 @@ export class SaleComponent implements AfterViewInit {
         console.log(event)
     }
 
-    viewSale(id: Number) {
-        this.isView = true;
-        const s = this.sales.find(s => s.id == id);
-        this.selectedSale = {...s};
-        console.log("view Sale");
-    }
+   
 
     export(){
         const filterValue = this.searchKeywordFilter.value == null ? '' : this.searchKeywordFilter.value;
