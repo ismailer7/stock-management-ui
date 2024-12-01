@@ -6,7 +6,7 @@ import { ComponentComunicationService } from '../../services/shared/component-co
 import { DashboardService } from '../../services/dashboard.service';
 import { Dashboard } from '../../models/dashboard.model';
 import { CommonModule } from '@angular/common';
-import { CountUpDirective } from '../../count-up.directive';
+
 
 
 @Component({
@@ -21,7 +21,7 @@ export class DashboardComponent {
   private readonly translatePipe = inject(TranslatePipe);
   textTranslatedByPipe = '';
   compComunicationSrv = inject(ComponentComunicationService);
-  countup = inject(CountUpDirective)
+
 
   protected readonly faSackDollar = faSackDollar;
   protected readonly faTags = faTags;
