@@ -34,7 +34,7 @@
                         {{ 'APP.CATEGORY.ADDCATEGORY.NAME' | translate }} :
                       </label>
                         <input type="text" id="name" class=" text-sm rounded-lg block w-full p-2.5"
-                        placeholder="Phones"    formControlName="name"
+                         formControlName="name"
                         [ngClass]="{'outline outline-error': categoryForm.get('name')?.invalid &&  categoryForm.get('name')?.touched}" >
                         <div class="text-red-500 font-bold mt-1  text-xs">
                           @if(categoryForm.get('name')?.touched && categoryForm.get('name')?.errors?.['required'])

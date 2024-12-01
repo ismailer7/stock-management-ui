@@ -37,7 +37,7 @@ export class SaleOperationComponent {
             description: ['', Validators.required],
             product: [, Validators.required],
             saleQuantity: [, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
-            discount: [, [Validators.pattern(/^[0-9]*$/), Validators.min(1)]],
+            discount: [, [Validators.pattern(/^[0-9]*$/), Validators.min(0)]],
             saleDate: []
         });
     }
