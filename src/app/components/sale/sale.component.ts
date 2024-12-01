@@ -10,24 +10,20 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {debounceTime, map, merge, startWith, switchMap} from 'rxjs';
 import {HttpResponse} from '@angular/common/http';
 import {SalePage} from '../../models/sale-page.model';
-import {PaginationComponent} from '../commun/pagination/pagination.component';
-import {MatProgressSpinner} from '@angular/material/progress-spinner';
 import {MatProgressBar} from '@angular/material/progress-bar';
 import {SaleOperationComponent} from './sale-operation/sale-operation.component';
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import { DeleteConfirmationComponent } from "../commun/delete-confirmation/delete-confirmation.component";
+import {DeleteConfirmationComponent} from "../commun/delete-confirmation/delete-confirmation.component";
 
 
 @Component({
     selector: 'app-sale',
     standalone: true,
     imports: [TranslateModule,
-        PaginationComponent,
         MatPaginator,
         MatTableModule,
         MatSortModule,
         ReactiveFormsModule,
-        MatProgressSpinner,
         MatProgressBar,
         SaleOperationComponent,
         DeleteConfirmationComponent
@@ -228,6 +224,34 @@ export class SaleComponent implements AfterViewInit {
     }
 
    
+
+    export(){
+        const filterValue = this.searchKeywordFilter.value == null ? '' : this.searchKeywordFilter.value;
+        this.salesService.export(
+            filterValue,
+            this.sort.active,
+            this.sort.direction,
+            this.paginator.pageIndex,
+            this.paginator.pageSize
+        )
+            .subscribe({
+                next: (resp) => {
+                    const link = document.createElement('a');
+                    // Create an object URL for the Blob
+                    const url = window.URL.createObjectURL(resp.body!);
+                    const contentDisposition = resp.headers.get('Content-Disposition');
+                    const filename = contentDisposition?.split('filename=')[1].replace(/"/g, '') || 'default.csv';
+
+                    link.href = url;
+                    console.log(resp);
+                    link.download = filename;  // Set the filename for the downloaded file
+                    link.click();  // Trigger the download
+                    window.URL.revokeObjectURL(url);  // Clean up the object URL
+                },
+                error: err => {
+                    this.toastr.error(err ?? '')
+                } }) ;
+    }
 
 }
 

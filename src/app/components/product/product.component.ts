@@ -1,7 +1,6 @@
 import {AfterViewInit, Component, DestroyRef, ElementRef, inject, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {Product} from "../../models/product.model";
 import {ProductService} from "../../services/product.service";
-import {PaginationComponent} from "../commun/pagination/pagination.component";
 import {OperacionProductComponent} from './addproduct/operacion-product.component';
 import {ToastrService} from 'ngx-toastr';
 import {MatPaginator} from "@angular/material/paginator";
@@ -11,23 +10,20 @@ import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {debounceTime, map, merge, scan, startWith, switchMap} from "rxjs";
 import {Page} from "../../models/product-page.model";
 import {HttpResponse} from "@angular/common/http";
-import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {MatProgressBar} from "@angular/material/progress-bar";
 import {LangChangeEvent, TranslateModule, TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import { DeleteConfirmationComponent } from "../commun/delete-confirmation/delete-confirmation.component";
+import {DeleteConfirmationComponent} from "../commun/delete-confirmation/delete-confirmation.component";
 
 @Component({
     selector: 'app-product',
     standalone: true,
     imports: [
-        PaginationComponent,
         OperacionProductComponent,
         MatPaginator,
         MatTableModule,
         MatSortModule,
         ReactiveFormsModule,
-        MatProgressSpinner,
         MatProgressBar,
         TranslateModule,
         DeleteConfirmationComponent
@@ -171,7 +167,7 @@ export class ProductComponent implements AfterViewInit {
     getProductId(id: Number) {
         this.rowid = id;
     }
-    
+
     getCategorieslist(){
 
         this.idList = this.getIdList();
@@ -203,6 +199,7 @@ export class ProductComponent implements AfterViewInit {
             error: err => {
                 this.toastr.error(err ?? '')
             } }) ;
+
      }
 
     deleteProduct(){
@@ -217,22 +214,56 @@ export class ProductComponent implements AfterViewInit {
             error: err => {
                 this.toastr.error(err ?? '')
             }
-        });  
+        });
     }
         /* error: err => {
                 const errorResponse = err.error as ErrorResponse;
                 const errorMessage = errorResponse?.message || 'Error';
                 this.toastr.error(errorMessage);
-            }  */   
+            }  */
     }
-    
+
     handleValueChange(newValue: any) {
-        this.deleteConfirmation = newValue; 
-        if(this.deleteConfirmation){ 
+        this.deleteConfirmation = newValue;
+        if(this.deleteConfirmation){
             if(this.rowid == null) this.deleteproductsbutton();
             else this.deleteProduct();
-        }else return;        
+        }else return;
     }
+
+
+    export(){
+        const filterValue = this.searchKeywordFilter.value == null ? '' : this.searchKeywordFilter.value;
+        this.productsService.export(
+            filterValue,
+            this.sort.active,
+            this.sort.direction,
+            this.paginator.pageIndex,
+            this.paginator.pageSize
+        )
+            .subscribe({
+                next: (resp) => {
+                    const link = document.createElement('a');
+                    // Create an object URL for the Blob
+                    const url = window.URL.createObjectURL(resp.body!);
+                    const contentDisposition = resp.headers.get('Content-Disposition');
+                    const filename = contentDisposition?.split('filename=')[1].replace(/"/g, '') || 'default.csv';
+
+                    link.href = url;
+                    console.log(resp);
+                    link.download = filename;  // Set the filename for the downloaded file
+                    link.click();  // Trigger the download
+                    window.URL.revokeObjectURL(url);  // Clean up the object URL
+                },
+                error: err => {
+                    this.toastr.error(err ?? '')
+                } }) ;
+    }
+
+
+
+
+
 
 
 }

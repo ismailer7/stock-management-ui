@@ -17,7 +17,7 @@
         />
         <!-- Buttons -->
         <button class="btn mt-2  btn-primary btn-outline md:ml-4 md:px-4 py-2" (click)="addProduct()"  onclick="my_modal_1.showModal()"><i class="hidden md:inline fa fa-solid fa-plus text-xl"></i> <span class="md:hidden">{{ 'APP.PRODUCT.ADDPRODUCT.ADD_BUTTON' | translate }}</span></button>
-        <button class="btn mt-2 btn-primary md:ml-4 md:px-4 py-2">{{ 'APP.PRODUCT.EXPORT' | translate }}</button>
+        <button class="btn mt-2 btn-primary md:ml-4 md:px-4 py-2" (click)="export()">{{ 'APP.PRODUCT.EXPORT' | translate }}</button>
       </div>
 
 <div class="mat-elevation-z8 shadow">

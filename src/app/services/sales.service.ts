@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Sale } from '../models/sale.model';
@@ -65,6 +65,33 @@ export class SalesService {
   exportPdf(id: Number){
 
     return this.http.get(`${environment.rooturl}/sale/exportpdf/${id}`, {responseType: "blob", withCredentials: true });
+  }
+
+  export(
+      search_filter: string = '',
+      sort_field: string = '',
+      sort_order: SortDirection,
+      page: number = 1,
+      limit_per_page: number = 5
+  ) {
+    const params = new HttpParams()
+        .set('input', search_filter)
+        .set("sort", sort_field)
+        .set("order", sort_order)
+        .set("page", page)
+        .set("per_page", limit_per_page);
+
+    const headers = new HttpHeaders({
+      Accept: 'text/csv'
+    });
+    return this.http.get(`${environment.rooturl}/sale/export-csv-file`, {
+          headers: headers,
+          params: params,
+          responseType: 'blob',
+          observe: 'response',
+          withCredentials: true
+        }
+    )
   }
 
 }

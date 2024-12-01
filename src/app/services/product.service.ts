@@ -2,7 +2,7 @@ import {inject, Injectable} from '@angular/core';
 import {Product} from "../models/product.model";
 import {Observable, of, Subject} from "rxjs";
 import {MOCK_PRODUCTS} from "../data/mock-products";
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {SortDirection} from "@angular/material/sort";
 import {Page} from "../models/product-page.model";
@@ -67,6 +67,33 @@ export class ProductService {
 
   getProductsByName(name: String){
     return this.http.get<Product[]>(`${environment.rooturl}/product/search?name=${name}`,{observe: 'response', withCredentials: true });
+  }
+
+  export(
+      search_filter: string = '',
+      sort_field: string = '',
+      sort_order: SortDirection,
+      page: number = 1,
+      limit_per_page: number = 5
+  ) {
+    const params = new HttpParams()
+        .set('input', search_filter)
+        .set("sort", sort_field)
+        .set("order", sort_order)
+        .set("page", page)
+        .set("per_page", limit_per_page);
+
+    const headers = new HttpHeaders({
+      Accept: 'text/csv'
+    });
+    return this.http.get(`${environment.rooturl}/product/export-csv-file`, {
+          headers: headers,
+          params: params,
+          responseType: 'blob',
+          observe: 'response',
+          withCredentials: true
+        }
+    )
   }
 
 }
