@@ -3,5 +3,6 @@ export interface Dashboard {
     productCount?: number;
     saleCount?: number;
     profits?: number;
+    profitsMarge?:number;
     
 }

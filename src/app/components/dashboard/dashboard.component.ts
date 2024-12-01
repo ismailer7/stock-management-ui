@@ -6,11 +6,12 @@ import { ComponentComunicationService } from '../../services/shared/component-co
 
 import { DashboardService } from '../../services/dashboard.service';
 import { Dashboard } from '../../models/dashboard.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [TranslateModule,FontAwesomeModule],
+  imports: [TranslateModule,FontAwesomeModule,CommonModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
@@ -25,7 +26,8 @@ export class DashboardComponent {
   protected readonly fafaCartShopping = faCartShopping;
   protected readonly fafaArrowTrendUp = faArrowTrendUp;
   dashboardService = inject(DashboardService);
-  dashboard:Dashboard | null = null;
+  dashboard:Dashboard | null;
+  isNegativ:boolean = false;
 
 
 
@@ -33,17 +35,30 @@ someMethod() {
   this.textTranslatedByPipe = this.translatePipe.transform('TRANSLATED_BY_COMPONENT');
 }
 
+
+
 ngOnInit() {
 
   this.dashboardService.getDashboardStatistics()
             .subscribe({
                 next: (resp) => {
-                  this.dashboard = resp.body       
+                  this.dashboard = resp.body   
+                  console.log(this.dashboard?.profitsMarge)  
+
+                  if(this.dashboard?.profitsMarge !== undefined && this.dashboard?.profitsMarge  < 0 )
+                    this.isNegativ = true;           
                 },
                 error: (error) => {
                   console.error('Error fetching dashboard data:', error);
                 }
             });
+  
+
+         
+
+           
+
+            
 
 
 

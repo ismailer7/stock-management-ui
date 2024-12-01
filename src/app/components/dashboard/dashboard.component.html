@@ -98,8 +98,10 @@
               <span class="font-large text-base">Month Profits</span>
             </div>
 
-            <span class="flex items-center gap-1 text-sm font-medium text-meta-5 mr-2 text-success">
-              10.95%
+            <span class = "mr-2"  [ngClass]="{'text-error':isNegativ, 'text-success':!isNegativ}" >
+             
+             {{dashboard?.profitsMarge  | number:'1.2-2' }}%
+           
             </span>
           </div>
         </div>

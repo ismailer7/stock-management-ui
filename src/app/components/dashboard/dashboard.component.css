@@ -1,3 +1,12 @@
 p {
     padding: 300px;
 }
+
+
+.text-red {
+    color: red;
+  }
+  
+  .text-green {
+    color: green;
+  }
